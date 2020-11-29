@@ -6,17 +6,7 @@ $rootFolder = (Get-Item -Path "./" -Verbose).FullName
 
 # List of solutions used only in development mode
 $solutionPaths = @(
-		"../framework",
-		"../modules/users",
-		"../modules/permission-management",
-		"../modules/setting-management",
-		"../modules/feature-management",
-		"../modules/identity",
-		"../modules/identityserver",
-		"../modules/tenant-management",
-		"../modules/audit-logging",
-		"../modules/background-jobs",
-		"../modules/account"
+		"../framework"
 	)
 
 if ($full -eq "-f")

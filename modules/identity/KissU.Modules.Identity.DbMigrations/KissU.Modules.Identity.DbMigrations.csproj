@@ -27,10 +27,7 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="4.0.0-rc.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\KissU.Modules.Identity.EntityFrameworkCore\KissU.Modules.Identity.EntityFrameworkCore.csproj" />
+    <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" Version="4.0.0-rc.4" />
   </ItemGroup>
 
   <ItemGroup>

@@ -21,6 +21,7 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Logging.Nlog\KissU.Logging.Nlog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Caching\KissU.Caching.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
+    <ProjectReference Include="..\..\..\modules\account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

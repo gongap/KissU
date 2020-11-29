@@ -42,6 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\modules\account\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
     <ProjectReference Include="..\..\..\modules\feature-management\KissU.Modules.FeatureManagement.Service\KissU.Modules.FeatureManagement.Service.csproj" />
     <ProjectReference Include="..\..\..\modules\identity\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
     <ProjectReference Include="..\..\..\modules\permission-management\KissU.Modules.PermissionManagement.Service\KissU.Modules.PermissionManagement.Service.csproj" />

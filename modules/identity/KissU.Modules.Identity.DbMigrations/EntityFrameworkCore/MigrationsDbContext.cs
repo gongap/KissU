@@ -1,8 +1,8 @@
-﻿using KissU.Modules.Identity.Domain;
-using KissU.Modules.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.Identity;
+using Volo.Abp.Identity.EntityFrameworkCore;
 
 namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
 {

@@ -4,28 +4,18 @@ $rootFolder = Join-Path $packFolder "../"
 
 # List of solutions
 $solutions = (
-    "framework",
-    "modules/account",
-    "modules/audit-logging",
-    "modules/background-jobs",
-    "modules/feature-management",
-    "modules/identity",
-    "modules/identityserver",
-    "modules/permission-management",
-    "modules/setting-management",
-    "modules/tenant-management",
-    "modules/users"
+    "framework"
 )
 
 # List of projects
 $projects = (
 
     # framework
-    "framework/src/KissU",
     "framework/src/KissU.Core",
-    "framework/src/KissU.Abp.Autofac",
-    "framework/src/KissU.Abp.Business",
     "framework/src/KissU.AspNetCore",
+    "framework/src/KissU.AspNetCore.Swagger",
+    "framework/src/KissU.AspNetCore.Stage",
+    "framework/src/KissU.AspNetCore.IdentityServer",
     "framework/src/KissU.WebSocket",
     "framework/src/KissU.CPlatform",
     "framework/src/KissU.ApiGateWay",
@@ -48,109 +38,37 @@ $projects = (
     "framework/src/KissU.DotNetty.Udp",
     "framework/src/KissU.ServiceProxy",
     "framework/src/KissU.BackgroundServer",
-    "framework/src/KissU.Kestrel.Swagger",
     "framework/src/KissU.ServiceDiscovery.Zookeeper",
     "framework/src/KissU.Apm.Skywalking",
     "framework/src/KissU.Logging.Serilog",
     "framework/src/KissU.Configuration.Apollo",
-    "framework/src/KissU.Kestrel.Nlog",
-    "framework/src/KissU.Kestrel.Log4net",
-    "framework/src/KissU.Kestrel.Stage",
-    "framework/src/KissU.Kestrel",
-    "framework/src/KissU.Kestrel.IdentityServer",
+    "framework/src/KissU.Kestrel.Http",
 
     # modules/account
-    "modules/account/src/KissU.Modules.Account.Application.Contracts",
-    "modules/account/src/KissU.Modules.Account.Application",
-    "modules/account/src/KissU.Modules.Account.Service.Contracts",
-    "modules/account/src/KissU.Modules.Account.Service",
-        
-    # modules/audit-logging
-    "modules/audit-logging/src/KissU.Modules.AuditLogging.Domain",
-    "modules/audit-logging/src/KissU.Modules.AuditLogging.Domain.Shared",
-    "modules/audit-logging/src/KissU.Modules.AuditLogging.EntityFrameworkCore",
-    "modules/audit-logging/src/KissU.Modules.AuditLogging.MongoDB",
-    "modules/audit-logging/src/KissU.Modules.AuditLogging.DbMigrations",
-    "modules/audit-logging/src/KissU.Modules.AuditLogging.DbMigrator",
-
-    # modules/background-jobs
-    "modules/background-jobs/src/KissU.Modules.BackgroundJobs.Domain",
-    "modules/background-jobs/src/KissU.Modules.BackgroundJobs.Domain.Shared",
-    "modules/background-jobs/src/KissU.Modules.BackgroundJobs.EntityFrameworkCore",
-    "modules/background-jobs/src/KissU.Modules.BackgroundJobs.MongoDB",
-    "modules/background-jobs/src/KissU.Modules.BackgroundJobs.DbMigrations",
-    "modules/background-jobs/src/KissU.Modules.BackgroundJobs.DbMigrator",
+    "modules/account/KissU.Modules.Account.Service.Contracts",
+    "modules/account/KissU.Modules.Account.Service",
 
     # modules/feature-management
-    "modules/feature-management/src/KissU.Modules.FeatureManagement.Application.Contracts",
-    "modules/feature-management/src/KissU.Modules.FeatureManagement.Application",
-    "modules/feature-management/src/KissU.Modules.FeatureManagement.Domain",
-    "modules/feature-management/src/KissU.Modules.FeatureManagement.Domain.Shared",
-    "modules/feature-management/src/KissU.Modules.FeatureManagement.EntityFrameworkCore",
-    "modules/feature-management/src/KissU.Modules.FeatureManagement.MongoDB",
-    "modules/feature-management/src/KissU.Modules.FeatureManagement.DbMigrations",
-    "modules/feature-management/src/KissU.Modules.FeatureManagement.DbMigrator",
-    "modules/feature-management/src/KissU.Modules.FeatureManagement.Service.Contracts",
-    "modules/feature-management/src/KissU.Modules.FeatureManagement.Service",
+    "modules/feature-management/KissU.Modules.FeatureManagement.DbMigrations",
+    "modules/feature-management/KissU.Modules.FeatureManagement.DbMigrator",
+    "modules/feature-management/KissU.Modules.FeatureManagement.Service.Contracts",
+    "modules/feature-management/KissU.Modules.FeatureManagement.Service",
 
     # modules/identity
-    "modules/identity/src/KissU.Modules.Identity.Application.Contracts",
-    "modules/identity/src/KissU.Modules.Identity.Application",
-    "modules/identity/src/KissU.Modules.Identity.AspNetCore",
-    "modules/identity/src/KissU.Modules.Identity.Domain",
-    "modules/identity/src/KissU.Modules.Identity.Domain.Shared",
-    "modules/identity/src/KissU.Modules.Identity.EntityFrameworkCore",
-    "modules/identity/src/KissU.Modules.Identity.DbMigrations",
-    "modules/identity/src/KissU.Modules.Identity.DbMigrator",
-    "modules/identity/src/KissU.Modules.Identity.Service.Contracts",
-    "modules/identity/src/KissU.Modules.Identity.Service",
-    
-    # modules/identityserver
-    "modules/identityserver/src/KissU.Modules.IdentityServer.AspNetIdentity",
-    "modules/identityserver/src/KissU.Modules.IdentityServer.Domain",
-    "modules/identityserver/src/KissU.Modules.IdentityServer.Domain.Shared",
-    "modules/identityserver/src/KissU.Modules.IdentityServer.EntityFrameworkCore",
-    "modules/identityserver/src/KissU.Modules.IdentityServer.MongoDB",
-    "modules/identityserver/src/KissU.Modules.IdentityServer.DbMigrations",
-    "modules/identityserver/src/KissU.Modules.IdentityServer.DbMigrator",
+    "modules/identity/KissU.Modules.Identity.DbMigrations",
+    "modules/identity/KissU.Modules.Identity.DbMigrator",
+    "modules/identity/KissU.Modules.Identity.Service.Contracts",
+    "modules/identity/KissU.Modules.Identity.Service",
 
     # modules/permission-management
-    "modules/permission-management/src/KissU.Modules.PermissionManagement.Application.Contracts",
-    "modules/permission-management/src/KissU.Modules.PermissionManagement.Application",
-    "modules/permission-management/src/KissU.Modules.PermissionManagement.Domain",
-    "modules/permission-management/src/KissU.Modules.PermissionManagement.Domain.Shared",
-    "modules/permission-management/src/KissU.Modules.PermissionManagement.Domain.Identity",
-    "modules/permission-management/src/KissU.Modules.PermissionManagement.Domain.IdentityServer",
-    "modules/permission-management/src/KissU.Modules.PermissionManagement.EntityFrameworkCore",
-    "modules/permission-management/src/KissU.Modules.PermissionManagement.DbMigrations",
-    "modules/permission-management/src/KissU.Modules.PermissionManagement.DbMigrator",
-    "modules/permission-management/src/KissU.Modules.PermissionManagement.Service.Contracts",
-    "modules/permission-management/src/KissU.Modules.PermissionManagement.Service",
-
-    # modules/setting-management
-    "modules/setting-management/src/KissU.Modules.SettingManagement.Domain",
-    "modules/setting-management/src/KissU.Modules.SettingManagement.Domain.Shared",
-    "modules/setting-management/src/KissU.Modules.SettingManagement.EntityFrameworkCore",
-    "modules/setting-management/src/KissU.Modules.SettingManagement.MongoDB",
-    "modules/setting-management/src/KissU.Modules.SettingManagement.DbMigrations",
-    "modules/setting-management/src/KissU.Modules.SettingManagement.DbMigrator",
+    "modules/permission-management/KissU.Modules.PermissionManagement.DbMigrations",
+    "modules/permission-management/KissU.Modules.PermissionManagement.DbMigrator",
+    "modules/permission-management/KissU.Modules.PermissionManagement.Service.Contracts",
+    "modules/permission-management/KissU.Modules.PermissionManagement.Service",
 
     # modules/tenant-management
-    "modules/tenant-management/src/KissU.Modules.TenantManagement.Application.Contracts",
-    "modules/tenant-management/src/KissU.Modules.TenantManagement.Application",
-    "modules/tenant-management/src/KissU.Modules.TenantManagement.Domain",
-    "modules/tenant-management/src/KissU.Modules.TenantManagement.Domain.Shared",
-    "modules/tenant-management/src/KissU.Modules.TenantManagement.EntityFrameworkCore",
-    "modules/tenant-management/src/KissU.Modules.TenantManagement.MongoDB",
-    "modules/tenant-management/src/KissU.Modules.TenantManagement.DbMigrations",
-    "modules/tenant-management/src/KissU.Modules.TenantManagement.DbMigrator",
-    "modules/tenant-management/src/KissU.Modules.TenantManagement.Service.Contracts",
-    "modules/tenant-management/src/KissU.Modules.TenantManagement.Service",
-
-    # modules/users
-    "modules/users/src/KissU.Modules.Users.Abstractions",
-    "modules/users/src/KissU.Modules.Users.Domain",
-    "modules/users/src/KissU.Modules.Users.Domain.Shared",
-    "modules/users/src/KissU.Modules.Users.EntityFrameworkCore",
-    "modules/users/src/KissU.Modules.Users.MongoDB"
+    "modules/tenant-management/KissU.Modules.TenantManagement.DbMigrations",
+    "modules/tenant-management/KissU.Modules.TenantManagement.DbMigrator",
+    "modules/tenant-management/KissU.Modules.TenantManagement.Service.Contracts",
+    "modules/tenant-management/KissU.Modules.TenantManagement.Service"
 )
