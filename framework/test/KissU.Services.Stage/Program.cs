@@ -32,7 +32,7 @@ namespace KissU.Services
                 })
                 .AddAbp()
                 .UseServer()
-                .UseAbp
+                .UseAbp()
                 .UseAutofac();
 
     }

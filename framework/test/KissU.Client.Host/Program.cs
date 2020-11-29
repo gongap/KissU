@@ -30,7 +30,7 @@ namespace KissU.Client.Host
                 })
                 .AddAbp()
                 .UseClient()
-                .UseAbp
+                .UseAbp()
                 .UseAutofac();
     }
 }

@@ -11,11 +11,11 @@
   <ItemGroup>
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="4.0.0-rc.4" />
     <PackageReference Include="Volo.Abp.Account.Application" Version="4.0.0-rc.4" />
+    <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" Version="4.0.0-rc.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
-    <ProjectReference Include="..\..\identity\KissU.Modules.Identity.EntityFrameworkCore\KissU.Modules.Identity.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
   </ItemGroup>
 
