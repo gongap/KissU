@@ -1,5 +1,4 @@
-﻿using KissU.Modularity;
-using KissU.Modules.Identity.Domain.Extensions;
+﻿using KissU.Modules.Identity.Domain.Extensions;
 using KissU.Modules.Identity.Domain.Shared;
 using KissU.Modules.Identity.Domain.Shared.ObjectExtending;
 using Microsoft.AspNetCore.Identity;
@@ -21,7 +20,7 @@ namespace KissU.Modules.Identity.Domain
         typeof(AbpUsersDomainModule),
         typeof(AbpAutoMapperModule)
         )]
-    public class AbpIdentityDomainModule : AbpBusunessModule
+    public class AbpIdentityDomainModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

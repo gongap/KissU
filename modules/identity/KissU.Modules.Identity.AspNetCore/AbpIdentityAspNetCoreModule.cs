@@ -1,5 +1,4 @@
-﻿using KissU.Modularity;
-using KissU.Modules.Identity.AspNetCore.Extensions;
+﻿using KissU.Modules.Identity.AspNetCore.Extensions;
 using KissU.Modules.Identity.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +9,7 @@ namespace KissU.Modules.Identity.AspNetCore
     [DependsOn(
         typeof(AbpIdentityDomainModule)
     )]
-    public class AbpIdentityAspNetCoreModule : AbpBusunessModule
+    public class AbpIdentityAspNetCoreModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

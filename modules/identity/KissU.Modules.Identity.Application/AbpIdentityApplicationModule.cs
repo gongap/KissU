@@ -1,5 +1,4 @@
-﻿using KissU.Modularity;
-using KissU.Modules.Identity.Application.Contracts;
+﻿using KissU.Modules.Identity.Application.Contracts;
 using KissU.Modules.Identity.Domain;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
@@ -12,7 +11,7 @@ namespace KissU.Modules.Identity.Application
         typeof(AbpIdentityApplicationContractsModule), 
         typeof(AbpAutoMapperModule)
         )]
-    public class AbpIdentityApplicationModule : AbpBusunessModule
+    public class AbpIdentityApplicationModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

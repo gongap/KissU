@@ -1,5 +1,4 @@
-﻿using KissU.Modularity;
-using KissU.Modules.Identity.Domain.Shared;
+﻿using KissU.Modules.Identity.Domain.Shared;
 using Volo.Abp.Application;
 using Volo.Abp.Authorization;
 using Volo.Abp.Modularity;
@@ -13,7 +12,7 @@ namespace KissU.Modules.Identity.Application.Contracts
         typeof(AbpAuthorizationModule),
         typeof(AbpDddApplicationModule)
         )]
-    public class AbpIdentityApplicationContractsModule : AbpBusunessModule
+    public class AbpIdentityApplicationContractsModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

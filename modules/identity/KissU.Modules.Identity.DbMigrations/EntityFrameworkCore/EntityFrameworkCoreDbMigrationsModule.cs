@@ -1,5 +1,4 @@
-﻿using KissU.Modularity;
-using KissU.Modules.Identity.DbMigrations.Data;
+﻿using KissU.Modules.Identity.DbMigrations.Data;
 using KissU.Modules.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -11,7 +10,7 @@ namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
     [DependsOn(
         typeof(AbpIdentityEntityFrameworkCoreModule)
     )]
-    public class EntityFrameworkCoreDbMigrationsModule : AbpBusunessModule
+    public class EntityFrameworkCoreDbMigrationsModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

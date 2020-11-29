@@ -1,5 +1,4 @@
-﻿using KissU.Modularity;
-using KissU.Modules.Identity.DbMigrations.EntityFrameworkCore;
+﻿using KissU.Modules.Identity.DbMigrations.EntityFrameworkCore;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
 
@@ -9,7 +8,7 @@ namespace KissU.Modules.Identity.DbMigrator
         typeof(AbpAutofacModule),
         typeof(EntityFrameworkCoreDbMigrationsModule)
     )]
-    public class DbMigratorModule : AbpBusunessModule
+    public class DbMigratorModule : AbpModule
     {
     }
 }

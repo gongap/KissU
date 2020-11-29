@@ -1,5 +1,4 @@
-﻿using KissU.Modularity;
-using KissU.Modules.Identity.Domain.Shared.Localization;
+﻿using KissU.Modules.Identity.Domain.Shared.Localization;
 using Volo.Abp.Localization;
 using Volo.Abp.Localization.ExceptionHandling;
 using Volo.Abp.Modularity;
@@ -14,7 +13,7 @@ namespace KissU.Modules.Identity.Domain.Shared
         typeof(AbpUsersDomainSharedModule),
         typeof(AbpValidationModule)
         )]
-    public class AbpIdentityDomainSharedModule : AbpBusunessModule
+    public class AbpIdentityDomainSharedModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
