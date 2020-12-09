@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using KissU.Modules.TenantManagement.DbMigrations.Data;
+using KissU.Modules.TenantManagement.DbMigrator.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
