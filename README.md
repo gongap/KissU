@@ -7,8 +7,6 @@ KissU 框架的主要目标之一就是提供便捷的基础设施来创建微�
 
 > 源码路径：[源代码 ***C#***](https://github.com/gongap/KissU)
 
-> 示例解决方案：[源代码 ***C#***](https://github.com/gongap/KissU.Microservice)
-
 ## 文档目录
 
 > 本文档会持续更新

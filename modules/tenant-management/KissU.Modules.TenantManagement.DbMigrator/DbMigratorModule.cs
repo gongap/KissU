@@ -1,4 +1,4 @@
-﻿using KissU.Modules.TenantManagement.DbMigrations.EntityFrameworkCore;
+﻿using KissU.Modules.TenantManagement.DbMigrator.EntityFrameworkCore;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
 
