@@ -38,6 +38,7 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.BackgroundServer\KissU.BackgroundServer.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Logging.Log4net\KissU.Logging.Log4net.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Logging.Serilog\KissU.Logging.Serilog.csproj" />
+    <ProjectReference Include="..\..\src\KissU.AspNetCore.IdentityServer\KissU.AspNetCore.IdentityServer.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.AspNetCore.Stage\KissU.AspNetCore.Stage.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.AspNetCore.Swagger\KissU.AspNetCore.Swagger.csproj" />
   </ItemGroup>
