@@ -28,7 +28,6 @@ namespace KissU.AspNetCore
         /// <summary>
         /// Registers the builder.
         /// </summary>
-        /// </summary>
         /// <param name="context">The context.</param>
         public virtual void ConfigureWebHost(WebHostContext context)
         {

@@ -36,7 +36,6 @@ namespace KissU.AspNetCore.IdentityServer
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddFilters(typeof(JWTBearerAuthorizationFilterAttribute));
-
             context.Services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>

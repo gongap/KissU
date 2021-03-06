@@ -9,10 +9,10 @@ using KissU.CPlatform.Messages;
 namespace KissU.AspNetCore.IdentityServer.Filters
 {
     /// <summary>
-    /// JWTBearerAuthorizationFilterAttribute.
-    /// Implements the <see cref="issU.Kestrel.IdentityServer.Filters.AuthorizationFilterAttribute" />
+    /// Class JWTBearerAuthorizationFilterAttribute.
+    /// Implements the <see cref="KissU.AspNetCore.Filters.IAuthorizationFilter" />
     /// </summary>
-    /// <seealso cref="issU.Kestrel.IdentityServer.Filters.AuthorizationFilterAttribute" />
+    /// <seealso cref="KissU.AspNetCore.Filters.IAuthorizationFilter" />
     public class JWTBearerAuthorizationFilterAttribute : IAuthorizationFilter
     {
         /// <summary>

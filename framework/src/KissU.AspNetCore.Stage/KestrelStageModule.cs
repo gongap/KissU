@@ -113,6 +113,7 @@ namespace KissU.AspNetCore.Stage
 
             context.Services.AddSingleton<IIPChecker, IPAddressChecker>();
             context.Services.AddFilters(typeof(ActionFilterAttribute));
+            context.Services.AddFilters(typeof(AuthorizationFilterAttribute));
             context.Services.AddFilters(typeof(IPFilterAttribute));
         }
 

@@ -27,8 +27,7 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
 
 
             var attribute =
-                context.ServiceEntry.Attributes.Where(p => p is AuthorizationAttribute)
-                    .Select(p => p as AuthorizationAttribute).FirstOrDefault();
+                context.ServiceEntry.Attributes.Where(p => p is AuthorizationAttribute) .Select(p => p as AuthorizationAttribute).FirstOrDefault();
             if (attribute != null && attribute.AuthType == AuthorizationType.JWT)
             {
                 operation.Parameters.Add(new BodyParameter
