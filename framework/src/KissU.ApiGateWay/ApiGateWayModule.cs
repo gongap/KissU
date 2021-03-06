@@ -18,7 +18,7 @@ namespace KissU.ApiGateWay
     /// Implements the <see cref="EnginePartModule" />
     /// </summary>
     /// <seealso cref="EnginePartModule" />
-    public class ApiGeteWayModule : EnginePartModule
+    public class ApiGateWayModule : EnginePartModule
     {
         /// <summary>
         /// 注册服务

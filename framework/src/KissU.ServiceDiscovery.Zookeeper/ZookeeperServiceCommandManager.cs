@@ -299,8 +299,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
             }
             else
             {
-                if (_logger.IsEnabled(LogLevel.Warning))
-                    _logger.LogWarning($"无法获取服务命令信息，因为节点：{_configInfo.CommandPath}，不存在。");
+                //if (_logger.IsEnabled(LogLevel.Warning))
+                //    _logger.LogWarning($"无法获取服务命令信息，因为节点：{_configInfo.CommandPath}，不存在。");
                 _serviceCommands = new ServiceCommandDescriptor[0];
             }
         }

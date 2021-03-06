@@ -13,7 +13,7 @@
     "MaxConcurrentRequests": 20,
     "DisconnTimeInterval": 30,
     "ExecutionTimeoutInMilliseconds": 1000,
-    "Protocol": "${Protocol}|None", //Http°¢Tcp°¢None
+    "Protocol": "${Protocol}|None", 
     "RootPath": "${RootPath}",
     "WebRootPath": "${WebRootPath}",
     "IsModulePerLifetimeScope": false,
@@ -28,7 +28,7 @@
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;DnsProtocolModule;KestrelHttpServerModule;SkywalkingModule;GrpcModule;ApolloModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;DnsProtocolModule;KestrelHttpServerModule;SkywalkingModule;GrpcModule;ApiGateWayModule;ApolloModule;"
       }
     ]
   },
@@ -37,7 +37,7 @@
     "ApiName": "IdentityService"
   },
   "Stage": {
-    "EnableHttps": true, // ≤ª…Ë÷√ports£¨ƒ¨»œhttpsPort:443
+    "EnableHttps": true, 
     "CertificateFileName": "${CertificateFileName}|",
     "CertificateLocation": "${CertificateLocation}|pfxs",
     "CertificatePassword": "${CertificatePassword}|",
@@ -45,10 +45,10 @@
     "Protocols": "Http1AndHttp2",
     "ApiGetWay": {
       "AccessTokenExpireTimeSpan": "30",
-      "AuthorizationRoutePath": "api/user/authentication",
-      "AuthorizationServiceKey": "User",
+      "AuthorizationRoutePath": "api/account/authentication",
+      "AuthorizationServiceKey": "Account",
       "TokenEndpointPath": "api/oauth2/token",
-      "CacheMode": "MemoryCache" //MemoryCache or  gateway.Redis save token
+      "CacheMode": "MemoryCache"
     },
     "AccessPolicy": {
       "Origins": [ "http://localhost:4200", "http://localhost:53435" ],
@@ -143,7 +143,7 @@
       "IgnoreFullyQualified": false,
       "MapRoutePaths": [
         {
-          "SourceRoutePath": "api/user/authentication",
+          "SourceRoutePath": "api/account/authentication",
           "TargetRoutePath": "api/oauth2/token"
         }
       ]

@@ -110,7 +110,7 @@
       "IgnoreFullyQualified": false,
       "MapRoutePaths": [
         {
-          "SourceRoutePath": "api/user/authentication",
+          "SourceRoutePath": "api/account/authentication",
           "TargetRoutePath": "api/oauth2/token"
         }
       ]
