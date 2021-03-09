@@ -455,6 +455,7 @@ namespace KissU.AspNetCore.Swagger.SwaggerGen.Generator
             {
                 Name = "servicekey",
                 In = "query",
+                Description = "服务标识",
                 Required = false
             };
             var schema = new Schema();
