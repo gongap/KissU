@@ -18,8 +18,7 @@ namespace KissU.Kestrel.Http.Filters.Implementation
         /// <exception cref="Exception"></exception>
         public override void OnException(RpcActionExecutedContext context)
         {
-            if (context.Exception is CPlatformCommunicationException)
-                throw new Exception(context.Exception.Message, context.Exception);
+            throw new Exception(context.Exception.Message, context.Exception);
         }
     }
 }
