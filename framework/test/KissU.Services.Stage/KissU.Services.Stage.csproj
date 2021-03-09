@@ -44,9 +44,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\modules\account\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
-    <ProjectReference Include="..\..\..\modules\feature-management\KissU.Modules.FeatureManagement.Service.Contracts\KissU.Modules.FeatureManagement.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\..\modules\identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\..\modules\permission-management\KissU.Modules.PermissionManagement.Service.Contracts\KissU.Modules.PermissionManagement.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\..\modules\tenant-management\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj" />
   </ItemGroup>
 

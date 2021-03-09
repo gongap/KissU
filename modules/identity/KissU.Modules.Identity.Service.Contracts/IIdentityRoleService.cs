@@ -21,16 +21,18 @@ namespace KissU.Modules.Identity.Service.Contracts
         [ServiceRoute("{id}")]
         Task<IdentityRoleDto> GetAsync(string id);
 
-        [Authorization(AuthType = AuthorizationType.JWTBearer)]
+        [Authorization(AuthType = AuthorizationType.JWT)]
         [HttpPost(true)]
         Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input);
 
         [HttpPut(true)]
         [ServiceRoute("{id}")]
+        [Authorization(AuthType = AuthorizationType.JWT)]
         Task<IdentityRoleDto> UpdateAsync(string id, IdentityRoleUpdateDto input);
 
         [HttpDelete(true)]
         [ServiceRoute("{id}")]
+        [Authorization(AuthType = AuthorizationType.AppSecret)]
         Task DeleteAsync(string id);
     }
 }
