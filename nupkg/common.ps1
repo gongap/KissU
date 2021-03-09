@@ -47,20 +47,10 @@ $projects = (
     "modules/account/KissU.Modules.Account.Service.Contracts",
     "modules/account/KissU.Modules.Account.Service",
 
-    # modules/feature-management
-    "modules/feature-management/KissU.Modules.FeatureManagement.DbMigrator",
-    "modules/feature-management/KissU.Modules.FeatureManagement.Service.Contracts",
-    "modules/feature-management/KissU.Modules.FeatureManagement.Service",
-
     # modules/identity
     "modules/identity/KissU.Modules.Identity.DbMigrator",
     "modules/identity/KissU.Modules.Identity.Service.Contracts",
     "modules/identity/KissU.Modules.Identity.Service",
-
-    # modules/permission-management
-    "modules/permission-management/KissU.Modules.PermissionManagement.DbMigrator",
-    "modules/permission-management/KissU.Modules.PermissionManagement.Service.Contracts",
-    "modules/permission-management/KissU.Modules.PermissionManagement.Service",
 
     # modules/tenant-management
     "modules/tenant-management/KissU.Modules.TenantManagement.DbMigrator",
