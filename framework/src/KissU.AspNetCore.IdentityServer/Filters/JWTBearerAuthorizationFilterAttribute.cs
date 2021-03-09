@@ -29,7 +29,7 @@ namespace KissU.AspNetCore.IdentityServer.Filters
             {
                 if (filterContext.Route != null && filterContext.Route.ServiceDescriptor.EnableAuthorization())
                 {
-                    if (filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.Bearer.ToString())
+                    if (filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.JWTBearer.ToString())
                     {
                         if (filterContext.Context.User.Identity?.IsAuthenticated == true)
                         {

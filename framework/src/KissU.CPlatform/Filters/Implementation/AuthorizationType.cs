@@ -7,6 +7,6 @@
     {
         JWT,
         AppSecret,
-        Bearer
+        JWTBearer
     }
 }
