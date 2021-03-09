@@ -43,7 +43,8 @@ namespace KissU.CPlatform
         {
             return hostBuilder.ConfigureContainer(async mapper =>
             {
-                mapper.Resolve<IServiceTokenGenerator>().GeneratorToken(token);
+                var _token = AppConfig.ServerOptions.Token ?? token;
+                mapper.Resolve<IServiceTokenGenerator>().GeneratorToken(_token);
                 var _port = AppConfig.ServerOptions.Port = AppConfig.ServerOptions.Port == 0 ? port : AppConfig.ServerOptions.Port;
                 var _ip = AppConfig.ServerOptions.Ip ??= ip;
                 _port = AppConfig.ServerOptions.Port = AppConfig.ServerOptions.IpEndpoint?.Port ?? _port;

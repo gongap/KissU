@@ -5,7 +5,7 @@
     "Port": 98,
     "MappingIp": "${Mapping_ip}",
     "MappingPort": "${Mapping_Port}",
-    "Token": "true",
+    "Token": "123456789",
     "Libuv": true,
     "Protocol": "${Protocol}|Http", //Http¡¢Tcp¡¢None
     "RootPath": "${RootPath}",

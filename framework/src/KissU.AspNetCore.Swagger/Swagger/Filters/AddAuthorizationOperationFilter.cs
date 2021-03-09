@@ -35,6 +35,7 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
                     Name = "Authorization",
                     In = "header",
                     Required = false,
+                    Description = "访问令牌",
                     Schema = new Schema
                     {
                         Type = "string"
@@ -48,6 +49,7 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
                     Name = "Authorization",
                     In = "header",
                     Required = false,
+                    Description = "访问密钥",
                     Schema = new Schema
                     {
                         Type = "string"
@@ -58,6 +60,7 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
                     Name = "timeStamp",
                     In = "query",
                     Required = false,
+                    Description="时间戳",
                     Schema = new Schema
                     {
                         Type = "string"

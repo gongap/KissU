@@ -5,7 +5,7 @@
     "Port": "${Server_Port}|81", //微服务主机运行的端口号
     "MappingIp": "${Mapping_ip}", //映射的Ip地址,暂不需要配置
     "MappingPort": "${Mapping_Port}", //映射的端口号,暂不需要配置
-    "Token": "true", //是否验证Token,缺省值为True
+    "Token": "123456789", //是否验证Token,缺省值为True
     "WanIp": "${WanIp}", //外网IP
     "DockerDeployMode": "${DockerDeployMode}|Standard", //Docker容器部署模式
     "Libuv": true, //是否开启Libuv高性能事件驱动的I/O库,缺省值为false
