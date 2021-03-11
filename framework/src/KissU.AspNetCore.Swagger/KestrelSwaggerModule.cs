@@ -89,7 +89,7 @@ namespace KissU.AspNetCore.Swagger
                     });
                     var xmlPaths = _serviceSchemaProvider.GetSchemaFilesPath();
                     foreach (var xmlPath in xmlPaths)
-                        options.IncludeXmlComments(xmlPath);
+                        options.IncludeXmlComments(xmlPath, swaggerOptions.IncludeControllerXmlComments);
                 });
             }
         }

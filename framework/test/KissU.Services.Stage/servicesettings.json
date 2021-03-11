@@ -141,6 +141,7 @@
     },
     "Options": {
       "IgnoreFullyQualified": false,
+      "IncludeControllerXmlComments": true,
       "MapRoutePaths": [
         {
           "SourceRoutePath": "api/account/authentication",

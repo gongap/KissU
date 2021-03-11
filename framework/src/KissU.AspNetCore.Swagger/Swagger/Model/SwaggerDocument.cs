@@ -129,6 +129,8 @@ namespace KissU.AspNetCore.Swagger.Swagger.Model
         /// </summary>
         public string IngressName { get; set; }
 
+        public bool IncludeControllerXmlComments { get; set; }
+
         /// <summary>
         /// Gets or sets the map route paths.
         /// </summary>

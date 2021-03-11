@@ -337,7 +337,7 @@ namespace KissU.AspNetCore.Swagger.SwaggerGen.Generator
                 Produces = CreateProduces(apiDescription, customAttributes),
                 Parameters = CreateParameters(apiDescription, schemaRegistry),
                 Responses = CreateResponses(apiDescription, schemaRegistry),
-                Deprecated = isDeprecated ? true : (bool?) null
+                Deprecated = isDeprecated ? true : (bool?) null,
             };
 
             // Assign default value for Consumes if not yet assigned AND operation contains form params
@@ -446,7 +446,7 @@ namespace KissU.AspNetCore.Swagger.SwaggerGen.Generator
             for (var i = 1; i < parameterInfo.Length; i++)
                 schema.Properties.Add(parameterInfo[i].Name,
                     schemaRegistry.GetOrRegister(null, parameterInfo[i].ParameterType));
-            return new BodyParameter {Name = "parameters", Schema = schema, Required = true};
+            return new BodyParameter {Name = "parameters", Description="请求参数", Schema = schema, Required = true};
         }
 
         private IParameter CreateServiceKeyParameter()
