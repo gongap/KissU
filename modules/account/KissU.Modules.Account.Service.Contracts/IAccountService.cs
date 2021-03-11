@@ -7,6 +7,9 @@ using KissU.Modules.Account.Service.Contracts.Models;
 
 namespace KissU.Modules.Account.Service.Contracts
 {
+    /// <summary>
+    /// 账号服务
+    /// </summary>
     [ServiceBundle("api/{Service}")]
     public interface IAccountService : IServiceKey
     {
