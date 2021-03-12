@@ -142,6 +142,12 @@ namespace KissU.AspNetCore.Swagger.SwaggerGen.Generator
                 Security = _options.SecurityRequirements.Any() ? _options.SecurityRequirements : null
             };
 
+            var filterContext = new DocumentFilterContext(null, entries, schemaRegistry);
+            foreach (var filter in _options.DocumentFilters)
+            {
+                filter.Apply(swaggerDoc, filterContext);
+            }
+
             return swaggerDoc;
         }
 
