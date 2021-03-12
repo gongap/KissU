@@ -18,6 +18,16 @@
         /// <summary>
         /// The authorization failed
         /// </summary>
-        AuthorizationFailed = 401
+        Unauthorized = 401,
+
+        /// <summary>
+        /// The authorization failed
+        /// </summary>
+        Forbidden = 403,
+
+        /// <summary>
+        /// The Internal Server Error
+        /// </summary>
+        ServerError = 500
     }
 }

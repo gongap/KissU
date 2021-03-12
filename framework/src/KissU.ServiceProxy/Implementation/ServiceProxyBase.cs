@@ -70,20 +70,19 @@ namespace KissU.ServiceProxy.Implementation
         /// <param name="parameters">参数字典。</param>
         /// <param name="serviceId">服务Id。</param>
         /// <returns>调用结果。</returns>
-        protected async Task<T> Invoke<T>(IDictionary<string, object> parameters, string serviceId)
+        protected async Task<T> Invoke<T>(IDictionary<string, object> parameters, string serviceId, bool? decodeJOject = null)
         {
             object result = default(T);
             var vt = _commandProvider.GetCommand(serviceId);
             var command = vt.IsCompletedSuccessfully ? vt.Result : await vt;
             RemoteInvokeResultMessage message = null;
-            var decodeJOject = typeof(T) == TypeHelper.ObjectType;
+            var decode = decodeJOject ?? typeof(T) == TypeHelper.ObjectType;
             IInvocation invocation = null;
             var existsInterceptor = _interceptors.Any();
             var serviceRoute = await _serviceRouteProvider.Locate(serviceId);
-            if ((serviceRoute == null || !serviceRoute.ServiceDescriptor.ExistIntercept()) || decodeJOject)
+            if ((serviceRoute == null || !serviceRoute.ServiceDescriptor.ExistIntercept()) || decode)
             {
-                message = await _breakeRemoteInvokeService.InvokeAsync(parameters, serviceId, _serviceKey,
-                    decodeJOject);
+                message = await _breakeRemoteInvokeService.InvokeAsync(parameters, serviceId, _serviceKey, decode);
                 if (message == null)
                 {
                     if (command.FallBackName != null &&

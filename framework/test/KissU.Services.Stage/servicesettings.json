@@ -19,7 +19,7 @@
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
     "Ports": {
-      "HttpPort": "${HttpPort}|281",
+      "HttpPort": "${HttpPort}|8080",
       "WSPort": "${WSPort}|961",
       "MQTTPort": "${MQTTPort}|971",
       "GrpcPort": "${GrpcPort}|951"

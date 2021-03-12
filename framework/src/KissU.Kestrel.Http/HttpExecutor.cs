@@ -152,8 +152,7 @@ namespace KissU.Kestrel.Http
                 }
 
                 resultMessage.Result = null;
-                resultMessage.StatusCode = (int) StatusCode.RequestError;
-                resultMessage.Message = "执行发生了错误。";
+                resultMessage.StatusCode = (int) StatusCode.ServerError;
                 resultMessage.Message = ExceptionPrompt.GetPrompt(exception);
             }
 
@@ -204,7 +203,6 @@ namespace KissU.Kestrel.Http
                 }
 
                 resultMessage.StatusCode = exception.HResult;
-                resultMessage.Message = "执行发生了错误。";
                 resultMessage.Message = ExceptionPrompt.GetPrompt(exception);
             }
 
