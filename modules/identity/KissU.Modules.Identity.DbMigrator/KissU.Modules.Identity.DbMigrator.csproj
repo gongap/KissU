@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -24,11 +24,8 @@
 
   <ItemGroup>
     <Compile Remove="Logs\**" />
-    <Compile Remove="Migrations\**" />
     <EmbeddedResource Remove="Logs\**" />
-    <EmbeddedResource Remove="Migrations\**" />
     <None Remove="Logs\**" />
-    <None Remove="Migrations\**" />
   </ItemGroup>
 
   <ItemGroup>
