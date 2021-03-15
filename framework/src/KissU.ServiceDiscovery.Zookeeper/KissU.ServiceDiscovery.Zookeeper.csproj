@@ -2,7 +2,7 @@
    <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Description></Description>
+    <Description>服务注册层：封装服务地址的注册与发现，以Zookeeper为服务注册中心，实现ServiceRouteManagerBase抽象，通过心跳检测的方式更新路由</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
