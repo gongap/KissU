@@ -76,7 +76,7 @@ namespace KissU.AspNetCore.Stage.Filters
                     }
                     else if (filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.JWTBearer.ToString())
                     {
-                        if (filterContext.Context.User.Identity?.IsAuthenticated)
+                        if (filterContext.Context.User.Identity?.IsAuthenticated == false)
                         {
                             RestContext.GetContext().SetClaimsPrincipal("payload", filterContext.Context.User);
                         }
