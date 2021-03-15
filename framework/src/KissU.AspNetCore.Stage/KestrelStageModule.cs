@@ -5,6 +5,7 @@ using KissU.AspNetCore.Stage.Filters;
 using KissU.AspNetCore.Stage.Internal;
 using KissU.AspNetCore.Stage.Internal.Implementation;
 using KissU.Modularity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -66,6 +67,9 @@ namespace KissU.AspNetCore.Stage
                         builder.AllowCredentials();
                 });
             }
+
+            app.UseAuthentication();
+            app.UseAuthorization();
         }
 
         /// <summary>
@@ -110,6 +114,17 @@ namespace KissU.AspNetCore.Stage
                     options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 }
             });
+
+            if (AppConfig.Options.AddIdentityServerAuthentication)
+            {
+                context.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddIdentityServerAuthentication(options =>
+                    {
+                        options.Authority = AppConfig.Options.AuthServer.Authority;
+                        options.ApiName = AppConfig.Options.AuthServer.ApiName;
+                        options.RequireHttpsMetadata = AppConfig.Options.AuthServer.Https;
+                    });
+            }
 
             context.Services.AddSingleton<IIPChecker, IPAddressChecker>();
             context.Services.AddFilters(typeof(ActionFilterAttribute));

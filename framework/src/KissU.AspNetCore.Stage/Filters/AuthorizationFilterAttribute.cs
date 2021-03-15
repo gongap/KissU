@@ -65,11 +65,30 @@ namespace KissU.AspNetCore.Stage.Filters
                             }
                         }
                         else
+                        {
                             filterContext.Result = new HttpResultMessage<object>
                             {
-                                IsSucceed = false, StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
+                                IsSucceed = false, 
+                                StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
                                 Message = "Invalid authentication credentials"
                             };
+                        }
+                    }
+                    else if (filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.JWTBearer.ToString())
+                    {
+                        if (filterContext.Context.User.Identity?.IsAuthenticated)
+                        {
+                            RestContext.GetContext().SetClaimsPrincipal("payload", filterContext.Context.User);
+                        }
+                        else
+                        {
+                            filterContext.Result = new HttpResultMessage<object>
+                            {
+                                IsSucceed = false,
+                                StatusCode = (int)ServiceStatusCode.AuthorizationFailed,
+                                Message = "Invalid authentication credentials"
+                            };
+                        }
                     }
                 }
             }
