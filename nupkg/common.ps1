@@ -40,19 +40,5 @@ $projects = (
     "framework/src/KissU.ServiceDiscovery.Zookeeper",
     "framework/src/KissU.Apm.Skywalking",
     "framework/src/KissU.Logging.Serilog",
-    "framework/src/KissU.Configuration.Apollo",
-
-    # modules/account
-    "modules/account/KissU.Modules.Account.Service.Contracts",
-    "modules/account/KissU.Modules.Account.Service",
-
-    # modules/identity
-    "modules/identity/KissU.Modules.Identity.DbMigrator",
-    "modules/identity/KissU.Modules.Identity.Service.Contracts",
-    "modules/identity/KissU.Modules.Identity.Service",
-
-    # modules/tenant-management
-    "modules/tenant-management/KissU.Modules.TenantManagement.DbMigrator",
-    "modules/tenant-management/KissU.Modules.TenantManagement.Service.Contracts",
-    "modules/tenant-management/KissU.Modules.TenantManagement.Service"
+    "framework/src/KissU.Configuration.Apollo"
 )
