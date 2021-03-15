@@ -23,13 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Logs\**" />
+    <Compile Remove="Migrations\**" />
     <EmbeddedResource Remove="Logs\**" />
+    <EmbeddedResource Remove="Migrations\**" />
     <None Remove="Logs\**" />
+    <None Remove="Migrations\**" />
   </ItemGroup>
 
   <ItemGroup>
