@@ -94,7 +94,7 @@ namespace KissU.AspNetCore.Stage.Filters
                     var seconds = (DateTime.Now - time).TotalSeconds;
                     if (seconds <= 3560 && seconds >= 0)
                     {
-                        if (GetMD5($"{route.ServiceDescriptor.Token}{time.ToString("yyyy-MM-dd hh:mm:ss")}") !=
+                        if (GetMD5($"{route.ServiceDescriptor.Token}{time.ToString("yyyy-MM-dd HH:mm:ss")}") !=
                             author.ToString())
                         {
                             result = new HttpResultMessage<object>
