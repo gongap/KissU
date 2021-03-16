@@ -20,7 +20,12 @@ namespace KissU.Modules.Account.Service.Implements
         /// <returns>Task&lt;System.String&gt;.</returns>
         public Task<UserData> Token(AuthDto parameters)
         {
-            return Task.FromResult(new UserData { Id = System.Guid.NewGuid(), Name = "admin", PhoneNumber = parameters.Mobile });
+            return Task.FromResult(new UserData
+            {
+                Id = System.Guid.Parse("33ABC3EE-F993-CB34-D04E-39F7278885BA"), 
+                UserName = "admin",
+                PhoneNumber = parameters.Mobile
+            });
         }
     }
 }
