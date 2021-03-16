@@ -36,7 +36,7 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
                     Name = "Authorization",
                     In = "header",
                     Required = false,
-                    Description = "访问令牌",
+                    Description = "令牌",
                     Schema = new Schema
                     {
                         Type = "string"
@@ -50,7 +50,7 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
                     Name = "Authorization",
                     In = "header",
                     Required = false,
-                    Description = "访问密钥",
+                    Description = "令牌",
                     Schema = new Schema
                     {
                         Type = "string"
