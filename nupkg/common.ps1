@@ -37,9 +37,9 @@ $projects = (
     "framework/src/KissU.Apm.Skywalking",
     "framework/src/KissU.BackgroundServer",
     "framework/src/KissU.Caching",
-    "framework/src/KissU.Configuration.Apollo"
+    "framework/src/KissU.Configuration.Apollo",
     "framework/src/KissU.Core",
     "framework/src/KissU.CPlatform",
     "framework/src/KissU.ServiceProxy",
-    "framework/src/KissU.Tools.Cli",
+    "framework/src/KissU.Tools.Cli"
 )
