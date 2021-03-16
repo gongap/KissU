@@ -8,12 +8,21 @@ using Volo.Abp.UI;
 
 namespace KissU.Modules.Account.Service.Contracts
 {
+    /// <summary>
+    /// 账号服务模块
+    /// Implements the <see cref="KissU.Modularity.AbpBusinessModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Modularity.AbpBusinessModule" />
     [DependsOn(
         typeof(AbpAccountApplicationContractsModule),
         typeof(AbpUiModule)
         )]
     public class AccountServiceContractsModule : AbpBusinessModule
     {
+        /// <summary>
+        /// Configures the services.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<AbpLocalizationOptions>(options =>

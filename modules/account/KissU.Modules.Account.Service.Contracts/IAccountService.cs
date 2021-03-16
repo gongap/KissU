@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
-using KissU.Dependency;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using Volo.Abp.Identity;
-using Volo.Abp.Account;
+using KissU.Dependency;
 using KissU.Modules.Account.Service.Contracts.Models;
+using Volo.Abp.Account;
+using Volo.Abp.Identity;
+using Volo.Abp.Users;
 
 namespace KissU.Modules.Account.Service.Contracts
 {
@@ -14,28 +15,39 @@ namespace KissU.Modules.Account.Service.Contracts
     public interface IAccountService : IServiceKey
     {
         /// <summary>
-        /// 注册
+        /// 登录
         /// </summary>
+        /// <param name="parameters">请求参数</param>
+        /// <returns>Task&lt;UserData&gt;.</returns>
+        // [Authorization(AuthType = AuthorizationType.AppSecret)]
         [HttpPost(true)]
-        Task<IdentityUserDto> RegisterAsync(RegisterDto input);
+        Task<UserData> Login(LoginDto parameters);
 
         /// <summary>
-        /// 设置密码
+        /// 注册
         /// </summary>
+        /// <param name="parameters">请求参数</param>
+        /// <returns>Task&lt;IdentityUserDto&gt;.</returns>
+        // [Authorization(AuthType = AuthorizationType.AppSecret)]
         [HttpPost(true)]
-        Task SendPasswordResetCodeAsync(SendPasswordResetCodeDto input);
+        Task<IdentityUserDto> Register(RegisterDto parameters);
+
+        /// <summary>
+        /// 发送密码重置码
+        /// </summary>
+        /// <param name="parameters">请求参数</param>
+        /// <returns>Task.</returns>
+        // [Authorization(AuthType = AuthorizationType.AppSecret)]
+        [HttpPost(true)]
+        Task SendPasswordResetCode(SendPasswordResetCodeDto parameters);
 
         /// <summary>
         /// 重置密码
         /// </summary>
+        /// <param name="parameters">请求参数</param>
+        /// <returns>Task.</returns>
+        // [Authorization(AuthType = AuthorizationType.AppSecret)]
         [HttpPost(true)]
-        Task ResetPasswordAsync(ResetPasswordDto input);
-
-        /// <summary>
-        /// 用戶授权
-        /// </summary>
-        /// <param name="requestData">请求参数</param>
-        /// <returns>用户模型</returns>
-        Task<IdentityUserDto> Authentication(AuthenticationRequestData requestData);
+        Task ResetPassword(ResetPasswordDto parameters);
     }
 }

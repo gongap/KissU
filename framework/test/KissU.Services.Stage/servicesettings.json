@@ -20,9 +20,9 @@
     "ReloadOnChange": false,
     "Ports": {
       "HttpPort": "${HttpPort}|8080",
-      "WSPort": "${WSPort}|961",
-      "MQTTPort": "${MQTTPort}|971",
-      "GrpcPort": "${GrpcPort}|951"
+      "WSPort": "${WSPort}|951",
+      "MQTTPort": "${MQTTPort}||961",
+      "GrpcPort": "${GrpcPort}||971"
     },
     "RequestCacheEnabled": false,
     "Packages": [
@@ -46,9 +46,9 @@
     },
     "ApiGetWay": {
       "AccessTokenExpireTimeSpan": "30",
-      "AuthorizationRoutePath": "api/account/authentication",
-      "AuthorizationServiceKey": "Account",
-      "TokenEndpointPath": "api/oauth2/token",
+      "AuthorizationRoutePath": "api/auth/token",
+      "AuthorizationServiceKey": "Mobile",
+      "TokenEndpointPath": "api/connect/token",
       "CacheMode": "MemoryCache"
     },
     "AccessPolicy": {
@@ -145,8 +145,8 @@
       "IncludeControllerXmlComments": true,
       "MapRoutePaths": [
         {
-          "SourceRoutePath": "api/account/authentication",
-          "TargetRoutePath": "api/oauth2/token"
+          "SourceRoutePath": "api/auth/token",
+          "TargetRoutePath": "api/connect/token"
         }
       ]
     }

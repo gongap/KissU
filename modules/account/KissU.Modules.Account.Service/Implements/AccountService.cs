@@ -5,42 +5,53 @@ using KissU.Modules.Account.Service.Contracts.Models;
 using KissU.ServiceProxy;
 using Volo.Abp.Account;
 using Volo.Abp.Identity;
+using Volo.Abp.Users;
 
 namespace KissU.Modules.Account.Service.Implements
 {
-    [ModuleName(AccountRemoteServiceConsts.RemoteServiceName)]
+    /// <summary>
+    /// 账号服务
+    /// Implements the <see cref="ProxyServiceBase" />
+    /// Implements the <see cref="IAccountService" />
+    /// </summary>
+    /// <seealso cref="ProxyServiceBase" />
+    /// <seealso cref="IAccountService" />
+    [ModuleName("Account")]
     public class AccountService : ProxyServiceBase, IAccountService
     {
         private readonly IAccountAppService _accountAppService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountService"/> class.
+        /// </summary>
+        /// <param name="accountAppService">The account application service.</param>
         public AccountService(IAccountAppService accountAppService)
         {
             _accountAppService = accountAppService;
         }
 
-        public virtual Task<IdentityUserDto> RegisterAsync(RegisterDto input)
+        /// <inheritdoc />
+        public Task<UserData> Login(LoginDto parameters)
         {
-            return _accountAppService.RegisterAsync(input);
+            return Task.FromResult(new UserData { Id = System.Guid.NewGuid(), Name = "admin", PhoneNumber = parameters.Mobile });
         }
 
-        public Task SendPasswordResetCodeAsync(SendPasswordResetCodeDto input)
+        /// <inheritdoc />
+        public virtual Task<IdentityUserDto> Register(RegisterDto parameters)
         {
-            return _accountAppService.SendPasswordResetCodeAsync(input);
+            return _accountAppService.RegisterAsync(parameters);
         }
 
-        public Task ResetPasswordAsync(ResetPasswordDto input)
+        /// <inheritdoc />
+        public Task SendPasswordResetCode(SendPasswordResetCodeDto parameters)
         {
-            return _accountAppService.ResetPasswordAsync(input);
+            return _accountAppService.SendPasswordResetCodeAsync(parameters);
         }
 
-        public Task<IdentityUserDto> Authentication(AuthenticationRequestData requestData)
+        /// <inheritdoc />
+        public Task ResetPassword(ResetPasswordDto parameters)
         {
-            if (requestData.UserName == "admin" && requestData.Password == "admin")
-            {
-                return Task.FromResult(new IdentityUserDto() { Id = System.Guid.NewGuid(), Name = "admin" });
-            }
-
-            return Task.FromResult<IdentityUserDto>(null);
+            return _accountAppService.ResetPasswordAsync(parameters);
         }
     }
 }

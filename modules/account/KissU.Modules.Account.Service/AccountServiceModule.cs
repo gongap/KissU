@@ -1,11 +1,11 @@
-﻿using KissU.Modules.Account.Service.Contracts;
-using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.Modularity;
-using Volo.Abp.Settings;
+﻿using KissU.Modularity;
+using KissU.Modules.Account.Service.Contracts;
 using Volo.Abp.Account;
-using KissU.Modularity;
+using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
+using Volo.Abp.Modularity;
+using Volo.Abp.Settings;
 
 namespace KissU.Modules.Account.Service
 {
@@ -14,7 +14,7 @@ namespace KissU.Modules.Account.Service
         typeof(AbpAccountApplicationModule),
         typeof(AbpIdentityEntityFrameworkCoreModule)
         )]
-    public class AbpAccountServiceModule : AbpBusinessModule
+    public class AccountServiceModule : AbpBusinessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
