@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -17,12 +16,7 @@ using KissU.CPlatform.Runtime.Client;
 using KissU.CPlatform.Runtime.Server;
 using KissU.CPlatform.Support;
 using KissU.Helpers;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp;
-using Volo.Abp.Modularity;
-using Volo.Abp.Modularity.PlugIns;
 
 namespace KissU.CPlatform
 {
@@ -67,41 +61,6 @@ namespace KissU.CPlatform
 
                     mapper.Resolve<IServiceEngineLifetime>().NotifyStarted();
                 }).ConfigureAwait(false);
-            });
-        }
-        
-        /// <summary>
-        /// Uses the server.
-        /// </summary>
-        /// <param name="hostBuilder">The host builder.</param>
-        /// <param name="options">The options.</param>
-        /// <returns>IHostBuilder.</returns>
-        public static IHostBuilder AddAbp(this IHostBuilder hostBuilder, Action<AbpApplicationCreationOptions> optionsAction = null)
-        {
-            return hostBuilder.ConfigureServices(services =>
-            {
-                services.AddApplication<AbpStartupModule>(options =>
-                {
-                    optionsAction?.Invoke(options);
-                    var assemblies = ModuleHelper.GetAssemblies();
-                    var moduleTypes = ReflectionHelper.FindTypes<AbpBusinessModule>(assemblies.ToArray());
-                    options.PlugInSources.AddTypes(moduleTypes.ToArray());
-                });
-            });
-        }
-
-        /// <summary>
-        /// Uses the server.
-        /// </summary>
-        /// <param name="hostBuilder">The host builder.</param>
-        /// <param name="options">The options.</param>
-        /// <returns>IHostBuilder.</returns>
-        public static IHostBuilder UseAbp(this IHostBuilder hostBuilder)
-        {
-            return hostBuilder.ConfigureContainer(async mapper =>
-            {
-                var serviceProvider = mapper.Resolve<IServiceProvider>();
-                mapper.Resolve<IAbpApplicationWithExternalServiceProvider>().Initialize(serviceProvider);
             });
         }
 

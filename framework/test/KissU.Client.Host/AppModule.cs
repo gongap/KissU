@@ -1,4 +1,5 @@
-﻿using KissU.Dependency;
+﻿using KissU.Abp;
+using KissU.Dependency;
 using KissU.Modularity;
 using Volo.Abp;
 using Volo.Abp.Http.Client.IdentityModel;

@@ -153,7 +153,7 @@ namespace KissU.Kestrel.Http
 
                 resultMessage.Result = null;
                 resultMessage.StatusCode = (int) StatusCode.ServerError;
-                resultMessage.Message = ExceptionPrompt.GetPrompt(exception);
+                resultMessage.Message = ExceptionPrompt.GetPrompt(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
             }
 
             return resultMessage;
@@ -203,7 +203,7 @@ namespace KissU.Kestrel.Http
                 }
 
                 resultMessage.StatusCode = exception.HResult;
-                resultMessage.Message = ExceptionPrompt.GetPrompt(exception);
+                resultMessage.Message = ExceptionPrompt.GetPrompt(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
             }
 
             return resultMessage;

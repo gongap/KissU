@@ -1,4 +1,5 @@
-﻿using KissU.Modularity;
+﻿using KissU.Abp;
+using KissU.Modularity;
 using Localization.Resources.AbpUi;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Localization;
@@ -10,9 +11,9 @@ namespace KissU.Modules.Account.Service.Contracts
 {
     /// <summary>
     /// 账号服务模块
-    /// Implements the <see cref="KissU.Modularity.AbpBusinessModule" />
+    /// Implements the <see cref="AbpBusinessModule" />
     /// </summary>
-    /// <seealso cref="KissU.Modularity.AbpBusinessModule" />
+    /// <seealso cref="AbpBusinessModule" />
     [DependsOn(
         typeof(AbpAccountApplicationContractsModule),
         typeof(AbpUiModule)

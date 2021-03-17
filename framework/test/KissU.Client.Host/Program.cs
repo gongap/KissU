@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using KissU.Abp;
 using KissU.Caching.Configurations;
 using KissU.CPlatform.Configurations;
 using Microsoft.Extensions.Hosting;

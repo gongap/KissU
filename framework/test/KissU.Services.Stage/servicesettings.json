@@ -18,6 +18,7 @@
     "WebRootPath": "${WebRootPath}",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
+    "IncludeSensitiveDetails": true,
     "Ports": {
       "HttpPort": "${HttpPort}|281",
       "WSPort": "${WSPort}|951",

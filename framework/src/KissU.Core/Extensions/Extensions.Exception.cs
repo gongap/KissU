@@ -27,9 +27,9 @@ namespace KissU.Extensions
         /// </summary>
         /// <param name="exception">异常</param>
         /// <returns>System.String.</returns>
-        public static string GetPrompt(this Exception exception)
+        public static string GetPrompt(this Exception exception, bool includeSensitiveDetails = false)
         {
-            return ExceptionPrompt.GetPrompt(exception);
+            return ExceptionPrompt.GetPrompt(exception, includeSensitiveDetails);
         }
     }
 }

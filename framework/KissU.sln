@@ -120,6 +120,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Kestrel.Http", "src\KissU.Kestrel.Http\KissU.Kestrel.Http.csproj", "{2AEA5C4B-3265-4DA6-AD3E-B0E97BA3C723}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Abp", "src\KissU.Abp\KissU.Abp.csproj", "{FB321FFF-396D-47C1-8DEB-6563A0FCBFFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -282,6 +284,10 @@ Global
 		{2AEA5C4B-3265-4DA6-AD3E-B0E97BA3C723}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AEA5C4B-3265-4DA6-AD3E-B0E97BA3C723}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AEA5C4B-3265-4DA6-AD3E-B0E97BA3C723}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB321FFF-396D-47C1-8DEB-6563A0FCBFFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB321FFF-396D-47C1-8DEB-6563A0FCBFFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB321FFF-396D-47C1-8DEB-6563A0FCBFFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB321FFF-396D-47C1-8DEB-6563A0FCBFFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -334,6 +340,7 @@ Global
 		{55D9B9A1-9C42-4AB5-B64E-DF0E0ADC1FC5} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{98046727-5026-4DE1-AD0B-43B0B84524F3} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{2AEA5C4B-3265-4DA6-AD3E-B0E97BA3C723} = {41380BD4-6F60-4CEC-86CA-9D70BB7D2FA3}
+		{FB321FFF-396D-47C1-8DEB-6563A0FCBFFD} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

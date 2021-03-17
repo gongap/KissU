@@ -39,12 +39,12 @@ namespace KissU.Exceptions.Prompts
         /// </summary>
         /// <param name="exception">异常</param>
         /// <returns>System.String.</returns>
-        public static string GetPrompt(Exception exception)
+        public static string GetPrompt(Exception exception, bool includeSensitiveDetails)
         {
             if (exception == null)
                 return null;
             exception = exception.GetRawException();
-            var prompt = GetExceptionPrompt(exception);
+            var prompt = GetExceptionPrompt(exception, includeSensitiveDetails);
             if (string.IsNullOrWhiteSpace(prompt) == false)
                 return prompt;
             if (exception is Warning warning)
@@ -57,11 +57,11 @@ namespace KissU.Exceptions.Prompts
         /// <summary>
         /// 获取异常提示
         /// </summary>
-        private static string GetExceptionPrompt(Exception exception)
+        private static string GetExceptionPrompt(Exception exception, bool includeSensitiveDetails)
         {
             foreach (var prompt in Prompts)
             {
-                var result = prompt.GetPrompt(exception);
+                var result = prompt.GetPrompt(exception, includeSensitiveDetails);
                 if (string.IsNullOrWhiteSpace(result) == false)
                     return result;
             }

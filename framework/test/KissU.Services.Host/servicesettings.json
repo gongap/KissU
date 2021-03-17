@@ -19,6 +19,7 @@
     "WebRootPath": "${WebRootPath}", //指定Web主机根路径
     "IsModulePerLifetimeScope": false, //模块是否使用每个生命周期范围
     "ReloadOnChange": false, //当配置改变后是否重新加载
+    "IncludeSensitiveDetails": true,
     "Ports": {
       "HttpPort": "${HttpPort}|8001",
       "WSPort": "${WSPort}|8101",
