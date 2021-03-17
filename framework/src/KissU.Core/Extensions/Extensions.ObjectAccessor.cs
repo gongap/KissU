@@ -1,8 +1,9 @@
-using KissU.Dependency;
 using System;
 using System.Linq;
+using KissU.Dependency;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace KissU.Extensions
 {
     public static partial class Extensions
     {

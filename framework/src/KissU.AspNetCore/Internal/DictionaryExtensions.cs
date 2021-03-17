@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 
-namespace System.Collections.Generic
+namespace KissU.AspNetCore.Internal
 {
     /// <summary>
     /// Extension methods for Dictionary.

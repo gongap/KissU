@@ -1,5 +1,6 @@
 ﻿using System;
 using KissU.AspNetCore.Extensions;
+using KissU.AspNetCore.Internal;
 using KissU.AspNetCore.Stage.Configurations;
 using KissU.AspNetCore.Stage.Filters;
 using KissU.AspNetCore.Stage.Internal;

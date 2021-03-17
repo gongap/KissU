@@ -1,4 +1,5 @@
-﻿using KissU.Dependency;
+﻿using KissU.AspNetCore.Internal;
+using KissU.Dependency;
 using KissU.Modularity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

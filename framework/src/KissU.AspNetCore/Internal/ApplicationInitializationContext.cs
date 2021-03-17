@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using KissU.Dependency;
 using KissU.Helpers;
 
-namespace KissU.Modularity
+namespace KissU.AspNetCore.Internal
 {
     public class ApplicationInitializationContext : IServiceProviderAccessor
     {

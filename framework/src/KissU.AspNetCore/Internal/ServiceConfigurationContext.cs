@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using KissU.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Modularity
+namespace KissU.AspNetCore.Internal
 {
     public class ServiceConfigurationContext
     {

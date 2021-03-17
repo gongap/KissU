@@ -1,4 +1,5 @@
 ﻿using System;
+using KissU.AspNetCore.Internal;
 using KissU.Modularity;
 
 namespace KissU.AspNetCore.Extensions

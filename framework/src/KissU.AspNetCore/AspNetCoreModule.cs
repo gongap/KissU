@@ -1,4 +1,5 @@
-﻿using KissU.Modularity;
+﻿using KissU.AspNetCore.Internal;
+using KissU.Modularity;
 
 namespace KissU.AspNetCore
 {

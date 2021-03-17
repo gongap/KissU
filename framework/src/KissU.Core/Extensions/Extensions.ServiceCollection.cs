@@ -1,10 +1,8 @@
 using System;
 using System.Linq;
-using System.Reflection;
-using JetBrains.Annotations;
-using KissU.Helpers;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace KissU.Extensions
 {
     public static partial class ServiceCollectionCommonExtensions
     {
