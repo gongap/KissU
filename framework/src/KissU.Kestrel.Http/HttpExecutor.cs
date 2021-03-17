@@ -16,6 +16,7 @@ using KissU.CPlatform.Transport;
 using KissU.CPlatform.Transport.Implementation;
 using KissU.Dependency;
 using KissU.Exceptions;
+using KissU.Exceptions.Handling;
 using KissU.Helpers;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.Logging;
@@ -44,12 +45,14 @@ namespace KissU.Kestrel.Http
         public HttpExecutor(IServiceEntryLocate serviceEntryLocate, IServiceRouteProvider serviceRouteProvider,
             IAuthorizationFilter authorizationFilter,
             ILogger<HttpExecutor> logger, CPlatformContainer serviceProvider,
+            IExceptionToErrorInfoConverter  errorInfoConverter,
             IServiceProxyProvider serviceProxyProvider, ITypeConvertibleService typeConvertibleService)
         {
             _diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
             _serviceEntryLocate = serviceEntryLocate;
             _logger = logger;
             _serviceProvider = serviceProvider;
+            _errorInfoConverter = errorInfoConverter;
             _typeConvertibleService = typeConvertibleService;
             _serviceRouteProvider = serviceRouteProvider;
             _authorizationFilter = authorizationFilter;
@@ -123,6 +126,7 @@ namespace KissU.Kestrel.Http
         private readonly IServiceRouteProvider _serviceRouteProvider;
         private readonly IAuthorizationFilter _authorizationFilter;
         private readonly CPlatformContainer _serviceProvider;
+        private readonly IExceptionToErrorInfoConverter _errorInfoConverter;
         private readonly ITypeConvertibleService _typeConvertibleService;
         private readonly IServiceProxyProvider _serviceProxyProvider;
 
@@ -152,7 +156,17 @@ namespace KissU.Kestrel.Http
 
                 resultMessage.Result = null;
                 resultMessage.StatusCode = (int) StatusCode.ServerError;
-                resultMessage.Message = "执行发生了错误";
+                var errorInfo = _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
+                if (errorInfo != null)
+                {
+                    resultMessage.Message = errorInfo.Message;
+                    resultMessage.Details = errorInfo.Details;
+                    resultMessage.ValidationErrors = errorInfo.ValidationErrors;
+                }
+                else
+                {
+                    resultMessage.Message = "执行发生了错误";
+                }
             }
 
             return resultMessage;
@@ -184,7 +198,7 @@ namespace KissU.Kestrel.Http
                 resultMessage.IsSucceed = resultMessage.Result != null;
                 resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
             }
-            catch (ValidateException validateException)
+            catch (RemoteServiceValidateException validateException)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
@@ -202,8 +216,17 @@ namespace KissU.Kestrel.Http
                 }
 
                 resultMessage.StatusCode = exception.HResult;
-                resultMessage.Message = "执行发生了错误";
-                resultMessage.ErrorInfo = new RemoteServiceErrorInfo();
+                var errorInfo = _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
+                if (errorInfo != null)
+                {
+                    resultMessage.Message = errorInfo.Message;
+                    resultMessage.Details = errorInfo.Details;
+                    resultMessage.ValidationErrors = errorInfo.ValidationErrors;
+                }
+                else
+                {
+                    resultMessage.Message = "执行发生了错误";
+                }
             }
 
             return resultMessage;

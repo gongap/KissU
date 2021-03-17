@@ -1,8 +1,4 @@
-﻿using KissU.Exceptions.Prompts;
-using KissU.Modularity;
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp;
-using Volo.Abp.Autofac;
+﻿using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
 
 namespace KissU.Abp
@@ -10,13 +6,8 @@ namespace KissU.Abp
     [DependsOn(typeof(AbpAutofacModule))]
     public class AbpStartupModule : AbpModule
     {
-        public override void OnApplicationInitialization(ApplicationInitializationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            var abpExceptionPrompt = context.ServiceProvider.GetService<AbpExceptionPrompt>();
-            if (abpExceptionPrompt != null)
-            {
-                ExceptionPrompt.AddPrompt(abpExceptionPrompt);
-            }
         }
     }
 }

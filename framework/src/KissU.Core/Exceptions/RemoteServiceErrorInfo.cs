@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace KissU.CPlatform.Messages
+namespace KissU.Exceptions
 {
     /// <summary>
     /// Used to store information about an error.

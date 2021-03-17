@@ -1,4 +1,6 @@
-﻿namespace KissU.CPlatform.Messages
+﻿using KissU.Exceptions;
+
+namespace KissU.CPlatform.Messages
 {
     /// <summary>
     /// Http结果消息.
@@ -74,9 +76,14 @@
         public string Message { get; set; }
 
         /// <summary>
-        /// 错误信息
+        /// Error details.
         /// </summary>
-        public RemoteServiceErrorInfo ErrorInfo { get; set; }
+        public string Details { get; set; }
+
+        /// <summary>
+        /// Gets or sets the validation errors.
+        /// </summary>
+        public RemoteServiceValidationErrorInfo[] ValidationErrors { get; set; }
 
         /// <summary>
         /// 状态码
