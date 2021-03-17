@@ -1,21 +1,17 @@
 using System;
 using System.Linq;
-using Volo.Abp.AspNetCore.ExceptionHandling;
-using Volo.Abp.DependencyInjection;
 
 namespace KissU.Abp.Business.Exceptions
 {
-    [Dependency(ReplaceServices = true)]
-    [ExposeServices(typeof(KissU.Exceptions.Handling.IExceptionToErrorInfoConverter))]
-    public class AbpExceptionToErrorInfoConverter :  KissU.Exceptions.Handling.IExceptionToErrorInfoConverter, ITransientDependency
+    public class AbpExceptionToErrorInfoConverter :  KissU.Exceptions.Handling.IExceptionToErrorInfoConverter
     {
-        private readonly IExceptionToErrorInfoConverter _errorInfoConverter;
+        private readonly Volo.Abp.AspNetCore.ExceptionHandling.IExceptionToErrorInfoConverter _errorInfoConverter;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AbpExceptionToErrorInfoConverter"/> class.
         /// </summary>
         /// <param name="errorInfoConverter">The error information converter.</param>
-        public AbpExceptionToErrorInfoConverter(IExceptionToErrorInfoConverter errorInfoConverter)
+        public AbpExceptionToErrorInfoConverter(Volo.Abp.AspNetCore.ExceptionHandling.IExceptionToErrorInfoConverter errorInfoConverter)
         {
             _errorInfoConverter = errorInfoConverter;
         }
