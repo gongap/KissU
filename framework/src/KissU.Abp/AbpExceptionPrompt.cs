@@ -29,7 +29,8 @@ namespace KissU.Abp
         public string GetPrompt(Exception exception, bool includeSensitiveDetails)
         {
             var errorInfo = _errorInfoConverter.Convert(exception, includeSensitiveDetails);
-            return _jsonSerializer.Serialize(errorInfo);
+            //return _jsonSerializer.Serialize(errorInfo);
+            return errorInfo.Message;
         }
     }
 }

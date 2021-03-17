@@ -11,8 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Volo.Abp;
-using Volo.Abp.Modularity;
 
 namespace KissU.AspNetCore.Stage
 {

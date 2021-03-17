@@ -16,7 +16,6 @@ using KissU.CPlatform.Transport;
 using KissU.CPlatform.Transport.Implementation;
 using KissU.Dependency;
 using KissU.Exceptions;
-using KissU.Exceptions.Prompts;
 using KissU.Helpers;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.Logging;
@@ -153,7 +152,7 @@ namespace KissU.Kestrel.Http
 
                 resultMessage.Result = null;
                 resultMessage.StatusCode = (int) StatusCode.ServerError;
-                resultMessage.Message = ExceptionPrompt.GetPrompt(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
+                resultMessage.Message = "执行发生了错误";
             }
 
             return resultMessage;
@@ -203,7 +202,8 @@ namespace KissU.Kestrel.Http
                 }
 
                 resultMessage.StatusCode = exception.HResult;
-                resultMessage.Message = ExceptionPrompt.GetPrompt(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
+                resultMessage.Message = "执行发生了错误";
+                resultMessage.ErrorInfo = new RemoteServiceErrorInfo();
             }
 
             return resultMessage;

@@ -1,4 +1,5 @@
 ﻿using KissU.Exceptions.Prompts;
+using KissU.Modularity;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Autofac;

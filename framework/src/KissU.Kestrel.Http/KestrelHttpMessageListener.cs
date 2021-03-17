@@ -24,9 +24,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using KissU.Extensions;
-using Volo.Abp.Modularity;
-using Volo.Abp;
-using Volo.Abp.DependencyInjection;
 
 namespace KissU.Kestrel.Http
 {

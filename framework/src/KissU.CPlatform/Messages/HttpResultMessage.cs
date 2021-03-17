@@ -74,6 +74,11 @@
         public string Message { get; set; }
 
         /// <summary>
+        /// 错误信息
+        /// </summary>
+        public RemoteServiceErrorInfo ErrorInfo { get; set; }
+
+        /// <summary>
         /// 状态码
         /// </summary>
         public int StatusCode { get; set; }

@@ -9,8 +9,6 @@ using KissU.AspNetCore.Swagger.SwaggerUI;
 using KissU.CPlatform.Runtime.Server;
 using KissU.Modularity;
 using Microsoft.Extensions.Configuration;
-using Volo.Abp;
-using Volo.Abp.Modularity;
 
 namespace KissU.AspNetCore.Swagger
 {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using KissU.AspNetCore.Swagger.Swagger.Model;
 using KissU.CPlatform.Runtime.Server;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;

@@ -1,6 +1,5 @@
 ﻿using System;
 using KissU.CPlatform.Filters.Implementation;
-using KissU.Exceptions;
 
 namespace KissU.Kestrel.Http.Filters.Implementation
 {
