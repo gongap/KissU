@@ -4,10 +4,23 @@ using KissU.Dependency;
 
 namespace KissU.Exceptions.Handling
 {
-    public class DefaultExceptionToErrorInfoConverter : IExceptionToErrorInfoConverter, ITransientDependency
+    public class DefaultExceptionToErrorInfoConverter : IExceptionToErrorInfoConverter, ISingletonDependency
     {
+        private readonly CPlatformContainer _serviceProvider;
+
+        public DefaultExceptionToErrorInfoConverter(CPlatformContainer serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
+
         public RemoteServiceErrorInfo Convert(Exception exception, bool includeSensitiveDetails)
         {
+            var abpErrorInfoConverter = _serviceProvider.GetInstances<IExceptionToErrorInfoConverter>("Abp");
+            if (abpErrorInfoConverter != null)
+            {
+                return abpErrorInfoConverter.Convert(exception, includeSensitiveDetails);
+            }
+
             if (includeSensitiveDetails)
             {
                 return CreateDetailedErrorInfoFromException(exception);
