@@ -1,5 +1,4 @@
-﻿using KissU.Abp;
-using KissU.Modularity;
+﻿using KissU.Modularity;
 using KissU.Modules.Identity.Service.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
