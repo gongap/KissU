@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using KissU.Dependency;
 using KissU.Helpers;
 
 namespace KissU.Randoms
@@ -9,7 +10,7 @@ namespace KissU.Randoms
     /// <summary>
     /// 随机数生成器
     /// </summary>
-    public class RandomBuilder : IRandomBuilder
+    public class RandomBuilder : IRandomBuilder, ISingletonDependency
     {
         /// <summary>
         /// 随机数字生成器
@@ -36,8 +37,7 @@ namespace KissU.Randoms
             if (text == null)
                 text = ConstHelper.Letters + ConstHelper.Numbers;
             var result = new StringBuilder();
-            var length = GetRandomLength(maxLength);
-            for (var i = 0; i < length; i++)
+            for (var i = 0; i < maxLength; i++)
                 result.Append(GetRandomChar(text));
             return result.ToString();
         }

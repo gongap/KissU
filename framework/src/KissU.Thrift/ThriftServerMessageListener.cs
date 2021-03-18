@@ -98,11 +98,11 @@ namespace KissU.Thrift
                 server.ServeAsync(cancellationToken);
 
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"Thrift服务主机启动成功，监听地址：{endPoint}。");
+                    _logger.LogInformation($"Thrift service host started, listening on:{endPoint}");
             }
             catch
             {
-                _logger.LogError($"Thrift服务主机启动失败，监听地址：{endPoint}。 ");
+                _logger.LogError($"Thrift service host failed to start, listening on: {endPoint} ");
             }
             return Task.CompletedTask;
         }

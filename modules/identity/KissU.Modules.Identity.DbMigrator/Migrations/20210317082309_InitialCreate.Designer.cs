@@ -11,7 +11,7 @@ using Volo.Abp.EntityFrameworkCore;
 namespace KissU.Modules.Identity.DbMigrator.Migrations
 {
     [DbContext(typeof(MigrationsDbContext))]
-    [Migration("20210315174057_InitialCreate")]
+    [Migration("20210317082309_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

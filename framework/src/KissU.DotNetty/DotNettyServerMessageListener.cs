@@ -61,7 +61,7 @@ namespace KissU.DotNetty
         public async Task StartAsync(EndPoint endPoint)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"准备启动服务主机，监听地址：{endPoint}。");
+                _logger.LogDebug($"Prepare to start service host, listening on: {endPoint}");
 
             IEventLoopGroup bossGroup = new MultithreadEventLoopGroup(1);
             IEventLoopGroup
@@ -103,11 +103,11 @@ namespace KissU.DotNetty
             {
                 _channel = await bootstrap.BindAsync(endPoint);
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"服务主机启动成功，监听地址：{endPoint}。");
+                    _logger.LogInformation($"Service host started, listening on:{endPoint}");
             }
             catch
             {
-                _logger.LogError($"服务主机启动失败，监听地址：{endPoint}。 ");
+                _logger.LogError($"Service host failed to start, listening on: {endPoint} ");
             }
         }
 

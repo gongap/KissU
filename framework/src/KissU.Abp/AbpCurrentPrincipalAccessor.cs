@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using KissU.CPlatform.Filters.Implementation;
 using KissU.CPlatform.Transport.Implementation;
 using KissU.Extensions;
 using Newtonsoft.Json.Linq;
@@ -54,7 +53,7 @@ namespace KissU.Abp
 
                 if (claims.Any())
                 {
-                    var claimsIdentity = new ClaimsIdentity(claims, nameof(AuthorizationType.JWTBearer));
+                    var claimsIdentity = new ClaimsIdentity(claims);
                     return new ClaimsPrincipal(claimsIdentity);
                 }
             }

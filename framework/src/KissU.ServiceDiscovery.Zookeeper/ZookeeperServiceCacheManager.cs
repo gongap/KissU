@@ -161,7 +161,7 @@ namespace KissU.ServiceDiscovery.Zookeeper
         public override async Task SetCachesAsync(IEnumerable<ServiceCacheDescriptor> cacheDescriptors)
         {
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("准备添加服务命令。");
+                _logger.LogInformation("Ready to add service command.");
             var path = _configInfo.CachePath;
             var zooKeepers = await _zookeeperClientProvider.GetZooKeepers();
             foreach (var zooKeeper in zooKeepers)
@@ -437,7 +437,7 @@ namespace KissU.ServiceDiscovery.Zookeeper
             OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("Zookeeper缓存数据更新成功。");
+                _logger.LogInformation("Zookeeper cache data updated successfully");
         }
 
         private async ValueTask<(ManualResetEvent, ZooKeeper)> GetZooKeeper()

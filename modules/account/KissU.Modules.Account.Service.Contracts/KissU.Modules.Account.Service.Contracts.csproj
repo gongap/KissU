@@ -18,5 +18,4 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
   </ItemGroup>
-
 </Project>

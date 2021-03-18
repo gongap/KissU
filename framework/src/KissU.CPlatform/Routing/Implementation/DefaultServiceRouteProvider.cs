@@ -67,7 +67,7 @@ namespace KissU.CPlatform.Routing.Implementation
                 {
                     if (_logger.IsEnabled(LogLevel.Warning))
                     {
-                        _logger.LogWarning($"根据服务id：{serviceId}，找不到相关服务信息。");
+                        _logger.LogWarning($"Service ID：{serviceId}，no related service information was found.");
                     }
                 }
                 else
@@ -208,7 +208,7 @@ namespace KissU.CPlatform.Routing.Implementation
             {
                 if (_logger.IsEnabled(LogLevel.Warning))
                 {
-                    _logger.LogWarning($"根据服务路由路径：{path}，找不到相关服务信息。");
+                    _logger.LogWarning($"Service routing path：{path}，no related service information was found.");
                 }
             }
             else
@@ -229,7 +229,7 @@ namespace KissU.CPlatform.Routing.Implementation
             {
                 if (_logger.IsEnabled(LogLevel.Warning))
                 {
-                    _logger.LogWarning($"根据服务路由路径：{path}，找不到相关服务信息。");
+                    _logger.LogWarning($"Service routing path：{path}，no related service information was found.");
                 }
             }
             else
@@ -257,7 +257,7 @@ namespace KissU.CPlatform.Routing.Implementation
             {
                 if (_logger.IsEnabled(LogLevel.Warning))
                 {
-                    _logger.LogWarning($"根据服务路由路径：{path}，找不到相关服务信息。");
+                    _logger.LogWarning($"Service routing path：{path}，no related service information was found.");
                 }
             }
             else if (!Regex.IsMatch(route.ServiceDescriptor.RoutePath, pattern))

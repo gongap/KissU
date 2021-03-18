@@ -68,17 +68,17 @@ namespace KissU.Apm.Skywalking.Transport.Grpc
                 {
                     await _channel.ConnectAsync(_config.GetConnectTimeout());
                     _state = ConnectionState.Connected;
-                    _logger.LogInformation($"Skywalking:Connected server[{_channel.Target}].");
+                    _logger.LogInformation($"Skywalking connected server[{_channel.Target}].");
                 }
                 catch (TaskCanceledException ex)
                 {
                     _state = ConnectionState.Failure;
-                    _logger.LogError($"Skywalking:Connect server timeout.", ex);
+                    _logger.LogError($"Skywalking connect server timeout.", ex);
                 }
                 catch (Exception ex)
                 {
                     _state = ConnectionState.Failure;
-                    _logger.LogError($"Skywalking:Connect server fail.", ex);
+                    _logger.LogError($"Skywalking connect server fail.", ex);
                 }
             }
         }
@@ -88,11 +88,11 @@ namespace KissU.Apm.Skywalking.Transport.Grpc
             try
             {
                 await _channel?.ShutdownAsync();
-                _logger.LogInformation($"Shutdown connection[{_channel.Target}].");
+                _logger.LogInformation($"Skywalking shutdown connection[{_channel.Target}].");
             }
             catch (Exception e)
             {
-                _logger.LogError($"Shutdown connection fail.", e);
+                _logger.LogError($"Skywalking Shutdown connection fail.", e);
             }
             finally
             {
@@ -106,7 +106,7 @@ namespace KissU.Apm.Skywalking.Transport.Grpc
 
             if (ConnectionState.Connected == currentState)
             {
-                _logger.LogWarning($"Connection state changed. {_state} -> {_channel.State} . {exception.Message}");
+                _logger.LogWarning($"Skywalking connection state changed. {_state} -> {_channel.State} . {exception.Message}");
             }
 
             _state = ConnectionState.Failure;
@@ -115,7 +115,7 @@ namespace KissU.Apm.Skywalking.Transport.Grpc
         public Channel GetConnection()
         {
             if (Ready) return _channel;
-            _logger.LogDebug("Not found available gRPC connection.");
+            _logger.LogDebug("Skywalking not found available gRPC connection.");
             return null;
         }
 

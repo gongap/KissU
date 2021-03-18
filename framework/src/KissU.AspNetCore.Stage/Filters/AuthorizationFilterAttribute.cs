@@ -8,6 +8,7 @@ using KissU.AspNetCore.Internal;
 using KissU.CPlatform;
 using KissU.CPlatform.Filters.Implementation;
 using KissU.CPlatform.Messages;
+using KissU.CPlatform.Transport.Implementation;
 using KissU.Dependency;
 
 namespace KissU.AspNetCore.Stage.Filters
@@ -44,7 +45,11 @@ namespace KissU.AspNetCore.Stage.Filters
             {
                 if (filterContext.Route != null && filterContext.Route.ServiceDescriptor.EnableAuthorization())
                 {
-                    if (filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.JWT.ToString())
+                    if (filterContext.Context.User.Identity?.IsAuthenticated == true)
+                    {
+                        RestContext.GetContext().SetClaimsPrincipal("payload", filterContext.Context.User);
+                    }
+                    else if (filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.JWT.ToString())
                     {
                         var author = filterContext.Context.Request.Headers["Authorization"];
                         if (author.Count > 0)
@@ -70,22 +75,6 @@ namespace KissU.AspNetCore.Stage.Filters
                             {
                                 IsSucceed = false, 
                                 StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
-                                Message = "Invalid authentication credentials"
-                            };
-                        }
-                    }
-                    else if (filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.JWTBearer.ToString())
-                    {
-                        if (filterContext.Context.User.Identity?.IsAuthenticated == false)
-                        {
-                            RestContext.GetContext().SetClaimsPrincipal("payload", filterContext.Context.User);
-                        }
-                        else
-                        {
-                            filterContext.Result = new HttpResultMessage<object>
-                            {
-                                IsSucceed = false,
-                                StatusCode = (int)ServiceStatusCode.AuthorizationFailed,
                                 Message = "Invalid authentication credentials"
                             };
                         }

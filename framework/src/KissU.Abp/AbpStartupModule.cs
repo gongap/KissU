@@ -1,4 +1,5 @@
 ﻿using Volo.Abp.Autofac;
+using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 
 namespace KissU.Abp
@@ -8,6 +9,13 @@ namespace KissU.Abp
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+            Configure<AbpLocalizationOptions>(options =>
+            {
+                foreach (var resource in options.Resources)
+                {
+                    resource.Value.DefaultCultureName = "zh-Hant";
+                }
+            });
         }
     }
 }

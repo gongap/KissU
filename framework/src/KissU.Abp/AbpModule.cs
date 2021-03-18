@@ -1,9 +1,8 @@
 ﻿using Autofac;
-using KissU.Abp.Business.Exceptions;
 using KissU.Exceptions.Handling;
 using KissU.Modularity;
 
-namespace KissU.Abp.Business
+namespace KissU.Abp
 {
     public class AbpModule : SystemModule
     {

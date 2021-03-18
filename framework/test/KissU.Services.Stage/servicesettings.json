@@ -12,7 +12,7 @@
     "SoBacklog": 100,
     "MaxConcurrentRequests": 20,
     "DisconnTimeInterval": 30,
-    "ExecutionTimeoutInMilliseconds": 1000,
+    "ExecutionTimeoutInMilliseconds": 10000,
     "Protocol": "${Protocol}|None",
     "RootPath": "${RootPath}",
     "WebRootPath": "${WebRootPath}",

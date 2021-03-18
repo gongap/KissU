@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace KissU.Abp.Business.Exceptions
+namespace KissU.Abp
 {
     public class AbpExceptionToErrorInfoConverter :  KissU.Exceptions.Handling.IExceptionToErrorInfoConverter
     {

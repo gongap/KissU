@@ -161,7 +161,7 @@ namespace KissU.ServiceDiscovery.Consul
         {
             builder.Register(provider =>
             {
-                return new ClientWatchManager(provider.Resolve<ILogger<ClientWatchManager>>(), configInfo);
+                return new ClientWatchManager(provider.Resolve<ILogger<ClientWatchManager>>(), GetConfigInfo(configInfo));
             }).As<IClientWatchManager>().SingleInstance();
             return this;
         }

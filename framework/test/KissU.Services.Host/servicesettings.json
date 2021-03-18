@@ -13,7 +13,7 @@
     "Weight": 20, //权重轮询
     "MaxConcurrentRequests": 20, //信号量最大并发度
     "DisconnTimeInterval": 30, //断开连接时间间隔
-    "ExecutionTimeoutInMilliseconds": 1000, //执行超时时间（毫秒）
+    "ExecutionTimeoutInMilliseconds": 10000, //执行超时时间（毫秒）
     "Protocol": "${Protocol}|None", //配置微服务组件支持的协议 缺省值为: None, Tcp, Http, WS, Mqtt, Dns, Udp
     "RootPath": "${RootPath}", //指定服务引擎解析的业务模块路径
     "WebRootPath": "${WebRootPath}", //指定Web主机根路径
@@ -40,7 +40,7 @@
     "RoutePath": "${Register_RoutePath}", //服务组件地址,服务引擎会通过指定该地址扫描到相应的服务组件，并解析到相应的服务与命令
     "ReloadOnChange": true, //当配置改变后是否重新加载
     "EnableChildrenMonitor": false, //启用子节点监视器
-    "MqttRoutePath": "${MqttRoutePath}|D:\\App\\Host" //Mqtt路由配置路径
+    "MqttRoutePath": "${MqttRoutePath}" //Mqtt路由配置路径
   },
   "Zookeeper": {
     "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181", // Zookeeper服务地址,

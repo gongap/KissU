@@ -1,9 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.Account.Service.Contracts;
 using KissU.Modules.Account.Service.Contracts.Models;
 using KissU.ServiceProxy;
+using Microsoft.Extensions.Localization;
 using Volo.Abp.Account;
+using Volo.Abp.Account.Localization;
 using Volo.Abp.Identity;
 using Volo.Abp.Users;
 
@@ -20,30 +23,22 @@ namespace KissU.Modules.Account.Service.Implements
     public class AccountService : ProxyServiceBase, IAccountService
     {
         private readonly IAccountAppService _accountAppService;
+        private readonly IStringLocalizer<AccountResource> _localizer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountService"/> class.
         /// </summary>
         /// <param name="accountAppService">The account application service.</param>
-        public AccountService(IAccountAppService accountAppService)
+        public AccountService(IAccountAppService accountAppService, IStringLocalizer<AccountResource> stringLocalizer)
         {
             _accountAppService = accountAppService;
-        }
-
-        /// <inheritdoc />
-        public Task<UserData> Login(LoginDto parameters)
-        {
-            return Task.FromResult(new UserData
-            {
-                Id = System.Guid.Parse("33ABC3EE-F993-CB34-D04E-39F7278885BA"), 
-                UserName = "admin",
-                PhoneNumber = parameters.Mobile
-            });
+            _localizer = stringLocalizer;
         }
 
         /// <inheritdoc />
         public virtual Task<IdentityUserDto> Register(RegisterDto parameters)
         {
+            Console.WriteLine(_localizer["UserNameOrEmailAddress"]);
             return _accountAppService.RegisterAsync(parameters);
         }
 

@@ -6,6 +6,8 @@ using Volo.Abp.Account.Localization;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI;
+using Microsoft.Extensions.DependencyInjection;
+using KissU.Randoms;
 
 namespace KissU.Modules.Account.Service.Contracts
 {

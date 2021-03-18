@@ -102,9 +102,9 @@ namespace KissU.Client.Host
                 var connectionCount = 300000;
                 var sw = new Stopwatch();
                 sw.Start();
-                var userProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IIdentityUserService>("IdentityUser");
+                var userProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IUserService>("IdentityUser");
                 ServiceResolver.Current.Register("IdentityUser", userProxy);
-                userProxy = ServiceResolver.Current.GetService<IIdentityUserService>("IdentityUser");
+                userProxy = ServiceResolver.Current.GetService<IUserService>("IdentityUser");
                 sw.Stop();
                 Console.WriteLine($"代理所花{sw.ElapsedMilliseconds}ms");
 
@@ -136,9 +136,9 @@ namespace KissU.Client.Host
                 Console.WriteLine(e);
             }
 
-            async Task StartRequest(IIdentityUserService userProxy, int connectionCount)
+            async Task StartRequest(IUserService userProxy, int connectionCount)
             {
-                var result = await userProxy.GetListAsync(new GetIdentityUsersInput { MaxResultCount = 10 });
+                var result = await userProxy.GetList(new GetIdentityUsersInput { MaxResultCount = 10 });
                 Interlocked.Increment(ref _endedConnenctionCount);
                 if (_endedConnenctionCount == 1)
                 {

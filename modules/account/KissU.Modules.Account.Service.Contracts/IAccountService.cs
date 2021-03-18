@@ -15,15 +15,6 @@ namespace KissU.Modules.Account.Service.Contracts
     public interface IAccountService : IServiceKey
     {
         /// <summary>
-        /// 登录
-        /// </summary>
-        /// <param name="parameters">请求参数</param>
-        /// <returns>Task&lt;UserData&gt;.</returns>
-        // [Authorization(AuthType = AuthorizationType.AppSecret)]
-        [HttpPost(true)]
-        Task<UserData> Login(LoginDto parameters);
-
-        /// <summary>
         /// 注册
         /// </summary>
         /// <param name="parameters">请求参数</param>
