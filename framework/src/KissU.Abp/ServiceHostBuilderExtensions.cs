@@ -3,6 +3,7 @@ using Autofac;
 using KissU.CPlatform;
 using KissU.Extensions;
 using KissU.Helpers;
+using KissU.Modularity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Volo.Abp;
@@ -29,7 +30,7 @@ namespace KissU.Abp
                 {
                     optionsAction?.Invoke(options);
                     var assemblies = ModuleHelper.GetAssemblies();
-                    var moduleTypes = ReflectionHelper.FindTypes<AbpBusinessModule>(assemblies.ToArray());
+                    var moduleTypes = ReflectionHelper.FindTypes<IBusinessModule>(assemblies.ToArray());
                     options.PlugInSources.AddTypes(moduleTypes.ToArray());
                 });
             });

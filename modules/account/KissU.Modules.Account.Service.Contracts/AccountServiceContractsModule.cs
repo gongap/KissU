@@ -13,14 +13,12 @@ namespace KissU.Modules.Account.Service.Contracts
 {
     /// <summary>
     /// 账号服务模块
-    /// Implements the <see cref="AbpBusinessModule" />
     /// </summary>
-    /// <seealso cref="AbpBusinessModule" />
     [DependsOn(
         typeof(AbpAccountApplicationContractsModule),
         typeof(AbpUiModule)
         )]
-    public class AccountServiceContractsModule : AbpBusinessModule
+    public class AccountServiceContractsModule : AbpModule, IBusinessModule
     {
         /// <summary>
         /// Configures the services.

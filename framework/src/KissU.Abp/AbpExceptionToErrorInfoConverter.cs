@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace KissU.Abp
 {
-    public class AbpExceptionToErrorInfoConverter :  KissU.Exceptions.Handling.IExceptionToErrorInfoConverter
+    public class AbpExceptionToErrorInfoConverter : Exceptions.Handling.IExceptionToErrorInfoConverter
     {
         private readonly Volo.Abp.AspNetCore.ExceptionHandling.IExceptionToErrorInfoConverter _errorInfoConverter;
 
@@ -22,12 +22,12 @@ namespace KissU.Abp
         /// <param name="exception">The exception</param>
         /// <param name="includeSensitiveDetails">Should include sensitive details to the error info?</param>
         /// <returns>Error info or null</returns>
-        public KissU.Exceptions.RemoteServiceErrorInfo Convert(Exception exception, bool includeSensitiveDetails)
+        public Exceptions.RemoteServiceErrorInfo Convert(Exception exception, bool includeSensitiveDetails)
         {
             var errorInfo = _errorInfoConverter.Convert(exception, includeSensitiveDetails);
-            return  new KissU.Exceptions.RemoteServiceErrorInfo(errorInfo.Message, errorInfo.Details, errorInfo.Code)
+            return  new Exceptions.RemoteServiceErrorInfo(errorInfo.Message, errorInfo.Details, errorInfo.Code)
             {
-                ValidationErrors = errorInfo.ValidationErrors?.Select(x => new KissU.Exceptions.RemoteServiceValidationErrorInfo(x.Message, x.Members)).ToArray(),
+                ValidationErrors = errorInfo.ValidationErrors?.Select(x => new Exceptions.RemoteServiceValidationErrorInfo(x.Message, x.Members)).ToArray(),
             };
         }
     }

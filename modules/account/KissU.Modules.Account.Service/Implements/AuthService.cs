@@ -17,7 +17,7 @@ namespace KissU.Modules.Account.Service.Implements
     /// <summary>
     /// 授权服务
     /// </summary>
-    [ModuleName("Mobile")]
+    [ModuleName("Auth")]
     public class AuthService : ProxyServiceBase, IAuthService
     {
         private readonly IAuthAppService _authAppService;

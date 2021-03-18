@@ -43,7 +43,7 @@ namespace KissU.Modules.Account.Service.Applications
                 return await _userClaimsPrincipalFactory.CreateAsync(user);
             }
 
-            return new UnauthenticatedPrincipal();
+            return UnauthenticatedPrincipal.Instance;
         }
     }
 }

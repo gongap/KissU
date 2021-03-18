@@ -48,7 +48,7 @@
     "ApiGetWay": {
       "AccessTokenExpireTimeSpan": "30",
       "AuthorizationRoutePath": "api/auth/token",
-      "AuthorizationServiceKey": "Mobile",
+      "AuthorizationServiceKey": "Auth",
       "TokenEndpointPath": "api/connect/token",
       "CacheMode": "MemoryCache"
     },

@@ -15,7 +15,7 @@ namespace KissU.Modules.Account.Service
         typeof(AbpAccountApplicationModule),
         typeof(AbpIdentityEntityFrameworkCoreModule)
         )]
-    public class AccountServiceModule : AbpBusinessModule
+    public class AccountServiceModule : AbpModule, IBusinessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

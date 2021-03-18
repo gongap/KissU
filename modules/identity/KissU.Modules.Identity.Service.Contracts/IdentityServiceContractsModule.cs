@@ -1,4 +1,5 @@
 ﻿using KissU.Abp;
+using KissU.Modularity;
 using Localization.Resources.AbpUi;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.Localization;
@@ -17,7 +18,7 @@ namespace KissU.Modules.Identity.Service.Contracts
         typeof(AbpIdentityApplicationContractsModule),
         typeof(AbpUiModule)
     )]
-    public class IdentityServiceContractsModule : AbpBusinessModule
+    public class IdentityServiceContractsModule : AbpModule, IBusinessModule
     {
         /// <summary>
         /// Configures the services.
