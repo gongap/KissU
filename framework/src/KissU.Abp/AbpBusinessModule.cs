@@ -1,8 +1,6 @@
-﻿using Volo.Abp.Modularity;
-
-namespace KissU.Abp
+﻿namespace KissU.Abp
 {
-    public class AbpBusinessModule : AbpModule
+    public class AbpBusinessModule : Volo.Abp.Modularity.AbpModule
     {
     }
 }
