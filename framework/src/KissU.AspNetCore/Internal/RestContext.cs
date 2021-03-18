@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using KissU.Helpers;
+using KissU.Serialization;
 using KissU.Serialization.Implementation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -61,8 +62,9 @@ namespace KissU.AspNetCore.Internal
         {
             if (claimsPrincipal != null)
             {
+                var jsonSerializer = serviceProvider.GetRequiredService<ISerializer<string>>();
                 var claimTypes = claimsPrincipal.Identities.SelectMany(x => x.Claims).GroupBy(x => x.Type).ToDictionary(y => y.Key, m => m.Select(n => n.Value).ToList());
-                SetAttachment(key, new JsonSerializer().Serialize(claimTypes));
+                SetAttachment(key, jsonSerializer.Serialize(claimTypes));
             }
         }
 
