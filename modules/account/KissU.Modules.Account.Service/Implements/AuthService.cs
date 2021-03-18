@@ -35,7 +35,7 @@ namespace KissU.Modules.Account.Service.Implements
         public async Task<Dictionary<string, List<string>>> Token(AuthDto parameters)
         {
             var claimsPrincipal = await _authAppService.AuthAsync(parameters);
-            return claimsPrincipal?.Identities?.SelectMany(x => x.Claims).GroupBy(x => x.Type).ToDictionary(y => y.Key, m => m.Select(n => n.Value).ToList());
+            return claimsPrincipal?.Identities.SelectMany(x => x.Claims).GroupBy(x => x.Type).ToDictionary(y => y.Key, m => m.Select(n => n.Value).ToList());
         }
     }
 }

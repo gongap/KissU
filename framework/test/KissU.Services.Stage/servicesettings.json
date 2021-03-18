@@ -1,7 +1,7 @@
 {
   "ServerEngine": {
     "Ip": "${Server_IP}|127.0.0.1",
-    "WatchInterval": 30,
+    "WatchInterval": 10,
     "Port": "${Server_Port}|91",
     "MappingIp": "${Mapping_ip}",
     "MappingPort": "${Mapping_Port}",
@@ -12,7 +12,7 @@
     "SoBacklog": 100,
     "MaxConcurrentRequests": 20,
     "DisconnTimeInterval": 30,
-    "ExecutionTimeoutInMilliseconds": 10000,
+    "ExecutionTimeoutInMilliseconds": 30000,
     "Protocol": "${Protocol}|None",
     "RootPath": "${RootPath}",
     "WebRootPath": "${WebRootPath}",

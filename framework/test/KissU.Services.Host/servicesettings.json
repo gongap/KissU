@@ -1,7 +1,7 @@
 {
   "ServerEngine": { //微服务框架配置
     "Ip": "${Server_IP}|127.0.0.1", //"配置微服务主机的Ip地址或域名": null,容器内部IP(环境变量)
-    "WatchInterval": 30, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
+    "WatchInterval": 10, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
     "Port": "${Server_Port}|81", //微服务主机运行的端口号
     "MappingIp": "${Mapping_ip}", //映射的Ip地址,暂不需要配置
     "MappingPort": "${Mapping_Port}", //映射的端口号,暂不需要配置
