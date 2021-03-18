@@ -31,19 +31,17 @@ namespace KissU.Modules.Account.Service.Applications
             var user = await _identityUserManager.FindByNameAsync(input.Mobile);
             if (user == null)
             {
-                user = new Volo.Abp.Identity.IdentityUser(GuidGenerator.Create(), input.Mobile, $"null@hrst.com", CurrentTenant.Id);
-                user.Name = _randomBuilder.GenerateString(10);
+                var userId = GuidGenerator.Create();
+                user = new IdentityUser(userId, input.Mobile, $"{userId}@hrst.com", CurrentTenant.Id)
+                {
+                    Name = _randomBuilder.GenerateString(10)
+                };
                 user.SetPhoneNumber(input.Mobile, true);
                 (await _identityUserManager.CreateAsync(user)).CheckErrors();
                await CurrentUnitOfWork.SaveChangesAsync();
             }
 
-            if (user != null)
-            {
-                return await _userClaimsPrincipalFactory.CreateAsync(user);
-            }
-
-            return UnauthenticatedPrincipal.Instance;
+            return await _userClaimsPrincipalFactory.CreateAsync(user);
         }
     }
 }

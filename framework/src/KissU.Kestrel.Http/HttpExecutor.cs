@@ -256,20 +256,19 @@ namespace KissU.Kestrel.Http
             }
         }
 
-        private static string GetExceptionMessage(Exception exception)
+        private RemoteServiceErrorInfo GetErrorInfo(Exception exception)
         {
             if (exception == null)
             {
-                return string.Empty;
+                return null;
             }
 
-            var message = exception.Message;
             if (exception.InnerException != null)
             {
-                message += "|InnerException:" + GetExceptionMessage(exception.InnerException);
+                return GetErrorInfo(exception.InnerException);
             }
 
-            return message;
+            return _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
         }
 
         private void WirteDiagnosticBefore(TransportMessage message)
