@@ -28,7 +28,7 @@ namespace KissU.Abp
             try
             {
                 var payload = RpcContext.GetContext().GetAttachment("payload").SafeString();
-                var claimTypes = _jsonSerializer.Deserialize<IDictionary<string, object>>(payload);
+                var claimTypes = _jsonSerializer.Deserialize<IDictionary<string, List< string >>> (payload);
                 if (claimTypes == null)
                 {
                     return base.GetClaimsPrincipal();
@@ -38,16 +38,9 @@ namespace KissU.Abp
                 foreach (var claimType in claimTypes)
                 {
                     var type = InboundJwtClaimTypeMap(claimType.Key);
-                    if (claimType.Value is JArray claimArray)
+                    foreach (var item in claimType.Value)
                     {
-                        foreach (var item in claimArray)
-                        {
-                            claims.Add(new Claim(type, item.Value<string>()));
-                        }
-                    }
-                    else
-                    {
-                        claims.Add(new Claim(type, claimType.Value.ToString()));
+                        claims.Add(new Claim(type, item));
                     }
                 }
 

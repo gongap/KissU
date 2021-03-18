@@ -15,13 +15,13 @@ namespace KissU.Modules.Account.Service.Implements
     /// <seealso cref="IProfileService" />
     public class ProfileService : ProxyServiceBase, IProfileService
     {
-        private readonly IProfileAppService _appService;
+        private readonly IMyProfileAppService _appService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProfileService"/> class.
         /// </summary>
         /// <param name="appService">The application service.</param>
-        public ProfileService(IProfileAppService appService)
+        public ProfileService(IMyProfileAppService appService)
         {
             _appService = appService;
         }
@@ -50,9 +50,9 @@ namespace KissU.Modules.Account.Service.Implements
         /// </summary>
         /// <param name="parameters">请求参数</param>
         /// <returns>Task.</returns>
-        public Task ChangePassword(ChangePasswordInput parameters)
+        public async Task ChangePassword(ChangePasswordInput parameters)
         {
-            return _appService.ChangePasswordAsync(parameters);
+            await _appService.ChangePasswordAsync(parameters);
         }
 
         public Task<string> GetMark()

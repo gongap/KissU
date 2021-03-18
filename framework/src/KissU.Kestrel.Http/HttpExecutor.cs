@@ -17,6 +17,7 @@ using KissU.CPlatform.Transport.Implementation;
 using KissU.Dependency;
 using KissU.Exceptions;
 using KissU.Exceptions.Handling;
+using KissU.Extensions;
 using KissU.Helpers;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.Logging;
@@ -149,14 +150,9 @@ namespace KissU.Kestrel.Http
             }
             catch (Exception exception)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
-                {
-                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.Message}");
-                }
-
                 resultMessage.Result = null;
                 resultMessage.StatusCode = (int) StatusCode.ServerError;
-                var errorInfo = _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
+                var errorInfo = _errorInfoConverter.Convert(exception.GetRawException(), AppConfig.ServerOptions.IncludeSensitiveDetails);
                 if (errorInfo != null)
                 {
                     resultMessage.Message = errorInfo.Message;
@@ -166,6 +162,11 @@ namespace KissU.Kestrel.Http
                 else
                 {
                     resultMessage.Message = "执行发生了错误";
+                }
+
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{GetExceptionMessage(exception)}");
                 }
             }
 
@@ -200,23 +201,17 @@ namespace KissU.Kestrel.Http
             }
             catch (RemoteServiceValidateException validateException)
             {
+                resultMessage.Message = validateException.Message;
+                resultMessage.StatusCode = validateException.HResult;
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
                     _logger.LogError(validateException, $"执行本地逻辑时候发生了错误：{validateException.Message}", validateException);
                 }
-
-                resultMessage.Message = validateException.Message;
-                resultMessage.StatusCode = validateException.HResult;
             }
             catch (Exception exception)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
-                {
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.Message}");
-                }
-
                 resultMessage.StatusCode = exception.HResult;
-                var errorInfo = _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
+                var errorInfo = _errorInfoConverter.Convert(exception.GetRawException(), AppConfig.ServerOptions.IncludeSensitiveDetails);
                 if (errorInfo != null)
                 {
                     resultMessage.Message = errorInfo.Message;
@@ -226,6 +221,11 @@ namespace KissU.Kestrel.Http
                 else
                 {
                     resultMessage.Message = "执行发生了错误";
+                }
+
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{GetExceptionMessage(exception)}");
                 }
             }
 
@@ -256,19 +256,20 @@ namespace KissU.Kestrel.Http
             }
         }
 
-        private RemoteServiceErrorInfo GetErrorInfo(Exception exception)
+        private string GetExceptionMessage(Exception exception)
         {
             if (exception == null)
             {
-                return null;
+                return string.Empty;
             }
 
+            var message = exception.Message;
             if (exception.InnerException != null)
             {
-                return GetErrorInfo(exception.InnerException);
+                message += "|InnerException:" + GetExceptionMessage(exception.InnerException);
             }
 
-            return _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
+            return message;
         }
 
         private void WirteDiagnosticBefore(TransportMessage message)
