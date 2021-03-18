@@ -1,85 +1,15 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using KissU.Modules.Account.Service.Applications;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using Volo.Abp.Identity.Settings;
-using Volo.Abp.ObjectExtending;
-using Volo.Abp.Settings;
-using Volo.Abp.Users;
 
 namespace Volo.Abp.Identity
 {
     [Authorize]
-    public class MyProfileAppService : IdentityAppServiceBase, IMyProfileAppService
+    public class MyProfileAppService : ProfileAppService, IMyProfileAppService
     {
-        protected IdentityUserManager UserManager { get; }
-        protected IOptions<IdentityOptions> IdentityOptions { get; }
-
-        public MyProfileAppService(
-            IdentityUserManager userManager,
-            IOptions<IdentityOptions> identityOptions)
+        public MyProfileAppService(IdentityUserManager userManager, IOptions<IdentityOptions> identityOptions) : base(userManager, identityOptions)
         {
-            UserManager = userManager;
-            IdentityOptions = identityOptions;
-        }
-
-        public virtual async Task<ProfileDto> GetAsync()
-        {
-            var currentUser = await UserManager.GetByIdAsync(CurrentUser.GetId());
-
-            return ObjectMapper.Map<IdentityUser, ProfileDto>(currentUser);
-        }
-
-        public virtual async Task<ProfileDto> UpdateAsync(UpdateProfileDto input)
-        {
-            await IdentityOptions.SetAsync();
-
-            var user = await UserManager.GetByIdAsync(CurrentUser.GetId());
-
-            if (await SettingProvider.IsTrueAsync(IdentitySettingNames.User.IsUserNameUpdateEnabled))
-            {
-                (await UserManager.SetUserNameAsync(user, input.UserName)).CheckErrors();
-            }
-
-            if (await SettingProvider.IsTrueAsync(IdentitySettingNames.User.IsEmailUpdateEnabled))
-            {
-                (await UserManager.SetEmailAsync(user, input.Email)).CheckErrors();
-            }
-
-            (await UserManager.SetPhoneNumberAsync(user, input.PhoneNumber)).CheckErrors();
-
-            user.Name = input.Name;
-            user.Surname = input.Surname;
-
-            input.MapExtraPropertiesTo(user);
-
-            (await UserManager.UpdateAsync(user)).CheckErrors();
-
-            await CurrentUnitOfWork.SaveChangesAsync();
-
-            return ObjectMapper.Map<IdentityUser, ProfileDto>(user);
-        }
-
-        public virtual async Task ChangePasswordAsync(ChangePasswordInput input)
-        {
-            await IdentityOptions.SetAsync();
-
-            var currentUser = await UserManager.GetByIdAsync(CurrentUser.GetId());
-
-            if (currentUser.IsExternal)
-            {
-                throw new BusinessException(code: IdentityErrorCodes.ExternalUserPasswordChange);
-            }
-
-            if (currentUser.PasswordHash == null)
-            {
-                (await UserManager.AddPasswordAsync(currentUser, input.NewPassword)).CheckErrors();
-
-                return;
-            }
-
-            (await UserManager.ChangePasswordAsync(currentUser, input.CurrentPassword, input.NewPassword)).CheckErrors();
         }
     }
 }

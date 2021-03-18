@@ -127,7 +127,7 @@ namespace KissU.Kestrel.Http
             }
             catch
             {
-                _logger.LogError($"http service host failed to start, listening on: {address}:{port}。 ");
+                _logger.LogError($"http host failed, listening on: {address}:{port}。 ");
             }
 
             return Task.CompletedTask;

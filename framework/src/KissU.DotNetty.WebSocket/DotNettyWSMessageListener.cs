@@ -176,7 +176,7 @@ namespace KissU.DotNetty.WebSocket
         {
             if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogDebug($"Prepare to start WS service host, listening on: {endPoint}");
+                _logger.LogDebug($"Prepare to start WS host, listening on: {endPoint}");
             }
 
             IEventLoopGroup bossGroup = new MultithreadEventLoopGroup(1);
@@ -224,12 +224,12 @@ namespace KissU.DotNetty.WebSocket
                 _channel = await bootstrap.BindAsync(endPoint);
                 if (_logger.IsEnabled(LogLevel.Information))
                 {
-                    _logger.LogInformation($"WS service host started, listening on:{endPoint}");
+                    _logger.LogInformation($"WS host started, listening on:{endPoint}");
                 }
             }
             catch (Exception)
             {
-                _logger.LogError($"WS service host failed to start, listening on: {endPoint} ");
+                _logger.LogError($"WS host failed, listening on: {endPoint} ");
             }
         }
 

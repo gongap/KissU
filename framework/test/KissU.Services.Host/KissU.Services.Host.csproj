@@ -23,7 +23,7 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty\KissU.DotNetty.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.DNS\KissU.DotNetty.DNS.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.WebSocket\KissU.DotNetty.WebSocket.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.Http\KissU.Kestrel.Http.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.AspNetCore.Kestrel\KissU.AspNetCore.Kestrel.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.Http\KissU.DotNetty.Http.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.Mqtt\KissU.DotNetty.Mqtt.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.Udp\KissU.DotNetty.Udp.csproj" />

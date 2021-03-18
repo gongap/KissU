@@ -76,7 +76,7 @@ namespace KissU.WebSocket
         {
             if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogDebug($"Prepare to start WS service host, listening on: {endPoint}");
+                _logger.LogDebug($"Prepare to start WS host, listening on: {endPoint}");
             }
 
             var ipEndPoint = endPoint as IPEndPoint;
@@ -91,11 +91,11 @@ namespace KissU.WebSocket
                 Server.AllowForwardedRequest = true;
                 Server.Start();
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"WS service host started, listening on: {endPoint}");
+                    _logger.LogInformation($"WS host started, listening on: {endPoint}");
             }
             catch
             {
-                _logger.LogError($"WS service host failed to start, listening on: {endPoint}");
+                _logger.LogError($"WS host failed, listening on: {endPoint}");
             }
         }
     }

@@ -5,7 +5,6 @@ using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using KissU.Helpers;
 using KissU.Serialization;
-using KissU.Serialization.Implementation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,7 +12,6 @@ namespace KissU.AspNetCore.Internal
 {
     public class RestContext
     {
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetAttachment(string key, object value)
         {

@@ -107,7 +107,7 @@ namespace KissU.DotNetty
             }
             catch
             {
-                _logger.LogError($"Service host failed to start, listening on: {endPoint} ");
+                _logger.LogError($"Service host failed, listening on: {endPoint} ");
             }
         }
 

@@ -12,7 +12,7 @@ namespace KissU.Abp
 {
     public class AbpCurrentPrincipalAccessor : ThreadCurrentPrincipalAccessor
     {
-        private readonly IJsonSerializer _jsonSerializer;
+        private readonly ISerializer<string> _jsonSerializer;
 
         public AbpCurrentPrincipalAccessor(ISerializer<string> jsonSerializer)
         {
@@ -29,7 +29,7 @@ namespace KissU.Abp
             try
             {
                 var payload = RpcContext.GetContext().GetAttachment("payload").SafeString();
-                var claimTypes = _jsonSerializer.Deserialize<IDictionary<string, List< string >>> (payload);
+                var claimTypes = _jsonSerializer.Deserialize<string, IDictionary<string, List<string>>>(payload);
                 if (claimTypes == null)
                 {
                     return base.GetClaimsPrincipal();

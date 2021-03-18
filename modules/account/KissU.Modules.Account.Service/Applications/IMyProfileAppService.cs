@@ -1,14 +1,8 @@
-﻿using System.Threading.Tasks;
-using Volo.Abp.Application.Services;
+﻿using Volo.Abp.Identity;
 
-namespace Volo.Abp.Identity
+namespace KissU.Modules.Account.Service.Applications
 {
-    public interface IMyProfileAppService : IApplicationService
+    public interface IMyProfileAppService : IProfileAppService
     {
-        Task<ProfileDto> GetAsync();
-
-        Task<ProfileDto> UpdateAsync(UpdateProfileDto input);
-
-        Task ChangePasswordAsync(ChangePasswordInput input);
     }
 }

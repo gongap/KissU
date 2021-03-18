@@ -85,7 +85,7 @@ namespace KissU.DotNetty.Mqtt
         public async Task StartAsync(EndPoint endPoint)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"Prepare to start Mqtt service host, listening on: {endPoint}");
+                _logger.LogDebug($"Prepare to start Mqtt host, listening on: {endPoint}");
             IEventLoopGroup bossGroup = new MultithreadEventLoopGroup(1);
             IEventLoopGroup
                 workerGroup =
@@ -125,11 +125,11 @@ namespace KissU.DotNetty.Mqtt
             {
                 _channel = await bootstrap.BindAsync(endPoint);
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"Mqtt service host started, listening on:{endPoint}");
+                    _logger.LogInformation($"Mqtt host started, listening on:{endPoint}");
             }
             catch
             {
-                _logger.LogError($"Mqtt service host failed to start, listening on: {endPoint} ");
+                _logger.LogError($"Mqtt host failed, listening on: {endPoint} ");
             }
         }
 
