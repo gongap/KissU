@@ -2,11 +2,13 @@
 using System.Reflection;
 using System.Threading.Tasks;
 using KissU.Helpers;
+using KissU.Extensions;
 using KissU.CPlatform.Filters;
 using KissU.CPlatform.Messages;
 using KissU.CPlatform.Routing;
 using KissU.CPlatform.Transport;
 using KissU.CPlatform.Transport.Implementation;
+using KissU.Exceptions.Handling;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
@@ -20,6 +22,7 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
     public class DefaultServiceExecutor : IServiceExecutor
     {
         private readonly IAuthorizationFilter _authorizationFilter;
+        private readonly IExceptionToErrorInfoConverter _errorInfoConverter;
         private readonly ILogger<DefaultServiceExecutor> _logger;
         private readonly IServiceEntryLocate _serviceEntryLocate;
         private readonly IServiceRouteProvider _serviceRouteProvider;
@@ -30,15 +33,17 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
         /// <param name="serviceEntryLocate">The service entry locate.</param>
         /// <param name="serviceRouteProvider">The service route provider.</param>
         /// <param name="authorizationFilter">The authorization filter.</param>
+        /// <param name="errorInfoConverter"></param>
         /// <param name="logger">The logger.</param>
         public DefaultServiceExecutor(IServiceEntryLocate serviceEntryLocate,
-            IServiceRouteProvider serviceRouteProvider, IAuthorizationFilter authorizationFilter,
+            IServiceRouteProvider serviceRouteProvider, IAuthorizationFilter authorizationFilter, IExceptionToErrorInfoConverter errorInfoConverter,
             ILogger<DefaultServiceExecutor> logger)
         {
             _serviceEntryLocate = serviceEntryLocate;
             _logger = logger;
             _serviceRouteProvider = serviceRouteProvider;
             _authorizationFilter = authorizationFilter;
+            _errorInfoConverter = errorInfoConverter;
         }
 
         /// <summary>
@@ -155,13 +160,23 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
             }
             catch (Exception exception)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
+                resultMessage.StatusCode = exception.HResult;
+                var errorInfo = _errorInfoConverter.Convert(exception.GetRawException(), AppConfig.ServerOptions.IncludeSensitiveDetails);
+                if (errorInfo != null)
                 {
-                    _logger.LogError(exception, "执行本地逻辑时候发生了错误。");
+                    resultMessage.ExceptionMessage = errorInfo.Message;
+                    resultMessage.Details = errorInfo.Details;
+                    resultMessage.ValidationErrors = errorInfo.ValidationErrors;
+                }
+                else
+                {
+                    resultMessage.ExceptionMessage = GetExceptionMessage(exception);
                 }
 
-                resultMessage.ExceptionMessage = GetExceptionMessage(exception);
-                resultMessage.StatusCode = exception.HResult;
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{GetExceptionMessage(exception)}");
+                }
             }
         }
 

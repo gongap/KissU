@@ -23,7 +23,7 @@ namespace KissU.Kestrel.Http.Filters.Implementation
                 Result = null,
                 StatusCode = 400,
                 IsSucceed = false,
-                Message = context.Exception.Message
+                Message = context.Exception.Message,
             };
             return Task.CompletedTask;
         }
