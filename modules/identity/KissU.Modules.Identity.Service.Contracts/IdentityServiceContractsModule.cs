@@ -1,10 +1,6 @@
 ﻿using KissU.Modularity;
-using Localization.Resources.AbpUi;
 using Volo.Abp.Identity;
-using Volo.Abp.Identity.Localization;
-using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
-using Volo.Abp.UI;
 
 namespace KissU.Modules.Identity.Service.Contracts
 {
@@ -14,8 +10,7 @@ namespace KissU.Modules.Identity.Service.Contracts
     /// </summary>
     /// <seealso cref="AbpBusinessModule" />
     [DependsOn(
-        typeof(AbpIdentityApplicationContractsModule),
-        typeof(AbpUiModule)
+        typeof(AbpIdentityApplicationContractsModule)
     )]
     public class IdentityServiceContractsModule : AbpModule, IBusinessModule
     {
@@ -25,14 +20,6 @@ namespace KissU.Modules.Identity.Service.Contracts
         /// <param name="context">The context.</param>
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            Configure<AbpLocalizationOptions>(options =>
-            {
-                options.Resources
-                    .Get<IdentityResource>()
-                    .AddBaseTypes(
-                        typeof(AbpUiResource)
-                    );
-            });
         }
     }
 }
