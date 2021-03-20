@@ -16,6 +16,7 @@ using KissU.CPlatform.Runtime.Client;
 using KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using KissU.CPlatform.Transport.Implementation;
 using Microsoft.Extensions.Logging;
+using KissU.Exceptions;
 
 namespace KissU.CPlatform.Support.Implementation
 {
@@ -174,6 +175,17 @@ namespace KissU.CPlatform.Support.Implementation
                     return v;
                 });
                 return message;
+            }
+            catch (CPlatformCommunicationException ex)
+            {
+                _serviceInvokeListenInfo.AddOrUpdate(serviceId, new ServiceInvokeListenInfo(), (k, v) =>
+                {
+                    v.SinceFaultRemoteServiceRequests = 0;
+                    --v.ConcurrentRequests;
+                    return v;
+                });
+                await ExecuteExceptionFilter(ex, invokeMessage, token);
+                return null;
             }
             catch (Exception ex)
             {

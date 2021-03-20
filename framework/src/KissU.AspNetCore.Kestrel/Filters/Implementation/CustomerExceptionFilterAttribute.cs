@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using KissU.AspNetCore.Filters;
 using KissU.CPlatform.Messages;
+using KissU.Exceptions;
 
 namespace KissU.Kestrel.Http.Filters.Implementation
 {
@@ -25,6 +26,13 @@ namespace KissU.Kestrel.Http.Filters.Implementation
                 IsSucceed = false,
                 Message = context.Exception.Message,
             };
+
+            if (context.Exception is CPlatformCommunicationException  communicationException)
+            {
+                context.Result.Details = communicationException.Details;
+                context.Result.ValidationErrors = communicationException.ValidationErrors;
+            }
+
             return Task.CompletedTask;
         }
     }
