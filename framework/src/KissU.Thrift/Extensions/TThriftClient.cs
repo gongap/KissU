@@ -116,10 +116,10 @@ namespace KissU.Thrift.Extensions
             if (message.IsInvokeResultMessage())
             {
                 var content = message.GetContent<RemoteInvokeResultMessage>();
-                if (!string.IsNullOrEmpty(content.ExceptionMessage))
+                if (!string.IsNullOrEmpty(content.Message))
                 {
                     WirteDiagnosticError(message);
-                    task.SetException(new CPlatformCommunicationException(content.ExceptionMessage, content.StatusCode));
+                    task.SetException(new CPlatformCommunicationException(content.Message, content.StatusCode));
                 }
                 else
                 {
@@ -176,7 +176,7 @@ namespace KissU.Thrift.Extensions
                     Content = message.Content,
                     ContentType = message.ContentType,
                     Id = message.Id
-                }, new CPlatformCommunicationException(remoteInvokeResultMessage.ExceptionMessage)));
+                }, new CPlatformCommunicationException(remoteInvokeResultMessage.Message)));
             }
         }
 
