@@ -119,7 +119,7 @@ namespace KissU.Thrift.Extensions
                 if (!string.IsNullOrEmpty(content.Message))
                 {
                     WirteDiagnosticError(message);
-                    task.SetException(new CPlatformCommunicationException(content.Message, content.StatusCode));
+                    task.SetException(new CPlatformCommunicationException(content.Message, content.Details, content.ValidationErrors, content.StatusCode));
                 }
                 else
                 {

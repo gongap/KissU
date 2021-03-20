@@ -17,7 +17,7 @@ namespace KissU.Kestrel.Http.Filters.Implementation
         /// <exception cref="Exception"></exception>
         public override void OnException(RpcActionExecutedContext context)
         {
-            throw new Exception(context.Exception.Message, context.Exception);
+            throw context.Exception;
         }
     }
 }
