@@ -29,7 +29,7 @@
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;DnsProtocolModule;KestrelHttpServerModule;SkywalkingModule;GrpcModule;ApiGateWayModule;ApolloModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;DnsProtocolModule;AspNetCoreKestrelModule;SkywalkingModule;GrpcModule;ApiGateWayModule;ApolloModule;"
       }
     ]
   },

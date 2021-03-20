@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
-using KissU.AspNetCore;
 using KissU.AspNetCore.Internal;
 using KissU.Convertibles;
 using KissU.CPlatform;
@@ -22,7 +21,7 @@ using KissU.Helpers;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Kestrel.Http
+namespace KissU.AspNetCore.Kestrel
 {
     /// <summary>
     /// HttpExecutor.

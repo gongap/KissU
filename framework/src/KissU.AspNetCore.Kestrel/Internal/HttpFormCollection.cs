@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Extensions.Primitives;
 
-namespace KissU.Kestrel.Http.Internal
+namespace KissU.AspNetCore.Kestrel.Internal
 {
     /// <summary>
     /// HttpFormCollection.

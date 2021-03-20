@@ -3,17 +3,17 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
-using KissU.AspNetCore;
 using KissU.AspNetCore.Extensions;
 using KissU.AspNetCore.Filters;
 using KissU.AspNetCore.Internal;
+using KissU.AspNetCore.Kestrel.Filters.Implementation;
 using KissU.CPlatform;
 using KissU.CPlatform.Configurations;
 using KissU.CPlatform.Diagnostics;
 using KissU.CPlatform.Engines;
 using KissU.CPlatform.Routing;
 using KissU.Dependency;
-using KissU.Kestrel.Http.Filters.Implementation;
+using KissU.Extensions;
 using KissU.Modularity;
 using KissU.Serialization;
 using Microsoft.AspNetCore.Builder;
@@ -23,9 +23,8 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using KissU.Extensions;
 
-namespace KissU.Kestrel.Http
+namespace KissU.AspNetCore.Kestrel
 {
     /// <summary>
     /// KestrelHttpMessageListener.

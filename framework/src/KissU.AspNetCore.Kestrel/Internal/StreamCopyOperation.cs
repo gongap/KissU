@@ -7,7 +7,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace KissU.Kestrel.Http.Internal
+namespace KissU.AspNetCore.Kestrel.Internal
 {
     /// <summary>
     /// StreamCopyOperation.

@@ -50,7 +50,7 @@ KissU 框架的主要目标之一就是提供便捷的基础设施来创建微�
     - 配置扩展SystemModule组件
     - 配置扩展BusinessModule组件
     - 配置扩展EnginePartModule组件
-    - 配置扩展KestrelHttpModule组件
+    - 配置扩展AspNetCoreKestrelModule组件
   - 中间件
     - 缓存中间件
     - 消息中间件

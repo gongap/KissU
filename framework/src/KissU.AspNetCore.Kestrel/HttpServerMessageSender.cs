@@ -10,7 +10,7 @@ using KissU.CPlatform.Transport;
 using KissU.Serialization;
 using Microsoft.AspNetCore.Http;
 
-namespace KissU.Kestrel.Http
+namespace KissU.AspNetCore.Kestrel
 {
     /// <summary>
     /// HttpServerMessageSender.

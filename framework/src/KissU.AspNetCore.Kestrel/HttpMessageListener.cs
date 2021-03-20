@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 using System.Web;
 using KissU.AspNetCore.Filters;
 using KissU.AspNetCore.Internal;
+using KissU.AspNetCore.Kestrel.Internal;
 using KissU.CPlatform.Messages;
 using KissU.CPlatform.Routing;
 using KissU.CPlatform.Routing.Template;
 using KissU.CPlatform.Transport;
-using KissU.Kestrel.Http.Internal;
 using KissU.Serialization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
 
-namespace KissU.Kestrel.Http
+namespace KissU.AspNetCore.Kestrel
 {
     /// <summary>
     /// HttpMessageListener.

@@ -3,7 +3,7 @@ using KissU.AspNetCore.Filters;
 using KissU.CPlatform.Messages;
 using KissU.Exceptions;
 
-namespace KissU.Kestrel.Http.Filters.Implementation
+namespace KissU.AspNetCore.Kestrel.Filters.Implementation
 {
     /// <summary>
     /// CustomerExceptionFilterAttribute.
