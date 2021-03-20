@@ -142,8 +142,7 @@ namespace KissU.CPlatform.Messages
         public static TransportMessage CreateInvokeResultMessage(string id,
             RemoteInvokeResultMessage invokeResultMessage)
         {
-            return new TransportMessage(invokeResultMessage,
-                MessagePackTransportMessageType.RemoteInvokeResultMessageTypeName)
+            return new TransportMessage(invokeResultMessage, MessagePackTransportMessageType.RemoteInvokeResultMessageTypeName)
             {
                 Id = id
             };

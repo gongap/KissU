@@ -54,9 +54,11 @@ namespace KissU.Tools.Cli.Internal.Http
             }
             return new RemoteInvokeResultMessage
             {
-                ExceptionMessage = httpMessage.Message,
+                Message = httpMessage.Message,
                 Result = httpMessage.Result,
-                StatusCode = httpMessage.StatusCode
+                StatusCode = httpMessage.StatusCode,
+                Details = httpMessage.Details,
+                ValidationErrors = httpMessage.ValidationErrors,
             };
         }
     }

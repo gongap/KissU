@@ -10,7 +10,7 @@ namespace KissU.CPlatform.Messages
         /// <summary>
         /// 异常消息。
         /// </summary>
-        public string ExceptionMessage { get; set; }
+        public string Message { get; set; }
 
         /// <summary>
         /// 结果内容。
