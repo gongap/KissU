@@ -2,10 +2,10 @@
 using System.IO;
 using System.Threading.Tasks;
 using KissU.AspNetCore.Abstractions;
-using KissU.Kestrel.Http.Internal;
+using KissU.AspNetCore.Kestrel.Internal;
 using Microsoft.Net.Http.Headers;
 
-namespace KissU.Kestrel.Http.Abstractions
+namespace KissU.AspNetCore.Kestrel.Abstractions
 {
     /// <summary>
     /// FileContentResult.

@@ -1,7 +1,7 @@
 ﻿using System;
 using KissU.CPlatform.Filters.Implementation;
 
-namespace KissU.Kestrel.Http.Filters.Implementation
+namespace KissU.AspNetCore.Kestrel.Filters.Implementation
 {
     /// <summary>
     /// ServiceExceptionFilter.

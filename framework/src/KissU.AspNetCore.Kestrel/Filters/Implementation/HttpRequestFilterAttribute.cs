@@ -8,7 +8,7 @@ using KissU.CPlatform.Routing;
 using KissU.CPlatform.Runtime.Server;
 using KissU.Dependency;
 
-namespace KissU.Kestrel.Http.Filters.Implementation
+namespace KissU.AspNetCore.Kestrel.Filters.Implementation
 {
     /// <summary>
     /// HttpRequestFilterAttribute.

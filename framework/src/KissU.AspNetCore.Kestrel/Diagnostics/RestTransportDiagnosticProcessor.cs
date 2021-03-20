@@ -6,7 +6,7 @@ using KissU.CPlatform.Diagnostics;
 using KissU.CPlatform.Messages;
 using KissU.Serialization;
 
-namespace KissU.Kestrel.Http.Diagnostics
+namespace KissU.AspNetCore.Kestrel.Diagnostics
 {
     /// <summary>
     /// RestTransportDiagnosticProcessor.

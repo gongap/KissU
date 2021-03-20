@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using KissU.AspNetCore.Abstractions;
 
-namespace KissU.Kestrel.Http.Abstractions
+namespace KissU.AspNetCore.Kestrel.Abstractions
 {
     /// <summary>
     /// ActionResult.

@@ -4,7 +4,7 @@ using KissU.Modularity;
 namespace KissU.AspNetCore
 {
     /// <summary>
-    /// KestrelHttpModule
+    /// AspNetCoreKestrelModule
     /// </summary>
     public class AspNetCoreModule : AbstractModule
     {

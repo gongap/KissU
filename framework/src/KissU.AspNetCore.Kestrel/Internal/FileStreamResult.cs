@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Net.Http.Headers;
-using KissU.Kestrel.Http.Abstractions;
+using KissU.AspNetCore.Kestrel.Abstractions;
 
-namespace KissU.Kestrel.Http.Internal
+namespace KissU.AspNetCore.Kestrel.Internal
 {
     /// <summary>
     /// FileStreamResult.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KissU.Kestrel.Http.Internal
+namespace KissU.AspNetCore.Kestrel.Internal
 {
     /// <summary>
     /// HttpFormFileCollection.

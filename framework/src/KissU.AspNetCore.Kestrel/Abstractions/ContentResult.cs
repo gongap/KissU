@@ -1,4 +1,4 @@
-﻿namespace KissU.Kestrel.Http.Abstractions
+﻿namespace KissU.AspNetCore.Kestrel.Abstractions
 {
     /// <summary>
     /// ContentResult.
