@@ -38,10 +38,17 @@ namespace KissU.AspNetCore.Stage.Configurations
         /// </summary>
         public bool IsCamelCaseResolver { get; set; }
 
+        public bool AddIdentityServerAuthentication { get; set; }
+
         /// <summary>
         /// Gets or sets the API get way.
         /// </summary>
         public ApiGetwayOption ApiGetWay { get; set; }
+
+        /// <summary>
+        /// Gets the options.
+        /// </summary>
+        public AuthServerOption AuthServer { get; set; }
 
         /// <summary>
         /// Gets or sets the protocols.

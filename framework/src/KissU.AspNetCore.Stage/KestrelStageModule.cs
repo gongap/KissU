@@ -1,17 +1,17 @@
 ﻿using System;
 using KissU.AspNetCore.Extensions;
+using KissU.AspNetCore.Internal;
 using KissU.AspNetCore.Stage.Configurations;
 using KissU.AspNetCore.Stage.Filters;
 using KissU.AspNetCore.Stage.Internal;
 using KissU.AspNetCore.Stage.Internal.Implementation;
 using KissU.Modularity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Volo.Abp;
-using Volo.Abp.Modularity;
 
 namespace KissU.AspNetCore.Stage
 {
@@ -66,6 +66,9 @@ namespace KissU.AspNetCore.Stage
                         builder.AllowCredentials();
                 });
             }
+
+            app.UseAuthentication();
+            app.UseAuthorization();
         }
 
         /// <summary>
@@ -111,8 +114,20 @@ namespace KissU.AspNetCore.Stage
                 }
             });
 
+            if (AppConfig.Options.AddIdentityServerAuthentication)
+            {
+                context.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddIdentityServerAuthentication(options =>
+                    {
+                        options.Authority = AppConfig.Options.AuthServer.Authority;
+                        options.ApiName = AppConfig.Options.AuthServer.ApiName;
+                        options.RequireHttpsMetadata = AppConfig.Options.AuthServer.Https;
+                    });
+            }
+
             context.Services.AddSingleton<IIPChecker, IPAddressChecker>();
             context.Services.AddFilters(typeof(ActionFilterAttribute));
+            context.Services.AddFilters(typeof(AuthorizationFilterAttribute));
             context.Services.AddFilters(typeof(IPFilterAttribute));
         }
 

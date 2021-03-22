@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
+using KissU.AspNetCore.Internal;
 using KissU.AspNetCore.Swagger.Internal;
 using KissU.AspNetCore.Swagger.Swagger.Application;
 using KissU.AspNetCore.Swagger.Swagger.Filters;
@@ -9,8 +10,6 @@ using KissU.AspNetCore.Swagger.SwaggerUI;
 using KissU.CPlatform.Runtime.Server;
 using KissU.Modularity;
 using Microsoft.Extensions.Configuration;
-using Volo.Abp;
-using Volo.Abp.Modularity;
 
 namespace KissU.AspNetCore.Swagger
 {
@@ -89,7 +88,7 @@ namespace KissU.AspNetCore.Swagger
                     });
                     var xmlPaths = _serviceSchemaProvider.GetSchemaFilesPath();
                     foreach (var xmlPath in xmlPaths)
-                        options.IncludeXmlComments(xmlPath);
+                        options.IncludeXmlComments(xmlPath, swaggerOptions.IncludeControllerXmlComments);
                 });
             }
         }

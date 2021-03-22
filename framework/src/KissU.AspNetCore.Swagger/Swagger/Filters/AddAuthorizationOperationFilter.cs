@@ -27,8 +27,7 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
 
 
             var attribute =
-                context.ServiceEntry.Attributes.Where(p => p is AuthorizationAttribute)
-                    .Select(p => p as AuthorizationAttribute).FirstOrDefault();
+                context.ServiceEntry.Attributes.Where(p => p is AuthorizationAttribute) .Select(p => p as AuthorizationAttribute).FirstOrDefault();
             if (attribute != null && attribute.AuthType == AuthorizationType.JWT)
             {
                 operation.Parameters.Add(new BodyParameter
@@ -36,6 +35,7 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
                     Name = "Authorization",
                     In = "header",
                     Required = false,
+                    Description = "令牌",
                     Schema = new Schema
                     {
                         Type = "string"
@@ -49,6 +49,7 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
                     Name = "Authorization",
                     In = "header",
                     Required = false,
+                    Description = "令牌",
                     Schema = new Schema
                     {
                         Type = "string"
@@ -59,6 +60,7 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
                     Name = "timeStamp",
                     In = "query",
                     Required = false,
+                    Description="时间戳",
                     Schema = new Schema
                     {
                         Type = "string"

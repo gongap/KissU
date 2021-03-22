@@ -1,4 +1,4 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("KissU.Kestrel.Stage")]
-[assembly: InternalsVisibleTo("KissU.Kestrel.Http")]
+[assembly: InternalsVisibleTo("KissU.AspNetCore.Stage")]
+[assembly: InternalsVisibleTo("KissU.AspNetCore.Kestrel")]

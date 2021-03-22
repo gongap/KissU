@@ -85,7 +85,7 @@ namespace KissU.ServiceDiscovery.Zookeeper
         public override async Task ClearAsync()
         {
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("准备清空所有命令配置。");
+                _logger.LogInformation("Ready to clear all command configurations");
             var zooKeepers = await _zookeeperClientProvider.GetZooKeepers();
             foreach (var zooKeeper in zooKeepers)
             {
@@ -106,13 +106,13 @@ namespace KissU.ServiceDiscovery.Zookeeper
                             {
                                 var childPath = $"{nodePath}/{child}";
                                 if (_logger.IsEnabled(LogLevel.Debug))
-                                    _logger.LogDebug($"准备删除：{childPath}。");
+                                    _logger.LogDebug($"Ready to delete：{childPath}");
                                 await zooKeeper.Item2.deleteAsync(childPath);
                             }
                         }
 
                         if (_logger.IsEnabled(LogLevel.Debug))
-                            _logger.LogDebug($"准备删除：{nodePath}。");
+                            _logger.LogDebug($"Ready to delete：{nodePath}");
                         await zooKeeper.Item2.deleteAsync(nodePath);
                     }
 
@@ -121,7 +121,7 @@ namespace KissU.ServiceDiscovery.Zookeeper
                 }
 
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("服务命令配置清空完成。");
+                    _logger.LogInformation("Service command configuration cleared");
             }
         }
 
@@ -133,7 +133,7 @@ namespace KissU.ServiceDiscovery.Zookeeper
         public override async Task SetServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> serviceCommand)
         {
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("准备添加服务命令。");
+                _logger.LogInformation("Ready to add service command");
             var zooKeepers = await _zookeeperClientProvider.GetZooKeepers();
             foreach (var zooKeeper in zooKeepers)
             {
@@ -152,7 +152,7 @@ namespace KissU.ServiceDiscovery.Zookeeper
                     if (await zooKeeper.Item2.existsAsync(nodePath) == null)
                     {
                         if (_logger.IsEnabled(LogLevel.Debug))
-                            _logger.LogDebug($"节点：{nodePath}不存在将进行创建。");
+                            _logger.LogDebug($"Node: {nodePath}does not exist and will be created");
 
                         await zooKeeper.Item2.createAsync(nodePath, nodeData, ZooDefs.Ids.OPEN_ACL_UNSAFE,
                             CreateMode.PERSISTENT);
@@ -160,7 +160,7 @@ namespace KissU.ServiceDiscovery.Zookeeper
                     else
                     {
                         if (_logger.IsEnabled(LogLevel.Debug))
-                            _logger.LogDebug($"将更新节点：{nodePath}的数据。");
+                            _logger.LogDebug($"The data for node:{nodePath} will be updated.");
 
                         var onlineData = (await zooKeeper.Item2.getDataAsync(nodePath)).Data;
                         if (!DataEquals(nodeData, onlineData))
@@ -171,7 +171,7 @@ namespace KissU.ServiceDiscovery.Zookeeper
                 }
 
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("服务命令添加成功。");
+                    _logger.LogInformation("Service command added successfully");
             }
         }
 
@@ -212,7 +212,7 @@ namespace KissU.ServiceDiscovery.Zookeeper
                 return;
 
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation($"节点{path}不存在，将进行创建。");
+                _logger.LogDebug($"Node: {path}does not exist and will be created");
 
             var childrens = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
             var nodePath = "/";
@@ -233,7 +233,7 @@ namespace KissU.ServiceDiscovery.Zookeeper
         private ServiceCommandDescriptor GetServiceCommand(byte[] data)
         {
             if (_logger.IsEnabled(LogLevel.Trace))
-                _logger.LogTrace($"准备转换服务命令，配置内容：{Encoding.UTF8.GetString(data)}。");
+                _logger.LogTrace($"Prepare the conversion service command, Configuration：{Encoding.UTF8.GetString(data)}");
 
             if (data == null)
                 return null;
@@ -299,8 +299,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
             }
             else
             {
-                if (_logger.IsEnabled(LogLevel.Warning))
-                    _logger.LogWarning($"无法获取服务命令信息，因为节点：{_configInfo.CommandPath}，不存在。");
+                //if (_logger.IsEnabled(LogLevel.Warning))
+                //    _logger.LogWarning($"无法获取服务命令信息，因为节点：{_configInfo.CommandPath}，不存在。");
                 _serviceCommands = new ServiceCommandDescriptor[0];
             }
         }

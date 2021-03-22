@@ -1,7 +1,6 @@
 ﻿using System;
+using KissU.AspNetCore.Internal;
 using KissU.Modularity;
-using Volo.Abp;
-using Volo.Abp.Modularity;
 
 namespace KissU.AspNetCore.Extensions
 {

@@ -177,7 +177,7 @@ namespace KissU.ServiceDiscovery.Consul
             foreach (var client in clients)
             {
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("准备添加服务命令。");
+                    _logger.LogInformation("Ready to add service command.");
                 foreach (var serviceCommand in serviceCommands)
                 {
                     var nodeData = _serializer.Serialize(serviceCommand);
@@ -324,8 +324,8 @@ namespace KissU.ServiceDiscovery.Consul
             }
             else
             {
-                if (_logger.IsEnabled(LogLevel.Warning))
-                    _logger.LogWarning($"无法获取服务命令信息，因为节点：{_configInfo.CommandPath}，不存在。");
+                //if (_logger.IsEnabled(LogLevel.Warning))
+                //    _logger.LogWarning($"无法获取服务命令信息，因为节点：{_configInfo.CommandPath}，不存在。");
                 _serviceCommands = new ServiceCommandDescriptor[0];
             }
         }

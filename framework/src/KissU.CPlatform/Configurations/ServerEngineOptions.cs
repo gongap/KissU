@@ -133,5 +133,10 @@ namespace KissU.CPlatform.Configurations
         /// Gets or sets the related assembly files.
         /// </summary>
         public string RelatedAssemblyFiles { get; set; } = string.Empty;
+
+        /// <summary>
+        /// The include sensitive details
+        /// </summary>
+        public bool IncludeSensitiveDetails { get; set; } 
     }
 }

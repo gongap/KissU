@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Http.Client" Version="4.0.0" />
-    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="4.0.0" />
+    <PackageReference Include="Volo.Abp.Http.Client" Version="4.2.1" />
+    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="4.2.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,10 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\modules\feature-management\KissU.Modules.FeatureManagement.Service.Contracts\KissU.Modules.FeatureManagement.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\..\modules\identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\..\modules\permission-management\KissU.Modules.PermissionManagement.Service.Contracts\KissU.Modules.PermissionManagement.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\..\modules\tenant-management\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,5 @@
-﻿using KissU.Modularity;
-using Volo.Abp;
-using Volo.Abp.Modularity;
+﻿using KissU.AspNetCore.Internal;
+using KissU.Modularity;
 
 namespace KissU.AspNetCore
 {
@@ -27,7 +26,6 @@ namespace KissU.AspNetCore
 
         /// <summary>
         /// Registers the builder.
-        /// </summary>
         /// </summary>
         /// <param name="context">The context.</param>
         public virtual void ConfigureWebHost(WebHostContext context)

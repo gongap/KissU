@@ -166,7 +166,7 @@ namespace KissU.DotNetty.Http
                 resultMessage.StatusCode =
                     resultMessage.IsSucceed ? (int) StatusCode.Success : (int) StatusCode.RequestError;
             }
-            catch (ValidateException validateException)
+            catch (RemoteServiceValidateException validateException)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                     _logger.LogError(validateException, "执行远程调用逻辑时候发生了错误。", validateException);
@@ -210,7 +210,7 @@ namespace KissU.DotNetty.Http
                 resultMessage.StatusCode =
                     resultMessage.IsSucceed ? (int) StatusCode.Success : (int) StatusCode.RequestError;
             }
-            catch (ValidateException validateException)
+            catch (RemoteServiceValidateException validateException)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                     _logger.LogError(validateException, "执行本地逻辑时候发生了错误。", validateException);

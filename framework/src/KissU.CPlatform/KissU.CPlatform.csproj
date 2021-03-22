@@ -2,7 +2,7 @@
   <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Description></Description>
+    <Description>基础通信平台：提供基础数据通信对应的接口和基础实现，如：基础日志，远程调用服务，Event bus,负载均衡算法，数据序列化等</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

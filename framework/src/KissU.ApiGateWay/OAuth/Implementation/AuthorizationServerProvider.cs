@@ -52,7 +52,7 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             if (payload != null && !payload.Equals("null"))
             {
                 var jwtHeader = JsonConvert.SerializeObject(new JWTSecureDataHeader
-                    {TimeStamp = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")});
+                    {TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")});
                 var base64Payload = ConverBase64String(JsonConvert.SerializeObject(payload));
                 var encodedString = $"{ConverBase64String(jwtHeader)}.{base64Payload}";
                 var route = await _serviceRouteProvider.GetRouteByPath(AppConfig.AuthorizationRoutePath);

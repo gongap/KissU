@@ -31,8 +31,8 @@ namespace KissU.Validation.Implementation
         /// </summary>
         /// <param name="parameterInfo">参数信息</param>
         /// <param name="value">值</param>
-        /// <exception cref="ValidateException"></exception>
-        /// <exception cref="ValidateException">校验异常</exception>
+        /// <exception cref="RemoteServiceValidationErrorInfo"></exception>
+        /// <exception cref="RemoteServiceValidationErrorInfo">校验异常</exception>
         public void Validate(ParameterInfo parameterInfo, object value)
         {
             Check.NotNull(parameterInfo, nameof(parameterInfo));
@@ -55,7 +55,7 @@ namespace KissU.Validation.Implementation
                     return;
                 }
 
-                throw new ValidateException(validationResults.Select(p => p.ErrorMessage).First());
+                throw new RemoteServiceValidateException(validationResults.Select(p => p.ErrorMessage).First());
             }
         }
     }

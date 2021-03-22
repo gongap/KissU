@@ -3,6 +3,8 @@ using System.Linq;
 using System.Xml.XPath;
 using KissU.AspNetCore.Swagger.Swagger.Model;
 using KissU.AspNetCore.Swagger.SwaggerGen.Generator;
+using KissU.CPlatform.Runtime.Server;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace KissU.AspNetCore.Swagger.SwaggerGen.XmlComments
@@ -35,8 +37,16 @@ namespace KissU.AspNetCore.Swagger.SwaggerGen.XmlComments
         /// <param name="context">The context.</param>
         public void Apply(SwaggerDocument swaggerDoc, DocumentFilterContext context)
         {
+            if (context.ApiDescriptions != null)
+                ApplyControllersXmlToController(swaggerDoc, context.ApiDescriptions);
+            else
+                ApplyControllersXmlToController(swaggerDoc, context.ServiceEntries);
+        }
+
+        private void ApplyControllersXmlToController(SwaggerDocument swaggerDoc, IEnumerable<ApiDescription> apiDescriptions)
+        {
             // Collect (unique) controller names and types in a dictionary
-            var controllerNamesAndTypes = context.ApiDescriptions
+            var controllerNamesAndTypes = apiDescriptions
                 .Select(apiDesc => apiDesc.ActionDescriptor as ControllerActionDescriptor)
                 .SkipWhile(actionDesc => actionDesc == null)
                 .GroupBy(actionDesc => actionDesc.ControllerName)
@@ -58,6 +68,31 @@ namespace KissU.AspNetCore.Swagger.SwaggerGen.XmlComments
                         swaggerDoc.Tags.Add(new Tag
                         {
                             Name = nameAndType.Key,
+                            Description = XmlCommentsTextHelper.Humanize(summaryNode.InnerXml)
+                        });
+                    }
+                }
+            }
+        }
+
+        private void ApplyControllersXmlToController(SwaggerDocument swaggerDoc, IEnumerable<ServiceEntry> apiDescriptions)
+        {
+            foreach (var serviceEntry in apiDescriptions)
+            {
+                var memberName = XmlCommentsMemberNameHelper.GetMemberNameForType(serviceEntry.Type);
+                var typeNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, memberName));
+
+                if (typeNode != null)
+                {
+                    var summaryNode = typeNode.SelectSingleNode(SummaryTag);
+                    if (summaryNode != null)
+                    {
+                        if (swaggerDoc.Tags == null)
+                            swaggerDoc.Tags = new List<Tag>();
+
+                        swaggerDoc.Tags.Add(new Tag
+                        {
+                            Name = serviceEntry.Type.Name,
                             Description = XmlCommentsTextHelper.Humanize(summaryNode.InnerXml)
                         });
                     }

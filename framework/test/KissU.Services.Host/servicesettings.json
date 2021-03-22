@@ -1,11 +1,11 @@
 {
   "ServerEngine": { //微服务框架配置
     "Ip": "${Server_IP}|127.0.0.1", //"配置微服务主机的Ip地址或域名": null,容器内部IP(环境变量)
-    "WatchInterval": 30, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
+    "WatchInterval": 10, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
     "Port": "${Server_Port}|81", //微服务主机运行的端口号
     "MappingIp": "${Mapping_ip}", //映射的Ip地址,暂不需要配置
     "MappingPort": "${Mapping_Port}", //映射的端口号,暂不需要配置
-    "Token": "true", //是否验证Token,缺省值为True
+    "Token": "123456789", //是否验证Token,缺省值为True
     "WanIp": "${WanIp}", //外网IP
     "DockerDeployMode": "${DockerDeployMode}|Standard", //Docker容器部署模式
     "Libuv": true, //是否开启Libuv高性能事件驱动的I/O库,缺省值为false
@@ -13,12 +13,13 @@
     "Weight": 20, //权重轮询
     "MaxConcurrentRequests": 20, //信号量最大并发度
     "DisconnTimeInterval": 30, //断开连接时间间隔
-    "ExecutionTimeoutInMilliseconds": 1000, //执行超时时间（毫秒）
+    "ExecutionTimeoutInMilliseconds": 10000, //执行超时时间（毫秒）
     "Protocol": "${Protocol}|None", //配置微服务组件支持的协议 缺省值为: None, Tcp, Http, WS, Mqtt, Dns, Udp
     "RootPath": "${RootPath}", //指定服务引擎解析的业务模块路径
     "WebRootPath": "${WebRootPath}", //指定Web主机根路径
     "IsModulePerLifetimeScope": false, //模块是否使用每个生命周期范围
     "ReloadOnChange": false, //当配置改变后是否重新加载
+    "IncludeSensitiveDetails": false,
     "Ports": {
       "HttpPort": "${HttpPort}|8001",
       "WSPort": "${WSPort}|8101",
@@ -33,17 +34,13 @@
       }
     ]
   },
-  "AuthServer": {
-    "Authority": "http://localhost:8090",
-    "ApiName": "IdentityService"
-  },
   "Consul": { //Consul服务注册中心配置
     "ConnectionString": "${Register_Conn}|127.0.0.1:8500", //Consul服务注册中心地址
     "SessionTimeout": "${Register_SessionTimeout}|50", //会话超时时间
     "RoutePath": "${Register_RoutePath}", //服务组件地址,服务引擎会通过指定该地址扫描到相应的服务组件，并解析到相应的服务与命令
     "ReloadOnChange": true, //当配置改变后是否重新加载
     "EnableChildrenMonitor": false, //启用子节点监视器
-    "MqttRoutePath": "${MqttRoutePath}|D:\\App\\Host" //Mqtt路由配置路径
+    "MqttRoutePath": "${MqttRoutePath}" //Mqtt路由配置路径
   },
   "Zookeeper": {
     "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181", // Zookeeper服务地址,
@@ -108,12 +105,7 @@
     },
     "Options": {
       "IgnoreFullyQualified": false,
-      "MapRoutePaths": [
-        {
-          "SourceRoutePath": "api/user/authentication",
-          "TargetRoutePath": "api/oauth2/token"
-        }
-      ]
+      "IncludeControllerXmlComments": true
     }
   },
   "Serilog": {

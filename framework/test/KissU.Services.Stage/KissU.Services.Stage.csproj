@@ -23,7 +23,7 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty\KissU.DotNetty.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.DNS\KissU.DotNetty.DNS.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.WebSocket\KissU.DotNetty.WebSocket.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.Http\KissU.Kestrel.Http.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.AspNetCore.Kestrel\KissU.AspNetCore.Kestrel.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.Http\KissU.DotNetty.Http.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.Mqtt\KissU.DotNetty.Mqtt.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.Udp\KissU.DotNetty.Udp.csproj" />
@@ -38,24 +38,18 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.BackgroundServer\KissU.BackgroundServer.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Logging.Log4net\KissU.Logging.Log4net.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Logging.Serilog\KissU.Logging.Serilog.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.AspNetCore.IdentityServer\KissU.AspNetCore.IdentityServer.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.AspNetCore.Stage\KissU.AspNetCore.Stage.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.AspNetCore.Swagger\KissU.AspNetCore.Swagger.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\modules\account\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
-    <ProjectReference Include="..\..\..\modules\feature-management\KissU.Modules.FeatureManagement.Service.Contracts\KissU.Modules.FeatureManagement.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\modules\account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\..\modules\identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\..\modules\permission-management\KissU.Modules.PermissionManagement.Service.Contracts\KissU.Modules.PermissionManagement.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\..\modules\tenant-management\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="apollo.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="appsettings.Development.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="appsettings.json">

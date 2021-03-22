@@ -72,7 +72,7 @@ namespace KissU.Grpc
         {
             if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogDebug($"准备启动Grpc服务主机，监听地址：{endPoint}。");
+                _logger.LogDebug($"Prepare to start Grpc host, listening on: {endPoint}");
             }
 
             var ipEndPoint = endPoint as IPEndPoint;
@@ -103,11 +103,11 @@ namespace KissU.Grpc
 
                 Server.Start();
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"Grpc服务主机启动成功，监听地址：{endPoint}。");
+                    _logger.LogInformation($"Grpc host started, listening on:{endPoint}");
             }
             catch
             {
-                _logger.LogError($"Grpc服务主机启动失败，监听地址：{endPoint}。 ");
+                _logger.LogError($"Grpc host failed, listening on: {endPoint} ");
             }
 
             return Task.CompletedTask;

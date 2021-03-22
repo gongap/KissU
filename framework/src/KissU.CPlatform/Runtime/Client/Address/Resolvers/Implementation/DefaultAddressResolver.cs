@@ -75,7 +75,7 @@ namespace KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation
         {
             if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogDebug($"准备为服务id：{serviceId}，解析可用地址。");
+                _logger.LogDebug($"Prepare for service ID：{serviceId}，resolving available addresses");
             }
 
             var serviceRouteTask = _serviceRouteProvider.Locate(serviceId);
@@ -83,7 +83,7 @@ namespace KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation
             if (serviceRoute == null)
             {
                 if (_logger.IsEnabled(LogLevel.Warning))
-                    _logger.LogWarning($"根据服务id：{serviceId}，找不到相关服务信息。");
+                    _logger.LogWarning($"Service ID：{serviceId}，no related service information was found.");
                 return null;
             }
 
@@ -105,7 +105,7 @@ namespace KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation
             {
                 if (_logger.IsEnabled(LogLevel.Warning))
                 {
-                    _logger.LogWarning($"根据服务id：{serviceId}，找不到可用的地址。");
+                    _logger.LogWarning($"Service ID：{serviceId}，no available addresses were found.");
                 }
 
                 return null;
@@ -114,7 +114,7 @@ namespace KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation
             if (_logger.IsEnabled(LogLevel.Debug))
             {
                 _logger.LogDebug(
-                    $"根据服务id：{serviceId}，找到以下可用地址：{string.Join(",", address.Select(i => i.ToString()))}。");
+                    $"Service ID：{serviceId}，the following available addresses were found：{string.Join(",", address.Select(i => i.ToString()))}。");
             }
 
             var vtCommand = _commandProvider.GetCommand(serviceId);
