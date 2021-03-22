@@ -1,6 +1,7 @@
 ﻿using KissU.Modularity;
 using KissU.Modules.Account.Application;
 using KissU.Modules.Account.Service.Contracts;
+using KissU.Modules.Identity.Application;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
@@ -38,7 +39,7 @@ namespace KissU.Modules.Account.Service
                 options.AddProfile<AccountServiceAutomapperProfile>(true);
             });
 
-            context.Services.GetObject<IdentityBuilder>().AddDefaultTokenProviders();
+            context.Services.GetObject<IdentityBuilder>().AddTokenProviders();
         }
     }
 }
