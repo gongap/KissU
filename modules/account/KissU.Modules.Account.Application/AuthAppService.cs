@@ -1,5 +1,9 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
+using KissU.Modules.Account.Application.Contracts;
+using KissU.Modules.Account.Application.Contracts.Configs;
+using KissU.Modules.Account.Application.Contracts.Models;
+using KissU.Randoms;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Volo.Abp.Application.Services;
@@ -38,8 +42,8 @@ namespace KissU.Modules.Identity.Application
                 await CurrentUnitOfWork.SaveChangesAsync();
             }
 
-            var token = await _identityUserManager.GenerateUserTokenAsync(user, PhoneNumberTokenProvider.ProviderName, PhoneNumberTokenProvider.PhoneRegister);
-            var verify = await _identityUserManager.VerifyUserTokenAsync(user, PhoneNumberTokenProvider.ProviderName, PhoneNumberTokenProvider.PhoneRegister, token);
+            //var token = await _identityUserManager.GenerateUserTokenAsync(user, TokenOptions.DefaultPhoneProvider, TokenPurpose.PhoneRegister);
+            //var verify = await _identityUserManager.VerifyUserTokenAsync(user, TokenOptions.DefaultPhoneProvider, TokenPurpose.PhoneRegister, token);
             return await _userClaimsPrincipalFactory.CreateAsync(user);
         }
     }
