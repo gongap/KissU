@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
 
-namespace KissU.Modules.Identity.Application
+namespace KissU.Modules.Account.Application
 {
     /// <summary>
     /// Helper functions for configuring identity services.
@@ -14,7 +14,7 @@ namespace KissU.Modules.Identity.Application
         /// </summary>
         /// <param name="builder">The current <see cref="T:Microsoft.AspNetCore.Identity.IdentityBuilder" /> instance.</param>
         /// <returns>The current <see cref="T:Microsoft.AspNetCore.Identity.IdentityBuilder" /> instance.</returns>
-        public static IdentityBuilder AddDefaultTokenProviders(
+        public static IdentityBuilder AddTokenProviders(
             this IdentityBuilder builder)
         {
             Type userType = builder.UserType;
