@@ -1,14 +1,11 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using KissU.Modules.Account.Service.Contracts.Models;
-using KissU.Randoms;
-using KissU.Security.Principals;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Identity;
 
-namespace KissU.Modules.Account.Service.Applications
+namespace KissU.Modules.Identity.Application
 {
     public class AuthAppService : ApplicationService, IAuthAppService
     {
@@ -38,9 +35,11 @@ namespace KissU.Modules.Account.Service.Applications
                 };
                 user.SetPhoneNumber(input.Mobile, true);
                 (await _identityUserManager.CreateAsync(user)).CheckErrors();
-               await CurrentUnitOfWork.SaveChangesAsync();
+                await CurrentUnitOfWork.SaveChangesAsync();
             }
 
+            var token = await _identityUserManager.GenerateUserTokenAsync(user, PhoneNumberTokenProvider.ProviderName, PhoneNumberTokenProvider.PhoneRegister);
+            var verify = await _identityUserManager.VerifyUserTokenAsync(user, PhoneNumberTokenProvider.ProviderName, PhoneNumberTokenProvider.PhoneRegister, token);
             return await _userClaimsPrincipalFactory.CreateAsync(user);
         }
     }

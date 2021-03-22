@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KissU.Modules.Account.Service.Contracts.Models
+namespace KissU.Modules.Account.Application.Contracts.Models
 {
     /// <summary>
     /// 授权请求参数

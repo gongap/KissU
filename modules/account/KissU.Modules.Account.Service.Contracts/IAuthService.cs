@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Dependency;
-using KissU.Modules.Account.Service.Contracts.Models;
+using KissU.Modules.Account.Application.Contracts.Models;
 
 namespace KissU.Modules.Account.Service.Contracts
 {
