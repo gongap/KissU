@@ -1,9 +1,10 @@
-﻿using KissU.Modules.Account.Service.Applications;
+﻿using KissU.Modules.Account.Application.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using Volo.Abp.Identity;
 
-namespace Volo.Abp.Identity
+namespace KissU.Modules.Account.Application
 {
     [Authorize]
     public class MyProfileAppService : ProfileAppService, IMyProfileAppService

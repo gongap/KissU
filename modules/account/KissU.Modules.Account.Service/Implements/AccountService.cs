@@ -2,13 +2,11 @@
 using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.Account.Service.Contracts;
-using KissU.Modules.Account.Service.Contracts.Models;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.Localization;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Localization;
 using Volo.Abp.Identity;
-using Volo.Abp.Users;
 
 namespace KissU.Modules.Account.Service.Implements
 {

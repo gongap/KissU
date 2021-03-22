@@ -122,6 +122,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Abp", "src\KissU.Abp\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.AspNetCore.Kestrel", "src\KissU.AspNetCore.Kestrel\KissU.AspNetCore.Kestrel.csproj", "{708EC972-6400-4F03-A730-1F43C86F086B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Application.Contracts", "..\modules\identity\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj", "{F7D36D49-642B-456A-8F86-CA3CE7DFD24A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Application", "..\modules\identity\KissU.Modules.Identity.Application\KissU.Modules.Identity.Application.csproj", "{24CB85E7-E3CC-4FB5-ACC5-C79536811F03}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Application", "..\modules\account\KissU.Modules.Account.Application\KissU.Modules.Account.Application.csproj", "{CF90F966-F315-4D19-85C7-769BF5B7224B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Application.Contracts", "..\modules\account\KissU.Modules.Account.Application.Contracts\KissU.Modules.Account.Application.Contracts.csproj", "{23E62D03-D101-4B10-8620-8948D7A2A61B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -288,6 +296,22 @@ Global
 		{708EC972-6400-4F03-A730-1F43C86F086B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{708EC972-6400-4F03-A730-1F43C86F086B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{708EC972-6400-4F03-A730-1F43C86F086B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7D36D49-642B-456A-8F86-CA3CE7DFD24A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7D36D49-642B-456A-8F86-CA3CE7DFD24A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7D36D49-642B-456A-8F86-CA3CE7DFD24A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7D36D49-642B-456A-8F86-CA3CE7DFD24A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24CB85E7-E3CC-4FB5-ACC5-C79536811F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24CB85E7-E3CC-4FB5-ACC5-C79536811F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24CB85E7-E3CC-4FB5-ACC5-C79536811F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24CB85E7-E3CC-4FB5-ACC5-C79536811F03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF90F966-F315-4D19-85C7-769BF5B7224B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF90F966-F315-4D19-85C7-769BF5B7224B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF90F966-F315-4D19-85C7-769BF5B7224B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF90F966-F315-4D19-85C7-769BF5B7224B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23E62D03-D101-4B10-8620-8948D7A2A61B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23E62D03-D101-4B10-8620-8948D7A2A61B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23E62D03-D101-4B10-8620-8948D7A2A61B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23E62D03-D101-4B10-8620-8948D7A2A61B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -341,6 +365,10 @@ Global
 		{98046727-5026-4DE1-AD0B-43B0B84524F3} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{FB321FFF-396D-47C1-8DEB-6563A0FCBFFD} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{708EC972-6400-4F03-A730-1F43C86F086B} = {55D9B9A1-9C42-4AB5-B64E-DF0E0ADC1FC5}
+		{F7D36D49-642B-456A-8F86-CA3CE7DFD24A} = {DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}
+		{24CB85E7-E3CC-4FB5-ACC5-C79536811F03} = {DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}
+		{CF90F966-F315-4D19-85C7-769BF5B7224B} = {8E26B6CD-79AA-4A2D-8C86-DCB01C57ED09}
+		{23E62D03-D101-4B10-8620-8948D7A2A61B} = {8E26B6CD-79AA-4A2D-8C86-DCB01C57ED09}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

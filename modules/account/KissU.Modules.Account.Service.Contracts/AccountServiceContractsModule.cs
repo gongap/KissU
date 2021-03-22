@@ -1,5 +1,5 @@
 ﻿using KissU.Modularity;
-using Volo.Abp.Account;
+using KissU.Modules.Account.Application.Contracts;
 using Volo.Abp.Modularity;
 
 namespace KissU.Modules.Account.Service.Contracts
@@ -8,7 +8,7 @@ namespace KissU.Modules.Account.Service.Contracts
     /// 账号服务模块
     /// </summary>
     [DependsOn(
-        typeof(AbpAccountApplicationContractsModule)
+        typeof(AccountApplicationContractsModule)
         )]
     public class AccountServiceContractsModule : AbpModule, IBusinessModule
     {
