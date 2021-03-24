@@ -1,6 +1,8 @@
-﻿using Volo.Abp.Modularity;
+﻿using KissU.Modules.Account.Application.Contracts;
+using Volo.Abp.Account;
+using Volo.Abp.Modularity;
 
-namespace KissU.Modules.Identity.Application
+namespace KissU.Modules.Account.Application
 {
     [DependsOn(typeof(AccountApplicationContractsModule), typeof(AbpAccountApplicationModule)
     )]

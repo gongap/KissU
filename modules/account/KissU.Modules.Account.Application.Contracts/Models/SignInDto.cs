@@ -3,22 +3,20 @@
 namespace KissU.Modules.Account.Application.Contracts.Models
 {
     /// <summary>
-    /// 授权请求参数
+    /// 登录请求参数
     /// </summary>
-    public class AuthDto
+    public class SignInDto
     {
         /// <summary>
-        /// 手机号
+        /// 用户名
         /// </summary>
         [Required]
-        [Phone]
-        public string Mobile { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
-        /// 验证码
+        /// 密码
         /// </summary>
         [Required]
-        [StringLength(10)]
-        public string Captcha { get; set; }
+        public string Passowrd { get; set; }
     }
 }
