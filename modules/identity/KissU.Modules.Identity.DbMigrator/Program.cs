@@ -1,7 +1,7 @@
+using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 
@@ -15,24 +15,45 @@ namespace KissU.Modules.Identity.DbMigrator
                 .MinimumLevel.Information()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
                 .MinimumLevel.Override("Volo.Abp", LogEventLevel.Warning)
-#if DEBUG
-                .MinimumLevel.Override("KissU.Modules.Identity.DbMigrator", LogEventLevel.Debug)
-#else
-                .MinimumLevel.Override("KissU.Modules.Identity.DbMigrator", LogEventLevel.Information)
-#endif
                 .Enrich.FromLogContext()
-                .WriteTo.File(Path.Combine(Directory.GetCurrentDirectory(), "logs/logs.txt"))
+                .WriteTo.Async(c => c.File(Path.Combine(Directory.GetCurrentDirectory(), "logs/logs.txt")))
                 .WriteTo.Console()
                 .CreateLogger();
 
-            await CreateHostBuilder(args).RunConsoleAsync();
+            Console.WriteLine("Initializing DbMigrator ... ");
+            await RunMigrations();
+            Console.WriteLine("\n\nPress ENTER to exit ...");
+            Console.ReadLine();
         }
 
-        internal static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureServices((hostContext, services) =>
+        private static async Task RunMigrations()
+        {
+            Console.Write("\nThis program updates an existing database or creates a new one if not exists.\n" +
+                          "Are you sure you want to run the migration? (y/n) ");
+
+            if (Console.ReadKey().Key == ConsoleKey.Y)
+            {
+                Console.WriteLine("\n\nMigrating database...");
+
+                try
                 {
-                    services.AddHostedService<DbMigratorHostedService>();
-                });
+                    var cts = new CancellationTokenSource();
+                    await new DbMigratorHostedService().StartAsync(cts.Token);
+                    Console.WriteLine("Migration completed.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                        Console.WriteLine(ex.Message);
+                    }
+
+                    Console.Write("\nThere was problem while applying migrations. ");
+                }
+            }
+        }
     }
 }
