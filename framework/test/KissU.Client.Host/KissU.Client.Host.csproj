@@ -21,11 +21,12 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Logging.Nlog\KissU.Logging.Nlog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Caching\KissU.Caching.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
-    <ProjectReference Include="..\..\..\modules\account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\modules\identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
+	  <ProjectReference Include="..\..\..\modules\identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
+	  <ProjectReference Include="..\..\..\modules\account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
