@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using KissU.Dependency;
+using KissU.Modules.Account.Application.Contracts;
+using KissU.Modules.Account.Application.Contracts.Models;
 using KissU.Modules.Account.Service.Contracts;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.Localization;
@@ -20,17 +24,24 @@ namespace KissU.Modules.Account.Service.Implements
     [ModuleName("Account")]
     public class AccountService : ProxyServiceBase, IAccountService
     {
-        private readonly IAccountAppService _accountAppService;
+        private readonly IMyAccountAppService _accountAppService;
         private readonly IStringLocalizer<AccountResource> _localizer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountService"/> class.
         /// </summary>
         /// <param name="accountAppService">The account application service.</param>
-        public AccountService(IAccountAppService accountAppService, IStringLocalizer<AccountResource> stringLocalizer)
+        public AccountService(IMyAccountAppService accountAppService, IStringLocalizer<AccountResource> stringLocalizer)
         {
             _accountAppService = accountAppService;
             _localizer = stringLocalizer;
+        }
+
+        /// <inheritdoc />
+        public async Task<Dictionary<string, List<string>>> SignIn(SignInDto parameters)
+        {
+            var claimsPrincipal = await _accountAppService.SignInAsync(parameters);
+            return claimsPrincipal?.Identities.SelectMany(x => x.Claims).GroupBy(x => x.Type).ToDictionary(y => y.Key, m => m.Select(n => n.Value).ToList());
         }
 
         /// <inheritdoc />

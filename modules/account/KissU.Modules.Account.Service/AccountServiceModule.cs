@@ -1,7 +1,7 @@
 ﻿using KissU.Modularity;
 using KissU.Modules.Account.Application;
+using KissU.Modules.Account.Application.Extensions;
 using KissU.Modules.Account.Service.Contracts;
-using KissU.Modules.Identity.Application;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
