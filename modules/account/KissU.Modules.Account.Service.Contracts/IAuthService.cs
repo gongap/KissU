@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Dependency;
-using KissU.Modules.Account.Service.Contracts.Models;
+using KissU.Modules.Account.Application.Contracts.Models;
 
 namespace KissU.Modules.Account.Service.Contracts
 {
@@ -17,6 +17,6 @@ namespace KissU.Modules.Account.Service.Contracts
         /// </summary>
         /// <param name="parameters">请求参数</param>
         /// <returns>Task&lt;System.String&gt;.</returns>
-        Task<Dictionary<string, List<string>>> Token(AuthDto parameters);
+        Task<Dictionary<string, List<string>>> Token(SignInDto parameters);
     }
 }

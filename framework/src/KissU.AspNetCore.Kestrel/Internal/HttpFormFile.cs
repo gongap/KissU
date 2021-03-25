@@ -1,4 +1,4 @@
-﻿namespace KissU.Kestrel.Http.Internal
+﻿namespace KissU.AspNetCore.Kestrel.Internal
 {
     /// <summary>
     /// HttpFormFile.

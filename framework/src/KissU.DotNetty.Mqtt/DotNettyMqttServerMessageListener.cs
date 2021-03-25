@@ -198,7 +198,7 @@ namespace KissU.DotNetty.Mqtt
                         Content = message.Content,
                         ContentType = message.ContentType,
                         Id = message.Id
-                    }, new Exception(remoteInvokeResultMessage.ExceptionMessage)));
+                    }, new Exception(remoteInvokeResultMessage.Message)));
             }
         }
 

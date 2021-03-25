@@ -1,25 +1,25 @@
 ﻿using System.Net;
 using Autofac;
+using KissU.AspNetCore.Kestrel.Diagnostics;
+using KissU.AspNetCore.Kestrel.Filters.Implementation;
 using KissU.CPlatform;
 using KissU.CPlatform.Diagnostics;
 using KissU.CPlatform.Engines;
 using KissU.CPlatform.Routing;
 using KissU.CPlatform.Runtime.Server;
 using KissU.Dependency;
-using KissU.Kestrel.Http.Diagnostics;
-using KissU.Kestrel.Http.Filters.Implementation;
 using KissU.Modularity;
 using KissU.Serialization;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Kestrel.Http
+namespace KissU.AspNetCore.Kestrel
 {
     /// <summary>
-    /// KestrelHttpModule.
+    /// AspNetCoreKestrelModule.
     /// Implements the <see cref="EnginePartModule" />
     /// </summary>
     /// <seealso cref="EnginePartModule" />
-    public class KestrelHttpServerModule : EnginePartModule
+    public class AspNetCoreKestrelModule : EnginePartModule
     {
         /// <summary>
         /// Inject dependent third-party components

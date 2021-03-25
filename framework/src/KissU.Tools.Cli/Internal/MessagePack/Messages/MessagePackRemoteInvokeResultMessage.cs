@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using KissU.CPlatform.Messages;
+using KissU.Exceptions;
 using MessagePack;
 
 namespace KissU.Tools.Cli.Internal.MessagePack.Messages
@@ -11,8 +12,10 @@ namespace KissU.Tools.Cli.Internal.MessagePack.Messages
 
         public MessagePackRemoteInvokeResultMessage(RemoteInvokeResultMessage message)
         {
-            ExceptionMessage = message.ExceptionMessage;
+            Message = message.Message;
             Result = message.Result == null ? null : new DynamicItem(message.Result);
+            Details = message.Details;
+            ValidationErrors = message.ValidationErrors;
         }
 
         public MessagePackRemoteInvokeResultMessage()
@@ -22,18 +25,26 @@ namespace KissU.Tools.Cli.Internal.MessagePack.Messages
         #endregion Constructor
 
         [Key(0)]
-        public string ExceptionMessage { get; set; }
+        public string Message { get; set; }
 
         [Key(1)]
         public DynamicItem Result { get; set; }
+
+        [Key(2)]
+        public string Details { get; set; }
+
+        [Key(3)]
+        public RemoteServiceValidationErrorInfo[] ValidationErrors { get; set; }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public RemoteInvokeResultMessage GetRemoteInvokeResultMessage()
         {
             return new RemoteInvokeResultMessage
             {
-                ExceptionMessage = ExceptionMessage,
-                Result = Result?.Get()
+                Message = Message,
+                Result = Result?.Get(),
+                Details = Details,
+                ValidationErrors = ValidationErrors,
             };
         }
     }

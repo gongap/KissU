@@ -26,7 +26,7 @@ namespace KissU.CPlatform.Filters.Implementation
             if (!result)
             {
                 serviceRouteContext.ResultMessage.StatusCode = 401;
-                serviceRouteContext.ResultMessage.ExceptionMessage = "令牌验证失败.";
+                serviceRouteContext.ResultMessage.Message = "令牌验证失败.";
             }
         }
 

@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Dependency;
+using KissU.Modules.Account.Application.Contracts.Models;
 using Volo.Abp.Account;
 using Volo.Abp.Identity;
 
@@ -12,6 +14,15 @@ namespace KissU.Modules.Account.Service.Contracts
     [ServiceBundle("api/{Service}")]
     public interface IAccountService : IServiceKey
     {
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="parameters">请求参数</param>
+        /// <returns>Task&lt;IdentityUserDto&gt;.</returns>
+        // [Authorization(AuthType = AuthorizationType.AppSecret)]
+        [HttpPost(true)]
+        Task<Dictionary<string, List<string>>> SignIn(SignInDto parameters);
+
         /// <summary>
         /// 注册
         /// </summary>

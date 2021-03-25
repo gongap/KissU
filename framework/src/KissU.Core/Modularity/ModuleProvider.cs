@@ -75,7 +75,7 @@ namespace KissU.Modularity
         private void WriteLog(Type[] types)
         {
             if (!_logger.IsEnabled(LogLevel.Debug)) return;
-            _logger.LogDebug($"Loaded modules");
+            _logger.LogDebug($"Loaded KissU modules");
             Modules.ForEach(p =>
             {
                 if (p.Enable && types.All(x => x != p.GetType()))

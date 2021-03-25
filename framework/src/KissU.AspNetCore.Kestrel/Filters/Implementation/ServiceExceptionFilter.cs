@@ -1,7 +1,7 @@
 ﻿using System;
 using KissU.CPlatform.Filters.Implementation;
 
-namespace KissU.Kestrel.Http.Filters.Implementation
+namespace KissU.AspNetCore.Kestrel.Filters.Implementation
 {
     /// <summary>
     /// ServiceExceptionFilter.
@@ -17,7 +17,7 @@ namespace KissU.Kestrel.Http.Filters.Implementation
         /// <exception cref="Exception"></exception>
         public override void OnException(RpcActionExecutedContext context)
         {
-            throw new Exception(context.Exception.Message, context.Exception);
+            throw context.Exception;
         }
     }
 }

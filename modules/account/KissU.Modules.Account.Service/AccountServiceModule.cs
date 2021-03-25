@@ -1,7 +1,9 @@
 ﻿using KissU.Modularity;
+using KissU.Modules.Account.Application;
+using KissU.Modules.Account.Application.Extensions;
 using KissU.Modules.Account.Service.Contracts;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.Account;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Identity;
@@ -13,7 +15,7 @@ namespace KissU.Modules.Account.Service
 {
     [DependsOn(
         typeof(AccountServiceContractsModule),
-        typeof(AbpAccountApplicationModule),
+        typeof(AccountApplicationModule),
         typeof(AbpIdentityEntityFrameworkCoreModule),
         typeof(AbpAutoMapperModule)
         )]
@@ -34,8 +36,10 @@ namespace KissU.Modules.Account.Service
             context.Services.AddAutoMapperObjectMapper<AccountServiceModule>();
             Configure<AbpAutoMapperOptions>(options =>
             {
-                options.AddProfile<AccountServiceAutomapperProfile>(validate: true);
+                options.AddProfile<AccountServiceAutomapperProfile>(true);
             });
+
+            context.Services.GetObject<IdentityBuilder>().AddTokenProviders();
         }
     }
 }

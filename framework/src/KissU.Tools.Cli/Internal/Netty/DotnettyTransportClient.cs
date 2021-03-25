@@ -91,9 +91,9 @@ namespace KissU.Tools.Cli.Internal.Netty
             if (message.IsInvokeResultMessage())
             {
                 var content = message.GetContent<RemoteInvokeResultMessage>();
-                if (!string.IsNullOrEmpty(content.ExceptionMessage))
+                if (!string.IsNullOrEmpty(content.Message))
                 {
-                    task.TrySetException(new Exception(content.ExceptionMessage));
+                    task.TrySetException(new Exception(content.Message));
                 }
                 else
                 {

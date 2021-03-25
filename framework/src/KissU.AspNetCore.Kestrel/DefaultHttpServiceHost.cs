@@ -6,7 +6,7 @@ using KissU.CPlatform.Runtime.Server;
 using KissU.CPlatform.Runtime.Server.Implementation;
 using KissU.CPlatform.Transport;
 
-namespace KissU.Kestrel.Http
+namespace KissU.AspNetCore.Kestrel
 {
     /// <summary>
     /// DefaultHttpServiceHost.

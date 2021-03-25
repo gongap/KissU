@@ -1,11 +1,9 @@
 ﻿using System.Threading.Tasks;
-using KissU.Models;
-using KissU.Modules.Account.Service.Applications;
-using KissU.Modules.Account.Service.Contracts;
+using KissU.Modules.Identity.Service.Contracts;
 using KissU.ServiceProxy;
 using Volo.Abp.Identity;
 
-namespace KissU.Modules.Account.Service.Implements
+namespace KissU.Modules.Identity.Service.Implements
 {
     /// <summary>
     /// 用户信息
@@ -16,13 +14,13 @@ namespace KissU.Modules.Account.Service.Implements
     /// <seealso cref="IProfileService" />
     public class ProfileService : ProxyServiceBase, IProfileService
     {
-        private readonly IMyProfileAppService _appService;
+        private readonly IProfileAppService _appService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProfileService"/> class.
         /// </summary>
         /// <param name="appService">The application service.</param>
-        public ProfileService(IMyProfileAppService appService)
+        public ProfileService(IProfileAppService appService)
         {
             _appService = appService;
         }
@@ -54,41 +52,6 @@ namespace KissU.Modules.Account.Service.Implements
         public async Task ChangePassword(ChangePasswordInput parameters)
         {
             await _appService.ChangePasswordAsync(parameters);
-        }
-
-        public Task<string> GetMark()
-        {
-            return Task.FromResult("爬山");
-        }
-
-        public Task<bool> SetMark(string mark)
-        {
-            return Task.FromResult(true);
-        }
-
-        public  Task<ListResult<string>> GetDevices()
-        {
-            return Task.FromResult(new ListResult<string>(null));
-        }
-
-        public  Task<bool> Binding(string device)
-        {
-            return Task.FromResult(true);
-        }
-
-        public  Task<bool> Unbundling(string device)
-        {
-            return Task.FromResult(true);
-        }
-
-        public  Task<ListResult<string>> GetTrails()
-        {
-            return Task.FromResult(new ListResult<string>(null));
-        }
-
-        public  Task<ListResult<string>> GetHisTrails(string hisId)
-        {
-            return Task.FromResult(new ListResult<string>(null));
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using KissU.CPlatform.Diagnostics;
 
-namespace KissU.Kestrel.Http.Diagnostics
+namespace KissU.AspNetCore.Kestrel.Diagnostics
 {
     /// <summary>
     /// RestTransportCarrierHeaderCollection.

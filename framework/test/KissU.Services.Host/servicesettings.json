@@ -12,7 +12,7 @@
     "SoBacklog": 100, //用于临时存放已完成三次握手的请求的队列的最大长度
     "Weight": 20, //权重轮询
     "MaxConcurrentRequests": 20, //信号量最大并发度
-    "DisconnTimeInterval": 30, //断开连接时间间隔
+    "DisconnTimeInterval": 10, //断开连接时间间隔
     "ExecutionTimeoutInMilliseconds": 10000, //执行超时时间（毫秒）
     "Protocol": "${Protocol}|None", //配置微服务组件支持的协议 缺省值为: None, Tcp, Http, WS, Mqtt, Dns, Udp
     "RootPath": "${RootPath}", //指定服务引擎解析的业务模块路径
@@ -30,7 +30,7 @@
     "Packages": [ //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpServerModule;DnsProtocolModule;SkywalkingModule;GrpcModule;ApolloModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;AspNetCoreKestrelModule;DnsProtocolModule;SkywalkingModule;GrpcModule;ApolloModule;"
       }
     ]
   },
@@ -88,7 +88,7 @@
     }
 
   },
-  "Swagger": { //Swagger配置,只有微服务组件对外提供了Http服务，才可能生成Swagger文档。微服务必须依赖KestrelHttpServerModule和安装了KissU.AspNetCore.Swagger组件包，并且配置了Swagger相关参数，才可能生成SwaggerApi文档。
+  "Swagger": { //Swagger配置,只有微服务组件对外提供了Http服务，才可能生成Swagger文档。微服务必须依赖AspNetCoreKestrelModule和安装了KissU.AspNetCore.Swagger组件包，并且配置了Swagger相关参数，才可能生成SwaggerApi文档。
     "Info": {
       "Version": "${SwaggerVersion}|V1", // Api文档的版本号,
       "Title": "${SwaggerTitle}|KissU Services", //Api文档标题

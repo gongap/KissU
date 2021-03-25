@@ -164,13 +164,13 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
                 var errorInfo = _errorInfoConverter.Convert(exception.GetRawException(), AppConfig.ServerOptions.IncludeSensitiveDetails);
                 if (errorInfo != null)
                 {
-                    resultMessage.ExceptionMessage = errorInfo.Message;
+                    resultMessage.Message = errorInfo.Message;
                     resultMessage.Details = errorInfo.Details;
                     resultMessage.ValidationErrors = errorInfo.ValidationErrors;
                 }
                 else
                 {
-                    resultMessage.ExceptionMessage = GetExceptionMessage(exception);
+                    resultMessage.Message = GetExceptionMessage(exception);
                 }
 
                 if (_logger.IsEnabled(LogLevel.Error))

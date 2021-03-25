@@ -175,10 +175,10 @@ namespace KissU.CPlatform.Transport.Implementation
             if (message.IsInvokeResultMessage())
             {
                 var content = message.GetContent<RemoteInvokeResultMessage>();
-                if (!string.IsNullOrEmpty(content.ExceptionMessage))
+                if (!string.IsNullOrEmpty(content.Message))
                 {
                     WirteDiagnosticError(message);
-                    task.SetException(new CPlatformCommunicationException(content.ExceptionMessage, content.StatusCode));
+                    task.SetException(new CPlatformCommunicationException(content.Message, content.Details, content.ValidationErrors, content.StatusCode));
                 }
                 else
                 {
@@ -253,7 +253,7 @@ namespace KissU.CPlatform.Transport.Implementation
                         ContentType = message.ContentType,
                         Id = message.Id
                     },
-                    new CPlatformCommunicationException(remoteInvokeResultMessage.ExceptionMessage)));
+                    new CPlatformCommunicationException(remoteInvokeResultMessage.Message)));
             }
         }
     }
