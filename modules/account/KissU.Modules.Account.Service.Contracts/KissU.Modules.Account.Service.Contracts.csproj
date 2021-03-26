@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.WebSocket\KissU.WebSocket.csproj" />
     <ProjectReference Include="..\KissU.Modules.Account.Application.Contracts\KissU.Modules.Account.Application.Contracts.csproj" />
   </ItemGroup>
 </Project>
