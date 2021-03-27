@@ -44,6 +44,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\modules\account\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
+    <ProjectReference Include="..\..\..\modules\common\KissU.Modules.Common.Service\KissU.Modules.Common.Service.csproj" />
     <ProjectReference Include="..\..\..\modules\identity\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
   </ItemGroup>
 

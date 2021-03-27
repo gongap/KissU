@@ -5,7 +5,7 @@ using Volo.Abp.Http.Client.IdentityModel;
 using Volo.Abp.Modularity;
 using Volo.Abp.Threading;
 
-namespace KissU.Client.Host
+namespace KissU.Services.Client
 {
     [DependsOn(typeof(AbpHttpClientIdentityModelModule))]
     public class AppModule : AbpModule, IBusinessModule

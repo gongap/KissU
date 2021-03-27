@@ -1,14 +1,13 @@
 ﻿using System.Threading.Tasks;
 using KissU.Abp;
 using KissU.Caching.Configurations;
-using KissU.CPlatform.Configurations;
-using Microsoft.Extensions.Hosting;
-using KissU.Caching;
 using KissU.CPlatform;
+using KissU.CPlatform.Configurations;
 using KissU.ServiceProxy;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Client.Host
+namespace KissU.Services
 {
     internal class Program
     {
@@ -18,7 +17,7 @@ namespace KissU.Client.Host
         }
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
-            Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
+            Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(configure => configure.ClearProviders())
                 .ConfigureHostConfiguration(builder =>
                 {
@@ -27,11 +26,14 @@ namespace KissU.Client.Host
                 })
                 .AddMicroService(builder =>
                 {
-                    builder.AddClient().AddCache();
+                    builder.AddServiceRuntime()
+                        .AddRelateService()
+                        .AddConfigurationWatch()
+                        .AddServiceEngine();
                 })
-                .AddAbp()
-                .UseClient()
+                .UseServer()
                 .UseAbp()
                 .UseAutofac();
+
     }
 }

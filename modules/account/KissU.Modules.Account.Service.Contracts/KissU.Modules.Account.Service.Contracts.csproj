@@ -2,11 +2,18 @@
   <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Description>账户模块：提供账户管理,并允许用户登录/注册应用程序.</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\KissU.Modules.Account.Service.Contracts.xml</DocumentationFile>
-    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>..\..\output\KissU.Modules.Account.Service.Contracts.xml</DocumentationFile>
+    <OutputPath>..\..\output\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>..\..\output\KissU.Modules.Account.Service.Contracts.xml</DocumentationFile>
+    <OutputPath>..\..\output\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
