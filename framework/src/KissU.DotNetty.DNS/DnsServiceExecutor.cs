@@ -91,7 +91,7 @@ namespace KissU.DotNetty.DNS
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, "执行本地逻辑时候发生了错误。");
+                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.Message}");
             }
 
             return message;

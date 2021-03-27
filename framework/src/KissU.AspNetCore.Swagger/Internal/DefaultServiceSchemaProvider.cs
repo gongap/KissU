@@ -45,7 +45,7 @@ namespace KissU.AspNetCore.Swagger.Internal
             ////        result.Add(path);
             ////}
 
-            return result;
+            ////return result;
         }
     }
 }

@@ -170,12 +170,12 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
                 }
                 else
                 {
-                    resultMessage.Message = GetExceptionMessage(exception);
+                    resultMessage.Message = exception.Message;
                 }
 
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{GetExceptionMessage(exception)}");
+                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.Message}");
                 }
             }
         }
@@ -203,22 +203,6 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
                     _logger.LogError(exception, "发送响应消息时候发生了异常。");
                 }
             }
-        }
-
-        private static string GetExceptionMessage(Exception exception)
-        {
-            if (exception == null)
-            {
-                return string.Empty;
-            }
-
-            var message = exception.Message;
-            if (exception.InnerException != null)
-            {
-                message += "|InnerException:" + GetExceptionMessage(exception.InnerException);
-            }
-
-            return message;
         }
     }
 }

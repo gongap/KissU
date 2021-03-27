@@ -165,7 +165,7 @@ namespace KissU.AspNetCore.Kestrel
 
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{GetExceptionMessage(exception)}");
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.Message}");
                 }
             }
 
@@ -224,7 +224,7 @@ namespace KissU.AspNetCore.Kestrel
 
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{GetExceptionMessage(exception)}");
+                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.Message}");
                 }
             }
 
@@ -253,22 +253,6 @@ namespace KissU.AspNetCore.Kestrel
                     _logger.LogError(exception, $"发送响应消息时候发生了异常。{exception.Message}");
                 }
             }
-        }
-
-        private string GetExceptionMessage(Exception exception)
-        {
-            if (exception == null)
-            {
-                return string.Empty;
-            }
-
-            var message = exception.Message;
-            if (exception.InnerException != null)
-            {
-                message += "|InnerException:" + GetExceptionMessage(exception.InnerException);
-            }
-
-            return message;
         }
 
         private void WirteDiagnosticBefore(TransportMessage message)

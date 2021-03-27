@@ -1,10 +1,13 @@
 ﻿using Volo.Abp.Autofac;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
+using Volo.Abp.Security;
 
 namespace KissU.Abp
 {
-    [DependsOn(typeof(AbpAutofacModule))]
+    [DependsOn(typeof(AbpAutofacModule)
+        ,typeof(AbpSecurityModule)
+        ,typeof(AbpLocalizationModule))]
     public class AbpStartupModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
