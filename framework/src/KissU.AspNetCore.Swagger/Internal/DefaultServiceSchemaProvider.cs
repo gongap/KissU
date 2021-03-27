@@ -30,17 +30,20 @@ namespace KissU.AspNetCore.Swagger.Internal
         /// <returns>IEnumerable&lt;System.String&gt;.</returns>
         public IEnumerable<string> GetSchemaFilesPath()
         {
-            var result = new List<string>();
-            var assemblieFiles = _serviceEntryProvider.GetALLEntries()
-                .Select(p => p.Type.Assembly.Location).Distinct();
+            var directoryPath = Directory.GetCurrentDirectory();
+            return Directory.GetFiles(directoryPath, "*.*", SearchOption.TopDirectoryOnly).ToList()
+                .Where(t => t.EndsWith(".xml")).ToList();
 
-            foreach (var assemblieFile in assemblieFiles)
-            {
-                var fileSpan = assemblieFile.AsSpan();
-                var path = $"{fileSpan.Slice(0, fileSpan.LastIndexOf(".")).ToString()}.xml";
-                if (File.Exists(path))
-                    result.Add(path);
-            }
+            ////var result = new List<string>();
+            ////var assemblieFiles = _serviceEntryProvider.GetALLEntries()
+            ////    .Select(p => p.Type.Assembly.Location).Distinct();
+            ////foreach (var assemblieFile in assemblieFiles)
+            ////{
+            ////    var fileSpan = assemblieFile.AsSpan();
+            ////    var path = $"{fileSpan.Slice(0, fileSpan.LastIndexOf(".")).ToString()}.xml";
+            ////    if (File.Exists(path))
+            ////        result.Add(path);
+            ////}
 
             return result;
         }
