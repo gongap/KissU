@@ -4,6 +4,8 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>engine-cli</AssemblyName>
+    <PackageId>KissU.Tools.Cli</PackageId>
+    <Authors>KissU.Tools.Cli</Authors>
   </PropertyGroup>
 
   <ItemGroup>

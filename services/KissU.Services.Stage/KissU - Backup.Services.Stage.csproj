@@ -4,8 +4,6 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>KissU.Services</RootNamespace>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -40,14 +38,15 @@
     <ProjectReference Include="..\..\framework\src\KissU.BackgroundServer\KissU.BackgroundServer.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Logging.Log4net\KissU.Logging.Log4net.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Logging.Serilog\KissU.Logging.Serilog.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Stage\KissU.AspNetCore.Stage.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Swagger\KissU.AspNetCore.Swagger.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\modules\account\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
-    <ProjectReference Include="..\..\modules\common\KissU.Modules.Common.Service\KissU.Modules.Common.Service.csproj" />
-    <ProjectReference Include="..\..\modules\identity\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
+    <ProjectReference Include="..\..\modules\account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\modules\common\KissU.Modules.Common.Service.Contracts\KissU.Modules.Common.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\modules\identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -72,9 +71,8 @@
     <None Update="skyapm.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\PublishProfiles\" />
+    <None Update="stagesettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
