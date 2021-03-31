@@ -156,6 +156,10 @@ namespace KissU.AspNetCore.Kestrel
             services.AddFilters(typeof(HttpRequestFilterAttribute));
             services.AddFilters(typeof(CustomerExceptionFilterAttribute));
             _moduleProvider.ConfigureServices(new ServiceConfigurationContext(services));
+            context.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new RequestCulture("zh-Hans");
+            })
         }
 
         private void AppResolve(IApplicationBuilder app)
