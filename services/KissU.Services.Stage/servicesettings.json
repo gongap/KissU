@@ -12,6 +12,7 @@
     "SoBacklog": 100,
     "MaxConcurrentRequests": 20,
     "DisconnTimeInterval": 30,
+    "BreakerForceClosed": true,
     "ExecutionTimeoutInMilliseconds": 30000,
     "Protocol": "${Protocol}|None",
     "RootPath": "${RootPath}",
@@ -20,16 +21,17 @@
     "ReloadOnChange": false,
     "IncludeSensitiveDetails": false,
     "Ports": {
-      "HttpPort": "${HttpPort}|281",
-      "WSPort": "${WSPort}|951",
-      "MQTTPort": "${MQTTPort}||961",
-      "GrpcPort": "${GrpcPort}||971"
+      "HttpPort": "${HttpPort}|8091",
+      "WSPort": "${WSPort}|8092",
+      "MQTTPort": "${MQTTPort}|8093",
+      "GrpcPort": "${GrpcPort}|8094",
+      "UdpPort": "${UdpPort}|8095"
     },
     "RequestCacheEnabled": false,
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;DnsProtocolModule;AspNetCoreKestrelModule;SkywalkingModule;GrpcModule;ApiGateWayModule;ApolloModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;DnsProtocolModule;AspNetCoreKestrelModule;SkywalkingModule;GrpcModule;ApiGateWayModule;ApolloModule;AspNetCoreStageModule;"
       }
     ]
   },
@@ -41,9 +43,9 @@
     "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
     "Protocols": "Http1AndHttp2",
     "AuthServer": {
-      "Authority": "http://localhost:8090",
+      "Authority": "http://localhost:5000",
       "ApiName": "IdentityService",
-      "Https": false,
+      "Https": false
     },
     "ApiGetWay": {
       "AccessTokenExpireTimeSpan": "30",
@@ -69,8 +71,8 @@
         "Enable": true
       }
     ],
-    "HttpsPort": "${StageHttpsPorts}|446,449",
-    "HttpPorts": "${StageHttpPorts}|282,283"
+    "HttpPorts": "${StageHttpPorts}|8096,8097",
+    "HttpsPort": "${StageHttpsPorts}|446,447"
   },
   "Consul": {
     "ConnectionString": "${Register_Conn}|127.0.0.1:8500",

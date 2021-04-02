@@ -19,6 +19,7 @@ using KissU.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -155,11 +156,11 @@ namespace KissU.AspNetCore.Kestrel
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddFilters(typeof(HttpRequestFilterAttribute));
             services.AddFilters(typeof(CustomerExceptionFilterAttribute));
-            _moduleProvider.ConfigureServices(new ServiceConfigurationContext(services));
-            context.Services.Configure<RequestLocalizationOptions>(options =>
+            services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new RequestCulture("zh-Hans");
-            })
+            });
+            _moduleProvider.ConfigureServices(new ServiceConfigurationContext(services));
         }
 
         private void AppResolve(IApplicationBuilder app)

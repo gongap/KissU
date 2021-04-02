@@ -13,7 +13,8 @@
     "Weight": 20, //权重轮询
     "MaxConcurrentRequests": 20, //信号量最大并发度
     "DisconnTimeInterval": 10, //断开连接时间间隔
-    "ExecutionTimeoutInMilliseconds": 10000, //执行超时时间（毫秒）
+    "BreakerForceClosed": true,
+    "ExecutionTimeoutInMilliseconds": 30000, //执行超时时间（毫秒）
     "Protocol": "${Protocol}|None", //配置微服务组件支持的协议 缺省值为: None, Tcp, Http, WS, Mqtt, Dns, Udp
     "RootPath": "${RootPath}", //指定服务引擎解析的业务模块路径
     "WebRootPath": "${WebRootPath}", //指定Web主机根路径
@@ -21,16 +22,17 @@
     "ReloadOnChange": false, //当配置改变后是否重新加载
     "IncludeSensitiveDetails": false,
     "Ports": {
-      "HttpPort": "${HttpPort}|8001",
-      "WSPort": "${WSPort}|8101",
-      "MQTTPort": "${MQTTPort}|8201",
-      "GrpcPort": "${GrpcPort}|8301"
+      "HttpPort": "${HttpPort}|8081",
+      "WSPort": "${WSPort}|8082",
+      "MQTTPort": "${MQTTPort}|8083",
+      "GrpcPort": "${GrpcPort}|8084",
+      "UdpPort": "${UdpPort}|8085"
     },
     "RequestCacheEnabled": false, //启用请求缓存
     "Packages": [ //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;AspNetCoreKestrelModule;DnsProtocolModule;SkywalkingModule;GrpcModule;ApolloModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;AspNetCoreKestrelModule;SkywalkingModule;GrpcModule;ApolloModule;"
       }
     ]
   },
