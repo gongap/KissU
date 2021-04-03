@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.WebSocket\KissU.WebSocket.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Grpc\KissU.Grpc.csproj" />
@@ -25,7 +26,6 @@
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty\KissU.DotNetty.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty.DNS\KissU.DotNetty.DNS.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty.WebSocket\KissU.DotNetty.WebSocket.csproj" />
-    <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Kestrel\KissU.AspNetCore.Kestrel.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty.Http\KissU.DotNetty.Http.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty.Mqtt\KissU.DotNetty.Mqtt.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty.Udp\KissU.DotNetty.Udp.csproj" />
@@ -41,10 +41,10 @@
     <ProjectReference Include="..\..\framework\src\KissU.Logging.Log4net\KissU.Logging.Log4net.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Logging.Serilog\KissU.Logging.Serilog.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Logging.Exceptionless\KissU.Logging.Exceptionless.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Kestrel\KissU.AspNetCore.Kestrel.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Swagger\KissU.AspNetCore.Swagger.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.NLog\KissU.AspNetCore.NLog.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Log4net\KissU.AspNetCore.Log4net.csproj" />
-    <ProjectReference Include="..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
