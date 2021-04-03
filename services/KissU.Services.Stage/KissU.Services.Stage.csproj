@@ -44,8 +44,6 @@
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Kestrel\KissU.AspNetCore.Kestrel.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Stage\KissU.AspNetCore.Stage.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Swagger\KissU.AspNetCore.Swagger.csproj" />
-    <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.NLog\KissU.AspNetCore.NLog.csproj" />
-    <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Log4net\KissU.AspNetCore.Log4net.csproj" />
   </ItemGroup>
 
   <ItemGroup>
