@@ -1,12 +1,11 @@
-﻿using KissU.Helpers;
+﻿using KissU.AspNetCore.Internal;
 using KissU.CPlatform;
+using KissU.Helpers;
 using KissU.Logging.Log4net;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using KissU.AspNetCore.Internal;
-using KissU.AspNetCore;
 
-namespace KissU.Kestrel.Log4net
+namespace KissU.AspNetCore.Log4net
 {
     /// <summary>
     /// KestrelLog4netModule.

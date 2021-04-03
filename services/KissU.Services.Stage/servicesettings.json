@@ -12,26 +12,25 @@
     "SoBacklog": 100,
     "MaxConcurrentRequests": 20,
     "DisconnTimeInterval": 30,
-    "BreakerForceClosed": true,
     "ExecutionTimeoutInMilliseconds": 30000,
+    "BreakerForceClosed": true,
     "Protocol": "${Protocol}|None",
     "RootPath": "${RootPath}",
     "WebRootPath": "${WebRootPath}",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
-    "IncludeSensitiveDetails": false,
     "Ports": {
-      "HttpPort": "${HttpPort}|8091",
-      "WSPort": "${WSPort}|8092",
-      "MQTTPort": "${MQTTPort}|8093",
-      "GrpcPort": "${GrpcPort}|8094",
-      "UdpPort": "${UdpPort}|8095"
+      "HttpPort": "${HttpPort}|9101",
+      "WSPort": "${WSPort}|9102",
+      "MQTTPort": "${MQTTPort}|9103",
+      "GrpcPort": "${GrpcPort}|9104",
+      "UdpPort": "${UdpPort}|9105"
     },
     "RequestCacheEnabled": false,
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;DnsProtocolModule;AspNetCoreKestrelModule;SkywalkingModule;GrpcModule;ApiGateWayModule;ApolloModule;AspNetCoreStageModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;EventBusRabbitMQModule;CachingModule;ApiGateWayModule;ApolloModule;AspNetCoreKestrelModule;AspNetCoreNLogModule;"
       }
     ]
   },
@@ -48,14 +47,14 @@
       "Https": false
     },
     "ApiGetWay": {
-      "AccessTokenExpireTimeSpan": "30",
+      "AccessTokenExpireTimeSpan": "86400",
       "AuthorizationRoutePath": "api/auth/token",
       "AuthorizationServiceKey": "Auth",
       "TokenEndpointPath": "api/connect/token",
       "CacheMode": "MemoryCache"
     },
     "AccessPolicy": {
-      "Origins": [ "http://localhost:4200", "http://localhost:53435" ],
+      "Origins": [ "http://localhost:4200" ],
       "AllowAnyHeader": true,
       "AllowAnyMethod": true
     },
@@ -71,8 +70,8 @@
         "Enable": true
       }
     ],
-    "HttpPorts": "${StageHttpPorts}|8096,8097",
-    "HttpsPort": "${StageHttpsPorts}|446,447"
+    "HttpPorts": "${StageHttpPorts}|9106,9107,9108,9109",
+    "HttpsPort": "${StageHttpsPorts}"
   },
   "Consul": {
     "ConnectionString": "${Register_Conn}|127.0.0.1:8500",
@@ -132,16 +131,7 @@
     "Info": {
       "Version": "${SwaggerVersion}|V1",
       "Title": "${SwaggerTitle}|KissU Services",
-      "Description": "${SwaggerDes}|KissU Services",
-      "Contact": {
-        "Name": "API Support",
-        "Email": "gonganping@qq.com",
-        "Url": "https://github.com/gongap/kissu"
-      },
-      "License": {
-        "Name": "MIT",
-        "Url": ""
-      }
+      "Description": "${SwaggerDes}|KissU Services"
     },
     "Options": {
       "IgnoreFullyQualified": false,
@@ -174,6 +164,13 @@
     "Enrich": [ "FromLogContext", "WithMachineName", "WithThreadId" ],
     "Properties": {
       "Application": "Sample"
+    }
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
     }
   }
 }

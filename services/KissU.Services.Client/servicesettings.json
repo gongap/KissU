@@ -7,11 +7,6 @@
     "MappingPort": "${Mapping_Port}",
     "Token": "123456789",
     "Libuv": true,
-    "Protocol": "${Protocol}|Http", //Http¡¢Tcp¡¢None
-    "RootPath": "${RootPath}",
-    "Ports": {
-      "HttpPort": "${HttpPort}|8080"
-    },
     "RequestCacheEnabled": false,
     "Packages": [
       {
@@ -40,5 +35,28 @@
     "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181",
     "SessionTimeout": 50,
     "ReloadOnChange": true
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "RemoteServices": {
+    "Default": {
+      "BaseUrl": "http://127.0.0.1:281/"
+    }
+  },
+  "IdentityClients": {
+    "Default": {
+      "GrantType": "password",
+      "ClientId": "console-client-demo",
+      "ClientSecret": "1q2w3e*",
+      "Authority": "http://localhost:5000",
+      "Scope": "InternalGateway IdentityService ProductService TenantManagementService",
+      "UserName": "admin",
+      "UserPassword": "adminP@ss123"
+    }
   }
 }

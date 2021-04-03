@@ -1,12 +1,11 @@
-﻿using KissU.Helpers;
+﻿using KissU.AspNetCore.Internal;
+using KissU.Helpers;
 using KissU.Logging.Nlog;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog;
-using KissU.AspNetCore;
-using KissU.AspNetCore.Internal;
 
-namespace KissU.Kestrel.Nlog
+namespace KissU.AspNetCore.Nlog
 {
     /// <summary>
     /// KestrelNLogModule.

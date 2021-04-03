@@ -22,17 +22,17 @@
     "ReloadOnChange": false, //当配置改变后是否重新加载
     "IncludeSensitiveDetails": false,
     "Ports": {
-      "HttpPort": "${HttpPort}|8081",
-      "WSPort": "${WSPort}|8082",
-      "MQTTPort": "${MQTTPort}|8083",
-      "GrpcPort": "${GrpcPort}|8084",
-      "UdpPort": "${UdpPort}|8085"
+      "HttpPort": "${HttpPort}|8101",
+      "WSPort": "${WSPort}|8102",
+      "MQTTPort": "${MQTTPort}|8103",
+      "GrpcPort": "${GrpcPort}|8104",
+      "UdpPort": "${UdpPort}|8105"
     },
     "RequestCacheEnabled": false, //启用请求缓存
     "Packages": [ //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;AspNetCoreKestrelModule;SkywalkingModule;GrpcModule;ApolloModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;SkywalkingModule;GrpcModule;ApolloModule;AspNetCoreKestrelModule;AspNetCoreNLogModule;"
       }
     ]
   },
@@ -131,5 +131,15 @@
     "Properties": {
       "Application": "Sample"
     }
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "ConnectionStrings": {
+    "AbpIdentity": "Server=.;Database=KissU.Identity;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
   }
 }

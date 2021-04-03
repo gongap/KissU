@@ -34,14 +34,17 @@
     <ProjectReference Include="..\..\framework\src\KissU.Codec.ProtoBuffer\KissU.Codec.ProtoBuffer.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Configuration.Apollo\KissU.Configuration.Apollo.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.ServiceDiscovery.Consul\KissU.ServiceDiscovery.Consul.csproj" />
-    <ProjectReference Include="..\..\framework\src\KissU.Logging.NLog\KissU.Logging.NLog.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.EventBus.RabbitMQ\KissU.EventBus.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.BackgroundServer\KissU.BackgroundServer.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.Logging.NLog\KissU.Logging.NLog.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Logging.Log4net\KissU.Logging.Log4net.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Logging.Serilog\KissU.Logging.Serilog.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.Logging.Exceptionless\KissU.Logging.Exceptionless.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Stage\KissU.AspNetCore.Stage.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Swagger\KissU.AspNetCore.Swagger.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.NLog\KissU.AspNetCore.NLog.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Log4net\KissU.AspNetCore.Log4net.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
   </ItemGroup>
 
@@ -53,9 +56,6 @@
 
   <ItemGroup>
     <None Update="apollo.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="cachesettings.json">
