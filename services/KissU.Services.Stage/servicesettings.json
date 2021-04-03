@@ -166,7 +166,12 @@
       "Application": "Sample"
     }
   },
+  "Exceptionless": {
+    "ApiKey": "FgQufKpZSByltG0IJZ34QweEcigfiOoKin2uaVhY",
+    "ServerUrl": "http://localhost:8089"
+  },
   "Logging": {
+    "IncludeScopes": false,
     "LogLevel": {
       "Default": "Debug",
       "Microsoft": "Warning",

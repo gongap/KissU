@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using KissU.CPlatform;
 using KissU.Modularity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
@@ -23,6 +24,12 @@ namespace KissU.Logging.Serilog
         {
             var serviceProvider = context.ServiceProvoider;
             base.Initialize(context);
+            var exceptionlessOption = new ExceptionlessOption();
+           var section = AppConfig.GetSection("Exceptionless");
+            if (section.Exists())
+            {
+                exceptionlessOption = section.Get<ExceptionlessOption>();
+            }
 
             var logger = new LoggerConfiguration().ReadFrom.Configuration(AppConfig.Configuration)
 #if DEBUG
@@ -35,6 +42,7 @@ namespace KissU.Logging.Serilog
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .WriteTo.Async(c => c.File(Path.Combine(Directory.GetCurrentDirectory(), "logs/logs.txt")))
+                .WriteTo.Exceptionless(exceptionlessOption.ApiKey, exceptionlessOption.ServerUrl)
                 .CreateLogger();
 
             serviceProvider.GetInstances<ILoggerFactory>().AddSerilog(logger);

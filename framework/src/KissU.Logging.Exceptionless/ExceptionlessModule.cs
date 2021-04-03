@@ -14,16 +14,9 @@ namespace KissU.Logging.Exceptionless
         /// <param name="context">The context.</param>
         public override void Initialize(ModuleInitializationContext context)
         {
-            ExceptionlessClient.Default.Startup("K5eb9azwszauu9094Nuii0hXhWcpxoSqr3CqVjer");
-            //ExceptionlessClient.Default.Configuration.ApiKey = Configuration.GetSection("K5eb9azwszauu9094Nuii0hXhWcpxoSqr3CqVjer").Value;
-            //ExceptionlessClient.Default.Configuration.ServerUrl = Configuration.GetSection("http://localhost:8001").Value;
-            //ExceptionlessClient.Default.Configuration.ApiKey = Configuration.GetSection("Exceptionless:ApiKey").Value;
-            //ExceptionlessClient.Default.Configuration.ServerUrl = Configuration.GetSection("Exceptionless:ServerUrl").Value;
-            //app.UseExceptionless();
-            //"Exceptionless": {
-            //    "ApiKey": "aW6nxAsLNE5JcFthRbjbh5Ot2iFk4MgrcZtC35Ut",
-            //    "ServerUrl": "http://localhost:50000"
-            //}
+            ExceptionlessClient.Default.Configuration.ServerUrl = "http://localhost:8089";
+            //ExceptionlessClient.Default.Configuration.ApiKey = "FgQufKpZSByltG0IJZ34QweEcigfiOoKin2uaVhY";
+            ExceptionlessClient.Default.Startup("FgQufKpZSByltG0IJZ34QweEcigfiOoKin2uaVhY");
         }
     }
 }

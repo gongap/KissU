@@ -40,7 +40,6 @@
     <ProjectReference Include="..\..\framework\src\KissU.Logging.NLog\KissU.Logging.NLog.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Logging.Log4net\KissU.Logging.Log4net.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Logging.Serilog\KissU.Logging.Serilog.csproj" />
-    <ProjectReference Include="..\..\framework\src\KissU.Logging.Exceptionless\KissU.Logging.Exceptionless.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Kestrel\KissU.AspNetCore.Kestrel.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Stage\KissU.AspNetCore.Stage.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Swagger\KissU.AspNetCore.Swagger.csproj" />
