@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\..\common.props" />
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>..\..\..\output\KissU.Modules.Common.Service.Contracts.xml</DocumentationFile>
+    <OutputPath>..\..\..\output\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\output\</OutputPath>
+    <DocumentationFile>..\..\..\output\KissU.Modules.Common.Service.Contracts.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Core" Version="4.2.1" />
+    <PackageReference Include="Volo.Abp.Account.Application.Contracts" Version="4.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.WebSocket\KissU.WebSocket.csproj" />
+  </ItemGroup>
+</Project>

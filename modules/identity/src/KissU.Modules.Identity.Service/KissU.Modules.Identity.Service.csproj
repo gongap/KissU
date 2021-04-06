@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\common.props" />
+  <Import Project="..\..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
     <ProjectReference Include="..\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
   </ItemGroup>
 </Project>

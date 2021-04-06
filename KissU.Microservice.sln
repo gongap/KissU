@@ -19,27 +19,39 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{243384
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "identity", "identity", "{4ED67552-1C93-4563-95D5-5D5A84294218}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Application.Contracts", "modules\identity\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj", "{5E7BFFC8-6D14-4F1A-A9B2-33E91B1EE41F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Application.Contracts", "modules\identity\src\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj", "{5E7BFFC8-6D14-4F1A-A9B2-33E91B1EE41F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Application", "modules\identity\KissU.Modules.Identity.Application\KissU.Modules.Identity.Application.csproj", "{9F067C21-F2C1-4D60-ACE7-3897BED85362}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Application", "modules\identity\src\KissU.Modules.Identity.Application\KissU.Modules.Identity.Application.csproj", "{9F067C21-F2C1-4D60-ACE7-3897BED85362}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.DbMigrator", "modules\identity\KissU.Modules.Identity.DbMigrator\KissU.Modules.Identity.DbMigrator.csproj", "{A9F92FEC-CC33-40C8-BF63-E33BAD63AE96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.DbMigrator", "modules\identity\src\KissU.Modules.Identity.DbMigrator\KissU.Modules.Identity.DbMigrator.csproj", "{A9F92FEC-CC33-40C8-BF63-E33BAD63AE96}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Service", "modules\identity\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj", "{D068B114-BBAC-4449-8A2E-761DF28AE040}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Service", "modules\identity\src\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj", "{D068B114-BBAC-4449-8A2E-761DF28AE040}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Service.Contracts", "modules\identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj", "{33849CEF-098F-4E23-B463-D0A26D898127}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Service.Contracts", "modules\identity\src\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj", "{33849CEF-098F-4E23-B463-D0A26D898127}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Common.Service.Contracts", "modules\common\KissU.Modules.Common.Service.Contracts\KissU.Modules.Common.Service.Contracts.csproj", "{A6195274-4EB2-4345-8E5C-21BE9EC645CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Common.Service.Contracts", "modules\common\src\KissU.Modules.Common.Service.Contracts\KissU.Modules.Common.Service.Contracts.csproj", "{A6195274-4EB2-4345-8E5C-21BE9EC645CC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Common.Service", "modules\common\KissU.Modules.Common.Service\KissU.Modules.Common.Service.csproj", "{57B62458-D04B-442F-9A90-E5A02C9B9AC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Common.Service", "modules\common\src\KissU.Modules.Common.Service\KissU.Modules.Common.Service.csproj", "{57B62458-D04B-442F-9A90-E5A02C9B9AC8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Application", "modules\account\KissU.Modules.Account.Application\KissU.Modules.Account.Application.csproj", "{DF5356D0-0B77-4CF3-A137-4C2B24F1F71F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Application", "modules\account\src\KissU.Modules.Account.Application\KissU.Modules.Account.Application.csproj", "{DF5356D0-0B77-4CF3-A137-4C2B24F1F71F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Application.Contracts", "modules\account\KissU.Modules.Account.Application.Contracts\KissU.Modules.Account.Application.Contracts.csproj", "{BBE10454-7894-444C-BD46-56B583499934}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Application.Contracts", "modules\account\src\KissU.Modules.Account.Application.Contracts\KissU.Modules.Account.Application.Contracts.csproj", "{BBE10454-7894-444C-BD46-56B583499934}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Service", "modules\account\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj", "{BF9DDF10-78FE-45E0-984B-1250E902DAFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Service", "modules\account\src\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj", "{BF9DDF10-78FE-45E0-984B-1250E902DAFF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Service.Contracts", "modules\account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj", "{16415085-78C5-4215-82AF-8159707BC34A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Service.Contracts", "modules\account\src\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj", "{16415085-78C5-4215-82AF-8159707BC34A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{56B16B4D-5B77-4DA2-B2B9-06D6FACC6ADE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{BAEF4625-D741-4511-A05F-4C7DE3E166DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{050598F9-5FB4-45E6-AE93-A41E09D80F31}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{484CD731-CB15-4237-9021-CF1E2E2CF08D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D8C1210B-1BAD-465C-A927-276A0A6E0834}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0A8BD6A0-A9E2-4D6B-987F-00400FACBA96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -114,17 +126,23 @@ Global
 		{A4DCD82E-7D5B-4815-8A36-C97648505C07} = {6C77436C-A4B3-4CB5-BB1D-B4E5CBB02D8E}
 		{24338456-5CD2-4380-80E8-B1A8D9A6D456} = {6C77436C-A4B3-4CB5-BB1D-B4E5CBB02D8E}
 		{4ED67552-1C93-4563-95D5-5D5A84294218} = {6C77436C-A4B3-4CB5-BB1D-B4E5CBB02D8E}
-		{5E7BFFC8-6D14-4F1A-A9B2-33E91B1EE41F} = {4ED67552-1C93-4563-95D5-5D5A84294218}
-		{9F067C21-F2C1-4D60-ACE7-3897BED85362} = {4ED67552-1C93-4563-95D5-5D5A84294218}
-		{A9F92FEC-CC33-40C8-BF63-E33BAD63AE96} = {4ED67552-1C93-4563-95D5-5D5A84294218}
-		{D068B114-BBAC-4449-8A2E-761DF28AE040} = {4ED67552-1C93-4563-95D5-5D5A84294218}
-		{33849CEF-098F-4E23-B463-D0A26D898127} = {4ED67552-1C93-4563-95D5-5D5A84294218}
-		{A6195274-4EB2-4345-8E5C-21BE9EC645CC} = {24338456-5CD2-4380-80E8-B1A8D9A6D456}
-		{57B62458-D04B-442F-9A90-E5A02C9B9AC8} = {24338456-5CD2-4380-80E8-B1A8D9A6D456}
-		{DF5356D0-0B77-4CF3-A137-4C2B24F1F71F} = {A4DCD82E-7D5B-4815-8A36-C97648505C07}
-		{BBE10454-7894-444C-BD46-56B583499934} = {A4DCD82E-7D5B-4815-8A36-C97648505C07}
-		{BF9DDF10-78FE-45E0-984B-1250E902DAFF} = {A4DCD82E-7D5B-4815-8A36-C97648505C07}
-		{16415085-78C5-4215-82AF-8159707BC34A} = {A4DCD82E-7D5B-4815-8A36-C97648505C07}
+		{5E7BFFC8-6D14-4F1A-A9B2-33E91B1EE41F} = {D8C1210B-1BAD-465C-A927-276A0A6E0834}
+		{9F067C21-F2C1-4D60-ACE7-3897BED85362} = {D8C1210B-1BAD-465C-A927-276A0A6E0834}
+		{A9F92FEC-CC33-40C8-BF63-E33BAD63AE96} = {D8C1210B-1BAD-465C-A927-276A0A6E0834}
+		{D068B114-BBAC-4449-8A2E-761DF28AE040} = {D8C1210B-1BAD-465C-A927-276A0A6E0834}
+		{33849CEF-098F-4E23-B463-D0A26D898127} = {D8C1210B-1BAD-465C-A927-276A0A6E0834}
+		{A6195274-4EB2-4345-8E5C-21BE9EC645CC} = {050598F9-5FB4-45E6-AE93-A41E09D80F31}
+		{57B62458-D04B-442F-9A90-E5A02C9B9AC8} = {050598F9-5FB4-45E6-AE93-A41E09D80F31}
+		{DF5356D0-0B77-4CF3-A137-4C2B24F1F71F} = {56B16B4D-5B77-4DA2-B2B9-06D6FACC6ADE}
+		{BBE10454-7894-444C-BD46-56B583499934} = {56B16B4D-5B77-4DA2-B2B9-06D6FACC6ADE}
+		{BF9DDF10-78FE-45E0-984B-1250E902DAFF} = {56B16B4D-5B77-4DA2-B2B9-06D6FACC6ADE}
+		{16415085-78C5-4215-82AF-8159707BC34A} = {56B16B4D-5B77-4DA2-B2B9-06D6FACC6ADE}
+		{56B16B4D-5B77-4DA2-B2B9-06D6FACC6ADE} = {A4DCD82E-7D5B-4815-8A36-C97648505C07}
+		{BAEF4625-D741-4511-A05F-4C7DE3E166DE} = {A4DCD82E-7D5B-4815-8A36-C97648505C07}
+		{050598F9-5FB4-45E6-AE93-A41E09D80F31} = {24338456-5CD2-4380-80E8-B1A8D9A6D456}
+		{484CD731-CB15-4237-9021-CF1E2E2CF08D} = {24338456-5CD2-4380-80E8-B1A8D9A6D456}
+		{D8C1210B-1BAD-465C-A927-276A0A6E0834} = {4ED67552-1C93-4563-95D5-5D5A84294218}
+		{0A8BD6A0-A9E2-4D6B-987F-00400FACBA96} = {4ED67552-1C93-4563-95D5-5D5A84294218}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60B3B9A2-EE46-490A-8588-86D958332816}

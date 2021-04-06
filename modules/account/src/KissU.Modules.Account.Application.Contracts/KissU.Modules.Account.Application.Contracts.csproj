@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\common.props" />
+  <Import Project="..\..\..\..\common.props" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -7,12 +7,12 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>..\..\output</OutputPath>
-    <DocumentationFile>..\..\output\KissU.Modules.Account.Application.Contracts.xml</DocumentationFile>
+    <DocumentationFile>..\..\..\output\KissU.Modules.Account.Application.Contracts.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\output</OutputPath>
-    <DocumentationFile>..\..\output\KissU.Modules.Account.Application.Contracts.xml</DocumentationFile>
+    <DocumentationFile>..\..\..\output\KissU.Modules.Account.Application.Contracts.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\framework\src\KissU.Core\KissU.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Core\KissU.Core.csproj" />
   </ItemGroup>
 
 
