@@ -76,6 +76,11 @@ namespace KissU.CPlatform.Messages
         public string Message { get; set; }
 
         /// <summary>
+        /// 编码
+        /// </summary>
+        public string Code { get; set; }
+
+        /// <summary>
         /// Error details.
         /// </summary>
         public string Details { get; set; }

@@ -154,7 +154,7 @@ namespace KissU.AspNetCore.Kestrel
                 var errorInfo = _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
                 if (errorInfo != null)
                 {
-                    resultMessage.StatusCode = errorInfo.Code;
+                    resultMessage.Code = errorInfo.Code;
                     resultMessage.Message = errorInfo.Message;
                     resultMessage.Details = errorInfo.Details;
                     resultMessage.ValidationErrors = errorInfo.ValidationErrors;
@@ -214,7 +214,7 @@ namespace KissU.AspNetCore.Kestrel
                 var errorInfo = _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
                 if (errorInfo != null)
                 {
-                    resultMessage.StatusCode = errorInfo.Code;
+                    resultMessage.Code = errorInfo.Code;
                     resultMessage.Message = errorInfo.Message;
                     resultMessage.Details = errorInfo.Details;
                     resultMessage.ValidationErrors = errorInfo.ValidationErrors;

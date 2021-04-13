@@ -19,7 +19,7 @@ namespace KissU.Exceptions.Handling
             {
                 return new RemoteServiceErrorInfo
                 {
-                    Code = communicationException.HResult,
+                    Code = communicationException.Code,
                     Message = exception.Message,
                     Data = exception.Data,
                     Details = communicationException.Details,

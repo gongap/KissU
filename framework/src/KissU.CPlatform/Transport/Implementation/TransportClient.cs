@@ -178,7 +178,7 @@ namespace KissU.CPlatform.Transport.Implementation
                 if (!string.IsNullOrEmpty(content.Message))
                 {
                     WirteDiagnosticError(message);
-                    task.SetException(new CPlatformCommunicationException(content.Message, content.Details, content.ValidationErrors, content.StatusCode));
+                    task.SetException(new CPlatformCommunicationException(content.Message, content.Code,  content.Details, content.ValidationErrors, content.StatusCode));
                 }
                 else
                 {

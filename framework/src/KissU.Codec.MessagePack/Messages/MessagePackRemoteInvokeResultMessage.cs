@@ -17,22 +17,25 @@ namespace KissU.Codec.MessagePack.Messages
         [Key(0)]
         public string Message { get; set; }
 
+        [Key(1)]
+        public string Code { get; set; }
+
         /// <summary>
         /// Gets or sets the result.
         /// </summary>
-        [Key(1)]
+        [Key(2)]
         public DynamicItem Result { get; set; }
 
         /// <summary>
         /// Error details.
         /// </summary>
-        [Key(2)]
+        [Key(3)]
         public string Details { get; set; }
 
         /// <summary>
         /// Gets or sets the validation errors.
         /// </summary>
-        [Key(3)]
+        [Key(4)]
         public RemoteServiceValidationErrorInfo[] ValidationErrors { get; set; }
 
         /// <summary>
@@ -45,6 +48,7 @@ namespace KissU.Codec.MessagePack.Messages
             return new RemoteInvokeResultMessage
             {
                 Message = Message,
+                Code = Code,
                 Result = Result?.Get(),
                 Details  = Details,
                 ValidationErrors = ValidationErrors,
@@ -60,6 +64,7 @@ namespace KissU.Codec.MessagePack.Messages
         public MessagePackRemoteInvokeResultMessage(RemoteInvokeResultMessage result)
         {
             Message = result.Message;
+            Code = result.Code;
             Result = result.Result == null ? null : new DynamicItem(result.Result);
             Details = result.Details;
             ValidationErrors = result.ValidationErrors;
