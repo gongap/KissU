@@ -161,7 +161,7 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
             catch (Exception exception)
             {
                 resultMessage.StatusCode = exception.HResult;
-                var errorInfo = _errorInfoConverter.Convert(exception.GetRawException(), AppConfig.ServerOptions.IncludeSensitiveDetails);
+                var errorInfo = _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
                 if (errorInfo != null)
                 {
                     resultMessage.Message = errorInfo.Message;

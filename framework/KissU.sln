@@ -84,6 +84,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{31BF1D09-9CD1-4849-AEE8-312B1CB859BA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{29F61DC4-A718-4A7B-B8EE-75881BFAB94F}"
+	ProjectSection(SolutionItems) = preProject
+		..\common.props = ..\common.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{166EB01A-DF8A-4AF0-BCFF-66DC7462F050}"
 	ProjectSection(SolutionItems) = preProject
