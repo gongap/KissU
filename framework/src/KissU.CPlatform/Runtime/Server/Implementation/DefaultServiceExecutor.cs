@@ -164,6 +164,7 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
                 var errorInfo = _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
                 if (errorInfo != null)
                 {
+                    resultMessage.StatusCode = errorInfo.Code;
                     resultMessage.Message = errorInfo.Message;
                     resultMessage.Details = errorInfo.Details;
                     resultMessage.ValidationErrors = errorInfo.ValidationErrors;

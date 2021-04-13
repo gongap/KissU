@@ -12,7 +12,7 @@ namespace KissU.Exceptions
         /// <summary>
         /// Error code.
         /// </summary>
-        public string Code { get; set; }
+        public int Code { get; set; }
 
         /// <summary>
         /// Error message.
@@ -45,7 +45,7 @@ namespace KissU.Exceptions
         /// <param name="code">Error code</param>
         /// <param name="details">Error details</param>
         /// <param name="message">Error message</param>
-        public RemoteServiceErrorInfo(string message, string details = null, string code = null)
+        public RemoteServiceErrorInfo(string message, string details = null, int code = 200)
         {
             Message = message;
             Details = details;
