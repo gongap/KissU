@@ -23,5 +23,8 @@
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Core\KissU.Core.csproj" />
   </ItemGroup>
 
-
+  <ItemGroup>
+    <None Remove="Localization\Resources\*.json" />
+    <EmbeddedResource Include="Localization\Resources\*.json" />
+  </ItemGroup>
 </Project>

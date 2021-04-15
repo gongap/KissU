@@ -16,4 +16,9 @@
   <ItemGroup>
     <ProjectReference Include="..\KissU.CPlatform\KissU.CPlatform.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Localization\Resources\*.json" />
+    <EmbeddedResource Include="Localization\Resources\*.json" />
+  </ItemGroup>
 </Project>
