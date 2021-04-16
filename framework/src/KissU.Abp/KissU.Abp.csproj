@@ -16,8 +16,4 @@
   <ItemGroup>
     <ProjectReference Include="..\KissU.CPlatform\KissU.CPlatform.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\Resources\*.json" />
-  </ItemGroup>
 </Project>

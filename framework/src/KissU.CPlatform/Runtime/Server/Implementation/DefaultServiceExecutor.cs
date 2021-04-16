@@ -11,6 +11,7 @@ using KissU.CPlatform.Transport.Implementation;
 using KissU.Exceptions.Handling;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace KissU.CPlatform.Runtime.Server.Implementation
 {
@@ -98,6 +99,8 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
             {
                 _logger.LogDebug("准备执行本地逻辑。");
             }
+
+            SetCurrentCulture();
 
             var resultMessage = new RemoteInvokeResultMessage();
 
@@ -203,6 +206,21 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
                 {
                     _logger.LogError(exception, "发送响应消息时候发生了异常。");
                 }
+            }
+        }
+
+        private void SetCurrentCulture()
+        {
+            var currentCulture = RpcContext.GetContext().GetAttachment("CurrentCulture").SafeString();
+            var currentUICulture = RpcContext.GetContext().GetAttachment("CurrentUICulture").SafeString() ?? currentCulture;
+            if (!string.IsNullOrEmpty(currentCulture))
+            {
+                CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(currentCulture);
+            }
+
+            if (!string.IsNullOrEmpty(currentUICulture))
+            {
+                CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(currentUICulture);
             }
         }
     }

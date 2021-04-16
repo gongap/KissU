@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -19,6 +21,7 @@ using KissU.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -149,6 +152,7 @@ namespace KissU.AspNetCore.Kestrel
         /// <param name="services">The services.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            ConfigureLocalizationServices(services);
             services.AddSingleton(ServiceLocator.GetService<ILoggerFactory>());
             services.AddMvc().AddNewtonsoftJson();
             services.AddObjectAccessor<IApplicationBuilder>();
@@ -162,6 +166,7 @@ namespace KissU.AspNetCore.Kestrel
         {
             RestContext.GetContext().Initialize(app.ApplicationServices);
             app.ApplicationServices.GetRequiredService<ObjectAccessor<IApplicationBuilder>>().Value = app;
+            app.UseRequestLocalization();
             app.UseStaticFiles();
             app.UseRouting();
             _moduleProvider.Configure(new ApplicationInitializationContext(app.ApplicationServices));
@@ -186,6 +191,17 @@ namespace KissU.AspNetCore.Kestrel
                     WirteDiagnosticError(messageId, ex);
                     await OnException(context, sender, messageId, ex, filters);
                 }
+            });
+        }
+
+        private static void ConfigureLocalizationServices(IServiceCollection services)
+        {
+            var cultures = new List<CultureInfo> { new CultureInfo("zh-Hans"), new CultureInfo("en") };
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new RequestCulture("zh-Hans");
+                options.SupportedCultures = cultures;
+                options.SupportedUICultures = cultures;
             });
         }
 

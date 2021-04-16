@@ -4,7 +4,7 @@ using KissU.Modularity;
 
 namespace KissU.Abp
 {
-    public class AbpBusinessModule : SystemModule
+    public class AbpSystemModule : SystemModule
     {
         protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {

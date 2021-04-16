@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
 using KissU.AspNetCore.Internal;
@@ -143,6 +144,7 @@ namespace KissU.AspNetCore.Kestrel
             var resultMessage = new HttpResultMessage<object>();
             try
             {
+                SetCurrentCulture();
                 resultMessage.Result = await _serviceProxyProvider.Invoke<object>(httpMessage.Parameters, httpMessage.RoutePath, httpMessage.ServiceKey);
                 resultMessage.IsSucceed = resultMessage.Result != default;
                 resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
@@ -173,8 +175,7 @@ namespace KissU.AspNetCore.Kestrel
             return resultMessage;
         }
 
-        private async Task<HttpResultMessage<object>> LocalExecuteAsync(ServiceEntry entry,
-            HttpRequestMessage httpMessage)
+        private async Task<HttpResultMessage<object>> LocalExecuteAsync(ServiceEntry entry, HttpRequestMessage httpMessage)
         {
             var resultMessage = new HttpResultMessage<object>();
             try
@@ -255,6 +256,12 @@ namespace KissU.AspNetCore.Kestrel
                     _logger.LogError(exception, $"发送响应消息时候发生了异常。{exception.Message}");
                 }
             }
+        }
+
+        private static void SetCurrentCulture()
+        {
+            RpcContext.GetContext().SetAttachment("CurrentCulture", CultureInfo.CurrentCulture.Name);
+            RpcContext.GetContext().SetAttachment("CurrentUICulture", CultureInfo.CurrentUICulture.Name);
         }
 
         private void WirteDiagnosticBefore(TransportMessage message)
