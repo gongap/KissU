@@ -1,32 +1,24 @@
 ﻿using KissU.Abp.Localization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Localization;
-using System.Collections.Generic;
-using System.Globalization;
-using Volo.Abp.AspNetCore;
 using Volo.Abp.Autofac;
+using Volo.Abp.ExceptionHandling;
 using Volo.Abp.Localization;
 using Volo.Abp.Localization.ExceptionHandling;
 using Volo.Abp.Modularity;
+using Volo.Abp.Security;
+using Volo.Abp.Validation;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 
 namespace KissU.Abp
 {
     [DependsOn(typeof(AbpAutofacModule)
-        , typeof(AbpAspNetCoreModule))]
+        , typeof(AbpSecurityModule)
+        , typeof(AbpValidationModule)
+        , typeof(AbpExceptionHandlingModule))]
     public class AbpStartupModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            var cultures = new List<CultureInfo> { new CultureInfo("zh-Hans"), new CultureInfo("en") };
-            Configure<RequestLocalizationOptions>(options =>
-            {
-                options.DefaultRequestCulture = new RequestCulture("zh-Hans");
-                options.SupportedCultures = cultures;
-                options.SupportedUICultures = cultures;
-            });
-
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
                 options.FileSets.AddEmbedded<AbpStartupModule>("KissU.Abp");
@@ -38,6 +30,9 @@ namespace KissU.Abp
                     .Add<KissUAbpResource>("zh-Hans")
                     .AddBaseTypes(typeof(AbpValidationResource))
                     .AddVirtualJson("/Localization/Resources");
+
+                options.Languages.Add(new LanguageInfo("zh", "zh", "zh-Hans"));
+                options.Languages.Add(new LanguageInfo("en", "en", "English"));
             });
 
             Configure<AbpExceptionLocalizationOptions>(options =>

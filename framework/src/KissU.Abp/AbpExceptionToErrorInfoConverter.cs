@@ -24,11 +24,15 @@ namespace KissU.Abp
         /// <returns>Error info or null</returns>
         public Exceptions.RemoteServiceErrorInfo Convert(Exception exception, bool includeSensitiveDetails)
         {
-            var errorInfo = _errorInfoConverter.Convert(exception, includeSensitiveDetails);
-            return  new Exceptions.RemoteServiceErrorInfo(errorInfo.Message, errorInfo.Details, errorInfo.Code)
+           //var localizationOptions =  _requestLocalizationOptionsProvider.GetLocalizationOptionsAsync();
+           // using (CultureHelper.Use(localizationOptions.d))
             {
-                ValidationErrors = errorInfo.ValidationErrors?.Select(x => new Exceptions.RemoteServiceValidationErrorInfo(x.Message, x.Members)).ToArray(),
-            };
+                var errorInfo = _errorInfoConverter.Convert(exception, includeSensitiveDetails);
+                return new Exceptions.RemoteServiceErrorInfo(errorInfo.Message, errorInfo.Details, errorInfo.Code)
+                {
+                    ValidationErrors = errorInfo.ValidationErrors?.Select(x => new Exceptions.RemoteServiceValidationErrorInfo(x.Message, x.Members)).ToArray(),
+                };
+            }
         }
     }
 }
