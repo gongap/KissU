@@ -2,7 +2,7 @@
   <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>KissU应用框架的核心类库。</Description>
+    <Descrition>框架核心类库：KissU是一个.net core平台下的微服务框架，框架的主要目标就是提供便捷的基础设施来创建微服务解决方案.。</Descrition>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>

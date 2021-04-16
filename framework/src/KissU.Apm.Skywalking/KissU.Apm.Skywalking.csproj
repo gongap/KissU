@@ -2,6 +2,7 @@
    <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Descrition>KissU.Apm.Skywalking</Descrition>
   </PropertyGroup>
 
   <ItemGroup>
