@@ -174,10 +174,10 @@ namespace KissU.DotNetty.Http
                 resultMessage.Message = validateException.Message;
                 resultMessage.StatusCode = validateException.HResult;
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(ex, $"执行远程调用逻辑时候发生了错误：{exception.StackTrace}");
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.StackTrace}");
                 resultMessage = new HttpResultMessage<object>
                     {Result = null, Message = "执行发生了错误。", StatusCode = (int) StatusCode.RequestError};
             }
