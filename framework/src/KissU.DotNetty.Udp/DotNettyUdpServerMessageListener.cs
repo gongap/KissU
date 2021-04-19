@@ -73,7 +73,7 @@ namespace KissU.DotNetty.Udp
             {
                 context.CloseAsync();
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, $"与服务器：{context.Channel.RemoteAddress}通信时发送了错误。");
+                    _logger.LogError(exception, $"与服务器：{context.Channel.RemoteAddress}通信时发送了错误：{exception.StackTrace}");
             }
         }
 

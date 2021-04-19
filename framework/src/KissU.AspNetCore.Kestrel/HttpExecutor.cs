@@ -88,7 +88,7 @@ namespace KissU.AspNetCore.Kestrel
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "将接收到的消息反序列化成 TransportMessage<httpMessage> 时发送了错误。");
+                _logger.LogError(exception, $"将接收到的消息反序列化成 TransportMessage<httpMessage> 时发送了错误：{exception.StackTrace}");
                 return;
             }
 
@@ -168,7 +168,7 @@ namespace KissU.AspNetCore.Kestrel
 
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.Message}");
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.StackTrace}");
                 }
             }
 
@@ -206,7 +206,7 @@ namespace KissU.AspNetCore.Kestrel
                 resultMessage.StatusCode = validateException.HResult;
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(validateException, $"执行本地逻辑时候发生了错误：{validateException.Message}", validateException);
+                    _logger.LogError(validateException, $"执行本地逻辑时候发生了错误：{validateException.StackTrace}");
                 }
             }
             catch (Exception exception)
@@ -227,7 +227,7 @@ namespace KissU.AspNetCore.Kestrel
 
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.Message}");
+                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.StackTrace}");
                 }
             }
 
@@ -253,7 +253,7 @@ namespace KissU.AspNetCore.Kestrel
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"发送响应消息时候发生了异常。{exception.Message}");
+                    _logger.LogError(exception, $"发送响应消息时候发生了异常。{exception.StackTrace}");
                 }
             }
         }

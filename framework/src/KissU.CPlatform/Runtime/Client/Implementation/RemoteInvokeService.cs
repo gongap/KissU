@@ -84,7 +84,7 @@ namespace KissU.CPlatform.Runtime.Client.Implementation
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, $"发起请求中发生了错误，服务Id：{invokeMessage.ServiceId}。");
+                _logger.LogError(exception, $"发起请求中发生了错误，服务Id：{invokeMessage.ServiceId}。错误信息：{exception.Message}");
                 throw;
             }
         }

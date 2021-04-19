@@ -100,7 +100,7 @@ namespace KissU.CPlatform.Transport.Implementation
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, "消息发送失败。");
+                    _logger.LogError(exception, $"消息发送失败。错误信息：{exception.Message}");
                 }
 
                 throw;
