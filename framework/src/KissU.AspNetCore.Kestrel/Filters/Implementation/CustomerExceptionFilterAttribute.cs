@@ -29,6 +29,7 @@ namespace KissU.AspNetCore.Kestrel.Filters.Implementation
 
             if (context.Exception is CPlatformCommunicationException  communicationException)
             {
+                context.Result.StatusCode = communicationException.HResult;
                 context.Result.Details = communicationException.Details;
                 context.Result.ValidationErrors = communicationException.ValidationErrors;
             }

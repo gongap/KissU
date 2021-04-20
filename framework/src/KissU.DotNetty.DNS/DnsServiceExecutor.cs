@@ -53,7 +53,7 @@ namespace KissU.DotNetty.DNS
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "将接收到的消息反序列化成 TransportMessage<DnsTransportMessage> 时发送了错误。");
+                _logger.LogError(exception, $"将接收到的消息反序列化成 TransportMessage<DnsTransportMessage> 时发送了错误。错误信息：{exception.Message}");
                 return;
             }
 
@@ -91,7 +91,7 @@ namespace KissU.DotNetty.DNS
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, "执行本地逻辑时候发生了错误。");
+                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.StackTrace}");
             }
 
             return message;
@@ -111,7 +111,7 @@ namespace KissU.DotNetty.DNS
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, "发送响应消息时候发生了异常。");
+                    _logger.LogError(exception, $"发送响应消息时候发生了异常：{exception.StackTrace}");
             }
         }
 

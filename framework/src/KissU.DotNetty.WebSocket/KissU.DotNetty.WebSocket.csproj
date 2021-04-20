@@ -2,7 +2,7 @@
    <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Description></Description>
+    <Description>KissU.DotNetty.WebSocket</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

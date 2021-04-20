@@ -22,33 +22,24 @@ namespace KissU.Abp
         /// <param name="hostBuilder">The host builder.</param>
         /// <param name="options">The options.</param>
         /// <returns>IHostBuilder.</returns>
-        public static IHostBuilder AddAbp(this IHostBuilder hostBuilder, Action<AbpApplicationCreationOptions> optionsAction = null)
+        public static IHostBuilder UseAbp(this IHostBuilder hostBuilder, Action<AbpApplicationCreationOptions> optionsAction = null)
         {
-            return hostBuilder.ConfigureServices(services =>
-            {
-                services.AddApplication<AbpStartupModule>(options =>
+            return hostBuilder
+                .ConfigureServices(services =>
                 {
-                    optionsAction?.Invoke(options);
-                    var assemblies = ModuleHelper.GetAssemblies();
-                    var moduleTypes = ReflectionHelper.FindTypes<IBusinessModule>(assemblies.ToArray());
-                    options.PlugInSources.AddTypes(moduleTypes.ToArray());
+                    services.AddApplication<AbpStartupModule>(options =>
+                    {
+                        optionsAction?.Invoke(options);
+                        var assemblies = ModuleHelper.GetAssemblies();
+                        var moduleTypes = ReflectionHelper.FindTypes<IBusinessModule>(assemblies.ToArray());
+                        options.PlugInSources.AddTypes(moduleTypes.ToArray());
+                    });
+                })
+                .ConfigureContainer(async mapper =>
+                {
+                    var serviceProvider = mapper.Resolve<IServiceProvider>();
+                    mapper.Resolve<IAbpApplicationWithExternalServiceProvider>().Initialize(serviceProvider);
                 });
-            });
-        }
-
-        /// <summary>
-        /// Uses the server.
-        /// </summary>
-        /// <param name="hostBuilder">The host builder.</param>
-        /// <param name="options">The options.</param>
-        /// <returns>IHostBuilder.</returns>
-        public static IHostBuilder UseAbp(this IHostBuilder hostBuilder)
-        {
-            return hostBuilder.ConfigureContainer(async mapper =>
-            {
-                var serviceProvider = mapper.Resolve<IServiceProvider>();
-                mapper.Resolve<IAbpApplicationWithExternalServiceProvider>().Initialize(serviceProvider);
-            });
         }
     }
 }

@@ -2,7 +2,7 @@
   <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Description></Description>
+    <Descrition>KissU.ApiGateWay</Descrition>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

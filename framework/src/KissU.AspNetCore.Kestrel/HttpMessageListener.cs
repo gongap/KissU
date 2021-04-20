@@ -85,6 +85,11 @@ namespace KissU.AspNetCore.Kestrel
                 serviceRoute = await _serviceRouteProvider.GetRouteByPathRegex(path);
             }
 
+            if (serviceRoute == null)
+            {
+                serviceRoute = await _serviceRouteProvider.GetLocalRouteByPathRegex(path);
+            }
+
             IDictionary<string, object> parameters =
                 context.Request.Query.ToDictionary(p => p.Key, p => (object) p.Value.ToString());
             object serviceKey = null;

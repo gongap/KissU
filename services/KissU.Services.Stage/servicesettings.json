@@ -1,0 +1,173 @@
+{
+  "ServerEngine": {
+    "Ip": "${Server_IP}|127.0.0.1",
+    "WatchInterval": 10,
+    "Port": "${Server_Port}|91",
+    "MappingIp": "${Mapping_ip}",
+    "MappingPort": "${Mapping_Port}",
+    "Token": "123456789",
+    "WanIp": "${WanIp}",
+    "DockerDeployMode": "${DockerDeployMode}|Standard",
+    "Libuv": true,
+    "SoBacklog": 100,
+    "MaxConcurrentRequests": 20,
+    "DisconnTimeInterval": 30,
+    "ExecutionTimeoutInMilliseconds": 30000,
+    "BreakerForceClosed": true,
+    "Protocol": "${Protocol}|None",
+    "RootPath": "${RootPath}",
+    "WebRootPath": "${WebRootPath}",
+    "IsModulePerLifetimeScope": false,
+    "ReloadOnChange": false,
+    "Ports": {
+      "HttpPort": "${HttpPort}|9101",
+      "WSPort": "${WSPort}|9102",
+      "MQTTPort": "${MQTTPort}|9103",
+      "GrpcPort": "${GrpcPort}|9104",
+      "UdpPort": "${UdpPort}|9105"
+    },
+    "RequestCacheEnabled": false,
+    "Packages": [
+      {
+        "TypeName": "EnginePartModule",
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;EventBusRabbitMQModule;CachingModule;ApolloModule;AspNetCoreKestrelModule;ApiGateWayModule;"
+      }
+    ]
+  },
+  "Stage": {
+    "EnableHttps": false,
+    "CertificateFileName": "${CertificateFileName}|",
+    "CertificateLocation": "${CertificateLocation}|pfxs",
+    "CertificatePassword": "${CertificatePassword}|",
+    "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
+    "Protocols": "Http1AndHttp2",
+    "AuthServer": {
+      "Authority": "http://localhost:5000",
+      "ApiName": "IdentityService",
+      "Https": false
+    },
+    "ApiGetWay": {
+      "AccessTokenExpireTimeSpan": "86400",
+      "AuthorizationRoutePath": "api/auth/token",
+      "AuthorizationServiceKey": "Auth",
+      "TokenEndpointPath": "api/connect/token",
+      "CacheMode": "MemoryCache"
+    },
+    "AccessPolicy": {
+      "Origins": [ "http://localhost:4200" ],
+      "AllowAnyHeader": true,
+      "AllowAnyMethod": true
+    },
+    "AccessSetting": [
+      {
+        "BlackList": "${blacklist}|127.0.0.1",
+        "Enable": false
+      },
+      {
+        "WhiteList": "${whitelist}|192.168.10.50,192.168.43.0/24,127.0.0.1",
+        "BlackList": "${blacklist}|192.168.2.50,192.168.1.0/16",
+        "RoutePath": "api/user/exists",
+        "Enable": true
+      }
+    ],
+    "HttpPorts": "${StageHttpPorts}|9106,9107,9108,9109",
+    "HttpsPort": "${StageHttpsPorts}"
+  },
+  "Consul": {
+    "ConnectionString": "${Register_Conn}|127.0.0.1:8500",
+    "SessionTimeout": "${Register_SessionTimeout}|50",
+    "RoutePath": "${Register_RoutePath}",
+    "ReloadOnChange": true,
+    "EnableChildrenMonitor": false,
+    "MqttRoutePath": "${MqttRoutePath}"
+  },
+  "Zookeeper": {
+    "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181",
+    "SessionTimeout": 50,
+    "ReloadOnChange": true
+  },
+  "Dns": {
+    "RootDnsAddress": "192.168.1.1",
+    "QueryTimeout": 1000
+  },
+  "WebSocket": {
+    "WaitTime": 2,
+    "KeepClean": false,
+    "Behavior": {
+      "IgnoreExtensions": true,
+      "EmitOnPing": false
+    }
+  },
+  "EventBus": {
+    "EventBusConnection": "${EventBusConnection}|localhost",
+    "Port": "${EventBusPort}|5672",
+    "EventBusUserName": "${EventBusUserName}|guest",
+    "EventBusPassword": "${EventBusPassword}|guest",
+    "VirtualHost": "${VirtualHost}|/",
+    "MessageTTL": "${MessageTTL}|30000",
+    "RetryCount": "${RetryCount}|1",
+    "FailCount": "${FailCount}|3",
+    "prefetchCount": "${PrefetchCount}|0",
+    "BrokerName": "${BrokerName}|kissu_sample"
+  },
+  "EventBus_Kafka": {
+    "Servers": "${EventBusConnection}|localhost:9092",
+    "MaxQueueBuffering": "${MaxQueueBuffering}|10",
+    "MaxSocketBlocking": "${MaxSocketBlocking}|10",
+    "EnableAutoCommit": "${EnableAutoCommit}|false",
+    "LogConnectionClose": "${LogConnectionClose}|false",
+    "OffsetReset": "${OffsetReset}|earliest",
+    "GroupID": "${EventBusGroupID}|kissUdemo"
+  },
+  "RabbitMQ": {
+    "EventBus": {
+      "ConnectionName": "",
+      "ClientName": "",
+      "ExchangeName": ""
+    }
+
+  },
+  "Swagger": {
+    "Info": {
+      "Version": "${SwaggerVersion}|V1",
+      "Title": "${SwaggerTitle}|KissU Services",
+      "Description": "${SwaggerDes}|KissU Services"
+    },
+    "Options": {
+      "IgnoreFullyQualified": false,
+      "IncludeControllerXmlComments": true,
+      "MapRoutePaths": [
+        {
+          "SourceRoutePath": "api/auth/token",
+          "TargetRoutePath": "api/connect/token"
+        }
+      ]
+    }
+  },
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.RollingFile" ],
+    "LevelSwitches": { "$controlSwitch": "Verbose" },
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Warning"
+      }
+    },
+    "WriteTo:RollingFile": {
+      "Name": "RollingFile",
+      "Args": {
+        "formatter": "Serilog.Formatting.Elasticsearch.ElasticsearchJsonFormatter, Serilog.Formatting.Elasticsearch",
+        "pathFormat": "Logs\\log-{Date}.log"
+      }
+    },
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithThreadId" ],
+    "Properties": {
+      "Application": "Sample"
+    }
+  },
+  "Exceptionless": {
+    "ApiKey": "gAmpmBBGVxlnpUnyPUkVE93x7gER4iLlHfSRNfwT",
+    "ServerUrl": "http://localhost:8089"
+  }
+}

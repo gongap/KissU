@@ -11,6 +11,7 @@ using KissU.CPlatform.Transport.Implementation;
 using KissU.Exceptions.Handling;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace KissU.CPlatform.Runtime.Server.Implementation
 {
@@ -71,7 +72,7 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "将接收到的消息反序列化成 TransportMessage<RemoteInvokeMessage> 时发送了错误。");
+                _logger.LogError(exception, $"将接收到的消息反序列化成 TransportMessage<RemoteInvokeMessage> 时发送了错误：{exception.StackTrace}");
                 return;
             }
 
@@ -98,6 +99,8 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
             {
                 _logger.LogDebug("准备执行本地逻辑。");
             }
+
+            SetCurrentCulture();
 
             var resultMessage = new RemoteInvokeResultMessage();
 
@@ -161,21 +164,22 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
             catch (Exception exception)
             {
                 resultMessage.StatusCode = exception.HResult;
-                var errorInfo = _errorInfoConverter.Convert(exception.GetRawException(), AppConfig.ServerOptions.IncludeSensitiveDetails);
+                var errorInfo = _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
                 if (errorInfo != null)
                 {
+                    resultMessage.Code = errorInfo.Code;
                     resultMessage.Message = errorInfo.Message;
                     resultMessage.Details = errorInfo.Details;
                     resultMessage.ValidationErrors = errorInfo.ValidationErrors;
                 }
                 else
                 {
-                    resultMessage.Message = GetExceptionMessage(exception);
+                    resultMessage.Message = exception.Message;
                 }
 
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{GetExceptionMessage(exception)}");
+                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.Message}");
                 }
             }
         }
@@ -200,25 +204,24 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, "发送响应消息时候发生了异常。");
+                    _logger.LogError(exception, $"发送响应消息时候发生了异常：{exception.StackTrace}");
                 }
             }
         }
 
-        private static string GetExceptionMessage(Exception exception)
+        private void SetCurrentCulture()
         {
-            if (exception == null)
+            var currentCulture = RpcContext.GetContext().GetAttachment("CurrentCulture").SafeString();
+            var currentUICulture = RpcContext.GetContext().GetAttachment("CurrentUICulture").SafeString() ?? currentCulture;
+            if (!string.IsNullOrEmpty(currentCulture))
             {
-                return string.Empty;
+                CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(currentCulture);
             }
 
-            var message = exception.Message;
-            if (exception.InnerException != null)
+            if (!string.IsNullOrEmpty(currentUICulture))
             {
-                message += "|InnerException:" + GetExceptionMessage(exception.InnerException);
+                CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(currentUICulture);
             }
-
-            return message;
         }
     }
 }

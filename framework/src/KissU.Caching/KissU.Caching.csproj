@@ -2,12 +2,12 @@
    <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Description></Description>
+    <Descrition>KissU.Caching</Descrition>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="StackExchange.Redis" Version="2.0.505" />
+    <PackageReference Include="StackExchange.Redis" Version="2.0.588" />
   </ItemGroup>
 
   <ItemGroup>

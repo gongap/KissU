@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props" />
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>KissU.Services</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Http.Client" Version="4.2.1" />
+    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="4.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.Codec.MessagePack\KissU.Codec.MessagePack.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.Codec.ProtoBuffer\KissU.Codec.ProtoBuffer.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.EventBus.RabbitMQ\KissU.EventBus.RabbitMQ.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.ServiceDiscovery.Consul\KissU.ServiceDiscovery.Consul.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.DotNetty\KissU.DotNetty.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.Logging.Nlog\KissU.Logging.Nlog.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.Caching\KissU.Caching.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <ProjectReference Include="..\..\modules\identity\src\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
+	  <ProjectReference Include="..\..\modules\account\src\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\modules\common\src\KissU.Modules.Common.Service.Contracts\KissU.Modules.Common.Service.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="cachesettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="servicesettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

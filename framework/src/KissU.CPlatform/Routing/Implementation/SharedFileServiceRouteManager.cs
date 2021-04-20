@@ -178,7 +178,7 @@ namespace KissU.CPlatform.Routing.Implementation
                 {
                     if (_logger.IsEnabled(LogLevel.Error))
                     {
-                        _logger.LogError(exception, "获取路由信息时发生了错误。");
+                        _logger.LogError(exception, $"获取路由信息时发生了错误。错误信息：{exception.Message}");
                     }
 
                     routes = new ServiceRoute[0];

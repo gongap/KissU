@@ -71,7 +71,7 @@ namespace KissU.AspNetCore.Stage.Internal.Implementation
                     }
                 }
             }
-
+            
             if (httpPorts != null)
             {
                 foreach (var httpPort in httpPorts)

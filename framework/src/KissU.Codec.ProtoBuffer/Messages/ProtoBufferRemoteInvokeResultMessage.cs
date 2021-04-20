@@ -16,23 +16,25 @@ namespace KissU.Codec.ProtoBuffer.Messages
         [ProtoMember(1)]
         public string Message { get; set; }
 
+        [ProtoMember(2)]
+        public string Code { get; set; }
 
         /// <summary>
         /// Gets or sets the result.
         /// </summary>
-        [ProtoMember(2)]
+        [ProtoMember(3)]
         public DynamicItem Result { get; set; }
 
         /// <summary>
         /// Error details.
         /// </summary>
-        [ProtoMember(3)]
+        [ProtoMember(4)]
         public string Details { get; set; }
 
         /// <summary>
         /// Gets or sets the validation errors.
         /// </summary>
-        [ProtoMember(4)]
+        [ProtoMember(5)]
         public RemoteServiceValidationErrorInfo[] ValidationErrors { get; set; }
 
         /// <summary>
@@ -44,6 +46,7 @@ namespace KissU.Codec.ProtoBuffer.Messages
             return new RemoteInvokeResultMessage
             {
                 Message = Message,
+                Code = Code,
                 Result = Result?.Get(),
                 Details = Details,
                 ValidationErrors = ValidationErrors,
@@ -59,6 +62,7 @@ namespace KissU.Codec.ProtoBuffer.Messages
         public ProtoBufferRemoteInvokeResultMessage(RemoteInvokeResultMessage result)
         {
             Message = result.Message;
+            Code = result.Code;
             Result = result.Result == null ? null : new DynamicItem(result.Result);
             Details = result.Details;
             ValidationErrors = result.ValidationErrors;

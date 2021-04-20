@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
 using KissU.AspNetCore.Internal;
@@ -87,7 +88,7 @@ namespace KissU.AspNetCore.Kestrel
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "将接收到的消息反序列化成 TransportMessage<httpMessage> 时发送了错误。");
+                _logger.LogError(exception, $"将接收到的消息反序列化成 TransportMessage<httpMessage> 时发送了错误：{exception.StackTrace}");
                 return;
             }
 
@@ -143,6 +144,7 @@ namespace KissU.AspNetCore.Kestrel
             var resultMessage = new HttpResultMessage<object>();
             try
             {
+                SetCurrentCulture();
                 resultMessage.Result = await _serviceProxyProvider.Invoke<object>(httpMessage.Parameters, httpMessage.RoutePath, httpMessage.ServiceKey);
                 resultMessage.IsSucceed = resultMessage.Result != default;
                 resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
@@ -151,9 +153,10 @@ namespace KissU.AspNetCore.Kestrel
             {
                 resultMessage.Result = null;
                 resultMessage.StatusCode = (int) StatusCode.ServerError;
-                var errorInfo = _errorInfoConverter.Convert(exception.GetRawException(), AppConfig.ServerOptions.IncludeSensitiveDetails);
+                var errorInfo = _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
                 if (errorInfo != null)
                 {
+                    resultMessage.Code = errorInfo.Code;
                     resultMessage.Message = errorInfo.Message;
                     resultMessage.Details = errorInfo.Details;
                     resultMessage.ValidationErrors = errorInfo.ValidationErrors;
@@ -165,15 +168,14 @@ namespace KissU.AspNetCore.Kestrel
 
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{GetExceptionMessage(exception)}");
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.StackTrace}");
                 }
             }
 
             return resultMessage;
         }
 
-        private async Task<HttpResultMessage<object>> LocalExecuteAsync(ServiceEntry entry,
-            HttpRequestMessage httpMessage)
+        private async Task<HttpResultMessage<object>> LocalExecuteAsync(ServiceEntry entry, HttpRequestMessage httpMessage)
         {
             var resultMessage = new HttpResultMessage<object>();
             try
@@ -204,15 +206,16 @@ namespace KissU.AspNetCore.Kestrel
                 resultMessage.StatusCode = validateException.HResult;
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(validateException, $"执行本地逻辑时候发生了错误：{validateException.Message}", validateException);
+                    _logger.LogError(validateException, $"执行本地逻辑时候发生了错误：{validateException.StackTrace}");
                 }
             }
             catch (Exception exception)
             {
                 resultMessage.StatusCode = exception.HResult;
-                var errorInfo = _errorInfoConverter.Convert(exception.GetRawException(), AppConfig.ServerOptions.IncludeSensitiveDetails);
+                var errorInfo = _errorInfoConverter.Convert(exception, AppConfig.ServerOptions.IncludeSensitiveDetails);
                 if (errorInfo != null)
                 {
+                    resultMessage.Code = errorInfo.Code;
                     resultMessage.Message = errorInfo.Message;
                     resultMessage.Details = errorInfo.Details;
                     resultMessage.ValidationErrors = errorInfo.ValidationErrors;
@@ -224,7 +227,7 @@ namespace KissU.AspNetCore.Kestrel
 
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{GetExceptionMessage(exception)}");
+                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.StackTrace}");
                 }
             }
 
@@ -250,25 +253,15 @@ namespace KissU.AspNetCore.Kestrel
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"发送响应消息时候发生了异常。{exception.Message}");
+                    _logger.LogError(exception, $"发送响应消息时候发生了异常。{exception.StackTrace}");
                 }
             }
         }
 
-        private string GetExceptionMessage(Exception exception)
+        private static void SetCurrentCulture()
         {
-            if (exception == null)
-            {
-                return string.Empty;
-            }
-
-            var message = exception.Message;
-            if (exception.InnerException != null)
-            {
-                message += "|InnerException:" + GetExceptionMessage(exception.InnerException);
-            }
-
-            return message;
+            RpcContext.GetContext().SetAttachment("CurrentCulture", CultureInfo.CurrentCulture.Name);
+            RpcContext.GetContext().SetAttachment("CurrentUICulture", CultureInfo.CurrentUICulture.Name);
         }
 
         private void WirteDiagnosticBefore(TransportMessage message)

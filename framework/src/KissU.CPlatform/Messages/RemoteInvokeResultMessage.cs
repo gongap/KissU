@@ -13,6 +13,11 @@ namespace KissU.CPlatform.Messages
         public string Message { get; set; }
 
         /// <summary>
+        /// 编码。
+        /// </summary>
+        public string Code { get; set; }
+
+        /// <summary>
         /// 结果内容。
         /// </summary>
         public object Result { get; set; }

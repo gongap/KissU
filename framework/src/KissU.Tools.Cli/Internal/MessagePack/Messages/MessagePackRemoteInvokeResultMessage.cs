@@ -28,12 +28,15 @@ namespace KissU.Tools.Cli.Internal.MessagePack.Messages
         public string Message { get; set; }
 
         [Key(1)]
-        public DynamicItem Result { get; set; }
+        public string Code { get; set; }
 
         [Key(2)]
-        public string Details { get; set; }
+        public DynamicItem Result { get; set; }
 
         [Key(3)]
+        public string Details { get; set; }
+
+        [Key(4)]
         public RemoteServiceValidationErrorInfo[] ValidationErrors { get; set; }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -42,6 +45,7 @@ namespace KissU.Tools.Cli.Internal.MessagePack.Messages
             return new RemoteInvokeResultMessage
             {
                 Message = Message,
+                Code = Code,
                 Result = Result?.Get(),
                 Details = Details,
                 ValidationErrors = ValidationErrors,

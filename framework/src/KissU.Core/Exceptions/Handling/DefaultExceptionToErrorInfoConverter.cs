@@ -15,6 +15,18 @@ namespace KissU.Exceptions.Handling
 
         public RemoteServiceErrorInfo Convert(Exception exception, bool includeSensitiveDetails)
         {
+            if (exception is CPlatformCommunicationException communicationException)
+            {
+                return new RemoteServiceErrorInfo
+                {
+                    Code = communicationException.Code,
+                    Message = exception.Message,
+                    Data = exception.Data,
+                    Details = communicationException.Details,
+                    ValidationErrors = communicationException.ValidationErrors,
+                };
+            }
+
             var abpErrorInfoConverter = _serviceProvider.GetInstances<IExceptionToErrorInfoConverter>("Abp");
             if (abpErrorInfoConverter != null)
             {
@@ -27,11 +39,11 @@ namespace KissU.Exceptions.Handling
             }
 
             exception = TryToGetActualException(exception);
-            var errorInfo = new RemoteServiceErrorInfo();
-            errorInfo.Message = "服务器内部错误";
-            errorInfo.Data = exception.Data;
-            return errorInfo;
-
+            return new RemoteServiceErrorInfo
+            {
+                Message = "服务器内部错误",
+                Data = exception.Data
+            };
         }
 
         protected virtual Exception TryToGetActualException(Exception exception)

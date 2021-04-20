@@ -2,12 +2,13 @@
    <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Description></Description>
+    <Description>KissU.Logging.Nlog</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NLog.Extensions.Logging" Version="1.2.1" />
+    <PackageReference Include="Exceptionless.NLog" Version="4.6.2" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="1.3.0" />
   </ItemGroup>
 
   <ItemGroup>

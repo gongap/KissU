@@ -72,7 +72,7 @@ namespace KissU.DotNetty.Http
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "将接收到的消息反序列化成 TransportMessage<httpMessage> 时发送了错误。");
+                _logger.LogError(exception, $"将接收到的消息反序列化成 TransportMessage<httpMessage> 时发送了错误：{exception.StackTrace}");
                 return;
             }
 
@@ -169,15 +169,15 @@ namespace KissU.DotNetty.Http
             catch (RemoteServiceValidateException validateException)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(validateException, "执行远程调用逻辑时候发生了错误。", validateException);
+                    _logger.LogError(validateException, $"执行远程调用逻辑时候发生了错误。{validateException.StackTrace}");
 
                 resultMessage.Message = validateException.Message;
                 resultMessage.StatusCode = validateException.HResult;
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(ex, "执行远程调用逻辑时候发生了错误。");
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.StackTrace}");
                 resultMessage = new HttpResultMessage<object>
                     {Result = null, Message = "执行发生了错误。", StatusCode = (int) StatusCode.RequestError};
             }
@@ -213,7 +213,7 @@ namespace KissU.DotNetty.Http
             catch (RemoteServiceValidateException validateException)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(validateException, "执行本地逻辑时候发生了错误。", validateException);
+                    _logger.LogError(validateException, $"执行本地逻辑时候发生了错误：{validateException.StackTrace}");
 
                 resultMessage.Message = validateException.Message;
                 resultMessage.StatusCode = validateException.HResult;
@@ -221,7 +221,7 @@ namespace KissU.DotNetty.Http
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, "执行本地逻辑时候发生了错误。");
+                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.StackTrace}");
                 resultMessage.Message = "执行发生了错误。";
                 resultMessage.StatusCode = exception.HResult;
             }
@@ -243,22 +243,8 @@ namespace KissU.DotNetty.Http
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, "发送响应消息时候发生了异常。");
+                    _logger.LogError(exception, $"发送响应消息时候发生了异常：{exception.StackTrace}");
             }
-        }
-
-        private static string GetExceptionMessage(Exception exception)
-        {
-            if (exception == null)
-                return string.Empty;
-
-            var message = exception.Message;
-            if (exception.InnerException != null)
-            {
-                message += "|InnerException:" + GetExceptionMessage(exception.InnerException);
-            }
-
-            return message;
         }
 
         #endregion Private Method

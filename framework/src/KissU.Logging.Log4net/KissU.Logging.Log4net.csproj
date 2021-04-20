@@ -2,12 +2,13 @@
    <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Description></Description>
+    <Description>KissU.Logging.Log4net</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Exceptionless.Log4net" Version="4.6.2" />
+    <PackageReference Include="log4net" Version="2.0.12" />
     <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
   </ItemGroup>
 

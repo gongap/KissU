@@ -25,7 +25,7 @@ namespace KissU.Abp
         public Exceptions.RemoteServiceErrorInfo Convert(Exception exception, bool includeSensitiveDetails)
         {
             var errorInfo = _errorInfoConverter.Convert(exception, includeSensitiveDetails);
-            return  new Exceptions.RemoteServiceErrorInfo(errorInfo.Message, errorInfo.Details, errorInfo.Code)
+            return new Exceptions.RemoteServiceErrorInfo(errorInfo.Message, errorInfo.Details, errorInfo.Code)
             {
                 ValidationErrors = errorInfo.ValidationErrors?.Select(x => new Exceptions.RemoteServiceValidationErrorInfo(x.Message, x.Members)).ToArray(),
             };
