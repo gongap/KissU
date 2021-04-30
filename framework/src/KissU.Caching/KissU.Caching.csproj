@@ -8,7 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="StackExchange.Redis" Version="2.0.588" />
-  </ItemGroup>
+     <PackageReference Include="MessagePack" Version="1.7.3.4" />
+   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />

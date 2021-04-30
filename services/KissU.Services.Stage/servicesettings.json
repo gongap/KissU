@@ -35,10 +35,10 @@
     ]
   },
   "Stage": {
-    "EnableHttps": false,
-    "CertificateFileName": "${CertificateFileName}|",
-    "CertificateLocation": "${CertificateLocation}|pfxs",
-    "CertificatePassword": "${CertificatePassword}|",
+    "EnableHttps": true,
+    "CertificateFileName": "${CertificateFileName}|server.pfx",
+    "CertificateLocation": "${CertificateLocation}",
+    "CertificatePassword": "${CertificatePassword}|KissU@20210427",
     "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
     "Protocols": "Http1AndHttp2",
     "AuthServer": {
@@ -51,7 +51,7 @@
       "AuthorizationRoutePath": "api/auth/token",
       "AuthorizationServiceKey": "Auth",
       "TokenEndpointPath": "api/connect/token",
-      "CacheMode": "MemoryCache"
+      "CacheMode": "ddlCache.Redis"
     },
     "AccessPolicy": {
       "Origins": [ "http://localhost:4200" ],
@@ -70,8 +70,8 @@
         "Enable": true
       }
     ],
-    "HttpPorts": "${StageHttpPorts}|9106,9107,9108,9109",
-    "HttpsPort": "${StageHttpsPorts}"
+    "HttpPorts": "${StageHttpPorts}|9180",
+    "HttpsPort": "${StageHttpsPorts}|9443"
   },
   "Consul": {
     "ConnectionString": "${Register_Conn}|127.0.0.1:8500",

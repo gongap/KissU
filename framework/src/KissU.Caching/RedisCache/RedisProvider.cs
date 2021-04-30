@@ -220,7 +220,7 @@ namespace KissU.Caching.RedisCache
                     Password = node.Password,
                     Port = int.Parse(node.Port),
                     MinSize = int.Parse(node.MinSize),
-                    MaxSize = int.Parse(node.MaxSize)
+                    MaxSize = int.Parse(node.MaxSize),
                 });
                 result.Add(key, redis.Get<T>(key));
             }
