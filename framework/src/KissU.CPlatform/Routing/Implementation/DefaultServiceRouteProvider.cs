@@ -255,9 +255,9 @@ namespace KissU.CPlatform.Routing.Implementation
 
             if (route == null)
             {
-                if (_logger.IsEnabled(LogLevel.Warning))
+                if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogWarning($"Service routing path：{path}，no related service information was found.");
+                    _logger.LogTrace($"Service routing path：{path}，no related service information was found.");
                 }
             }
             else if (!Regex.IsMatch(route.ServiceDescriptor.RoutePath, pattern))

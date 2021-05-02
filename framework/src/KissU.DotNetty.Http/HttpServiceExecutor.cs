@@ -168,18 +168,16 @@ namespace KissU.DotNetty.Http
             }
             catch (RemoteServiceValidateException validateException)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(validateException, $"执行远程调用逻辑时候发生了错误。{validateException.StackTrace}");
-
                 resultMessage.Message = validateException.Message;
                 resultMessage.StatusCode = validateException.HResult;
             }
             catch (Exception exception)
             {
+                resultMessage = new HttpResultMessage<object> { Result = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.StackTrace}");
-                resultMessage = new HttpResultMessage<object>
-                    {Result = null, Message = "执行发生了错误。", StatusCode = (int) StatusCode.RequestError};
+                {
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                }
             }
 
             return resultMessage;
@@ -212,18 +210,17 @@ namespace KissU.DotNetty.Http
             }
             catch (RemoteServiceValidateException validateException)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(validateException, $"执行本地逻辑时候发生了错误：{validateException.StackTrace}");
-
                 resultMessage.Message = validateException.Message;
                 resultMessage.StatusCode = validateException.HResult;
             }
             catch (Exception exception)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.StackTrace}");
                 resultMessage.Message = "执行发生了错误。";
                 resultMessage.StatusCode = exception.HResult;
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                }
             }
 
             return resultMessage;

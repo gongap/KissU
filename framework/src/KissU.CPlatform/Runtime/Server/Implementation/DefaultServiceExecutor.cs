@@ -79,9 +79,9 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
             var entry = _serviceEntryLocate.Locate(remoteInvokeMessage);
             if (entry == null)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
+                if (_logger.IsEnabled(LogLevel.Warning))
                 {
-                    _logger.LogError($"根据服务Id：{remoteInvokeMessage.ServiceId}，找不到服务条目。");
+                    _logger.LogWarning($"根据服务Id：{remoteInvokeMessage.ServiceId}，找不到服务条目。");
                 }
 
                 return;
@@ -175,11 +175,10 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
                 else
                 {
                     resultMessage.Message = exception.Message;
-                }
-
-                if (_logger.IsEnabled(LogLevel.Error))
-                {
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.Message}");
+                    if (_logger.IsEnabled(LogLevel.Error))
+                    {
+                        _logger.LogError(exception, $"执行本地调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                    }
                 }
             }
         }

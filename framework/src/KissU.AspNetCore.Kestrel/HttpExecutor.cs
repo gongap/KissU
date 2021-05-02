@@ -164,11 +164,10 @@ namespace KissU.AspNetCore.Kestrel
                 else
                 {
                     resultMessage.Message = "执行发生了错误";
-                }
-
-                if (_logger.IsEnabled(LogLevel.Error))
-                {
-                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.StackTrace}");
+                    if (_logger.IsEnabled(LogLevel.Error))
+                    {
+                        _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                    }
                 }
             }
 
@@ -204,10 +203,6 @@ namespace KissU.AspNetCore.Kestrel
             {
                 resultMessage.Message = validateException.Message;
                 resultMessage.StatusCode = validateException.HResult;
-                if (_logger.IsEnabled(LogLevel.Error))
-                {
-                    _logger.LogError(validateException, $"执行本地逻辑时候发生了错误：{validateException.StackTrace}");
-                }
             }
             catch (Exception exception)
             {
@@ -223,11 +218,10 @@ namespace KissU.AspNetCore.Kestrel
                 else
                 {
                     resultMessage.Message = "执行发生了错误";
-                }
-
-                if (_logger.IsEnabled(LogLevel.Error))
-                {
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.StackTrace}");
+                    if (_logger.IsEnabled(LogLevel.Error))
+                    {
+                        _logger.LogError(exception, $"执行本地调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                    }
                 }
             }
 
