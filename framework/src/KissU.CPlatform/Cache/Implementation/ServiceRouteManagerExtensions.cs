@@ -42,7 +42,7 @@ namespace KissU.CPlatform.Cache.Implementation
             this IServiceCacheManager serviceCacheManager, string cacheId)
         {
             var caches = await serviceCacheManager.GetCachesAsync();
-            return caches.Where(p => p.CacheDescriptor.Id == cacheId).Select(p => p.CacheEndpoint).FirstOrDefault();
+            return caches.Where(p => p.CacheDescriptor.Id == cacheId).Select(p => p.CacheEndpoint).FirstOrDefault(x=> x.Any(y=>y.Health));
         }
 
         /// <summary>

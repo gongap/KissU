@@ -170,6 +170,11 @@ namespace KissU.Caching.RedisCache
         public void Add(string key, object value, TimeSpan timeSpan)
         {
             var node = GetRedisNode(key);
+            if (node == null)
+            {
+                return;
+            }
+
             var redis = GetRedisClient(new RedisEndpoint
             {
                 DbIndex = int.Parse(node.Db),
@@ -213,6 +218,11 @@ namespace KissU.Caching.RedisCache
             foreach (var key in keys)
             {
                 var node = GetRedisNode(key);
+                if (node == null)
+                {
+                    return;
+                }
+
                 var redis = GetRedisClient(new RedisEndpoint
                 {
                     DbIndex = int.Parse(node.Db),
@@ -244,6 +254,11 @@ namespace KissU.Caching.RedisCache
             foreach (var key in keys)
             {
                 var node = GetRedisNode(key);
+                if (node == null)
+                {
+                    return;
+                }
+
                 var redis = GetRedisClient(new RedisEndpoint
                 {
                     DbIndex = int.Parse(node.Db),
@@ -298,6 +313,11 @@ namespace KissU.Caching.RedisCache
         public T Get<T>(string key)
         {
             var node = GetRedisNode(key);
+            if (node == null)
+            {
+                return;
+            }
+
             var result = default(T);
             var redis = GetRedisClient(new RedisEndpoint
             {
@@ -322,6 +342,11 @@ namespace KissU.Caching.RedisCache
         public async Task<T> GetAsync<T>(string key)
         {
             var node = GetRedisNode(key);
+            if (node == null)
+            {
+                return;
+            }
+
             var redis = GetRedisClient(new RedisEndpoint
             {
                 DbIndex = int.Parse(node.Db),
@@ -365,6 +390,11 @@ namespace KissU.Caching.RedisCache
         public void Remove(string key)
         {
             var node = GetRedisNode(key);
+            if (node == null)
+            {
+                return;
+            }
+
             var redis = GetRedisClient(new RedisEndpoint
             {
                 DbIndex = int.Parse(node.Db),

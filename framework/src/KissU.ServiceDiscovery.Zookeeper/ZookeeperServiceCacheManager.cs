@@ -143,7 +143,15 @@ namespace KissU.ServiceDiscovery.Zookeeper
             {
                 foreach (var cache in caches)
                 {
-                    cache.CacheEndpoint = cache.CacheEndpoint.Except(endpoints);
+                    foreach (var endpoint in cache.CacheEndpoint)
+                    {
+                        if (endpoints.Any(x => x == endpoint))
+                        {
+                            endpoint.Health = false;
+                        }
+                    }
+
+                    //cache.CacheEndpoint = cache.CacheEndpoint.Except(endpoints);
                 }
             }
             catch (Exception ex)
