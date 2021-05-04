@@ -220,7 +220,7 @@ namespace KissU.Caching.RedisCache
                 var node = GetRedisNode(key);
                 if (node == null)
                 {
-                    return;
+                    return default;
                 }
 
                 var redis = GetRedisClient(new RedisEndpoint
@@ -256,7 +256,7 @@ namespace KissU.Caching.RedisCache
                 var node = GetRedisNode(key);
                 if (node == null)
                 {
-                    return;
+                    return default;
                 }
 
                 var redis = GetRedisClient(new RedisEndpoint
@@ -315,7 +315,7 @@ namespace KissU.Caching.RedisCache
             var node = GetRedisNode(key);
             if (node == null)
             {
-                return;
+                return  default;
             }
 
             var result = default(T);
@@ -344,7 +344,7 @@ namespace KissU.Caching.RedisCache
             var node = GetRedisNode(key);
             if (node == null)
             {
-                return;
+                return default;
             }
 
             var redis = GetRedisClient(new RedisEndpoint
