@@ -75,8 +75,11 @@ namespace KissU.Thrift.Extensions
             }
             catch (Exception exception)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, "消息发送失败。");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                {
+                    _logger.LogDebug(exception, $"消息发送失败。错误信息：{exception.Message}");
+                }
+
                 throw;
             }
         }

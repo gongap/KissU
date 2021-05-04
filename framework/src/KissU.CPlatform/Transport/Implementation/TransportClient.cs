@@ -89,18 +89,20 @@ namespace KissU.CPlatform.Transport.Implementation
                     throw new CommunicationException("与服务端通讯时发生了异常。", exception);
                 }
 
+                var result = await callbackTask;
+
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
                     _logger.LogDebug("消息发送成功。");
                 }
 
-                return await callbackTask;
+                return result;
             }
             catch (Exception exception)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
+                if (_logger.IsEnabled(LogLevel.Debug))
                 {
-                    _logger.LogError(exception, $"消息发送失败。错误信息：{exception.Message}");
+                    _logger.LogDebug(exception, $"消息发送失败。错误信息：{exception.Message}");
                 }
 
                 throw;

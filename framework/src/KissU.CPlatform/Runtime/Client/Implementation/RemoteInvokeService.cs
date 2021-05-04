@@ -84,7 +84,11 @@ namespace KissU.CPlatform.Runtime.Client.Implementation
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, $"发起请求中发生了错误，服务Id：{invokeMessage.ServiceId}。错误信息：{exception.Message}");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                {
+                    _logger.LogDebug(exception, $"远程调用发生了错误，服务Id：{invokeMessage.ServiceId}。错误信息：{exception.Message}");
+                }
+
                 throw;
             }
         }
@@ -124,7 +128,7 @@ namespace KissU.CPlatform.Runtime.Client.Implementation
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, $"发起请求中发生了错误，服务Id：{invokeMessage.ServiceId}。错误信息：{exception.Message}");
+                _logger.LogError(exception, $"远程调用发生了错误，服务Id：{invokeMessage.ServiceId}。错误信息：{exception.Message}");
                 throw;
             }
         }

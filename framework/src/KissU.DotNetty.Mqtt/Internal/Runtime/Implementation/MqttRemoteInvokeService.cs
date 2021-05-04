@@ -83,7 +83,8 @@ namespace KissU.DotNetty.Mqtt.Internal.Runtime.Implementation
                     }
                     catch (Exception exception)
                     {
-                        _logger.LogError(exception, $"服务Id：{invokeMessage.ServiceId}，发起请求中发生了错误：{exception.StackTrace}");
+                        _logger.LogError(exception, $"远程调用发生了错误，服务Id：{invokeMessage.ServiceId}。错误信息：{exception.Message}");
+                        throw;
                     }
                 }
             }

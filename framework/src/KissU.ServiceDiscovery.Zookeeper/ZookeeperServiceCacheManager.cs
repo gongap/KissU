@@ -328,8 +328,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
 
         private async Task<ServiceCache> GetCache(byte[] data)
         {
-            if (_logger.IsEnabled(LogLevel.Trace))
-                _logger.LogTrace($"准备转换服务缓存，配置内容：{Encoding.UTF8.GetString(data)}。");
+            if (_logger.IsEnabled(LogLevel.Information))
+                _logger.LogInformation($"准备转换服务缓存，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
                 return null;
