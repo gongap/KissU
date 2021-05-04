@@ -73,12 +73,12 @@ namespace KissU.Apm.Skywalking.Transport.Grpc
                 catch (TaskCanceledException ex)
                 {
                     _state = ConnectionState.Failure;
-                    _logger.LogError($"Skywalking connect server timeout.", ex);
+                    _logger.LogWarning($"Skywalking connect server timeout.", ex);
                 }
                 catch (Exception ex)
                 {
                     _state = ConnectionState.Failure;
-                    _logger.LogError($"Skywalking connect server fail.", ex);
+                    _logger.LogWarning($"Skywalking connect server fail.", ex);
                 }
             }
         }
@@ -92,7 +92,7 @@ namespace KissU.Apm.Skywalking.Transport.Grpc
             }
             catch (Exception e)
             {
-                _logger.LogError($"Skywalking Shutdown connection fail.", e);
+                _logger.LogWarning($"Skywalking Shutdown connection fail.", e);
             }
             finally
             {

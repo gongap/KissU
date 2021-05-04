@@ -1,127 +1,122 @@
 {
-  "CachingSettings": [
+  "cachingSettings": [
     {
-      "Id": "ddlCache",
-      "Class": "KissU.Caching.RedisCache.RedisContext,KissU.Caching",
-      "InitMethod": "",
-      "Maps": null,
-      "Properties": [
+      "id": "ddlCache",
+      "class": "KissU.Caching.RedisCache.RedisContext,KissU.Caching",
+      "initMethod": "",
+      "maps": null,
+      "properties": [
         {
-          "Name": "appRuleFile",
-          "Ref": "rule",
-          "Value": "",
-          "Maps": null
+          "name": "appRuleFile",
+          "ref": "rule",
+          "value": "",
+          "maps": null
         },
         {
-          "Name": "dataContextPool",
-          "Ref": "ddls_sample",
-          "Value": "",
-          "Maps": [
+          "name": "dataContextPool",
+          "ref": "ddls_sample",
+          "value": "",
+          "maps": [
             {
-              "Name": "Redis",
-              "Properties": []
-            },
-            {
-              "Name": "MemoryCache",
-              "Properties": null
-            }
-          ]
-        },
-        {
-          "Name": "defaultExpireTime",
-          "Ref": "",
-          "Value": "120",
-          "Maps": null
-        },
-        {
-          "Name": "connectTimeout",
-          "Ref": "",
-          "Value": "120",
-          "Maps": null
-        },
-        {
-          "Name": "minSize",
-          "Ref": "",
-          "Value": "1",
-          "Maps": null
-        },
-        {
-          "Name": "maxSize",
-          "Ref": "",
-          "Value": "10",
-          "Maps": null
-        }
-      ]
-    },
-    {
-      "Id": "userCache",
-      "Class": "KissU.Caching.RedisCache.RedisContext,KissU.Caching",
-      "InitMethod": "",
-      "Maps": null,
-      "Properties": [
-        {
-          "Name": "appRuleFile",
-          "Ref": "rule",
-          "Value": "",
-          "Maps": null
-        },
-        {
-          "Name": "dataContextPool",
-          "Ref": "ddls_sample",
-          "Value": "",
-          "Maps": [
-            {
-              "Name": "Redis",
-              "Properties": [
+              "name": "Redis",
+              "properties": [
                 {
-                  "Name": null,
-                  "Ref": null,
-                  "Value": "127.0.0.1:7000::1",
-                  "Maps": null
-                },
-                {
-                  "Name": null,
-                  "Ref": null,
-                  "Value": "127.0.0.1:7005::1",
-                  "Maps": null
-                },
-                {
-                  "Name": null,
-                  "Ref": null,
-                  "Value": "127.0.0.1:6379::1",
-                  "Maps": null
+                  "name": null,
+                  "ref": null,
+                  "value": "127.0.0.1:6379::1",
+                  "maps": null
                 }
               ]
             },
             {
-              "Name": "MemoryCache",
-              "Properties": null
+              "name": "MemoryCache",
+              "properties": null
             }
           ]
         },
         {
-          "Name": "defaultExpireTime",
-          "Ref": "",
-          "Value": "120",
-          "Maps": null
+          "name": "defaultExpireTime",
+          "ref": "",
+          "value": "120",
+          "maps": null
         },
         {
-          "Name": "connectTimeout",
-          "Ref": "",
-          "Value": "120",
-          "Maps": null
+          "name": "connectTimeout",
+          "ref": "",
+          "value": "120",
+          "maps": null
         },
         {
-          "Name": "minSize",
-          "Ref": "",
-          "Value": "1",
-          "Maps": null
+          "name": "minSize",
+          "ref": "",
+          "value": "1",
+          "maps": null
         },
         {
-          "Name": "maxSize",
-          "Ref": "",
-          "Value": "10",
-          "Maps": null
+          "name": "maxSize",
+          "ref": "",
+          "value": "10",
+          "maps": null
+        }
+      ]
+    },
+    {
+      "id": "userCache",
+      "class": "KissU.Caching.RedisCache.RedisContext,KissU.Caching",
+      "initMethod": "",
+      "maps": null,
+      "properties": [
+        {
+          "name": "appRuleFile",
+          "ref": "rule",
+          "value": "",
+          "maps": null
+        },
+        {
+          "name": "dataContextPool",
+          "ref": "ddls_sample",
+          "value": "",
+          "maps": [
+            {
+              "name": "Redis",
+              "properties": [
+                {
+                  "name": null,
+                  "ref": null,
+                  "value": "127.0.0.1:6379::1",
+                  "maps": null
+                }
+              ]
+            },
+            {
+              "name": "MemoryCache",
+              "properties": null
+            }
+          ]
+        },
+        {
+          "name": "defaultExpireTime",
+          "ref": "",
+          "value": "120",
+          "maps": null
+        },
+        {
+          "name": "connectTimeout",
+          "ref": "",
+          "value": "120",
+          "maps": null
+        },
+        {
+          "name": "minSize",
+          "ref": "",
+          "value": "1",
+          "maps": null
+        },
+        {
+          "name": "maxSize",
+          "ref": "",
+          "value": "10",
+          "maps": null
         }
       ]
     }
