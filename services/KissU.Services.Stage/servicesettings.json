@@ -30,7 +30,7 @@
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;EventBusRabbitMQModule;CachingModule;ApolloModule;AspNetCoreKestrelModule;ApiGateWayModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;MessagePackModule;ConsulModule;EventBusRabbitMQModule;CachingModule;ApolloModule;AspNetCoreKestrelModule;ApiGateWayModule;"
       }
     ]
   },
