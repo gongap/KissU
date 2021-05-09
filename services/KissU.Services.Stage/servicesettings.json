@@ -15,7 +15,7 @@
     "ExecutionTimeoutInMilliseconds": 30000,
     "BreakerForceClosed": true,
     "Protocol": "${Protocol}|None",
-    "RootPath": "${RootPath}",
+    "RootPath": "${RootPath}|E:\\GAP\\KissU\\modules\\output\\net5.0\\",
     "WebRootPath": "${WebRootPath}",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
@@ -26,7 +26,7 @@
       "GrpcPort": "${GrpcPort}|9104",
       "UdpPort": "${UdpPort}|9105"
     },
-    "RequestCacheEnabled": false,
+    "RequestCacheEnabled": true,
     "Packages": [
       {
         "TypeName": "EnginePartModule",
