@@ -15,7 +15,7 @@
     "ExecutionTimeoutInMilliseconds": 30000,
     "BreakerForceClosed": true,
     "Protocol": "${Protocol}|None",
-    "RootPath": "${RootPath}|E:\\GAP\\KissU\\modules\\output\\net5.0\\",
+    "RootPath": "${RootPath}",
     "WebRootPath": "${WebRootPath}",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,

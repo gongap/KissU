@@ -32,7 +32,7 @@ namespace KissU.Abp
                     services.AddApplication<AbpStartupModule>(options =>
                     {
                         optionsAction?.Invoke(options);
-                        var modulePaths = DefaultServiceEngineBuilder.GetPaths(DefaultServiceEngineBuilder.ModuleServiceLocationFormat);
+                        var modulePaths = DefaultServiceEngineBuilder.GetPaths(DefaultServiceEngineBuilder.ModuleServiceLocationFormat) ?? new string[]{};
                         var paths = new[] {AppContext.BaseDirectory}.Concat(modulePaths).ToArray();
                         var assemblies = ModuleHelper.GetAssemblies(paths);
                         var moduleTypes = ReflectionHelper.FindTypes<IBusinessModule>(assemblies.ToArray());
