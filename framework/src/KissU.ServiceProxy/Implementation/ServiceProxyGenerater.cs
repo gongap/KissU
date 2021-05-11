@@ -87,6 +87,10 @@ namespace KissU.ServiceProxy.Implementation
                         MetadataReference.CreateFromFile(typeof(Task).GetTypeInfo().Assembly.Location)
                     }),
                 _logger);
+            if (stream == null)
+            {
+                return new Type[]{};
+            }
 
             using (stream)
             {

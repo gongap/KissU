@@ -15,6 +15,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Behaviors\**" />
+    <EmbeddedResource Remove="Behaviors\**" />
+    <None Remove="Behaviors\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="GreeterService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
     <ProjectReference Include="..\KissU.Modules.Common.Service.Contracts\KissU.Modules.Common.Service.Contracts.csproj" />
   </ItemGroup>
