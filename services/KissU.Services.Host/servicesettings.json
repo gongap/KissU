@@ -15,18 +15,18 @@
     "DisconnTimeInterval": 10, //断开连接时间间隔
     "BreakerForceClosed": true,
     "ExecutionTimeoutInMilliseconds": 30000, //执行超时时间（毫秒）
-    "Protocol": "${Protocol}|None", //配置微服务组件支持的协议 缺省值为: None, Tcp, Http, WS, Mqtt, Dns, Udp
+    "Protocol": "${Protocol}", //配置微服务组件支持的协议 缺省值为: None, Tcp, Http, WS, Mqtt, Dns, Udp
     "RootPath": "${RootPath}", //指定服务引擎解析的业务模块路径
     "WebRootPath": "${WebRootPath}", //指定Web主机根路径
     "IsModulePerLifetimeScope": false, //模块是否使用每个生命周期范围
     "ReloadOnChange": false, //当配置改变后是否重新加载
     "IncludeSensitiveDetails": false,
     "Ports": {
-      "HttpPort": "${HttpPort}|8101",
-      "WSPort": "${WSPort}|8102",
-      "MQTTPort": "${MQTTPort}|8103",
-      "GrpcPort": "${GrpcPort}|8104",
-      "UdpPort": "${UdpPort}|8105"
+      "HttpPort": "${HttpPort}",
+      "WSPort": "${WSPort}",
+      "MQTTPort": "${MQTTPort}",
+      "GrpcPort": "${GrpcPort}",
+      "UdpPort": "${UdpPort}"
     },
     "RequestCacheEnabled": true, //启用请求缓存
     "Packages": [ //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages

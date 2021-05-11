@@ -57,7 +57,7 @@ namespace KissU.BackgroundServer.Runtime.Implementation
                     }
                 }
 
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Debug) && _backgroundServiceEntries.Any())
                 {
                     _logger.LogDebug($"发现了{_backgroundServiceEntries.Count}个后台托管服务：");
                     _backgroundServiceEntries.ForEach(p => _logger.LogDebug(p.Type.FullName));

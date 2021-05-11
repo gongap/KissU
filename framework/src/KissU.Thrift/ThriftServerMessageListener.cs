@@ -69,10 +69,20 @@ namespace KissU.Thrift
 
         public Task StartAsync(EndPoint endPoint)
         {
+            var ipEndPoint = endPoint as IPEndPoint;
+            if (ipEndPoint.Port == 0)
+            {
+                return Task.CompletedTask;
+            }
+
+            if (_logger.IsEnabled(LogLevel.Debug))
+            {
+                _logger.LogDebug($"Prepare to start Thrift host, listening on: {endPoint}");
+            }
+
             try
             {
                 CancellationToken cancellationToken = new CancellationToken();
-                var ipEndPoint = endPoint as IPEndPoint;
                 TMultiplexedServiceProcessor processor = new TMultiplexedServiceProcessor(_logger, _transportMessageDecoder, _transportMessageEncoder, new ServerHandler(async (contenxt, message) =>
                   {
                       var sender = new ThriftServerMessageSender(_transportMessageEncoder, contenxt);

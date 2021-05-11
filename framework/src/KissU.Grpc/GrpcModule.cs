@@ -31,7 +31,7 @@ namespace KissU.Grpc
                     provider.Resolve<CPlatformContainer>()
                 );
             }).As(typeof(IGrpcServiceEntryProvider)).SingleInstance();
-            if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.WS)
+            if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.GRPC)
             {
                 RegisterDefaultProtocol(builder);
             }

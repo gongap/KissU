@@ -70,17 +70,20 @@ namespace KissU.Grpc
         /// <returns>Task.</returns>
         public Task StartAsync(EndPoint endPoint)
         {
+            var ipEndPoint = endPoint as IPEndPoint;
+            if (ipEndPoint.Port == 0)
+            {
+                return Task.CompletedTask;
+            }
+
             if (_logger.IsEnabled(LogLevel.Debug))
             {
                 _logger.LogDebug($"Prepare to start Grpc host, listening on: {endPoint}");
             }
 
-            var ipEndPoint = endPoint as IPEndPoint;
-            Server = new Server
-                {Ports = {new ServerPort(ipEndPoint.Address.ToString(), ipEndPoint.Port, ServerCredentials.Insecure)}};
-
             try
             {
+                Server = new Server { Ports = { new ServerPort(ipEndPoint.Address.ToString(), ipEndPoint.Port, ServerCredentials.Insecure) } };
                 var entries = _grpcServiceEntryProvider.GetEntries();
 
                 var serverServiceDefinitions = new List<ServerServiceDefinition>();

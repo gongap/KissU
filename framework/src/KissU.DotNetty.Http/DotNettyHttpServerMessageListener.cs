@@ -71,8 +71,17 @@ namespace KissU.DotNetty.Http
         /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
+            var ipEndPoint = endPoint as IPEndPoint;
+            if (ipEndPoint.Port == 0)
+            {
+                return;
+            }
+
             if (_logger.IsEnabled(LogLevel.Debug))
+            {
                 _logger.LogDebug($"Prepare to start Http host, listening on: {endPoint}");
+            }
+
             var serverCompletion = new TaskCompletionSource();
             var bossGroup = new MultithreadEventLoopGroup(1);
             var workerGroup =

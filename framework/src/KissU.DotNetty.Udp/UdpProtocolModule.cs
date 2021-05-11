@@ -34,7 +34,7 @@ namespace KissU.DotNetty.Udp
             }).As(typeof(IUdpServiceEntryProvider)).SingleInstance();
             builder.RegisterType(typeof(UdpServiceExecutor)).As(typeof(IServiceExecutor))
                 .Named<IServiceExecutor>(CommunicationProtocol.Udp.ToString()).SingleInstance();
-            if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Dns)
+            if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Udp)
             {
                 RegisterDefaultProtocol(builder);
             }

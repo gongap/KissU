@@ -84,8 +84,17 @@ namespace KissU.DotNetty.Mqtt
         /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
+            var ipEndPoint = endPoint as IPEndPoint;
+            if (ipEndPoint.Port == 0)
+            {
+                return;
+            }
+
             if (_logger.IsEnabled(LogLevel.Debug))
+            {
                 _logger.LogDebug($"Prepare to start Mqtt host, listening on: {endPoint}");
+            }
+
             IEventLoopGroup bossGroup = new MultithreadEventLoopGroup(1);
             IEventLoopGroup
                 workerGroup =

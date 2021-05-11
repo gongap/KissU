@@ -17,7 +17,6 @@ using KissU.CPlatform.Transport.Implementation;
 using KissU.Dependency;
 using KissU.Exceptions;
 using KissU.Exceptions.Handling;
-using KissU.Extensions;
 using KissU.Helpers;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.Logging;

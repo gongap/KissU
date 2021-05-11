@@ -16,6 +16,6 @@ namespace KissU.Grpc.Runtime
         /// <summary>
         /// Gets or sets the behavior.
         /// </summary>
-        public IServiceBehavior Behavior { get; set; }
+        public IGrpcBehavior Behavior { get; set; }
     }
 }

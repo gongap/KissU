@@ -14,17 +14,17 @@
     "DisconnTimeInterval": 30,
     "ExecutionTimeoutInMilliseconds": 30000,
     "BreakerForceClosed": true,
-    "Protocol": "${Protocol}|None",
+    "Protocol": "${Protocol}",
     "RootPath": "${RootPath}",
     "WebRootPath": "${WebRootPath}",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
     "Ports": {
-      "HttpPort": "${HttpPort}|9101",
-      "WSPort": "${WSPort}|9102",
-      "MQTTPort": "${MQTTPort}|9103",
-      "GrpcPort": "${GrpcPort}|9104",
-      "UdpPort": "${UdpPort}|9105"
+      "HttpPort": "${HttpPort}",
+      "WSPort": "${WSPort}",
+      "MQTTPort": "${MQTTPort}",
+      "GrpcPort": "${GrpcPort}",
+      "UdpPort": "${UdpPort}"
     },
     "RequestCacheEnabled": true,
     "Packages": [
@@ -70,7 +70,7 @@
         "Enable": true
       }
     ],
-    "HttpPorts": "${StageHttpPorts}|9180",
+    "HttpPorts": "${StageHttpPorts}|9080",
     "HttpsPort": "${StageHttpsPorts}|9443"
   },
   "Consul": {

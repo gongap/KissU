@@ -32,7 +32,7 @@ namespace KissU.Convertibles.Implementation
         {
             _logger = logger;
             providers = providers.ToArray();
-            if (_logger.IsEnabled(LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug)&& providers.Any())
             {
                 _logger.LogDebug($"发现了{providers.Count()}个类型转换提供程序：");
                 foreach (var provider in providers)

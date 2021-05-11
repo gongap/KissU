@@ -74,15 +74,20 @@ namespace KissU.WebSocket
         /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
+            var ipEndPoint = endPoint as IPEndPoint;
+            if (ipEndPoint.Port == 0)
+            {
+                return;
+            }
+
             if (_logger.IsEnabled(LogLevel.Debug))
             {
                 _logger.LogDebug($"Prepare to start WS host, listening on: {endPoint}");
             }
 
-            var ipEndPoint = endPoint as IPEndPoint;
-            Server = new WebSocketServer(ipEndPoint.Address, ipEndPoint.Port);
             try
             {
+                Server = new WebSocketServer(ipEndPoint.Address, ipEndPoint.Port);
                 foreach (var entry in _entries)
                     Server.AddWebSocketService(entry.Path, entry.FuncBehavior);
                 Server.KeepClean = _options.KeepClean;

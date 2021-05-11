@@ -51,7 +51,7 @@ namespace KissU.Thrift.Runtime.Implementation
                         _thriftServiceEntries.Add(entry);
                     }
                 }
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Debug) && _thriftServiceEntries.Any())
                 {
                     _logger.LogDebug($"发现了{_thriftServiceEntries.Count()}个thrift服务：");
                     foreach (var service in _thriftServiceEntries)
@@ -67,7 +67,7 @@ namespace KissU.Thrift.Runtime.Implementation
         {
             ThriftServiceEntry result = null;
             var objInstance = _serviceProvider.GetInstances(service);
-            var behavior = objInstance as IServiceBehavior;
+            var behavior = objInstance as IThriftBehavior;
             if (behavior != null)
                 result = new ThriftServiceEntry
                 {
