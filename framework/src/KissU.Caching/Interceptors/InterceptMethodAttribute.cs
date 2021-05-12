@@ -55,9 +55,9 @@ namespace KissU.Caching.Interceptors
             set { _mode = value; }
         }
 
-        ///// <summary>
-        ///// 设置SectionType
-        ///// </summary>
+        /// <summary>
+        /// 设置SectionType
+        /// </summary>
         public SectionType CacheSectionType
         {
             get;
