@@ -114,7 +114,7 @@ namespace KissU.DotNetty.Udp
         public async Task StartAsync(EndPoint endPoint)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"Prepare to start Udp host, listening on: {endPoint}");
+                _logger.LogDebug($"准备启动Udp服务主机, 监听端口: {endPoint}");
 
             var group = new MultithreadEventLoopGroup();
             var bootstrap = new Bootstrap();
@@ -134,11 +134,11 @@ namespace KissU.DotNetty.Udp
             {
                 _channel = await bootstrap.BindAsync(endPoint);
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"Udp host started, listening on:{endPoint}");
+                    _logger.LogInformation($"Udp服务主机已启动, 监听端口:{endPoint}");
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Udp host failed, listening on: {endPoint} ");
+                _logger.LogError($"Udp服务主机启动失败, 监听端口: {endPoint} ");
             }
         }
 

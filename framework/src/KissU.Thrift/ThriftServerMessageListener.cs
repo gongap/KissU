@@ -77,7 +77,7 @@ namespace KissU.Thrift
 
             if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogDebug($"Prepare to start Thrift host, listening on: {endPoint}");
+                _logger.LogDebug($"准备启动Thrift服务主机, 监听端口: {endPoint}");
             }
 
             try
@@ -108,11 +108,11 @@ namespace KissU.Thrift
                 server.ServeAsync(cancellationToken);
 
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"Thrift host started, listening on:{endPoint}");
+                    _logger.LogInformation($"Thrift服务主机已启动, 监听端口:{endPoint}");
             }
             catch
             {
-                _logger.LogError($"Thrift host failed, listening on: {endPoint} ");
+                _logger.LogError($"Thrift服务主机启动失败, 监听端口: {endPoint} ");
             }
             return Task.CompletedTask;
         }

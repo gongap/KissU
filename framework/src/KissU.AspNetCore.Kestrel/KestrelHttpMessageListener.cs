@@ -88,11 +88,6 @@ namespace KissU.AspNetCore.Kestrel
         /// <param name="port">The port.</param>
         public Task StartAsync(IPAddress address, int? port)
         {
-            if (_logger.IsEnabled(LogLevel.Debug))
-            {
-                _logger.LogDebug($"Prepare to start Http host, listening on:{address}:{port}");
-            }
-
             try
             {
                 if (AppConfig.ServerOptions.DockerDeployMode == DockerDeployMode.Swarm)
@@ -133,13 +128,11 @@ namespace KissU.AspNetCore.Kestrel
                 _lifetime.ServiceEngineStarted.Register(async () =>
                 {
                     await _host.RunAsync();
-                    if (_logger.IsEnabled(LogLevel.Information))
-                        _logger.LogInformation($"Http host started, listening on:{address}:{port}");
                 });
             }
             catch
             {
-                _logger.LogError($"http host failed, listening on: {address}:{port}。 ");
+                _logger.LogError($"Kestrel服务主机启动失败, 监听端口: {address}:{port}。 ");
             }
 
             return Task.CompletedTask;

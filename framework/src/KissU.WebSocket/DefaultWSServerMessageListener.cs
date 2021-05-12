@@ -82,7 +82,7 @@ namespace KissU.WebSocket
 
             if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogDebug($"Prepare to start WS host, listening on: {endPoint}");
+                _logger.LogDebug($"准备启动WS服务主机, 监听端口: {endPoint}");
             }
 
             try
@@ -96,11 +96,11 @@ namespace KissU.WebSocket
                 Server.AllowForwardedRequest = true;
                 Server.Start();
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"WS host started, listening on: {endPoint}");
+                    _logger.LogInformation($"WS服务主机已启动, 监听端口: {endPoint}");
             }
             catch
             {
-                _logger.LogError($"WS host failed, listening on: {endPoint}");
+                _logger.LogError($"WS服务主机启动失败, 监听端口: {endPoint}");
             }
         }
     }

@@ -88,7 +88,7 @@ namespace KissU.Apm.Skywalking.Transport.Grpc
             try
             {
                 await _channel?.ShutdownAsync();
-                _logger.LogInformation($"Skywalking shutdown connection[{_channel.Target}].");
+                _logger.LogWarning($"Skywalking shutdown connection[{_channel.Target}].");
             }
             catch (Exception e)
             {
@@ -115,7 +115,7 @@ namespace KissU.Apm.Skywalking.Transport.Grpc
         public Channel GetConnection()
         {
             if (Ready) return _channel;
-            _logger.LogDebug("Skywalking not found available gRPC connection.");
+            _logger.LogWarning("Skywalking not found available gRPC connection.");
             return null;
         }
 

@@ -79,7 +79,7 @@ namespace KissU.DotNetty.Http
 
             if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogDebug($"Prepare to start Http host, listening on: {endPoint}");
+                _logger.LogDebug($"准备启动Http服务主机, 监听端口: {endPoint}");
             }
 
             var serverCompletion = new TaskCompletionSource();
@@ -111,11 +111,11 @@ namespace KissU.DotNetty.Http
             {
                 _channel = await bootstrap.BindAsync(endPoint);
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"Http host started, listening on:{endPoint}");
+                    _logger.LogInformation($"Http服务主机已启动, 监听端口:{endPoint}");
             }
             catch
             {
-                _logger.LogError($"Http host failed, listening on: {endPoint} ");
+                _logger.LogError($"Http服务主机启动失败, 监听端口: {endPoint} ");
             }
         }
 

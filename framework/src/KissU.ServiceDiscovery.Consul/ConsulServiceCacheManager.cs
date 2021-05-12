@@ -264,8 +264,8 @@ namespace KissU.ServiceDiscovery.Consul
 
         private async Task<ServiceCache> GetCache(byte[] data)
         {
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation($"准备转换服务缓存，配置内容：{Encoding.UTF8.GetString(data)}。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug($"准备转换服务缓存，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
                 return null;
@@ -348,7 +348,6 @@ namespace KissU.ServiceDiscovery.Consul
 
         private async Task ChildrenChange(string[] oldChildrens, string[] newChildrens)
         {
-
             //计算出已被删除的节点。
             var deletedChildrens = oldChildrens.Except(newChildrens).ToArray();
             //计算出新增的节点。
@@ -387,7 +386,7 @@ namespace KissU.ServiceDiscovery.Consul
             //触发缓存被创建事件。
             OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
-            _logger.LogInformation("Cache node updated successfully");
+            _logger.LogInformation("Consul缓存节点数据更新成功");
         }
 
         #endregion

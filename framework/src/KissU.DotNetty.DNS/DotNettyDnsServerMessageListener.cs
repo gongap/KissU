@@ -47,7 +47,7 @@ namespace KissU.DotNetty.DNS
         public async Task StartAsync(EndPoint endPoint)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"Prepare to start DNS host, listening on: {endPoint}");
+                _logger.LogDebug($"准备启动DNS服务主机, 监听端口: {endPoint}");
 
             var group = new MultithreadEventLoopGroup();
             var bootstrap = new Bootstrap();
@@ -69,11 +69,11 @@ namespace KissU.DotNetty.DNS
             {
                 _channel = await bootstrap.BindAsync(endPoint);
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"DNS host started, listening on:{endPoint}");
+                    _logger.LogInformation($"DNS服务主机已启动, 监听端口:{endPoint}");
             }
             catch
             {
-                _logger.LogError($"DNS host failed, listening on: {endPoint} ");
+                _logger.LogError($"DNS服务主机启动失败, 监听端口: {endPoint} ");
             }
         }
 

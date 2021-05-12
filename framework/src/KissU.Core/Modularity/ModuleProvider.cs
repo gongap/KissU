@@ -74,15 +74,19 @@ namespace KissU.Modularity
         /// </summary>
         private void WriteLog(Type[] types)
         {
-            if (!_logger.IsEnabled(LogLevel.Debug)) return;
-            _logger.LogDebug($"Loaded KissU modules");
-            Modules.ForEach(p =>
+            var groupModules = Modules.GroupBy(x => x.TypeName).OrderBy(x=>x.Key);
+            foreach (var group in groupModules)
             {
-                if (p.Enable && types.All(x => x != p.GetType()))
+                _logger.LogInformation($"Loaded {group.Key } modules:");
+
+                foreach (var module in group.ToList())
                 {
-                    _logger.LogDebug($"{p.TypeName}：{p.ModuleName}");
+                    if (module.Enable && types.All(x => x != module.GetType()))
+                    {
+                        _logger.LogInformation("- " + module.GetType().FullName);
+                    }
                 }
-            });
+            }
         }
     }
 }

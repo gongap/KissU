@@ -92,7 +92,7 @@ namespace KissU.DotNetty.Mqtt
 
             if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogDebug($"Prepare to start Mqtt host, listening on: {endPoint}");
+                _logger.LogDebug($"准备启动Mqtt服务主机, 监听端口: {endPoint}");
             }
 
             IEventLoopGroup bossGroup = new MultithreadEventLoopGroup(1);
@@ -134,11 +134,11 @@ namespace KissU.DotNetty.Mqtt
             {
                 _channel = await bootstrap.BindAsync(endPoint);
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"Mqtt host started, listening on:{endPoint}");
+                    _logger.LogInformation($"Mqtt主机已启动, 监听端口:{endPoint}");
             }
             catch
             {
-                _logger.LogError($"Mqtt host failed, listening on: {endPoint} ");
+                _logger.LogError($"Mqtt服务主机启动失败, 监听端口: {endPoint} ");
             }
         }
 
