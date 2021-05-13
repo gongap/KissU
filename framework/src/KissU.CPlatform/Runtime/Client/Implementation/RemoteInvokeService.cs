@@ -68,9 +68,9 @@ namespace KissU.CPlatform.Runtime.Client.Implementation
             try
             {
                 var endPoint = address.CreateEndPoint();
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogDebug($"使用地址：'{endPoint}'进行调用。");
+                    _logger.LogTrace($"使用地址：'{endPoint}'进行调用。");
                 }
 
                 var client = await _transportClientFactory.CreateClientAsync(endPoint);
@@ -84,9 +84,9 @@ namespace KissU.CPlatform.Runtime.Client.Implementation
             }
             catch (Exception exception)
             {
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogDebug(exception, $"远程调用发生了错误，服务Id：{invokeMessage.ServiceId}。错误信息：{exception.Message}");
+                    _logger.LogError(exception, $"远程调用发生了错误，服务Id：{invokeMessage.ServiceId}。错误信息：{exception.Message}");
                 }
 
                 throw;
@@ -108,9 +108,9 @@ namespace KissU.CPlatform.Runtime.Client.Implementation
             try
             {
                 var endPoint = address.CreateEndPoint();
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogDebug($"使用地址：'{endPoint}'进行调用。");
+                    _logger.LogTrace($"使用地址：'{endPoint}'进行调用。");
                 }
 
                 var task = _transportClientFactory.CreateClientAsync(endPoint);

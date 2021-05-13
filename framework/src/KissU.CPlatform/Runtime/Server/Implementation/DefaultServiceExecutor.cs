@@ -95,9 +95,9 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
                 }
             }
 
-            if (_logger.IsEnabled(LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Trace))
             {
-                _logger.LogDebug("准备执行本地逻辑。");
+                _logger.LogTrace("准备执行本地逻辑。");
             }
 
             SetCurrentCulture();
@@ -192,15 +192,15 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
         {
             try
             {
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogDebug("准备发送响应消息。");
+                    _logger.LogTrace("准备发送响应消息。");
                 }
 
                 await sender.SendAndFlushAsync(TransportMessage.CreateInvokeResultMessage(messageId, resultMessage));
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogDebug("响应消息发送成功。");
+                    _logger.LogTrace("响应消息发送成功。");
                 }
             }
             catch (Exception exception)
