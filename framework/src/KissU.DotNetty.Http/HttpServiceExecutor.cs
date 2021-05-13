@@ -84,8 +84,8 @@ namespace KissU.DotNetty.Http
                 return;
             }
 
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug("准备执行本地逻辑。");
+            if (_logger.IsEnabled(LogLevel.Trace))
+                _logger.LogTrace("准备执行本地逻辑。");
             var httpResultMessage = new HttpResultMessage<object>();
 
             if (_serviceProvider.IsRegisteredWithKey(httpMessage.ServiceKey, entry.Type))

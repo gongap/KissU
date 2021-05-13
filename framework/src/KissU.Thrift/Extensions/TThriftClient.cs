@@ -50,7 +50,7 @@ namespace KissU.Thrift.Extensions
             try
             {
                 if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug("准备发送消息。");
+                    _logger.LogTrace("准备发送消息。");
 
                 var transportMessage = TransportMessage.CreateInvokeMessage(message);
                 WirteDiagnosticBefore(transportMessage);
@@ -68,16 +68,16 @@ namespace KissU.Thrift.Extensions
                     throw new CommunicationException("与服务端通讯时发生了异常。", exception);
                 }
 
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug("消息发送成功。");
+                if (_logger.IsEnabled(LogLevel.Trace))
+                    _logger.LogTrace("消息发送成功。");
 
                 return await callbackTask;
             }
             catch (Exception exception)
             {
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogDebug(exception, $"消息发送失败。错误信息：{exception.Message}");
+                    _logger.LogTrace(exception, $"消息发送失败。错误信息：{exception.Message}");
                 }
 
                 throw;
@@ -87,8 +87,8 @@ namespace KissU.Thrift.Extensions
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private async Task<RemoteInvokeResultMessage> RegisterResultCallbackAsync(string id, CancellationToken cancellationToken)
         {
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"准备获取Id为：{id}的响应内容。");
+            if (_logger.IsEnabled(LogLevel.Trace))
+                _logger.LogTrace($"准备获取Id为：{id}的响应内容。");
 
             var task = new ManualResetValueTaskSource<TransportMessage>();
             _resultDictionary.TryAdd(id, task);
