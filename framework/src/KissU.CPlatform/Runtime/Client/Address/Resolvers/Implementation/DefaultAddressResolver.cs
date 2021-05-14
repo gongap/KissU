@@ -73,9 +73,9 @@ namespace KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation
         /// 9.返回addressmodel
         public async ValueTask<AddressModel> Resolver(string serviceId, string item)
         {
-            if (_logger.IsEnabled(LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Trace))
             {
-                _logger.LogDebug($"Prepare for service ID：{serviceId}，resolving available addresses");
+                _logger.LogTrace($"Prepare for service ID：{serviceId}，resolving available addresses");
             }
 
             var serviceRouteTask = _serviceRouteProvider.Locate(serviceId);
