@@ -111,9 +111,9 @@ namespace KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation
                 return null;
             }
 
-            if (_logger.IsEnabled(LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Trace))
             {
-                _logger.LogDebug(
+                _logger.LogTrace(
                     $"Service ID：{serviceId}，the following available addresses were found：{string.Join(",", address.Select(i => i.ToString()))}。");
             }
 
