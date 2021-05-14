@@ -1,12 +1,12 @@
 {
   "ServerEngine": {
     "Ip": "${Server_IP}|127.0.0.1",
-    "WatchInterval": 10,
     "Port": "${Server_Port}|91",
     "MappingIp": "${Mapping_ip}",
     "MappingPort": "${Mapping_Port}",
-    "Token": "123456789",
     "WanIp": "${WanIp}",
+    "WatchInterval": 20,
+    "Token": "123456789",
     "DockerDeployMode": "${DockerDeployMode}|Standard",
     "Libuv": true,
     "SoBacklog": 100,

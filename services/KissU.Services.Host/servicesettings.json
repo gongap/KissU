@@ -4,9 +4,9 @@
     "Port": "${Server_Port}|81", ///私有容器端口
     "MappingIp": "${Mapping_ip}", //公开主机IP
     "MappingPort": "${Mapping_Port}", //公开主机端口
-    "WatchInterval": 10, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
-    "Token": "123456789", //是否验证Token,缺省值为True
     "WanIp": "${WanIp}", //外网IP
+    "WatchInterval": 20, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
+    "Token": "123456789", //是否验证Token,缺省值为True
     "DockerDeployMode": "${DockerDeployMode}|Standard", //Docker容器部署模式
     "Libuv": true, //是否开启Libuv高性能事件驱动的I/O库,缺省值为false
     "SoBacklog": 100, //用于临时存放已完成三次握手的请求的队列的最大长度
