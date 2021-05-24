@@ -386,7 +386,8 @@ namespace KissU.ServiceDiscovery.Consul
             //触发缓存被创建事件。
             OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
-            _logger.LogInformation("Consul缓存节点数据更新成功");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug("Consul缓存节点数据更新成功");
         }
 
         #endregion
