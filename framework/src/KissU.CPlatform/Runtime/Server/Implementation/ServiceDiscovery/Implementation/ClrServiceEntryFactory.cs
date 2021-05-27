@@ -116,8 +116,7 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Impleme
 
             if (authorization != null)
             {
-                serviceDescriptor.AuthType((authorization as AuthorizationAttribute)?.AuthType ??
-                                           AuthorizationType.AppSecret);
+                serviceDescriptor.AuthType((authorization as AuthorizationAttribute)?.AuthType ?? AuthorizationType.AppSecret);
             }
 
             var fastInvoker = GetHandler(serviceId, method);

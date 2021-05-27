@@ -10,10 +10,10 @@
     <PackageIconUrl></PackageIconUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>kissu;microservice;applicationframework;dotnetcore;aspnetcore;</PackageTags>
-    <Version>1.3.6</Version>
+    <Version>1.3.7</Version>
     <VersionMajor>1</VersionMajor>
     <VersionMinor>3</VersionMinor>
-    <VersionPatch>6</VersionPatch>
+    <VersionPatch>7</VersionPatch>
 		<VersionQuality></VersionQuality>
 		<VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
 		<VersionSuffix>preview-$(VersionQuality)</VersionSuffix>

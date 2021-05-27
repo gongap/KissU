@@ -10,8 +10,8 @@
     "DockerDeployMode": "${DockerDeployMode}|Standard",
     "Libuv": true,
     "SoBacklog": 100,
-    "MaxConcurrentRequests": 20,
-    "DisconnTimeInterval": 30,
+    "MaxConcurrentRequests": 10000,
+    "DisconnTimeInterval": 10,
     "ExecutionTimeoutInMilliseconds": 30000,
     "BreakerForceClosed": true,
     "Protocol": "${Protocol}",
@@ -30,7 +30,7 @@
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;MessagePackModule;ConsulModule;EventBusRabbitMQModule;CachingModule;ApolloModule;AspNetCoreKestrelModule;ApiGateWayModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;MessagePackModule;ConsulModule;EventBusRabbitMQModule;CachingModule;ApolloModule;SkywalkingModule;AspNetCoreKestrelModule;ApiGateWayModule;"
       }
     ]
   },

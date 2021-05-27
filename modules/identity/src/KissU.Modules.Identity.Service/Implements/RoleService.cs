@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using KissU.Extensions;
 using KissU.Models;
+using KissU.Modules.Common.Service.Contracts;
 using KissU.Modules.Identity.Service.Contracts;
 using KissU.ServiceProxy;
 using Volo.Abp.Identity;
@@ -33,6 +34,7 @@ namespace KissU.Modules.Identity.Service.Implements
         /// <returns>Task&lt;ListResult&lt;IdentityRoleDto&gt;&gt;.</returns>
         public virtual async Task<ListResult<IdentityRoleDto>> GetAllList()
         {
+            await base.GetService<IManagerService>().SayHello("gongap");
             var result = await _appService.GetAllListAsync();
             return new ListResult<IdentityRoleDto>(result.Items);
         }

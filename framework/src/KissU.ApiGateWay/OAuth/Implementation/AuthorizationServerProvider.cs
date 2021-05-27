@@ -88,6 +88,17 @@ namespace KissU.ApiGateWay.OAuth.Implementation
         /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> ValidateClientAuthentication(string token)
         {
+            if (token == null)
+            {
+                return false;
+            }
+
+            var tokenArray = token.Split(' ');
+            if (tokenArray.Length == 2)
+            {
+                token = tokenArray[1];
+            }
+
             var isSuccess = false;
             var jwtToken = token.Split('.');
             if (jwtToken.Length == 3)
