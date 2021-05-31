@@ -81,7 +81,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Abp", "src\KissU.Abp\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.AspNetCore.Kestrel", "src\KissU.AspNetCore.Kestrel\KissU.AspNetCore.Kestrel.csproj", "{708EC972-6400-4F03-A730-1F43C86F086B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{31BF1D09-9CD1-4849-AEE8-312B1CB859BA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{31BF1D09-9CD1-4849-AEE8-312B1CB859BA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{29F61DC4-A718-4A7B-B8EE-75881BFAB94F}"
 	ProjectSection(SolutionItems) = preProject
