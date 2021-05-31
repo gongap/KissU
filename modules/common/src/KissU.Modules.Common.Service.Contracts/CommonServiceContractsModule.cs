@@ -1,7 +1,7 @@
 ﻿using KissU.Modularity;
 using Volo.Abp.Modularity;
 
-namespace KissU.Modules.Account.Service.Contracts
+namespace KissU.Modules.Common.Service.Contracts
 {
     [DependsOn]
     public class CommonServiceContractsModule : AbpModule, IBusinessModule

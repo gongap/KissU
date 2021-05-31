@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
 
-namespace KissU.Modules.Account.Application.Extensions
+namespace KissU.Modules.Identity.Service.Extensions
 {
     /// <summary>
     /// Helper functions for configuring identity services.

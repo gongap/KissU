@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Dependency;
-using KissU.Modules.Account.Application.Contracts.Models;
+using KissU.Modules.Identity.Application.Contracts.Dtos;
 
-namespace KissU.Modules.Account.Service.Contracts
+namespace KissU.Modules.Identity.Service.Contracts
 {
     /// <summary>
     /// 授权服务

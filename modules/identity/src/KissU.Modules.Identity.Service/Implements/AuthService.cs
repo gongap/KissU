@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Modules.Account.Application.Contracts.Models;
-using KissU.Modules.Account.Service.Contracts;
+using KissU.Modules.Identity.Application.Contracts.Dtos;
+using KissU.Modules.Identity.Service.Contracts;
 using KissU.ServiceProxy;
 
-namespace KissU.Modules.Account.Service.Implements
+namespace KissU.Modules.Identity.Service.Implements
 {
     /// <summary>
     /// 授权服务

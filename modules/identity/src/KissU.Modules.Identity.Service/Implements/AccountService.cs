@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Dependency;
-using KissU.Modules.Account.Application.Contracts;
-using KissU.Modules.Account.Application.Contracts.Models;
-using KissU.Modules.Account.Service.Contracts;
+using KissU.Modules.Identity.Application.Contracts;
+using KissU.Modules.Identity.Application.Contracts.Dtos;
+using KissU.Modules.Identity.Service.Contracts;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.Localization;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Localization;
 using Volo.Abp.Identity;
 
-namespace KissU.Modules.Account.Service.Implements
+namespace KissU.Modules.Identity.Service.Implements
 {
     /// <summary>
     /// 账号服务
@@ -21,7 +20,6 @@ namespace KissU.Modules.Account.Service.Implements
     /// </summary>
     /// <seealso cref="ProxyServiceBase" />
     /// <seealso cref="IAccountService" />
-    [ModuleName("Account")]
     public class AccountService : ProxyServiceBase, IAccountService
     {
         private readonly IMyAccountAppService _accountAppService;

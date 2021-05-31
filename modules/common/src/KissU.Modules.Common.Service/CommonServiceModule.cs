@@ -1,8 +1,8 @@
 ﻿using KissU.Modularity;
-using KissU.Modules.Account.Service.Contracts;
+using KissU.Modules.Common.Service.Contracts;
 using Volo.Abp.Modularity;
 
-namespace KissU.Modules.Account.Service
+namespace KissU.Modules.Common.Service
 {
     [DependsOn(
         typeof(CommonServiceContractsModule)

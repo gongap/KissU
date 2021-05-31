@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using KissU.Modules.Account.Application.Contracts;
-using KissU.Modules.Account.Application.Contracts.Models;
+using KissU.Modules.Identity.Application.Contracts;
+using KissU.Modules.Identity.Application.Contracts.Dtos;
 using KissU.Randoms;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -10,7 +10,7 @@ using Volo.Abp.Account;
 using Volo.Abp.Account.Emailing;
 using Volo.Abp.Identity;
 
-namespace KissU.Modules.Account.Application
+namespace KissU.Modules.Identity.Application
 {
     public class MyAccountAppService : AccountAppService, IMyAccountAppService
     {

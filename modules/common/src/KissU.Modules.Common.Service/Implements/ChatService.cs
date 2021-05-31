@@ -1,13 +1,13 @@
-﻿using KissU.Dependency;
-using KissU.Modules.Account.Service.Contracts;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using KissU.Dependency;
+using KissU.Modules.Common.Service.Contracts;
 using KissU.ServiceProxy;
 using KissU.WebSocket;
 using KissU.WebSocket.Core;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace KissU.Modules.Account.Service.Implements
+namespace KissU.Modules.Common.Service.Implements
 {
     public class ChatService : WSBehavior, IChatService
     {

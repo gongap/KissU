@@ -1,9 +1,9 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using KissU.Modules.Account.Application.Contracts.Models;
+using KissU.Modules.Identity.Application.Contracts.Dtos;
 using Volo.Abp.Account;
 
-namespace KissU.Modules.Account.Application.Contracts
+namespace KissU.Modules.Identity.Application.Contracts
 {
     public interface IMyAccountAppService : IAccountAppService
     {

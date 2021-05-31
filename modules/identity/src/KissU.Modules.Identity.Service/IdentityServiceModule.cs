@@ -1,5 +1,7 @@
 ﻿using KissU.Modularity;
 using KissU.Modules.Identity.Service.Contracts;
+using KissU.Modules.Identity.Service.Extensions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Identity;
@@ -26,6 +28,8 @@ namespace KissU.Modules.Identity.Service
             {
                 options.DefinitionProviders.Add<AbpIdentitySettingDefinitionProvider>();
             });
+
+            context.Services.GetObject<IdentityBuilder>().AddTokenProviders();
 
             context.Services.AddAlwaysAllowAuthorization();
         }

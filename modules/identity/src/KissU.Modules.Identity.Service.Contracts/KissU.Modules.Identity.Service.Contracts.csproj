@@ -19,5 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj" />
   </ItemGroup>
 </Project>

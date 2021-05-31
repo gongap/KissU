@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KissU.Modules.Account.Application.Contracts.Models
+namespace KissU.Modules.Identity.Application.Contracts.Dtos
 {
     /// <summary>
     /// 登录请求参数
