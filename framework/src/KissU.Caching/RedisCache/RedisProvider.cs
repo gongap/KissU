@@ -72,10 +72,6 @@ namespace KissU.Caching.RedisCache
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public void Add(string key, object value)
         {
             Add(key, value, TimeSpan.FromSeconds(ExpireTime));
@@ -86,10 +82,6 @@ namespace KissU.Caching.RedisCache
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public void AddAsync(string key, object value)
         {
             AddTaskAsync(key, value, TimeSpan.FromSeconds(ExpireTime));
@@ -101,10 +93,6 @@ namespace KissU.Caching.RedisCache
         /// <param name="key">键</param>
         /// <param name="value">值</param>
         /// <param name="defaultExpire">默认配置失效时间</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public void Add(string key, object value, bool defaultExpire)
         {
             Add(key, value, TimeSpan.FromSeconds(defaultExpire ? DefaultExpireTime : ExpireTime));
@@ -116,10 +104,6 @@ namespace KissU.Caching.RedisCache
         /// <param name="key">键</param>
         /// <param name="value">值</param>
         /// <param name="defaultExpire">默认配置失效时间</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public void AddAsync(string key, object value, bool defaultExpire)
         {
             AddTaskAsync(key, value, TimeSpan.FromSeconds(defaultExpire ? DefaultExpireTime : ExpireTime));
@@ -131,10 +115,6 @@ namespace KissU.Caching.RedisCache
         /// <param name="key">键</param>
         /// <param name="value">值</param>
         /// <param name="numOfMinutes">默认配置失效时间</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public void Add(string key, object value, long numOfMinutes)
         {
             Add(key, value, TimeSpan.FromMinutes(numOfMinutes));
@@ -147,10 +127,6 @@ namespace KissU.Caching.RedisCache
         /// <param name="key">键</param>
         /// <param name="value">值</param>
         /// <param name="numOfMinutes">默认配置失效时间</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public void AddAsync(string key, object value, long numOfMinutes)
         {
             AddTaskAsync(key, value, TimeSpan.FromMinutes(numOfMinutes));
@@ -163,10 +139,6 @@ namespace KissU.Caching.RedisCache
         /// <param name="key">键</param>
         /// <param name="value">值</param>
         /// <param name="timeSpan">配置时间间隔</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public void Add(string key, object value, TimeSpan timeSpan)
         {
             var node = GetRedisNode(key);
@@ -193,10 +165,6 @@ namespace KissU.Caching.RedisCache
         /// <param name="key">键</param>
         /// <param name="value">值</param>
         /// <param name="timeSpan">配置时间间隔</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public void AddAsync(string key, object value, TimeSpan timeSpan)
         {
             AddTaskAsync(key, value, timeSpan);
@@ -208,10 +176,6 @@ namespace KissU.Caching.RedisCache
         /// <typeparam name="T">返回类型</typeparam>
         /// <param name="keys">KEY值集合</param>
         /// <returns>需要返回的对象集合</returns>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public IDictionary<string, T> Get<T>(IEnumerable<string> keys)
         {
             IDictionary<string, T> result = null;
@@ -244,10 +208,6 @@ namespace KissU.Caching.RedisCache
         /// <typeparam name="T">返回类型</typeparam>
         /// <param name="keys">KEY值集合</param>
         /// <returns>需要返回的对象集合</returns>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public async Task<IDictionary<string, T>> GetAsync<T>(IEnumerable<string> keys)
         {
             IDictionary<string, T> result = null;
@@ -279,10 +239,6 @@ namespace KissU.Caching.RedisCache
         /// </summary>
         /// <param name="key">KEY值</param>
         /// <returns>需要返回的对象</returns>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public object Get(string key)
         {
             var o = Get<object>(key);
@@ -306,10 +262,6 @@ namespace KissU.Caching.RedisCache
         /// <typeparam name="T">返回类型</typeparam>
         /// <param name="key">KEY值</param>
         /// <returns>需要返回的对象</returns>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public T Get<T>(string key)
         {
             var node = GetRedisNode(key);
@@ -367,10 +319,6 @@ namespace KissU.Caching.RedisCache
         /// <param name="key">KEY键</param>
         /// <param name="obj">需要转化返回的对象</param>
         /// <returns>是否成功</returns>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public bool GetCacheTryParse(string key, out object obj)
         {
             obj = null;
@@ -383,10 +331,6 @@ namespace KissU.Caching.RedisCache
         /// 根据KEY键删除缓存
         /// </summary>
         /// <param name="key">KEY键</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public void Remove(string key)
         {
             var node = GetRedisNode(key);
@@ -411,10 +355,6 @@ namespace KissU.Caching.RedisCache
         /// 根据KEY键异步删除缓存
         /// </summary>
         /// <param name="key">KEY键</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public void RemoveAsync(string key)
         {
             RemoveTaskAsync(key);

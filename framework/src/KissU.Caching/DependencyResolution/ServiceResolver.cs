@@ -9,10 +9,6 @@ namespace KissU.Caching.DependencyResolution
     /// <summary>
     /// IOC容器对象
     /// </summary>
-    /// <remarks>
-    ///     <para>创建：范亮</para>
-    ///     <para>日期：2016/4/2</para>
-    /// </remarks>
     public class ServiceResolver : IDependencyResolver
     {
         #region 字段
@@ -29,10 +25,6 @@ namespace KissU.Caching.DependencyResolution
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public virtual void Register(string key, object value)
         {
             DebugCheck.NotNull(value);
@@ -49,10 +41,6 @@ namespace KissU.Caching.DependencyResolution
         /// <summary>
         /// 返回当前IOC容器
         /// </summary>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public static ServiceResolver Current { get; } = new ServiceResolver();
 
         /// <summary>
@@ -61,10 +49,6 @@ namespace KissU.Caching.DependencyResolution
         /// <param name="type">类型</param>
         /// <param name="key">键</param>
         /// <returns>返回实例对象</returns>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public virtual object GetService(Type type, object key)
         {
             object result;
@@ -78,10 +62,6 @@ namespace KissU.Caching.DependencyResolution
         /// <param name="type">类型</param>
         /// <param name="key">键</param>
         /// <returns>返回实例对象</returns>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public IEnumerable<object> GetServices(Type type, object key)
         {
             return this.GetServiceAsServices(type, key);

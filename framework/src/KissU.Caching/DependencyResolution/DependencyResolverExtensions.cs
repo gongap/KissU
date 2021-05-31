@@ -8,10 +8,6 @@ namespace KissU.Caching.DependencyResolution
     /// <summary>
     /// 扩展依赖注入IOC容器
     /// </summary>
-    /// <remarks>
-    ///     <para>创建：范亮</para>
-    ///     <para>日期：2016/4/2</para>
-    /// </remarks>
     public static class DependencyResolverExtensions
     {
         /// <summary>
@@ -21,10 +17,6 @@ namespace KissU.Caching.DependencyResolution
         /// <param name="type">类型</param>
         /// <param name="key">键</param>
         /// <returns>返回实例对象集合</returns>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         internal static IEnumerable<object> GetServiceAsServices(this IDependencyResolver resolver, Type type,
             object key)
         {
