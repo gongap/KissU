@@ -82,13 +82,8 @@ namespace KissU.CPlatform.Runtime.Client.Implementation
                 await _healthCheckService.MarkFailure(address);
                 throw;
             }
-            catch (Exception exception)
+            catch
             {
-                if (_logger.IsEnabled(LogLevel.Error))
-                {
-                    _logger.LogError(exception, $"远程调用发生了错误，服务Id：{invokeMessage.ServiceId}。错误信息：{exception.Message}");
-                }
-
                 throw;
             }
         }
