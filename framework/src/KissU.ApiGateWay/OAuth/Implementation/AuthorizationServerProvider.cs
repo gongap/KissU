@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,18 +48,24 @@ namespace KissU.ApiGateWay.OAuth.Implementation
         public async Task<string> GenerateTokenCredential(Dictionary<string, object> parameters)
         {
             string result = null;
-            var payload = await _serviceProxyProvider.Invoke<object>(parameters, AppConfig.AuthorizationRoutePath,
-                AppConfig.AuthorizationServiceKey);
+            var payload = await _serviceProxyProvider.Invoke<object>(parameters, AppConfig.AuthorizationRoutePath,AppConfig.AuthorizationServiceKey);
             if (payload != null && !payload.Equals("null"))
             {
-                var jwtHeader = JsonConvert.SerializeObject(new JWTSecureDataHeader
-                    {TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")});
+                var jwtHeader = JsonConvert.SerializeObject(new JWTSecureDataHeader {TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")});
                 var base64Payload = ConverBase64String(JsonConvert.SerializeObject(payload));
                 var encodedString = $"{ConverBase64String(jwtHeader)}.{base64Payload}";
                 var route = await _serviceRouteProvider.GetRouteByPath(AppConfig.AuthorizationRoutePath);
                 var signature = HMACSHA256(encodedString, route.ServiceDescriptor.Token);
                 result = $"{encodedString}.{signature}";
-                _cacheProvider.Add(base64Payload, result, AppConfig.AccessTokenExpireTimeSpan);
+
+                var cacheKey = string.Empty;
+                if (payload is IDictionary<string, List<string>> claimTypes)
+                {
+                    cacheKey = GeCacheKey(claimTypes);
+                }
+
+                cacheKey = string.IsNullOrWhiteSpace(cacheKey) ? base64Payload : cacheKey;
+                _cacheProvider.Add(cacheKey, result, AppConfig.AccessTokenExpireTimeSpan);
             }
 
             return result;
@@ -103,7 +110,8 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             var jwtToken = token.Split('.');
             if (jwtToken.Length == 3)
             {
-                isSuccess = await _cacheProvider.GetAsync<string>(jwtToken[1]) == token;
+                var cacheKey = GeCacheKey(jwtToken[1]);
+                isSuccess = await _cacheProvider.GetAsync<string>(cacheKey) == token;
             }
 
             return isSuccess;
@@ -120,10 +128,11 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             var jwtToken = token.Split('.');
             if (jwtToken.Length == 3)
             {
-                var value = await _cacheProvider.GetAsync<string>(jwtToken[1]);
+                var cacheKey = GeCacheKey(jwtToken[1]);
+                var value = await _cacheProvider.GetAsync<string>(cacheKey);
                 if (!string.IsNullOrEmpty(value))
                 {
-                    _cacheProvider.Add(jwtToken[1], value, AppConfig.AccessTokenExpireTimeSpan);
+                    _cacheProvider.Add(cacheKey, value, AppConfig.AccessTokenExpireTimeSpan);
                     isSuccess = true;
                 }
             }
@@ -146,6 +155,43 @@ namespace KissU.ApiGateWay.OAuth.Implementation
                 var hashmessage = hmacsha256.ComputeHash(messageBytes);
                 return Convert.ToBase64String(hashmessage);
             }
+        }
+
+        private string GeCacheKey(string base64String)
+        {
+            var cacheKey = string.Empty;
+            try
+            {
+                var payload = Encoding.UTF8.GetString(Convert.FromBase64String(base64String));
+                var claimTypes = (IDictionary<string, List<string>>) JsonConvert.DeserializeObject(payload);
+                cacheKey = GeCacheKey(claimTypes);
+            }
+            catch
+            {
+                // ignored
+            }
+
+            return string.IsNullOrWhiteSpace(cacheKey)? base64String: cacheKey;
+        }
+
+        private string GeCacheKey(IDictionary<string, List<string>> claimTypes)
+        {
+            var cacheKey = string.Empty;
+            if (claimTypes?.Count > 0)
+            {
+                foreach (var claimType in claimTypes)
+                {
+                    if (claimType.Key == ClaimTypes.Name)
+                    {
+                        foreach (var item in claimType.Value)
+                        {
+                            cacheKey += item;
+                        }
+                    }
+                }
+            }
+
+            return cacheKey;
         }
     }
 }

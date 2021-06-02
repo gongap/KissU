@@ -52,8 +52,7 @@ namespace KissU.AspNetCore.Stage.Filters
             var gatewayAppConfig = AppConfig.Options.ApiGetWay;
             if (filterContext.Message.RoutePath == gatewayAppConfig.AuthorizationRoutePath)
             {
-                var token = await _authorizationServerProvider.GenerateTokenCredential(
-                    new Dictionary<string, object>(filterContext.Message.Parameters));
+                var token = await _authorizationServerProvider.GenerateTokenCredential(new Dictionary<string, object>(filterContext.Message.Parameters));
                 if (token != null)
                 {
                     filterContext.Result = HttpResultMessage<object>.Create(true, token);
