@@ -65,6 +65,12 @@ namespace KissU.ApiGateWay.OAuth.Implementation
                 }
 
                 cacheKey = string.IsNullOrWhiteSpace(cacheKey) ? base64Payload : cacheKey;
+                var cacheToken = await _cacheProvider.GetAsync<string>(cacheKey);
+                if (cacheToken != null)
+                {
+                    _cacheProvider.RemoveAsync(cacheKey);
+                }
+
                 _cacheProvider.Add(cacheKey, result, AppConfig.AccessTokenExpireTimeSpan);
             }
 
