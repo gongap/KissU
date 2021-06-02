@@ -5,6 +5,7 @@ using KissU.Caching.HashAlgorithms;
 using KissU.Caching.Interfaces;
 using KissU.Caching.Utilities;
 using KissU.CPlatform.Cache;
+using KissU.ServiceProxy.Interceptors.Implementation.Metadatas;
 using StackExchange.Redis;
 
 namespace KissU.Caching.RedisCache

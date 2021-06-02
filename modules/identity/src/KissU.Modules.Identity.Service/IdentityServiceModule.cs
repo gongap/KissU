@@ -1,4 +1,5 @@
 ﻿using KissU.Modularity;
+using KissU.Modules.Identity.Application;
 using KissU.Modules.Identity.Service.Contracts;
 using KissU.Modules.Identity.Service.Extensions;
 using Microsoft.AspNetCore.Identity;
@@ -12,7 +13,7 @@ using Volo.Abp.Settings;
 namespace KissU.Modules.Identity.Service
 {
     [DependsOn(typeof(IdentityServiceContractsModule),
-        typeof(AbpIdentityApplicationModule),
+        typeof(IdentityApplicationModule),
         typeof(AbpIdentityEntityFrameworkCoreModule)
     )]
     public class IdentityServiceModule : AbpModule, IBusinessModule

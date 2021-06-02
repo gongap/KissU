@@ -8,6 +8,7 @@ using Microsoft.Extensions.Options;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Emailing;
+using Volo.Abp.DependencyInjection;
 using Volo.Abp.Identity;
 
 namespace KissU.Modules.Identity.Application

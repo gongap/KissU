@@ -5,10 +5,9 @@ using Volo.Abp.Modularity;
 
 namespace KissU.Modules.Identity.Application
 {
-    [DependsOn(typeof(IdentityApplicationContractsModule), typeof(AbpIdentityApplicationModule),
-        typeof(AbpAccountApplicationContractsModule), typeof(AbpAccountApplicationModule)
+    [DependsOn(typeof(IdentityApplicationContractsModule), typeof(AbpIdentityApplicationModule), typeof(AbpAccountApplicationModule)
     )]
-    public class IdentityServiceModule : AbpModule
+    public class IdentityApplicationModule : AbpModule
     {
     }
 }

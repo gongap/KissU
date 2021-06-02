@@ -1,4 +1,5 @@
 ﻿using KissU.CPlatform.Cache;
+using KissU.ServiceProxy.Interceptors.Implementation.Metadatas;
 
 namespace KissU.Caching.HashAlgorithms
 {

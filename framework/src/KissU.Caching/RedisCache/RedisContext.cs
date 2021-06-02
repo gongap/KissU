@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using KissU.Caching.HashAlgorithms;
+using KissU.ServiceProxy.Interceptors.Implementation.Metadatas;
 
 namespace KissU.Caching.RedisCache
 {

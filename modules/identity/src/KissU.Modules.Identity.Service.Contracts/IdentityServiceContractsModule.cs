@@ -1,4 +1,5 @@
 ﻿using KissU.Modularity;
+using KissU.Modules.Identity.Application.Contracts;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
 
@@ -8,7 +9,7 @@ namespace KissU.Modules.Identity.Service.Contracts
     /// 身份服务模块
     /// </summary>
     [DependsOn(
-        typeof(AbpIdentityApplicationContractsModule)
+        typeof(IdentityApplicationContractsModule)
     )]
     public class IdentityServiceContractsModule : AbpModule, IBusinessModule
     {

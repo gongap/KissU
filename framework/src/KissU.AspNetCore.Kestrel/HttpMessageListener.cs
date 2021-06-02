@@ -90,6 +90,12 @@ namespace KissU.AspNetCore.Kestrel
                 serviceRoute = await _serviceRouteProvider.GetLocalRouteByPathRegex(path);
             }
 
+            if (serviceRoute == null)
+            {
+                _logger.LogWarning($ "找不到服务路由地址：{path}");
+                return Task.CompletedTask;
+            }
+
             IDictionary<string, object> parameters =
                 context.Request.Query.ToDictionary(p => p.Key, p => (object) p.Value.ToString());
             object serviceKey = null;
