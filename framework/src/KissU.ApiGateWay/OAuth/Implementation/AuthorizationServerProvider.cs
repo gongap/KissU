@@ -9,6 +9,7 @@ using KissU.Dependency;
 using KissU.Caching;
 using KissU.CPlatform.Cache;
 using KissU.CPlatform.Routing;
+using KissU.Serialization;
 using KissU.ServiceProxy;
 using Newtonsoft.Json;
 
@@ -21,6 +22,7 @@ namespace KissU.ApiGateWay.OAuth.Implementation
     {
         private readonly ICacheProvider _cacheProvider;
         private readonly CPlatformContainer _serviceProvider;
+        private readonly ISerializer<string> _jsonSerializer;
         private readonly IServiceProxyProvider _serviceProxyProvider;
         private readonly IServiceRouteProvider _serviceRouteProvider;
 
@@ -38,6 +40,7 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             _serviceProxyProvider = serviceProxyProvider;
             _serviceRouteProvider = serviceRouteProvider;
             _cacheProvider = CacheContainer.GetService<ICacheProvider>(AppConfig.CacheMode);
+            _jsonSerializer = serviceProvider.GetInstances<ISerializer<string>>();
         }
 
         /// <summary>
@@ -51,7 +54,7 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             var payload = await _serviceProxyProvider.Invoke<object>(parameters, AppConfig.AuthorizationRoutePath,AppConfig.AuthorizationServiceKey);
             if (payload != null && !payload.Equals("null"))
             {
-                var jwtHeader = JsonConvert.SerializeObject(new JWTSecureDataHeader {TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")});
+                var jwtHeader = _jsonSerializer.Serialize(new JWTSecureDataHeader {TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")});
                 var base64Payload = ConverBase64String(JsonConvert.SerializeObject(payload));
                 var encodedString = $"{ConverBase64String(jwtHeader)}.{base64Payload}";
                 var route = await _serviceRouteProvider.GetRouteByPath(AppConfig.AuthorizationRoutePath);
@@ -169,7 +172,7 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             try
             {
                 var payload = Encoding.UTF8.GetString(Convert.FromBase64String(base64String));
-                var claimTypes = (IDictionary<string, List<string>>) JsonConvert.DeserializeObject(payload);
+                var claimTypes = _jsonSerializer.Deserialize<string, IDictionary<string, List<string>>>(payload);
                 cacheKey = GeCacheKey(claimTypes);
             }
             catch
