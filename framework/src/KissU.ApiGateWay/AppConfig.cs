@@ -19,6 +19,8 @@ namespace KissU.ApiGateWay
 
         private static string _cacheMode = "MemoryCache";
 
+        private static string _cacheKey = "userName";
+
         /// <summary>
         /// Gets or sets the configuration.
         /// </summary>
@@ -145,6 +147,21 @@ namespace KissU.ApiGateWay
                 return Configuration["CacheMode"] ?? _cacheMode;
             }
             set => _cacheMode = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the cache key.
+        /// </summary>
+        public static string CacheKey
+        {
+            get
+            {
+                if (Configuration == null)
+                    return _cacheKey;
+
+                return Configuration["CacheKey"] ?? _cacheKey;
+            }
+            set => _cacheKey = value;
         }
     }
 }

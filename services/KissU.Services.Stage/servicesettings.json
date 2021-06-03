@@ -54,7 +54,8 @@
       "AuthorizationRoutePath": "api/auth/token",
       "AuthorizationServiceKey": "Auth",
       "TokenEndpointPath": "api/connect/token",
-      "CacheMode": "ddlCache.Redis"
+      "CacheMode": "ddlCache.Redis",
+      "CacheKey": "userName"
     },
     "AccessPolicy": {
       "Origins": [ "http://localhost:4200" ],

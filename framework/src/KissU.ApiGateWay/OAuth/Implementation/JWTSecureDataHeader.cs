@@ -16,6 +16,11 @@
         public EncryptMode EncryptMode { get; set; }
 
         /// <summary>
+        /// Gets or sets the cache key.
+        /// </summary>
+        public string CacheKey { get; set; }
+
+        /// <summary>
         /// Gets or sets the time stamp.
         /// </summary>
         public string TimeStamp { get; set; }

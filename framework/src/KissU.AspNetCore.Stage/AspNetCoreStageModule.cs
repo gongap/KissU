@@ -81,6 +81,7 @@ namespace KissU.AspNetCore.Stage
             if (apiConfig != null)
             {
                 ApiGateWay.AppConfig.CacheMode = apiConfig.CacheMode;
+                ApiGateWay.AppConfig.CacheKey = apiConfig.CacheKey;
                 ApiGateWay.AppConfig.AuthorizationServiceKey = apiConfig.AuthorizationServiceKey;
                 ApiGateWay.AppConfig.AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(apiConfig.AccessTokenExpireTimeSpan);
                 ApiGateWay.AppConfig.AuthorizationRoutePath = apiConfig.AuthorizationRoutePath;

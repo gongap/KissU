@@ -12,6 +12,7 @@ using KissU.CPlatform.Routing;
 using KissU.Serialization;
 using KissU.ServiceProxy;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace KissU.ApiGateWay.OAuth.Implementation
 {
@@ -51,29 +52,34 @@ namespace KissU.ApiGateWay.OAuth.Implementation
         public async Task<string> GenerateTokenCredential(Dictionary<string, object> parameters)
         {
             string result = null;
+            var cacheKey = string.Empty;
             var payload = await _serviceProxyProvider.Invoke<object>(parameters, AppConfig.AuthorizationRoutePath,AppConfig.AuthorizationServiceKey);
             if (payload != null && !payload.Equals("null"))
             {
-                var jwtHeader = _jsonSerializer.Serialize(new JWTSecureDataHeader {TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")});
+                foreach (var parameter in parameters)
+                {
+                    if (parameter.Value is JObject  jsonModel)
+                    {
+                        if (jsonModel.TryGetValue(AppConfig.CacheKey, out var jtoken))
+                        {
+                            cacheKey = jtoken.ToString();
+                        }
+                    }
+                }
+
+                var jwtHeader = new JWTSecureDataHeader
+                {
+                    CacheKey = cacheKey,
+                    TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                };
+                var jwtHeaderStr = _jsonSerializer.Serialize(jwtHeader);
                 var base64Payload = ConverBase64String(JsonConvert.SerializeObject(payload));
-                var encodedString = $"{ConverBase64String(jwtHeader)}.{base64Payload}";
+                var encodedString = $"{ConverBase64String(jwtHeaderStr)}.{base64Payload}";
                 var route = await _serviceRouteProvider.GetRouteByPath(AppConfig.AuthorizationRoutePath);
                 var signature = HMACSHA256(encodedString, route.ServiceDescriptor.Token);
                 result = $"{encodedString}.{signature}";
 
-                var cacheKey = string.Empty;
-                if (payload is IDictionary<string, List<string>> claimTypes)
-                {
-                    cacheKey = GeCacheKey(claimTypes);
-                }
-
-                cacheKey = string.IsNullOrWhiteSpace(cacheKey) ? base64Payload : cacheKey;
-                var cacheToken = await _cacheProvider.GetAsync<string>(cacheKey);
-                if (cacheToken != null)
-                {
-                    _cacheProvider.RemoveAsync(cacheKey);
-                }
-
+                cacheKey = string.IsNullOrWhiteSpace(jwtHeader.CacheKey) ? base64Payload : jwtHeader.CacheKey;
                 _cacheProvider.Add(cacheKey, result, AppConfig.AccessTokenExpireTimeSpan);
             }
 
@@ -119,7 +125,8 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             var jwtToken = token.Split('.');
             if (jwtToken.Length == 3)
             {
-                var cacheKey = GeCacheKey(jwtToken[1]);
+                var cacheKey = GeCacheKey(jwtToken[0]);
+                cacheKey = string.IsNullOrWhiteSpace(cacheKey) ? jwtToken[1] : cacheKey;
                 isSuccess = await _cacheProvider.GetAsync<string>(cacheKey) == token;
             }
 
@@ -137,7 +144,8 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             var jwtToken = token.Split('.');
             if (jwtToken.Length == 3)
             {
-                var cacheKey = GeCacheKey(jwtToken[1]);
+                var cacheKey = GeCacheKey(jwtToken[0]);
+                cacheKey = string.IsNullOrWhiteSpace(cacheKey) ? jwtToken[1] : cacheKey;
                 var value = await _cacheProvider.GetAsync<string>(cacheKey);
                 if (!string.IsNullOrEmpty(value))
                 {
@@ -166,38 +174,17 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             }
         }
 
-        private string GeCacheKey(string base64String)
+        private string GeCacheKey(string jwtHeaderString)
         {
             var cacheKey = string.Empty;
             try
             {
-                var payload = Encoding.UTF8.GetString(Convert.FromBase64String(base64String));
-                var claimTypes = _jsonSerializer.Deserialize<string, IDictionary<string, List<string>>>(payload);
-                cacheKey = GeCacheKey(claimTypes);
+                var jwtHeader = _jsonSerializer.Deserialize<string, JWTSecureDataHeader> (Encoding.UTF8.GetString(Convert.FromBase64String(jwtHeaderString)));
+                cacheKey = jwtHeader.CacheKey;
             }
             catch
             {
                 // ignored
-            }
-
-            return string.IsNullOrWhiteSpace(cacheKey)? base64String: cacheKey;
-        }
-
-        private string GeCacheKey(IDictionary<string, List<string>> claimTypes)
-        {
-            var cacheKey = string.Empty;
-            if (claimTypes?.Count > 0)
-            {
-                foreach (var claimType in claimTypes)
-                {
-                    if (claimType.Key == ClaimTypes.Name)
-                    {
-                        foreach (var item in claimType.Value)
-                        {
-                            cacheKey += item;
-                        }
-                    }
-                }
             }
 
             return cacheKey;
