@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Caching\KissU.Caching.csproj" />
     <ProjectReference Include="..\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj" />
   </ItemGroup>
 </Project>

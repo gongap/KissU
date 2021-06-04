@@ -1,6 +1,10 @@
 ﻿using System.Threading.Tasks;
+using KissU.CPlatform.Filters.Implementation;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.CPlatform.Support.Attributes;
 using KissU.Dependency;
+using KissU.Modules.Identity.Service.Contracts.Dtos;
+using KissU.ServiceProxy.Interceptors.Implementation.Metadatas;
 using Volo.Abp.Users;
 
 namespace KissU.Modules.Identity.Service.Contracts
@@ -12,6 +16,16 @@ namespace KissU.Modules.Identity.Service.Contracts
     [ServiceBundle("api/{Service}")]
     public interface IUserLookupService : IServiceKey
     {
+        /// <summary>
+        /// 查找用户
+        /// </summary>
+        /// <param name="parameters">查找参数</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        [Authorization(AuthType = AuthorizationType.JWT)]
+        [Command(RequestCacheEnabled = true)]
+        [ServiceCacheIntercept(CachingMethod.Get, Key = "FindUser_{0}", CacheSectionType = "ddlCache", Mode = CacheTargetType.Redis, Time = 480)]
+        Task<UserData> FindUser(FindUserInput parameters);
+
         /// <summary>
         /// 通过Id查询
         /// </summary>
