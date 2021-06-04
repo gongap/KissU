@@ -386,11 +386,11 @@ namespace KissU.ServiceDiscovery.Consul
                     .Where(i => deletedChildrens.Contains($"{_configInfo.CachePath}{i.CacheDescriptor.Id}")).ToArray();
 
                 //触发删除事件。
-                if (deletedCaches.Count > 0)
+                if (deletedCaches.Count() > 0)
                     OnRemoved(deletedCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
                 //触发缓存被创建事件。
-                if (newCaches.Count > 0)
+                if (newCaches.Count() > 0)
                     OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
                 if (_logger.IsEnabled(LogLevel.Debug))
@@ -400,7 +400,6 @@ namespace KissU.ServiceDiscovery.Consul
             {
                 _logger.LogError(ex.Message);
             }
-        }
         }
 
         #endregion
