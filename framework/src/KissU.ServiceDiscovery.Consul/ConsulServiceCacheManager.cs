@@ -348,46 +348,59 @@ namespace KissU.ServiceDiscovery.Consul
 
         private async Task ChildrenChange(string[] oldChildrens, string[] newChildrens)
         {
-            //计算出已被删除的节点。
-            var deletedChildrens = oldChildrens.Except(newChildrens).ToArray();
-            //计算出新增的节点。
-            var createdChildrens = newChildrens.Except(oldChildrens).ToArray();
-
-            if (deletedChildrens.Length > 0 || createdChildrens.Length > 0 && _logger.IsEnabled(LogLevel.Information))
+            try
             {
-                _logger.LogInformation($"最新的节点信息：{string.Join(",", newChildrens)}");
-                _logger.LogInformation($"旧的节点信息：{string.Join(",", oldChildrens)}");
-                if (deletedChildrens.Length > 0)
-                    _logger.LogInformation($"需要被删除的服务缓存节点：{string.Join(",", deletedChildrens)}");
-                if (createdChildrens.Length > 0)
-                    _logger.LogInformation($"需要被添加的服务缓存节点：{string.Join(",", createdChildrens)}");
+                //计算出已被删除的节点。
+                var deletedChildrens = oldChildrens.Except(newChildrens).ToArray();
+
+                //计算出新增的节点。
+                var createdChildrens = newChildrens.Except(oldChildrens).ToArray();
+
+                if (deletedChildrens.Length > 0 ||
+                    createdChildrens.Length > 0 && _logger.IsEnabled(LogLevel.Information))
+                {
+                    _logger.LogInformation($"最新的节点信息：{string.Join(",", newChildrens)}");
+                    _logger.LogInformation($"旧的节点信息：{string.Join(",", oldChildrens)}");
+                    if (deletedChildrens.Length > 0)
+                        _logger.LogInformation($"需要被删除的服务缓存节点：{string.Join(",", deletedChildrens)}");
+                    if (createdChildrens.Length > 0)
+                        _logger.LogInformation($"需要被添加的服务缓存节点：{string.Join(",", createdChildrens)}");
+                }
+
+                //获取新增的缓存信息。
+                var newCaches = (await GetCaches(createdChildrens)).ToArray();
+
+                var caches = _serviceCaches.ToArray();
+                lock (_serviceCaches)
+                {
+                    _serviceCaches = _serviceCaches
+                        //删除无效的缓存节点。
+                        .Where(i => !deletedChildrens.Contains($"{_configInfo.CachePath}{i.CacheDescriptor.Id}"))
+                        //连接上新的缓存。
+                        .Concat(newCaches)
+                        .ToArray();
+                }
+
+                //需要删除的缓存集合。
+                var deletedCaches = caches
+                    .Where(i => deletedChildrens.Contains($"{_configInfo.CachePath}{i.CacheDescriptor.Id}")).ToArray();
+
+                //触发删除事件。
+                if (deletedCaches.Count > 0)
+                    OnRemoved(deletedCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
+
+                //触发缓存被创建事件。
+                if (newCaches.Count > 0)
+                    OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
+
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug("Consul缓存节点数据更新成功");
             }
-
-            //获取新增的缓存信息。
-            var newCaches = (await GetCaches(createdChildrens)).ToArray();
-
-            var caches = _serviceCaches.ToArray();
-            lock (_serviceCaches)
+            catch (Exception ex)
             {
-                _serviceCaches = _serviceCaches
-                    //删除无效的缓存节点。
-                    .Where(i => !deletedChildrens.Contains($"{_configInfo.CachePath}{i.CacheDescriptor.Id}"))
-                    //连接上新的缓存。
-                    .Concat(newCaches)
-                    .ToArray();
+                _logger.LogError(ex.Message);
             }
-
-            //需要删除的缓存集合。
-            var deletedCaches = caches
-                .Where(i => deletedChildrens.Contains($"{_configInfo.CachePath}{i.CacheDescriptor.Id}")).ToArray();
-            //触发删除事件。
-            OnRemoved(deletedCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
-
-            //触发缓存被创建事件。
-            OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
-
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug("Consul缓存节点数据更新成功");
+        }
         }
 
         #endregion
