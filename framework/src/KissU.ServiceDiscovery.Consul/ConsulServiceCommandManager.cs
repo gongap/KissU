@@ -216,8 +216,8 @@ namespace KissU.ServiceDiscovery.Consul
 
         private ServiceCommandDescriptor GetServiceCommand(byte[] data)
         {
-            if (_logger.IsEnabled(LogLevel.Trace))
-                _logger.LogTrace($"准备转换服务命令，配置内容：{Encoding.UTF8.GetString(data)}。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug($"准备转换服务命令，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
                 return null;
@@ -283,8 +283,8 @@ namespace KissU.ServiceDiscovery.Consul
 
             foreach (var children in childrens)
             {
-                if (_logger.IsEnabled(LogLevel.Trace))
-                    _logger.LogTrace($"准备从节点：{children}中获取服务命令信息。");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug($"准备从节点：{children}中获取服务命令信息。");
 
                 var serviceCommand = await GetServiceCommand(children);
                 if (serviceCommand != null)
@@ -371,20 +371,14 @@ namespace KissU.ServiceDiscovery.Consul
         /// <param name="newChildrens">The new childrens.</param>
         public async Task ChildrenChange(string[] oldChildrens, string[] newChildrens)
         {
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation($"最新的节点信息：{string.Join(",", newChildrens)}");
-
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation($"旧的节点信息：{string.Join(",", oldChildrens)}");
-
             //计算出已被删除的节点。
             var deletedChildrens = oldChildrens.Except(newChildrens).ToArray();
             //计算出新增的节点。
             var createdChildrens = newChildrens.Except(oldChildrens).ToArray();
 
-            if (_logger.IsEnabled(LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Information) && deletedChildrens?.Count() > 0)
                 _logger.LogInformation($"需要被删除的服务命令节点：{string.Join(",", deletedChildrens)}");
-            if (_logger.IsEnabled(LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Information) && createdChildrens?.Count() > 0)
                 _logger.LogInformation($"需要被添加的服务命令节点：{string.Join(",", createdChildrens)}");
 
             //获取新增的服务命令信息。

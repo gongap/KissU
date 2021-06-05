@@ -169,8 +169,8 @@ namespace KissU.ServiceDiscovery.Consul
 
             foreach (var children in childrens)
             {
-                if (_logger.IsEnabled(LogLevel.Trace))
-                    _logger.LogTrace($"准备从节点：{children}中获取缓存信息。");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug($"准备从节点：{children}中获取缓存信息。");
 
                 var cache = await GetCache(children);
                 if (cache != null)
@@ -265,7 +265,7 @@ namespace KissU.ServiceDiscovery.Consul
         private async Task<ServiceCache> GetCache(byte[] data)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogTrace($"准备转换服务缓存，配置内容：{Encoding.UTF8.GetString(data)}。");
+                _logger.LogDebug($"准备转换服务缓存，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
                 return null;
@@ -359,11 +359,9 @@ namespace KissU.ServiceDiscovery.Consul
                 if (deletedChildrens.Length > 0 ||
                     createdChildrens.Length > 0 && _logger.IsEnabled(LogLevel.Information))
                 {
-                    _logger.LogInformation($"最新的节点信息：{string.Join(",", newChildrens)}");
-                    _logger.LogInformation($"旧的节点信息：{string.Join(",", oldChildrens)}");
-                    if (deletedChildrens.Length > 0)
+                    if (_logger.IsEnabled(LogLevel.Information) && deletedChildrens.Length > 0)
                         _logger.LogInformation($"需要被删除的服务缓存节点：{string.Join(",", deletedChildrens)}");
-                    if (createdChildrens.Length > 0)
+                    if (_logger.IsEnabled(LogLevel.Information) && createdChildrens.Length > 0)
                         _logger.LogInformation($"需要被添加的服务缓存节点：{string.Join(",", createdChildrens)}");
                 }
 
@@ -393,8 +391,8 @@ namespace KissU.ServiceDiscovery.Consul
                 if (newCaches.Count() > 0)
                     OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug("服务缓存数据更新成功");
+                if (_logger.IsEnabled(LogLevel.Information))
+                    _logger.LogInformation("服务缓存数据更新成功");
             }
             catch (Exception ex)
             {

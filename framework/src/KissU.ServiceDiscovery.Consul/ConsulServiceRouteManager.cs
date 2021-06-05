@@ -245,8 +245,8 @@ namespace KissU.ServiceDiscovery.Consul
 
         private async Task<ServiceRoute> GetRoute(byte[] data)
         {
-            if (_logger.IsEnabled(LogLevel.Trace))
-                _logger.LogTrace($"准备转换服务路由，配置内容：{Encoding.UTF8.GetString(data)}。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug($"准备转换服务路由，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
                 return null;
@@ -284,8 +284,8 @@ namespace KissU.ServiceDiscovery.Consul
 
             foreach (var children in childrens)
             {
-                if (_logger.IsEnabled(LogLevel.Trace))
-                    _logger.LogTrace($"准备从节点：{children}中获取路由信息。");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug($"准备从节点：{children}中获取路由信息。");
 
                 var route = await GetRoute(children);
                 if (route != null)
@@ -423,21 +423,15 @@ namespace KissU.ServiceDiscovery.Consul
         /// <returns></returns>
         private async Task ChildrenChange(string[] oldChildrens, string[] newChildrens)
         {
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"最新的节点信息：{string.Join(",", newChildrens)}");
-
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"旧的节点信息：{string.Join(",", oldChildrens)}");
-
             //计算出已被删除的节点。
             var deletedChildrens = oldChildrens.Except(newChildrens).ToArray();
             //计算出新增的节点。
             var createdChildrens = newChildrens.Except(oldChildrens).ToArray();
 
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"需要被删除的路由节点：{string.Join(",", deletedChildrens)}");
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"需要被添加的路由节点：{string.Join(",", createdChildrens)}");
+            if (_logger.IsEnabled(LogLevel.Information) && deletedChildrens?.Count() > 0)
+                _logger.LogInformation($"需要被删除的路由节点：{string.Join(",", deletedChildrens)}");
+            if (_logger.IsEnabled(LogLevel.Information) && createdChildrens?.Count() > 0)
+                _logger.LogInformation($"需要被添加的路由节点：{string.Join(",", createdChildrens)}");
 
             //获取新增的路由信息。
             var newRoutes = (await GetRoutes(createdChildrens)).ToArray();

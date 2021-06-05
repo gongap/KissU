@@ -21,7 +21,6 @@ namespace KissU.Modules.Identity.Service.Contracts
         /// </summary>
         /// <param name="parameters">查找参数</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-        [Authorization(AuthType = AuthorizationType.JWT)]
         [Command(RequestCacheEnabled = true)]
         [ServiceCacheIntercept(CachingMethod.Get, Key = "FindUser_{0}", CacheSectionType = "ddlCache", Mode = CacheTargetType.Redis, Time = 480)]
         Task<UserData> FindUser(FindUserInput parameters);

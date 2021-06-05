@@ -80,6 +80,7 @@ namespace KissU.ApiGateWay.OAuth.Implementation
                 result = $"{encodedString}.{signature}";
 
                 cacheKey = string.IsNullOrWhiteSpace(jwtHeader.CacheKey) ? base64Payload : jwtHeader.CacheKey;
+                _cacheProvider.Remove(cacheKey);
                 _cacheProvider.Add(cacheKey, result, AppConfig.AccessTokenExpireTimeSpan);
             }
 
@@ -149,6 +150,7 @@ namespace KissU.ApiGateWay.OAuth.Implementation
                 var value = await _cacheProvider.GetAsync<string>(cacheKey);
                 if (!string.IsNullOrEmpty(value))
                 {
+                    _cacheProvider.Remove(cacheKey);
                     _cacheProvider.Add(cacheKey, value, AppConfig.AccessTokenExpireTimeSpan);
                     isSuccess = true;
                 }
