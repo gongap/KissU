@@ -82,7 +82,7 @@
     "SessionTimeout": "${Register_SessionTimeout}|50",
     "RoutePath": "${Register_RoutePath}",
     "ReloadOnChange": true,
-    "EnableChildrenMonitor": false,
+    "EnableChildrenMonitor": true,
     "MqttRoutePath": "${MqttRoutePath}"
   },
   "Zookeeper": {

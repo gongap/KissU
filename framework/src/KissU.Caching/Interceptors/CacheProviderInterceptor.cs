@@ -90,7 +90,6 @@ namespace KissU.Caching.Interceptors
 
         private async Task Invoke(ICacheProvider cacheProvider, ICacheProvider l2cacheProvider,string l2Key, ServiceCacheIntercept attribute, string key, string[] keyVaules, IInvocation invocation)
         {
-
             switch (attribute.Method)
             {
                 case ServiceProxy.Interceptors.Implementation.Metadatas.CachingMethod.Get:

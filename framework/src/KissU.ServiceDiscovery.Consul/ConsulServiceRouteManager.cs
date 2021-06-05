@@ -467,7 +467,7 @@ namespace KissU.ServiceDiscovery.Consul
             OnCreated(newRoutes.Select(route => new ServiceRouteEventArgs(route)).ToArray());
 
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("路由数据更新成功。");
+                _logger.LogInformation("服务路由数据更新成功。");
         }
 
         #endregion
