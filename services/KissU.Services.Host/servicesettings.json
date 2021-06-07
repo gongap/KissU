@@ -8,6 +8,7 @@
     "Token": "123456789", //是否验证Token,缺省值为True
     "DockerDeployMode": "${DockerDeployMode}|Standard", //Docker容器部署模式
     "Libuv": true, //是否开启Libuv高性能事件驱动的I/O库,缺省值为false
+    "EnableRouteWatch": true,//是否开启路由监控
     "WatchInterval": 20, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
     "SoBacklog": 100, //用于临时存放已完成三次握手的请求的队列的最大长度
     "Weight": 20, //权重轮询
