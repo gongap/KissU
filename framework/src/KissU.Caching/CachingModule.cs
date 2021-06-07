@@ -15,6 +15,8 @@ using KissU.Caching.Internal.Implementation;
 using KissU.Caching.Models;
 using KissU.CPlatform.Cache;
 using Microsoft.Extensions.Configuration;
+using KissU.ServiceProxy;
+using KissU.Caching.Interceptors;
 
 namespace KissU.Caching
 {
@@ -55,6 +57,7 @@ namespace KissU.Caching
                 .SingleInstance();
             RegisterConfigInstance(builder);
             RegisterLocalInstance("ICacheClient`1", builder);
+            builder.AddClientIntercepted(typeof(CacheProviderInterceptor));
         }
 
         private static void RegisterLocalInstance(string typeName, ContainerBuilderWrapper builder)
