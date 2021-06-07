@@ -1,9 +1,7 @@
 ﻿using System.Threading.Tasks;
-using KissU.CPlatform.Filters.Implementation;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.CPlatform.Support.Attributes;
 using KissU.Dependency;
-using KissU.Modules.Identity.Service.Contracts.Dtos;
 using KissU.ServiceProxy.Interceptors.Implementation.Metadatas;
 using Volo.Abp.Users;
 
@@ -17,21 +15,14 @@ namespace KissU.Modules.Identity.Service.Contracts
     public interface IUserLookupService : IServiceKey
     {
         /// <summary>
-        /// 查找用户
-        /// </summary>
-        /// <param name="parameters">查找参数</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-        [Command(RequestCacheEnabled = true)]
-        [ServiceCacheIntercept(CachingMethod.Get, Key = "FindUser_{0}", CacheSectionType = "ddlCache", Mode = CacheTargetType.Redis, Time = 480)]
-        Task<UserData> FindUser(FindUserInput parameters);
-
-        /// <summary>
         /// 通过Id查询
         /// </summary>
         /// <param name="id">Id标识</param>
         /// <returns>Task&lt;UserData&gt;.</returns>
         [HttpGet(true)]
         [ServiceRoute("{id}")]
+        [Command(RequestCacheEnabled = true)]
+        [ServiceCacheIntercept(CachingMethod.Get, Key = "FindById_{0}", CacheSectionType = "userCache", Mode = CacheTargetType.Redis, Time = 480)]
         Task<UserData> FindById(string id);
 
         /// <summary>
@@ -41,6 +32,8 @@ namespace KissU.Modules.Identity.Service.Contracts
         /// <returns>Task&lt;UserData&gt;.</returns>
         [HttpGet(true)]
         [ServiceRoute("{userName}")]
+        [Command(RequestCacheEnabled = true)]
+        [ServiceCacheIntercept(CachingMethod.Get, Key = "FindByUserName_{0}", CacheSectionType = "userCache", Mode = CacheTargetType.Redis, Time = 480)]
         Task<UserData> FindByUserName(string userName);
     }
 }

@@ -75,7 +75,7 @@ namespace KissU.ServiceProxy.Interceptors.Implementation
         {
             var metadata = GetInterceptMetadata(descriptor, metadataId);
             if (string.IsNullOrEmpty(metadata.Item1))
-                metadata.Item1 = key;
+                metadata.Item1 = string.IsNullOrEmpty(key)?" " : key;
             else
                 metadata.Item1 += $"|{key}";
             metadata.Item2[metadataId] = metadata.Item1;
@@ -96,7 +96,7 @@ namespace KissU.ServiceProxy.Interceptors.Implementation
         {
             var metadata = GetInterceptMetadata(descriptor, metadataId);
             if (string.IsNullOrEmpty(metadata.Item1))
-                metadata.Item1 = L2Key;
+                metadata.Item1 = string.IsNullOrEmpty(L2Key) ? " " : L2Key;
             else
                 metadata.Item1 += $"|{L2Key}";
             metadata.Item2[metadataId] = metadata.Item1;

@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.Extensions;
 using KissU.Modules.Identity.Service.Contracts;
-using KissU.Modules.Identity.Service.Contracts.Dtos;
 using KissU.ServiceProxy;
 using Volo.Abp.Identity;
 using Volo.Abp.Users;
@@ -26,17 +25,6 @@ namespace KissU.Modules.Identity.Service.Implements
         public UserLookupService(IIdentityUserLookupAppService lookupAppService)
         {
             _lookupAppService = lookupAppService;
-        }
-
-        /// <inheritdoc/>
-        public Task<UserData> FindUser(FindUserInput findUserInput)
-        {
-            if (!string.IsNullOrEmpty(findUserInput.UserId))
-            {
-                return _lookupAppService.FindByIdAsync(findUserInput.UserId.ToGuid());
-            }
-
-            return _lookupAppService.FindByUserNameAsync(findUserInput.UserName);
         }
 
         /// <inheritdoc/>

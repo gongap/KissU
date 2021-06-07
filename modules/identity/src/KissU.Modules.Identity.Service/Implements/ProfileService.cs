@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using KissU.Caching;
+using KissU.CPlatform.Cache;
 using KissU.Modules.Identity.Service.Contracts;
 using KissU.ServiceProxy;
 using Volo.Abp.Identity;
@@ -15,6 +17,7 @@ namespace KissU.Modules.Identity.Service.Implements
     public class ProfileService : ProxyServiceBase, IProfileService
     {
         private readonly IProfileAppService _appService;
+        private readonly ICacheProvider _cacheProvider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProfileService"/> class.
@@ -23,6 +26,7 @@ namespace KissU.Modules.Identity.Service.Implements
         public ProfileService(IProfileAppService appService)
         {
             _appService = appService;
+            _cacheProvider = CacheContainer.GetService<ICacheProvider>("userCache.Redis");
         }
 
         /// <summary>
@@ -41,7 +45,9 @@ namespace KissU.Modules.Identity.Service.Implements
         /// <returns>Task&lt;ProfileDto&gt;.</returns>
         public Task<ProfileDto> Update(UpdateProfileDto parameters)
         {
-            return _appService.UpdateAsync(parameters);
+            var result = await _appService.UpdateAsync(parameters);
+            _cacheProvider.RemoveAsync(string.Format("FindByUserName_{0}", result.UserName));
+            return result;
         }
 
         /// <summary>

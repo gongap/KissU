@@ -27,7 +27,9 @@ namespace KissU.Modules.Identity.Service.Contracts
         /// <returns>Task&lt;ProfileDto&gt;.</returns>
         [HttpPost(true)]
         [Authorization(AuthType = AuthorizationType.JWT)]
-        Task<ProfileDto> Update(UpdateProfileDto parameters);
+        ////[Command(RequestCacheEnabled = true)]
+        ////[ServiceCacheIntercept(CachingMethod.Remove, CorrespondingKeys = new []{ "FindById_{0}" }, CacheSectionType = "userCache", Mode = CacheTargetType.Redis)]
+        Task<ProfileDto> Update(string id, UpdateProfileDto parameters);
 
         /// <summary>
         /// 修改密码

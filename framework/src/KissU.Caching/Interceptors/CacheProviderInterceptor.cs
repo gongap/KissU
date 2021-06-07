@@ -80,8 +80,12 @@ namespace KissU.Caching.Interceptors
                 default:
                     {
                         await invocation.Proceed();
-                        var keys = attribute.CorrespondingKeys.Select(correspondingKey => string.Format(correspondingKey,keyVaules)).ToList();
-                        keys.ForEach(cacheProvider.RemoveAsync);
+                        if (keyVaules?.Count() > 0)
+                        {
+                            var keys = attribute.CorrespondingKeys.Select(correspondingKey => string.Format(correspondingKey, keyVaules)).ToList();
+                            keys.ForEach(cacheProvider.RemoveAsync);
+                        }
+
                         break;
                     }
             }
@@ -105,8 +109,12 @@ namespace KissU.Caching.Interceptors
                 default:
                     {
                         await invocation.Proceed();
-                        var keys = attribute.CorrespondingKeys.Select(correspondingKey => string.Format(correspondingKey, keyVaules)).ToList();
-                        keys.ForEach(cacheProvider.RemoveAsync);
+                        if (keyVaules?.Count() > 0)
+                        {
+                            var keys = attribute.CorrespondingKeys.Select(correspondingKey => string.Format(correspondingKey, keyVaules)).ToList();
+                            keys.ForEach(cacheProvider.RemoveAsync);
+                        }
+
                         break;
                     }
             }
