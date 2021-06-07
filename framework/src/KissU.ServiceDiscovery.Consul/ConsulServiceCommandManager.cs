@@ -177,7 +177,7 @@ namespace KissU.ServiceDiscovery.Consul
             foreach (var client in clients)
             {
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("Ready to add service command.");
+                    _logger.LogInformation("准备添加服务命令.");
                 foreach (var serviceCommand in serviceCommands)
                 {
                     var nodeData = _serializer.Serialize(serviceCommand);
