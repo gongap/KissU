@@ -357,12 +357,12 @@ namespace KissU.ServiceDiscovery.Consul
                 var createdChildrens = newChildrens.Except(oldChildrens).ToArray();
 
                 if (deletedChildrens.Length > 0 ||
-                    createdChildrens.Length > 0 && _logger.IsEnabled(LogLevel.Information))
+                    createdChildrens.Length > 0 && _logger.IsEnabled(LogLevel.Debug))
                 {
-                    if (_logger.IsEnabled(LogLevel.Information) && deletedChildrens.Length > 0)
-                        _logger.LogInformation($"需要被删除的服务缓存节点：{string.Join(",", deletedChildrens)}");
-                    if (_logger.IsEnabled(LogLevel.Information) && createdChildrens.Length > 0)
-                        _logger.LogInformation($"需要被添加的服务缓存节点：{string.Join(",", createdChildrens)}");
+                    if (_logger.IsEnabled(LogLevel.Debug) && deletedChildrens.Length > 0)
+                        _logger.LogDebug($"需要被删除的服务缓存节点：{string.Join(",", deletedChildrens)}");
+                    if (_logger.IsEnabled(LogLevel.Debug) && createdChildrens.Length > 0)
+                        _logger.LogDebug($"需要被添加的服务缓存节点：{string.Join(",", createdChildrens)}");
                 }
 
                 //获取新增的缓存信息。
@@ -391,8 +391,8 @@ namespace KissU.ServiceDiscovery.Consul
                 if (newCaches.Count() > 0)
                     OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
-                if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("服务缓存数据更新成功。");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug("服务缓存数据更新成功。");
             }
             catch (Exception ex)
             {

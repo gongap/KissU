@@ -79,8 +79,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
         /// <returns>一个任务。</returns>
         public override async Task ClearAsync()
         {
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("准备清空所有mqtt路由配置。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug("准备清空所有mqtt路由配置。");
             var zooKeepers = await _zookeeperClientProvider.GetZooKeepers();
             foreach (var zooKeeper in zooKeepers)
             {
@@ -115,8 +115,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
                     childrens = childrens.Take(childrens.Length - index).ToArray();
                 }
 
-                if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("路由配置清空完成。");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug("路由配置清空完成。");
             }
         }
 
@@ -127,8 +127,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
         /// <returns>一个任务。</returns>
         protected override async Task SetRoutesAsync(IEnumerable<MqttServiceDescriptor> routes)
         {
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("准备添加mqtt服务路由。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug("准备添加mqtt服务路由。");
             var zooKeepers = await _zookeeperClientProvider.GetZooKeepers();
             foreach (var zooKeeper in zooKeepers)
             {
@@ -161,8 +161,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
                     }
                 }
 
-                if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("mqtt服务路由添加成功。");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug("mqtt服务路由添加成功。");
             }
         }
 
@@ -265,8 +265,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
             if (await zooKeeper.Item2.existsAsync(path) != null)
                 return;
 
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation($"节点{path}不存在，将进行创建。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug($"节点{path}不存在，将进行创建。");
 
             var childrens = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
             var nodePath = "/";
@@ -444,8 +444,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
             //触发路由被创建事件。
             OnCreated(newRoutes.Select(route => new MqttServiceRouteEventArgs(route)).ToArray());
 
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("mqtt路由数据更新成功。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug("mqtt路由数据更新成功。");
         }
 
         private async ValueTask<(ManualResetEvent, ZooKeeper)> GetZooKeeper()

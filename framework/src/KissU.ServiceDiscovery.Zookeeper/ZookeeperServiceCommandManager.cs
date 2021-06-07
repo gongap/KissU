@@ -84,8 +84,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
         /// <returns>一个任务。</returns>
         public override async Task ClearAsync()
         {
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("Ready to clear all command configurations");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug("Ready to clear all command configurations");
             var zooKeepers = await _zookeeperClientProvider.GetZooKeepers();
             foreach (var zooKeeper in zooKeepers)
             {
@@ -120,8 +120,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
                     childrens = childrens.Take(childrens.Length - index).ToArray();
                 }
 
-                if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("Service command configuration cleared");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug("Service command configuration cleared");
             }
         }
 
@@ -132,8 +132,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
         /// <returns>一个任务。</returns>
         public override async Task SetServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> serviceCommand)
         {
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("Ready to add service command");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug("Ready to add service command");
             var zooKeepers = await _zookeeperClientProvider.GetZooKeepers();
             foreach (var zooKeeper in zooKeepers)
             {
@@ -170,8 +170,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
                     NodeChange(command);
                 }
 
-                if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("Service command added successfully");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug("Service command added successfully");
             }
         }
 
@@ -211,7 +211,7 @@ namespace KissU.ServiceDiscovery.Zookeeper
             if (await zooKeeper.Item2.existsAsync(path) != null)
                 return;
 
-            if (_logger.IsEnabled(LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"Node: {path}does not exist and will be created");
 
             var childrens = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
@@ -414,8 +414,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
             //触发服务命令被创建事件。
             OnCreated(newCommands.Select(command => new ServiceCommandEventArgs(command)).ToArray());
 
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("服务命令数据更新成功。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug("服务命令数据更新成功。");
         }
 
         private async ValueTask<(ManualResetEvent, ZooKeeper)> GetZooKeeper()

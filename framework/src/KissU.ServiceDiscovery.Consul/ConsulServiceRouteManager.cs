@@ -428,10 +428,10 @@ namespace KissU.ServiceDiscovery.Consul
             //计算出新增的节点。
             var createdChildrens = newChildrens.Except(oldChildrens).ToArray();
 
-            if (_logger.IsEnabled(LogLevel.Information) && deletedChildrens?.Count() > 0)
-                _logger.LogInformation($"需要被删除的路由节点：{string.Join(",", deletedChildrens)}");
-            if (_logger.IsEnabled(LogLevel.Information) && createdChildrens?.Count() > 0)
-                _logger.LogInformation($"需要被添加的路由节点：{string.Join(",", createdChildrens)}");
+            if (_logger.IsEnabled(LogLevel.Debug) && deletedChildrens?.Count() > 0)
+                _logger.LogDebug($"需要被删除的路由节点：{string.Join(",", deletedChildrens)}");
+            if (_logger.IsEnabled(LogLevel.Debug) && createdChildrens?.Count() > 0)
+                _logger.LogDebug($"需要被添加的路由节点：{string.Join(",", createdChildrens)}");
 
             //获取新增的路由信息。
             var newRoutes = (await GetRoutes(createdChildrens)).ToArray();
@@ -460,8 +460,8 @@ namespace KissU.ServiceDiscovery.Consul
             //触发路由被创建事件。
             OnCreated(newRoutes.Select(route => new ServiceRouteEventArgs(route)).ToArray());
 
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("服务路由数据更新成功。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug("服务路由数据更新成功。");
         }
 
         #endregion

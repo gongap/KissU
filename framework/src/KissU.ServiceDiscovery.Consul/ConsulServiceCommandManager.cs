@@ -176,8 +176,8 @@ namespace KissU.ServiceDiscovery.Consul
             var clients = await _consulClientFactory.GetClients();
             foreach (var client in clients)
             {
-                if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("准备添加服务命令.");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug("准备添加服务命令.");
                 foreach (var serviceCommand in serviceCommands)
                 {
                     var nodeData = _serializer.Serialize(serviceCommand);
@@ -376,10 +376,10 @@ namespace KissU.ServiceDiscovery.Consul
             //计算出新增的节点。
             var createdChildrens = newChildrens.Except(oldChildrens).ToArray();
 
-            if (_logger.IsEnabled(LogLevel.Information) && deletedChildrens?.Count() > 0)
-                _logger.LogInformation($"需要被删除的服务命令节点：{string.Join(",", deletedChildrens)}");
-            if (_logger.IsEnabled(LogLevel.Information) && createdChildrens?.Count() > 0)
-                _logger.LogInformation($"需要被添加的服务命令节点：{string.Join(",", createdChildrens)}");
+            if (_logger.IsEnabled(LogLevel.Debug) && deletedChildrens?.Count() > 0)
+                _logger.LogDebug($"需要被删除的服务命令节点：{string.Join(",", deletedChildrens)}");
+            if (_logger.IsEnabled(LogLevel.Debug) && createdChildrens?.Count() > 0)
+                _logger.LogDebug($"需要被添加的服务命令节点：{string.Join(",", createdChildrens)}");
 
             //获取新增的服务命令信息。
             var newCommands = (await GetServiceCommands(createdChildrens)).ToArray();
@@ -404,8 +404,8 @@ namespace KissU.ServiceDiscovery.Consul
             //触发服务命令被创建事件。
             OnCreated(newCommands.Select(command => new ServiceCommandEventArgs(command)).ToArray());
 
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("服务命令数据更新成功。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug("服务命令数据更新成功。");
         }
     }
 }
