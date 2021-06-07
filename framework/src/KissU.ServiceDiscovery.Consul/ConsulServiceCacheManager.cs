@@ -169,8 +169,8 @@ namespace KissU.ServiceDiscovery.Consul
 
             foreach (var children in childrens)
             {
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug($"准备从节点：{children}中获取缓存信息。");
+                if (_logger.IsEnabled(LogLevel.Trace))
+                    _logger.LogTrace($"准备从节点：{children}中获取缓存信息。");
 
                 var cache = await GetCache(children);
                 if (cache != null)
@@ -264,8 +264,8 @@ namespace KissU.ServiceDiscovery.Consul
 
         private async Task<ServiceCache> GetCache(byte[] data)
         {
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"准备转换服务缓存，配置内容：{Encoding.UTF8.GetString(data)}。");
+            if (_logger.IsEnabled(LogLevel.Trace))
+                _logger.LogTrace($"准备转换服务缓存，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
                 return null;
@@ -392,7 +392,7 @@ namespace KissU.ServiceDiscovery.Consul
                     OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("服务缓存数据更新成功");
+                    _logger.LogInformation("服务缓存数据更新成功。");
             }
             catch (Exception ex)
             {

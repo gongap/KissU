@@ -23,7 +23,7 @@
     "WebRootPath": "${WebRootPath}", //指定Web主机根路径
     "IsModulePerLifetimeScope": false, //模块是否使用每个生命周期范围
     "ReloadOnChange": false, //当配置改变后是否重新加载
-    "RequestCacheEnabled": true,
+    "RequestCacheEnabled": true, //启用请求缓存
     "IncludeSensitiveDetails": true,
     "Ports": {
       "HttpPort": "${HttpPort}",
@@ -32,8 +32,7 @@
       "GrpcPort": "${GrpcPort}",
       "UdpPort": "${UdpPort}"
     },
-    "RequestCacheEnabled": true, //启用请求缓存
-    "Packages": [ //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages
+    "Packages": [
       {
         "TypeName": "EnginePartModule",
         "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;SkywalkingModule;GrpcModule;ApolloModule;"

@@ -139,9 +139,9 @@ namespace KissU.CPlatform.Routing.Implementation
             ServiceRoute[] routes;
             if (File.Exists(file))
             {
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogDebug($"准备从文件：{file}中获取服务路由。");
+                    _logger.LogTrace($"准备从文件：{file}中获取服务路由。");
                 }
 
                 string content;

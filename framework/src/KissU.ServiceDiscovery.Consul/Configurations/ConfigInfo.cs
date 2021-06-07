@@ -27,7 +27,8 @@ namespace KissU.ServiceDiscovery.Consul.Configurations
             string cachePath = "services/serviceCaches/",
             string mqttRoutePath = "services/mqttServiceRoutes/",
             bool reloadOnChange = false, bool enableChildrenMonitor = false) :
-            this(connectionString, TimeSpan.FromSeconds(20), 0, routePath, subscriberPath, commandPath, cachePath,
+            this(connectionString, TimeSpan.FromSeconds(20), 20, 0, 
+                routePath, subscriberPath, commandPath, cachePath,
                 mqttRoutePath, reloadOnChange, enableChildrenMonitor)
         {
         }
@@ -37,6 +38,7 @@ namespace KissU.ServiceDiscovery.Consul.Configurations
         /// </summary>
         /// <param name="connectionString">连接字符串。</param>
         /// <param name="sessionTimeout">会话超时时间。</param>
+        /// <param name="watchInterval">The watch Interval.</param>
         /// <param name="lockDelay">The lock delay.</param>
         /// <param name="routePath">路由路径配置路径</param>
         /// <param name="subscriberPath">订阅者配置命令。</param>
@@ -45,7 +47,7 @@ namespace KissU.ServiceDiscovery.Consul.Configurations
         /// <param name="mqttRoutePath">Mqtt路由路径配置路径</param>
         /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
         /// <param name="enableChildrenMonitor">if set to <c>true</c> [enable children monitor].</param>
-        public ConfigInfo(string connectionString, TimeSpan sessionTimeout, int lockDelay,
+        public ConfigInfo(string connectionString, TimeSpan sessionTimeout, int watchInterval, int lockDelay,
             string routePath = "services/serviceRoutes/",
             string subscriberPath = "services/serviceSubscribers/",
             string commandPath = "services/serviceCommands/",
@@ -57,6 +59,7 @@ namespace KissU.ServiceDiscovery.Consul.Configurations
             ReloadOnChange = reloadOnChange;
             SessionTimeout = sessionTimeout;
             RoutePath = routePath;
+            WatchInterval = watchInterval;
             LockDelay = lockDelay;
             SubscriberPath = subscriberPath;
             CommandPath = commandPath;

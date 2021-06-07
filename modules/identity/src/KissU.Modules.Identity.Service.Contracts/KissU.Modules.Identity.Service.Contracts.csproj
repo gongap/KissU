@@ -12,6 +12,9 @@
     <OutputPath>..\..\..\output\</OutputPath>
     <DocumentationFile>..\..\..\output\KissU.Modules.Identity.Service.Contracts.xml</DocumentationFile>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="IdentityServiceIntercepteModule.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="4.2.1" />

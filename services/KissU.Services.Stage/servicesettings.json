@@ -23,8 +23,8 @@
     "WebRootPath": "${WebRootPath}",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
-    "IncludeSensitiveDetails": true,
     "RequestCacheEnabled": true,
+    "IncludeSensitiveDetails": true,
     "Ports": {
       "HttpPort": "${HttpPort}",
       "WSPort": "${WSPort}",

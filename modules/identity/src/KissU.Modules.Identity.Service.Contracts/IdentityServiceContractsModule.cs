@@ -1,6 +1,5 @@
 ﻿using KissU.Modularity;
 using KissU.Modules.Identity.Application.Contracts;
-using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
 
 namespace KissU.Modules.Identity.Service.Contracts
