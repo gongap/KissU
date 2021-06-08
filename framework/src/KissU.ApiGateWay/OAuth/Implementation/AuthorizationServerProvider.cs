@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Claims;
+using System.Collections.Concurrent;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-
 using KissU.Dependency;
 using KissU.Caching;
 using KissU.CPlatform.Cache;
@@ -26,6 +25,7 @@ namespace KissU.ApiGateWay.OAuth.Implementation
         private readonly ISerializer<string> _jsonSerializer;
         private readonly IServiceProxyProvider _serviceProxyProvider;
         private readonly IServiceRouteProvider _serviceRouteProvider;
+        private readonly ConcurrentDictionary<string, string> _tokens;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorizationServerProvider" /> class.
@@ -42,6 +42,7 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             _serviceRouteProvider = serviceRouteProvider;
             _cacheProvider = CacheContainer.GetService<ICacheProvider>(AppConfig.CacheMode);
             _jsonSerializer = serviceProvider.GetInstances<ISerializer<string>>();
+            _tokens = new ConcurrentDictionary<string, string>();
         }
 
         /// <summary>
@@ -80,8 +81,7 @@ namespace KissU.ApiGateWay.OAuth.Implementation
                 result = $"{encodedString}.{signature}";
 
                 cacheKey = string.IsNullOrWhiteSpace(jwtHeader.CacheKey) ? base64Payload : jwtHeader.CacheKey;
-                _cacheProvider.Remove(cacheKey);
-                _cacheProvider.Add(cacheKey, result, AppConfig.AccessTokenExpireTimeSpan);
+                SaveToken(cacheKey, result);
             }
 
             return result;
@@ -128,7 +128,7 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             {
                 var cacheKey = GeCacheKey(jwtToken[0]);
                 cacheKey = string.IsNullOrWhiteSpace(cacheKey) ? jwtToken[1] : cacheKey;
-                isSuccess = await _cacheProvider.GetAsync<string>(cacheKey) == token;
+                isSuccess = await GetToken(cacheKey) == token;
             }
 
             return isSuccess;
@@ -147,11 +147,10 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             {
                 var cacheKey = GeCacheKey(jwtToken[0]);
                 cacheKey = string.IsNullOrWhiteSpace(cacheKey) ? jwtToken[1] : cacheKey;
-                var value = await _cacheProvider.GetAsync<string>(cacheKey);
+                var value = await GetToken(cacheKey);
                 if (!string.IsNullOrEmpty(value))
                 {
-                    _cacheProvider.Remove(cacheKey);
-                    _cacheProvider.Add(cacheKey, value, AppConfig.AccessTokenExpireTimeSpan);
+                    SaveToken(cacheKey, value);
                     isSuccess = true;
                 }
             }
@@ -191,5 +190,24 @@ namespace KissU.ApiGateWay.OAuth.Implementation
 
             return cacheKey;
         }
+
+       private Task SaveToken(string cacheKey, string value)
+        {
+            _cacheProvider.Remove(cacheKey);
+            _cacheProvider.Add(cacheKey, value, AppConfig.AccessTokenExpireTimeSpan);
+            _tokens.AddOrUpdate(cacheKey, value, (o, n) => value);
+            return Task.CompletedTask;
+        }
+
+       private async Task<string> GetToken(string cacheKey)
+       {
+           if (!_tokens.TryGetValue(cacheKey, out var token))
+           {
+               token = await _cacheProvider.GetAsync<string>(cacheKey);
+               _tokens.TryAdd(cacheKey, token);
+            }
+
+           return token;
+       }
     }
 }
