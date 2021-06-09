@@ -173,7 +173,7 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
                     resultMessage.ValidationErrors = errorInfo.ValidationErrors;
                     if (_logger.IsEnabled(LogLevel.Warning))
                     {
-                        _logger.LogWarning(exception, $"执行本地调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                        _logger.LogWarning(exception, $"执行本地调用逻辑时候发生了错误：RoutePath：{entry.RoutePath}，Message：{exception.Message}，StackTrace：{exception.StackTrace}");
                     }
                 }
                 else
@@ -181,7 +181,7 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
                     resultMessage.Message = exception.Message;
                     if (_logger.IsEnabled(LogLevel.Error))
                     {
-                        _logger.LogError(exception, $"执行本地调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                        _logger.LogError(exception, $"执行本地调用逻辑时候发生了错误：RoutePath：{entry.RoutePath}，Message：{exception.Message}，StackTrace：{exception.StackTrace}");
                     }
                 }
             }
