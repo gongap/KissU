@@ -176,7 +176,7 @@ namespace KissU.DotNetty.Http
                 resultMessage = new HttpResultMessage<object> { Result = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：RoutePath：{entry.RoutePath}， Message：{exception.Message}，StackTrace：{exception.StackTrace}");
                 }
             }
 
@@ -219,7 +219,7 @@ namespace KissU.DotNetty.Http
                 resultMessage.StatusCode = exception.HResult;
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：RoutePath：{entry.RoutePath}，Message：{exception.Message}，StackTrace：{exception.StackTrace}");
                 }
             }
 
