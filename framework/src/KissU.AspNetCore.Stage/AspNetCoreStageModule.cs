@@ -90,13 +90,13 @@ namespace KissU.AspNetCore.Stage
 
             context.Services.AddMvc().AddNewtonsoftJson(options =>
             {
-                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                //options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
                 if (AppConfig.Options.IsCamelCaseResolver)
                 {
                     JsonConvert.DefaultSettings = () =>
                     {
                         var setting = new JsonSerializerSettings();
-                        setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                        //setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
                         setting.ContractResolver = new CamelCasePropertyNamesContractResolver();
                         return setting;
                     };
@@ -107,7 +107,7 @@ namespace KissU.AspNetCore.Stage
                     JsonConvert.DefaultSettings = () =>
                     {
                         var setting = new JsonSerializerSettings();
-                        setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                        //setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
                         setting.ContractResolver = new DefaultContractResolver();
                         return setting;
                     };
