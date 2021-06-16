@@ -29,7 +29,7 @@ namespace KissU.Modules.Identity.Service.Contracts
         [Authorization(AuthType = AuthorizationType.JWT)]
         ////[Command(RequestCacheEnabled = true)]
         ////[ServiceCacheIntercept(CachingMethod.Remove, CorrespondingKeys = new []{ "FindById_{0}" }, CacheSectionType = "userCache", Mode = CacheTargetType.Redis)]
-        Task<ProfileDto> Update(string id, UpdateProfileDto parameters);
+        Task<ProfileDto> Update(UpdateProfileDto parameters);
 
         /// <summary>
         /// 修改密码
