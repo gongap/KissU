@@ -21,8 +21,8 @@ namespace KissU.Modules.Identity.Service.Contracts
         /// <returns>Task&lt;UserData&gt;.</returns>
         [HttpGet(true)]
         [ServiceRoute("{id}")]
-        [Command(RequestCacheEnabled = true)]
-        [ServiceCacheIntercept(CachingMethod.Get, Key = "FindById_{0}", CacheSectionType = "userCache", Mode = CacheTargetType.Redis, Time = 480)]
+        //[Command(RequestCacheEnabled = true)]
+        //[ServiceCacheIntercept(CachingMethod.Get, Key = "FindById_{0}", CacheSectionType = "userCache", Mode = CacheTargetType.Redis, Time = 480)]
         Task<UserData> FindById(string id);
 
         /// <summary>
@@ -32,8 +32,8 @@ namespace KissU.Modules.Identity.Service.Contracts
         /// <returns>Task&lt;UserData&gt;.</returns>
         [HttpGet(true)]
         [ServiceRoute("{userName}")]
-        [Command(RequestCacheEnabled = true)]
-        [ServiceCacheIntercept(CachingMethod.Get, Key = "FindByUserName_{0}", CacheSectionType = "userCache", Mode = CacheTargetType.Redis, Time = 480)]
+        //[Command(RequestCacheEnabled = true)]
+        //[ServiceCacheIntercept(CachingMethod.Get, Key = "FindByUserName_{0}", CacheSectionType = "userCache", Mode = CacheTargetType.Redis, Time = 480)]
         Task<UserData> FindByUserName(string userName);
     }
 }

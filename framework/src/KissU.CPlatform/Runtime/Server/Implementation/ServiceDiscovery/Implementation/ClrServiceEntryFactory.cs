@@ -146,10 +146,12 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Impleme
 
                     var list = new List<object>();
 
-                    foreach (var parameterInfo in method.GetParameters())
+                    var methodParameters = method.GetParameters();
+                    foreach (var parameterInfo in methodParameters)
                     {
+                        var parameterInfoName = parameterInfo.Name.ToLower();
                         //加入是否有默认值的判断，有默认值，并且用户没传，取默认值
-                        if (parameterInfo.HasDefaultValue && !parameters.ContainsKey(parameterInfo.Name))
+                        if (parameterInfo.HasDefaultValue && !parameters.ContainsKey(parameterInfoName))
                         {
                             list.Add(parameterInfo.DefaultValue);
                             continue;
@@ -160,19 +162,24 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Impleme
                             continue;
                         }
 
-                        var value = parameters[parameterInfo.Name];
-
-                        if (methodValidateAttribute != null)
+                        if (parameters.ContainsKey(parameterInfoName))
                         {
-                            _validationProcessor.Validate(parameterInfo, value);
-                        }
+                            var value = parameters[parameterInfoName];
 
-                        var parameterType = parameterInfo.ParameterType;
-                        var parameter = _typeConvertibleService.Convert(value, parameterType);
-                        list.Add(parameter);
+                            if (methodValidateAttribute != null)
+                            {
+                                _validationProcessor.Validate(parameterInfo, value);
+                            }
+
+                            var parameterType = parameterInfo.ParameterType;
+                            var parameter = _typeConvertibleService.Convert(value, parameterType);
+                            list.Add(parameter);
+                        }
                     }
 
-                    var result = fastInvoker(instance, list.ToArray());
+                    var invokerParameters = new object[methodParameters.Length];
+                    Array.Copy(list.ToArray(), invokerParameters, list.Count);
+                    var result = fastInvoker(instance, invokerParameters);
                     return Task.FromResult(result);
                 }
             };
