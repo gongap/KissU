@@ -4,6 +4,7 @@ using KissU.CPlatform.Cache;
 using KissU.Modules.Identity.Service.Contracts;
 using KissU.ServiceProxy;
 using Volo.Abp.Identity;
+using Volo.Abp.Users;
 
 namespace KissU.Modules.Identity.Service.Implements
 {
@@ -17,15 +18,17 @@ namespace KissU.Modules.Identity.Service.Implements
     public class ProfileService : ProxyServiceBase, IProfileService
     {
         private readonly IProfileAppService _appService;
+        private readonly ICurrentUser _currentUser;
         private readonly ICacheProvider _cacheProvider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProfileService"/> class.
         /// </summary>
         /// <param name="appService">The application service.</param>
-        public ProfileService(IProfileAppService appService)
+        public ProfileService(IProfileAppService appService, ICurrentUser currentUser)
         {
             _appService = appService;
+            _currentUser = currentUser;
             _cacheProvider = CacheContainer.GetService<ICacheProvider>("userCache.Redis");
         }
 
@@ -43,9 +46,10 @@ namespace KissU.Modules.Identity.Service.Implements
         /// </summary>
         /// <param name="parameters">请求参数</param>
         /// <returns>Task&lt;ProfileDto&gt;.</returns>
-        public Task<ProfileDto> Update(UpdateProfileDto parameters)
+        public async Task<ProfileDto> Update(UpdateProfileDto parameters)
         {
             var result = await _appService.UpdateAsync(parameters);
+            _cacheProvider.RemoveAsync(string.Format("FindById_{0}", _currentUser.GetId()));
             _cacheProvider.RemoveAsync(string.Format("FindByUserName_{0}", result.UserName));
             return result;
         }
