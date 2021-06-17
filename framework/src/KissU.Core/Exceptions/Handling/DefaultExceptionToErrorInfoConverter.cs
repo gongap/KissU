@@ -41,7 +41,7 @@ namespace KissU.Exceptions.Handling
             exception = TryToGetActualException(exception);
             return new RemoteServiceErrorInfo
             {
-                Message = "服务器内部错误",
+                Message = "服务器忙，请稍后重试！",
                 Data = exception.Data
             };
         }

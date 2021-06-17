@@ -28,12 +28,12 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
 
             var attribute =
                 context.ServiceEntry.Attributes.Where(p => p is AuthorizationAttribute) .Select(p => p as AuthorizationAttribute).FirstOrDefault();
-            if (attribute != null && attribute.AuthType == AuthorizationType.JwtToken)
+            if (attribute != null && attribute.AuthType == AuthorizationType.JwtSecret)
             {
 
                 operation.Parameters.Add(new BodyParameter
                 {
-                    Name = "timeStamp",
+                    Name = "timestamp",
                     In = "query",
                     Required = false,
                     Description = "时间戳",
@@ -84,7 +84,7 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
             {
                 operation.Parameters.Add(new BodyParameter
                 {
-                    Name = "timeStamp",
+                    Name = "timestamp",
                     In = "query",
                     Required = false,
                     Description = "时间戳",
@@ -95,7 +95,7 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
                 });
                 operation.Parameters.Add(new BodyParameter
                 {
-                    Name = "Authorization",
+                    Name = "AppSecret",
                     In = "header",
                     Required = false,
                     Description = "App密钥",

@@ -62,12 +62,12 @@ namespace KissU.AspNetCore.Stage.Filters
                 {
                     filterContext.Result = new HttpResultMessage<object>
                     {
-                        IsSucceed = false, StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
-                        Message = "Invalid authentication credentials"
+                        IsSucceed = false, StatusCode = (int) ServiceStatusCode.RequestError,
+                        Message = "Generates the token credential failed!"
                     };
                 }
             }
-            else if (filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.AppSecret.ToString())
+            else if (filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.AppSecret.ToString() || filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.JwtSecret.ToString())
             {
                 if (!ValidateAppSecretAuthentication(filterContext, out var result))
                 {
@@ -76,70 +76,40 @@ namespace KissU.AspNetCore.Stage.Filters
             }
         }
 
-        private bool ValidateAppSecretAuthentication(ActionExecutingContext filterContext,
-            out HttpResultMessage<object> result)
+        private bool ValidateAppSecretAuthentication(ActionExecutingContext filterContext, out HttpResultMessage<object> result)
         {
-            var isSuccess = true;
             DateTime time;
             result = HttpResultMessage<object>.Create(true, null);
-            var author = filterContext.Context.Request.Headers["Authorization"];
+            var author = filterContext.Context.Request.Headers["AppSecret"];
             var model = filterContext.Message.Parameters;
             var route = filterContext.Route;
-            if (model.ContainsKey("timeStamp") && author.Count > 0)
+            if (model.ContainsKey("timestamp") && author.Count > 0)
             {
-                if (long.TryParse(model["timeStamp"].ToString(), out var timeStamp))
+                if (long.TryParse(model["timestamp"].ToString(), out var timestamp))
                 {
-                    time = TimeHelper.UnixTimestampToDateTime(timeStamp);
+                    time = TimeHelper.UnixTimestampToDateTime(timestamp);
                     var seconds = (DateTime.Now - time).TotalSeconds;
                     if (seconds <= 3560 && seconds >= 0)
                     {
-                        if (GetMD5($"{route.ServiceDescriptor.Token}{time.ToString("yyyy-MM-dd HH:mm:ss")}") !=
-                            author.ToString())
+                        if (GetMD5($"{route.ServiceDescriptor.Token}{time.ToString("yyyy-MM-dd HH:mm:ss")}") == author.ToString())
                         {
-                            result = new HttpResultMessage<object>
-                            {
-                                IsSucceed = false, StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
-                                Message = "Invalid authentication credentials"
-                            };
-                            isSuccess = false;
+                            return true;
                         }
                     }
-                    else
-                    {
-                        result = new HttpResultMessage<object>
-                        {
-                            IsSucceed = false, StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
-                            Message = "Invalid authentication credentials"
-                        };
-                        isSuccess = false;
-                    }
                 }
-                else
-                {
-                    result = new HttpResultMessage<object>
-                    {
-                        IsSucceed = false, StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
-                        Message = "Invalid authentication credentials"
-                    };
-                    isSuccess = false;
-                }
-            }
-            else
-            {
-                result = new HttpResultMessage<object>
-                    {IsSucceed = false, StatusCode = (int) ServiceStatusCode.RequestError, Message = "Request error"};
-                isSuccess = false;
             }
 
-            return isSuccess;
+            result = new HttpResultMessage<object>
+            {
+                IsSucceed = false,
+                StatusCode = (int)ServiceStatusCode.AuthorizationFailed,
+                Message = "身份验证凭据无效"
+            };
+
+            return false;
         }
 
-        /// <summary>
-        /// Gets the m d5.
-        /// </summary>
-        /// <param name="encypStr">The encyp string.</param>
-        /// <returns>System.String.</returns>
-        public string GetMD5(string encypStr)
+        private string GetMD5(string encypStr)
         {
             try
             {

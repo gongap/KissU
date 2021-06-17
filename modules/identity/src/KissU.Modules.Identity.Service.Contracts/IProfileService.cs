@@ -17,7 +17,7 @@ namespace KissU.Modules.Identity.Service.Contracts
         /// </summary>
         /// <returns>Task&lt;ProfileDto&gt;.</returns>
         [HttpGet(true)]
-        [Authorization(AuthType = AuthorizationType.JWT)]
+        [Authorization(AuthType = AuthorizationType.JwtSecret)]
         Task<ProfileDto> Get();
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace KissU.Modules.Identity.Service.Contracts
         /// <param name="parameters">请求参数</param>
         /// <returns>Task&lt;ProfileDto&gt;.</returns>
         [HttpPost(true)]
-        [Authorization(AuthType = AuthorizationType.JWT)]
+        [Authorization(AuthType = AuthorizationType.JwtSecret)]
         ////[Command(RequestCacheEnabled = true)]
         ////[ServiceCacheIntercept(CachingMethod.Remove, CorrespondingKeys = new []{ "FindById_{0}" }, CacheSectionType = "userCache", Mode = CacheTargetType.Redis)]
         Task<ProfileDto> Update(UpdateProfileDto parameters);
@@ -37,7 +37,7 @@ namespace KissU.Modules.Identity.Service.Contracts
         /// <param name="parameters">请求参数</param>
         /// <returns>Task.</returns>
         [HttpPost(true)]
-        [Authorization(AuthType = AuthorizationType.JWT)]
+        [Authorization(AuthType = AuthorizationType.JwtSecret)]
         Task ChangePassword(ChangePasswordInput parameters);
     }
 }
