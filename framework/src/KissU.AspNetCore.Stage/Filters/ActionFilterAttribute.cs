@@ -80,18 +80,18 @@ namespace KissU.AspNetCore.Stage.Filters
         {
             DateTime time;
             result = HttpResultMessage<object>.Create(true, null);
-            var author = filterContext.Context.Request.Headers["AppSecret"];
-            var model = filterContext.Message.Parameters;
+            var appSecretValues = filterContext.Context.Request.Headers["AppSecret"];
+            var timestampValues = filterContext.Context.Request.Headers["Timestamp"];
             var route = filterContext.Route;
-            if (model.ContainsKey("timestamp") && author.Count > 0)
+            if (appSecretValues.Count > 0 && timestampValues.Count > 0)
             {
-                if (long.TryParse(model["timestamp"].ToString(), out var timestamp))
+                if (long.TryParse(timestampValues.ToString(), out var timestamp))
                 {
                     time = TimeHelper.UnixTimestampToDateTime(timestamp);
                     var seconds = (DateTime.Now - time).TotalSeconds;
                     if (seconds <= 3560 && seconds >= 0)
                     {
-                        if (GetMD5($"{route.ServiceDescriptor.Token}{time.ToString("yyyy-MM-dd HH:mm:ss")}") == author.ToString())
+                        if (GetMD5($"{route.ServiceDescriptor.Token}{time.ToString("yyyy-MM-dd HH:mm:ss")}") == appSecretValues.ToString())
                         {
                             return true;
                         }

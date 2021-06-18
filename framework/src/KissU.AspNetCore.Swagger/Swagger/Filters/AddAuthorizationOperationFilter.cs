@@ -30,18 +30,6 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
                 context.ServiceEntry.Attributes.Where(p => p is AuthorizationAttribute) .Select(p => p as AuthorizationAttribute).FirstOrDefault();
             if (attribute != null && attribute.AuthType == AuthorizationType.JwtSecret)
             {
-
-                operation.Parameters.Add(new BodyParameter
-                {
-                    Name = "timestamp",
-                    In = "query",
-                    Required = false,
-                    Description = "时间戳",
-                    Schema = new Schema
-                    {
-                        Type = "string"
-                    }
-                });
                 operation.Parameters.Add(new BodyParameter
                 {
                     Name = "Authorization",
@@ -59,6 +47,17 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
                     In = "header",
                     Required = false,
                     Description = "App密钥",
+                    Schema = new Schema
+                    {
+                        Type = "string"
+                    }
+                });
+                operation.Parameters.Add(new BodyParameter
+                {
+                    Name = "Timestamp",
+                    In = "header",
+                    Required = false,
+                    Description = "时间戳",
                     Schema = new Schema
                     {
                         Type = "string"
@@ -84,10 +83,10 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
             {
                 operation.Parameters.Add(new BodyParameter
                 {
-                    Name = "timestamp",
-                    In = "query",
+                    Name = "AppSecret",
+                    In = "header",
                     Required = false,
-                    Description = "时间戳",
+                    Description = "App密钥",
                     Schema = new Schema
                     {
                         Type = "string"
@@ -95,10 +94,10 @@ namespace KissU.AspNetCore.Swagger.Swagger.Filters
                 });
                 operation.Parameters.Add(new BodyParameter
                 {
-                    Name = "AppSecret",
+                    Name = "Timestamp",
                     In = "header",
                     Required = false,
-                    Description = "App密钥",
+                    Description = "时间戳",
                     Schema = new Schema
                     {
                         Type = "string"
