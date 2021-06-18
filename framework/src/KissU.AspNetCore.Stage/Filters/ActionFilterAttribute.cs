@@ -87,8 +87,8 @@ namespace KissU.AspNetCore.Stage.Filters
             {
                 if (long.TryParse(timestampValues.ToString(), out var timestamp))
                 {
-                    time = TimeHelper.UnixTimestampToDateTime(timestamp);
-                    var seconds = (DateTime.Now - time).TotalSeconds;
+                    time = TimeHelper.UnixTimestampToDateTime(timestamp, DateTime.UtcNow);
+                    var seconds = (DateTime.UtcNow - time).TotalSeconds;
                     if (seconds <= 3560 && seconds >= 0)
                     {
                         if (GetMD5($"{route.ServiceDescriptor.Token}{time.ToString("yyyy-MM-dd HH:mm:ss")}") == appSecretValues.ToString())
