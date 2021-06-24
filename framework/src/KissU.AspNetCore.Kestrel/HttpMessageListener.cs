@@ -80,24 +80,26 @@ namespace KissU.AspNetCore.Kestrel
             RestContext.GetContext().RemoveContextParameters("route");
             var path = (RestContext.GetContext().GetAttachment("path")
                         ?? HttpUtility.UrlDecode(GetRoutePath(context.Request.Path.ToString()))) as string;
+
             if (serviceRoute == null)
             {
-                serviceRoute = await _serviceRouteProvider.GetRouteByPathRegex(path);
+                serviceRoute = await _serviceRouteProvider.GetRouteByPathRegex(path) ?? await _serviceRouteProvider.GetRouteByPathRegex(path + '/');
             }
 
             if (serviceRoute == null)
             {
-                serviceRoute = await _serviceRouteProvider.GetLocalRouteByPathRegex(path);
+                serviceRoute = await _serviceRouteProvider.GetLocalRouteByPathRegex(path) ?? await _serviceRouteProvider.GetLocalRouteByPathRegex(path + '/');
             }
 
             if (serviceRoute == null)
             {
                 _logger.LogWarning($"找不到服务路由地址：{path}");
+                await OnActionExecuted(context, new HttpRequestMessage(), actionFilters);
                 return;
             }
 
             IDictionary<string, object> parameters =
-                context.Request.Query.ToDictionary(p => p.Key, p => (object) p.Value.ToString());
+                context.Request.Query.ToDictionary(p => p.Key.ToLower(), p => (object) p.Value.ToString());
             object serviceKey = null;
             foreach (var key in _serviceKeys)
             {
@@ -114,7 +116,7 @@ namespace KissU.AspNetCore.Kestrel
                 var @params = RouteTemplateSegmenter.Segment(serviceRoute.ServiceDescriptor.RoutePath, path);
                 foreach (var param in @params)
                 {
-                    parameters.Add(param.Key, param.Value);
+                    parameters.TryAdd(param.Key, param.Value);
                 }
             }
 

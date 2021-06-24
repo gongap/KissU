@@ -151,7 +151,7 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Impleme
                     {
                         var parameterInfoName = parameterInfo.Name.ToLower();
                         //加入是否有默认值的判断，有默认值，并且用户没传，取默认值
-                        if (parameterInfo.HasDefaultValue && !parameters.ContainsKey(parameterInfoName))
+                        if (parameterInfo.HasDefaultValue && parameters.Keys.All(x=>x.ToLower() != parameterInfoName))
                         {
                             list.Add(parameterInfo.DefaultValue);
                             continue;
@@ -162,9 +162,10 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Impleme
                             continue;
                         }
 
-                        if (parameters.ContainsKey(parameterInfoName))
+                        var parameterName = parameters.Keys.FirstOrDefault(x=>x.ToLower() == parameterInfoName);
+                        if (parameterName != null && parameters.ContainsKey(parameterName))
                         {
-                            var value = parameters[parameterInfoName];
+                            var value = parameters[parameterName];
 
                             if (methodValidateAttribute != null)
                             {
@@ -174,6 +175,10 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Impleme
                             var parameterType = parameterInfo.ParameterType;
                             var parameter = _typeConvertibleService.Convert(value, parameterType);
                             list.Add(parameter);
+                        }
+                        else
+                        {
+                            throw new ArgumentException($"参数名不匹配：{parameterInfoName}");
                         }
                     }
 
