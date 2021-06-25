@@ -87,15 +87,12 @@ namespace KissU.CPlatform.Support.Implementation
 
             bool reachRequestVolumeThreshold()
             {
-                return intervalSeconds <= 10 && serviceInvokeInfos.SinceFaultRemoteServiceRequests >
-                       command.BreakerRequestVolumeThreshold;
+                return intervalSeconds <= 10 && serviceInvokeInfos.SinceFaultRemoteServiceRequests > command.BreakerRequestVolumeThreshold;
             }
 
             bool reachErrorThresholdPercentage()
             {
-                return serviceInvokeInfos.FaultRemoteServiceRequests /
-                       (double) (serviceInvokeInfos.RemoteServiceRequests ?? 1) * 100 >
-                       command.BreakeErrorThresholdPercentage;
+                return serviceInvokeInfos.FaultRemoteServiceRequests / (double) (serviceInvokeInfos.RemoteServiceRequests ?? 1) * 100 > command.BreakeErrorThresholdPercentage;
             }
 
             var item = GetHashItem(command, parameters);
@@ -106,16 +103,14 @@ namespace KissU.CPlatform.Support.Implementation
                     v.LocalServiceRequests++;
                     return v;
                 });
-                return await MonitorRemoteInvokeAsync(parameters, serviceId, serviceKey, decodeJOject,
-                    command.ExecutionTimeoutInMilliseconds, item);
+                return await MonitorRemoteInvokeAsync(parameters, serviceId, serviceKey, decodeJOject,command.ExecutionTimeoutInMilliseconds, item);
             }
 
             if (reachConcurrentRequest() || reachRequestVolumeThreshold() || reachErrorThresholdPercentage())
             {
                 if (intervalSeconds * 1000 > command.BreakeSleepWindowInMilliseconds)
                 {
-                    return await MonitorRemoteInvokeAsync(parameters, serviceId, serviceKey, decodeJOject,
-                        command.ExecutionTimeoutInMilliseconds, item);
+                    return await MonitorRemoteInvokeAsync(parameters, serviceId, serviceKey, decodeJOject,command.ExecutionTimeoutInMilliseconds, item);
                 }
 
                 _serviceInvokeListenInfo.AddOrUpdate(serviceId, new ServiceInvokeListenInfo(), (k, v) =>

@@ -14,7 +14,7 @@
     "MaxConcurrentRequests": 1000,
     "DisconnTimeInterval": 10,
     "ExecutionTimeoutInMilliseconds": 5000,
-    "BreakerForceClosed": true,
+    "BreakerForceClosed": false,
     "BreakerRequestVolumeThreshold": 20,
     "BreakeErrorThresholdPercentage": 50,
     "BreakeSleepWindowInMilliseconds": 60000,
