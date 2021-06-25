@@ -206,7 +206,7 @@ namespace KissU.ApiGateWay.OAuth.Implementation
                token = await _cacheProvider.GetAsync<string>(cacheKey);
                if (!string.IsNullOrWhiteSpace(token))
                {
-                   _tokens.AddOrUpdate(cacheKey, value, (o, n) => value);
+                   _tokens.AddOrUpdate(cacheKey, token, (o, n) => token);
                }
            }
 
