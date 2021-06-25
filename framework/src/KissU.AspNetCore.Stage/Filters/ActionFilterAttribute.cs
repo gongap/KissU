@@ -69,6 +69,7 @@ namespace KissU.AspNetCore.Stage.Filters
             }
             else if (filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.AppSecret.ToString() || filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.JwtSecret.ToString())
             {
+                
                 if (!ValidateAppSecretAuthentication(filterContext, out var result))
                 {
                     filterContext.Result = result;
@@ -78,6 +79,11 @@ namespace KissU.AspNetCore.Stage.Filters
 
         private bool ValidateAppSecretAuthentication(ActionExecutingContext filterContext, out HttpResultMessage<object> result)
         {
+            if (string.IsNullOrWhiteSpace(route.ServiceDescriptor.Token))
+            {
+                return true;
+            }
+
             DateTime time;
             result = HttpResultMessage<object>.Create(true, null);
             var appSecretValues = filterContext.Context.Request.Headers["AppSecret"];
