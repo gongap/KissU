@@ -14,7 +14,6 @@
     "Weight": 20, //权重轮询
     "MaxConcurrentRequests": 1000, //支持最大并发
     "ExecutionTimeoutInMilliseconds": 5000, //执行超时时间（毫秒）
-    "DisconnTimeInterval": 10, //断开连接时间间隔
     "BreakerForceClosed": false, //是否强制关闭熔断
     "BreakerRequestVolumeThreshold": 20, //10秒钟内至少多少请求失败，熔断器才发挥起作用
     "options.BreakeErrorThresholdPercentage": 50, //错误率达到多少开启熔断保护

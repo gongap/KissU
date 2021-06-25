@@ -12,7 +12,6 @@
     "SoBacklog": 100,
     "Weight": 20,
     "MaxConcurrentRequests": 1000,
-    "DisconnTimeInterval": 10,
     "ExecutionTimeoutInMilliseconds": 5000,
     "BreakerForceClosed": false,
     "BreakerRequestVolumeThreshold": 20,

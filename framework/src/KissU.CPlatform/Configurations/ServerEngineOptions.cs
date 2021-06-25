@@ -43,11 +43,6 @@ namespace KissU.CPlatform.Configurations
         public double WatchInterval { get; set; } = 20d;
 
         /// <summary>
-        /// Gets or sets the disconn time interval.
-        /// </summary>
-        public int DisconnTimeInterval { get; set; } = 60;
-
-        /// <summary>
         /// Gets or sets a value indicating whether this <see cref="ServerEngineOptions" /> is libuv.
         /// </summary>
         public bool Libuv { get; set; } = false;
