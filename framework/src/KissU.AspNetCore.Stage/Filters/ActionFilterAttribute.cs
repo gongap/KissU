@@ -81,6 +81,7 @@ namespace KissU.AspNetCore.Stage.Filters
 
         private bool ValidateAppSecretAuthentication(ActionExecutingContext filterContext, out HttpResultMessage<object> result)
         {
+            var tokenExpireTime = KissU.CPlatform.AppConfig.ServerOptions.TokenExpireTime;
             DateTime time;
             result = HttpResultMessage<object>.Create(true, null);
             var appSecretValues = filterContext.Context.Request.Headers["AppSecret"];
@@ -92,7 +93,7 @@ namespace KissU.AspNetCore.Stage.Filters
                 {
                     time = TimeHelper.UnixTimestampToDateTime(timestamp, DateTime.UtcNow);
                     var seconds = Math.Abs((DateTime.UtcNow - time).TotalSeconds);
-                    if (seconds <= 3560 && seconds >= 0)
+                    if (seconds <= tokenExpireTime && seconds >= 0)
                     {
                         if (GetMD5($"{route.ServiceDescriptor.Token}{time.ToString("yyyy-MM-dd HH:mm:ss")}") == appSecretValues.ToString())
                         {

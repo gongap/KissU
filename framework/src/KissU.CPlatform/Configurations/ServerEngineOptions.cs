@@ -120,6 +120,11 @@ namespace KissU.CPlatform.Configurations
         public string Token { get; set; } = "True";
 
         /// <summary>
+        /// Gets or sets the token.
+        /// </summary>
+        public int TokenExpireTime { get; set; } = 3560;
+
+        /// <summary>
         /// Gets or sets the not related assembly files.
         /// </summary>
         public string NotRelatedAssemblyFiles { get; set; }

@@ -6,6 +6,7 @@
     "MappingPort": "${Mapping_Port}", //公开主机端口
     "WanIp": "${WanIp}", //外网IP
     "Token": "123456789", //是否验证Token,缺省值为True
+    "TokenExpireTime": 3560, //Token有效时长,缺省值为3560秒
     "DockerDeployMode": "${DockerDeployMode}|Standard", //Docker容器部署模式
     "Libuv": true, //是否开启Libuv高性能事件驱动的I/O库,缺省值为false
     "EnableRouteWatch": true, //是否开启路由监控
