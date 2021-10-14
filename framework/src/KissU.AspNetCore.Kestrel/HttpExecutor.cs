@@ -257,6 +257,10 @@ namespace KissU.AspNetCore.Kestrel
                     _logger.LogError(exception, $"发送响应消息时候发生了异常。{exception.StackTrace}");
                 }
             }
+            finally
+            {
+                RpcContext.RemoveContext();
+            }
         }
 
         private static void SetCurrentCulture()

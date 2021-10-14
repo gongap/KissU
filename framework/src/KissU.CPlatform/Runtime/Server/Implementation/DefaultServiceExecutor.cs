@@ -185,6 +185,10 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
                     }
                 }
             }
+            finally
+            {
+                RpcContext.RemoveContext();
+            }
         }
 
         private async Task SendRemoteInvokeResult(IMessageSender sender, string messageId,

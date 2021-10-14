@@ -332,7 +332,7 @@ namespace KissU.CPlatform
                 {
                     builder = null;
                 }
-            }).As<IServiceEntryProvider>();
+            }).As<IServiceEntryProvider>().SingleInstance();
             builder.ContainerBuilder.RegisterType(typeof(DefaultServiceEntryManager)).As(typeof(IServiceEntryManager))
                 .SingleInstance();
             return builder;
