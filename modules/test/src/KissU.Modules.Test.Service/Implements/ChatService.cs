@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Modules.Common.Service.Contracts;
+using KissU.Modules.Test.Service.Contracts;
 using KissU.ServiceProxy;
 using KissU.WebSocket;
 using KissU.WebSocket.Core;
 
-namespace KissU.Modules.Common.Service.Implements
+namespace KissU.Modules.Test.Service.Implements
 {
     public class ChatService : WSBehavior, IChatService
     {

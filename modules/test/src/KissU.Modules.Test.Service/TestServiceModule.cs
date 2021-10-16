@@ -1,13 +1,13 @@
 ﻿using KissU.Modularity;
-using KissU.Modules.Common.Service.Contracts;
+using KissU.Modules.Test.Service.Contracts;
 using Volo.Abp.Modularity;
 
-namespace KissU.Modules.Common.Service
+namespace KissU.Modules.Test.Service
 {
     [DependsOn(
-        typeof(CommonServiceContractsModule)
+        typeof(TestServiceContractsModule)
         )]
-    public class CommonServiceModule : AbpModule, IBusinessModule
+    public class TestServiceModule : AbpModule, IBusinessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

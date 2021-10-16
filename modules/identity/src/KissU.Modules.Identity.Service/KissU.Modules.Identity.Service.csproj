@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
-    <ProjectReference Include="..\..\..\common\src\KissU.Modules.Common.Service.Contracts\KissU.Modules.Common.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\test\src\KissU.Modules.Test.Service.Contracts\KissU.Modules.Test.Service.Contracts.csproj" />
     <ProjectReference Include="..\KissU.Modules.Identity.Application\KissU.Modules.Identity.Application.csproj" />
     <ProjectReference Include="..\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
   </ItemGroup>

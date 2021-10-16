@@ -1,11 +1,11 @@
-﻿using KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+﻿using System.Threading.Tasks;
+using KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.CPlatform.Support;
 using KissU.CPlatform.Support.Attributes;
 using KissU.Dependency;
-using System.Threading.Tasks;
 
-namespace KissU.Modules.Common.Service.Contracts
+namespace KissU.Modules.Test.Service.Contracts
 {
     [ServiceBundle("api/{Service}")]
     public interface IManagerService : IServiceKey

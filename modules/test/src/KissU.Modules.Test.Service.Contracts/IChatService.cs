@@ -5,7 +5,7 @@ using KissU.CPlatform.Support.Attributes;
 using KissU.Dependency;
 using KissU.WebSocket.Attributes;
 
-namespace KissU.Modules.Common.Service.Contracts
+namespace KissU.Modules.Test.Service.Contracts
 {
     [ServiceBundle("Api/{Service}")]
     [BehaviorContract(IgnoreExtensions = true)]

@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using KissU.Extensions;
 using KissU.Models;
-using KissU.Modules.Common.Service.Contracts;
 using KissU.Modules.Identity.Service.Contracts;
+using KissU.Modules.Test.Service.Contracts;
 using KissU.ServiceProxy;
 using Volo.Abp.Identity;
 

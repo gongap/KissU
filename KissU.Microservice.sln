@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.Host", "serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.Stage", "services\KissU.Services.Stage\KissU.Services.Stage.csproj", "{BF7D6D6F-FAAD-440C-8BB7-FAFA6DCBA201}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{24338456-5CD2-4380-80E8-B1A8D9A6D456}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{24338456-5CD2-4380-80E8-B1A8D9A6D456}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "identity", "identity", "{4ED67552-1C93-4563-95D5-5D5A84294218}"
 EndProject
@@ -26,10 +26,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Service", "modules\identity\src\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj", "{D068B114-BBAC-4449-8A2E-761DF28AE040}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Service.Contracts", "modules\identity\src\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj", "{33849CEF-098F-4E23-B463-D0A26D898127}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Common.Service.Contracts", "modules\common\src\KissU.Modules.Common.Service.Contracts\KissU.Modules.Common.Service.Contracts.csproj", "{A6195274-4EB2-4345-8E5C-21BE9EC645CC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Common.Service", "modules\common\src\KissU.Modules.Common.Service\KissU.Modules.Common.Service.csproj", "{57B62458-D04B-442F-9A90-E5A02C9B9AC8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{050598F9-5FB4-45E6-AE93-A41E09D80F31}"
 EndProject
@@ -59,6 +55,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{E87BF2E2
 		build\common.ps1 = build\common.ps1
 		build\test-all.ps1 = build\test-all.ps1
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Test.Service", "modules\test\src\KissU.Modules.Test.Service\KissU.Modules.Test.Service.csproj", "{D384D633-E4E5-43C0-833B-7AD171CE86CB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Test.Service.Contracts", "modules\test\src\KissU.Modules.Test.Service.Contracts\KissU.Modules.Test.Service.Contracts.csproj", "{3E330B1B-170A-4658-B59A-57E1036916E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,14 +98,14 @@ Global
 		{33849CEF-098F-4E23-B463-D0A26D898127}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33849CEF-098F-4E23-B463-D0A26D898127}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33849CEF-098F-4E23-B463-D0A26D898127}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6195274-4EB2-4345-8E5C-21BE9EC645CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6195274-4EB2-4345-8E5C-21BE9EC645CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6195274-4EB2-4345-8E5C-21BE9EC645CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6195274-4EB2-4345-8E5C-21BE9EC645CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57B62458-D04B-442F-9A90-E5A02C9B9AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57B62458-D04B-442F-9A90-E5A02C9B9AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57B62458-D04B-442F-9A90-E5A02C9B9AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57B62458-D04B-442F-9A90-E5A02C9B9AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D384D633-E4E5-43C0-833B-7AD171CE86CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D384D633-E4E5-43C0-833B-7AD171CE86CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D384D633-E4E5-43C0-833B-7AD171CE86CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D384D633-E4E5-43C0-833B-7AD171CE86CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E330B1B-170A-4658-B59A-57E1036916E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E330B1B-170A-4658-B59A-57E1036916E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E330B1B-170A-4658-B59A-57E1036916E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E330B1B-170A-4658-B59A-57E1036916E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,13 +121,13 @@ Global
 		{A9F92FEC-CC33-40C8-BF63-E33BAD63AE96} = {D8C1210B-1BAD-465C-A927-276A0A6E0834}
 		{D068B114-BBAC-4449-8A2E-761DF28AE040} = {D8C1210B-1BAD-465C-A927-276A0A6E0834}
 		{33849CEF-098F-4E23-B463-D0A26D898127} = {D8C1210B-1BAD-465C-A927-276A0A6E0834}
-		{A6195274-4EB2-4345-8E5C-21BE9EC645CC} = {050598F9-5FB4-45E6-AE93-A41E09D80F31}
-		{57B62458-D04B-442F-9A90-E5A02C9B9AC8} = {050598F9-5FB4-45E6-AE93-A41E09D80F31}
 		{050598F9-5FB4-45E6-AE93-A41E09D80F31} = {24338456-5CD2-4380-80E8-B1A8D9A6D456}
 		{484CD731-CB15-4237-9021-CF1E2E2CF08D} = {24338456-5CD2-4380-80E8-B1A8D9A6D456}
 		{D8C1210B-1BAD-465C-A927-276A0A6E0834} = {4ED67552-1C93-4563-95D5-5D5A84294218}
 		{0A8BD6A0-A9E2-4D6B-987F-00400FACBA96} = {4ED67552-1C93-4563-95D5-5D5A84294218}
 		{E87BF2E2-411A-42A8-9974-07CC94049373} = {FE4BF483-C54D-4DDC-8618-AF4079DB8C2C}
+		{D384D633-E4E5-43C0-833B-7AD171CE86CB} = {484CD731-CB15-4237-9021-CF1E2E2CF08D}
+		{3E330B1B-170A-4658-B59A-57E1036916E7} = {484CD731-CB15-4237-9021-CF1E2E2CF08D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60B3B9A2-EE46-490A-8588-86D958332816}

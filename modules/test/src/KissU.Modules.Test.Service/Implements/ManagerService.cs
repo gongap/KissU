@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using KissU.Modules.Common.Service.Contracts;
+using KissU.Modules.Test.Service.Contracts;
 using KissU.ServiceProxy;
 
-namespace KissU.Modules.Common.Service.Implements
+namespace KissU.Modules.Test.Service.Implements
 {
     public class ManagerService : ProxyServiceBase, IManagerService
     {

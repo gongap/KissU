@@ -6,7 +6,7 @@
     <RootNamespace>KissU.Services</RootNamespace>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
-    <Description>KissU.Services.Host</Description>
+    <Description>KissU.Services</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -46,7 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\modules\common\src\KissU.Modules.Common.Service\KissU.Modules.Common.Service.csproj" />
+    <ProjectReference Include="..\..\modules\test\src\KissU.Modules.Test.Service\KissU.Modules.Test.Service.csproj" />
     <ProjectReference Include="..\..\modules\identity\src\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
   </ItemGroup>
 

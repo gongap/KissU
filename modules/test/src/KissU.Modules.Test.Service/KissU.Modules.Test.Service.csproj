@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
-    <ProjectReference Include="..\KissU.Modules.Common.Service.Contracts\KissU.Modules.Common.Service.Contracts.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Test.Service.Contracts\KissU.Modules.Test.Service.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
