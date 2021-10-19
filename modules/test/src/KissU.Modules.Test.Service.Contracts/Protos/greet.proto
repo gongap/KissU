@@ -1,6 +1,6 @@
 syntax = "proto3";
  
-package Greet;
+package KissU.Modules.Test.Service.Contracts;
  
 // The greeting service definition.
 service Greeter {

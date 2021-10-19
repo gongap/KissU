@@ -1,7 +1,7 @@
 {
   "ServerEngine": {
     "Ip": "${Server_IP}|127.0.0.1",
-    "Port": "${Server_Port}|91",
+    "Port": "${Server_Port}|8091",
     "MappingIp": "${Mapping_ip}",
     "MappingPort": "${Mapping_Port}",
     "WanIp": "${WanIp}",

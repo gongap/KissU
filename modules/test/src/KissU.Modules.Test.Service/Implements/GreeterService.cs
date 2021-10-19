@@ -1,10 +1,9 @@
-﻿using Greet;
+﻿using System.Threading.Tasks;
 using Grpc.Core;
-using KissU.Modules.Common.Service.Behaviors;
-using KissU.Modules.Common.Service.Contracts;
-using System.Threading.Tasks;
+using KissU.Modules.Test.Service.Behaviors;
+using KissU.Modules.Test.Service.Contracts;
 
-namespace KissU.Modules.Common.Service
+namespace KissU.Modules.Test.Service.Implements
 {
     public class GreeterService : GreeterBehavior, IGreeterService
     {

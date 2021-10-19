@@ -1,7 +1,7 @@
-﻿using Greet;
-using KissU.Dependency;
+﻿using KissU.Dependency;
+using KissU.Modules.Test.Service.Contracts;
 
-namespace KissU.Modules.Common.Service.Behaviors
+namespace KissU.Modules.Test.Service.Behaviors
 {
     public partial class GreeterBehavior : Greeter.GreeterBase, IServiceBehavior
     {

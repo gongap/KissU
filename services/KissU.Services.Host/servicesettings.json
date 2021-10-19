@@ -1,7 +1,7 @@
 {
   "ServerEngine": { //微服务框架配置
     "Ip": "${Server_IP}|127.0.0.1", //私有容器IP
-    "Port": "${Server_Port}|81", ///私有容器端口
+    "Port": "${Server_Port}|8081", ///私有容器端口
     "MappingIp": "${Mapping_ip}", //公开主机IP
     "MappingPort": "${Mapping_Port}", //公开主机端口
     "WanIp": "${WanIp}", //外网IP
@@ -36,7 +36,7 @@
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;SkywalkingModule;GrpcModule;ApolloModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;SkywalkingModule;GrpcModule;ApolloModule;AspNetCoreKestrelModule;"
       }
     ]
   },

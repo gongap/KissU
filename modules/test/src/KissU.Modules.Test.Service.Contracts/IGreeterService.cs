@@ -1,10 +1,9 @@
-﻿using Greet;
-using Grpc.Core;
+﻿using Grpc.Core;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Dependency;
 using System.Threading.Tasks;
 
-namespace KissU.Modules.Common.Service.Contracts
+namespace KissU.Modules.Test.Service.Contracts
 {
     [ServiceBundle("api/{Service}/{Method}")]
     public interface IGreeterService : IServiceKey
