@@ -27,16 +27,16 @@
     "RequestCacheEnabled": true, //启用请求缓存
     "IncludeSensitiveDetails": true,
     "Ports": {
-      "HttpPort": "${HttpPort}",
-      "WSPort": "${WSPort}",
-      "MQTTPort": "${MQTTPort}",
-      "GrpcPort": "${GrpcPort}",
-      "UdpPort": "${UdpPort}"
+      "HttpPort": "${HttpPort}|8082",
+      "WSPort": "${WSPort}|8083",
+      "MQTTPort": "${MQTTPort}|8084",
+      "GrpcPort": "${GrpcPort}|8085",
+      "UdpPort": "${UdpPort}|8086"
     },
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;SkywalkingModule;GrpcModule;ApolloModule;AspNetCoreKestrelModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;SkywalkingModule;GrpcModule;ApolloModule;AspNetCoreKestrelModule;"
       }
     ]
   },

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Grpc.Runtime
+namespace KissU.GrpcTransport.Runtime
 {
     /// <summary>
     /// Interface IGrpcServiceEntryProvider

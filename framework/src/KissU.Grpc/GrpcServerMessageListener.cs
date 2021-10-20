@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Grpc.Core;
 using KissU.CPlatform.Messages;
 using KissU.CPlatform.Transport;
-using KissU.Grpc.Runtime;
+using KissU.GrpcTransport.Runtime;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Grpc
+namespace KissU.GrpcTransport
 {
     /// <summary>
     /// GrpcServerMessageListener.

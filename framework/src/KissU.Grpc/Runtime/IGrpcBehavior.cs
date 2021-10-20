@@ -1,6 +1,6 @@
 ﻿using KissU.Dependency;
 
-namespace KissU.Grpc.Runtime
+namespace KissU.GrpcTransport.Runtime
 {
     /// <summary>
     /// IGrpcBehavior.

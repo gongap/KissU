@@ -4,17 +4,6 @@
     <TargetFramework>net5.0</TargetFramework>
     <Description>身份管理模块：身份模块基于Microsoft Identity库用于管理组织单元, 角色, 用户和他们的权限.</Description>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\output\</OutputPath>
-    <DocumentationFile>..\..\..\output\KissU.Modules.Identity.Service.Contracts.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\output\</OutputPath>
-    <DocumentationFile>..\..\..\output\KissU.Modules.Identity.Service.Contracts.xml</DocumentationFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="IdentityServiceIntercepteModule.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="4.4.0" />

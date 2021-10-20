@@ -5,7 +5,7 @@ using KissU.CPlatform;
 using KissU.CPlatform.Runtime.Server.Implementation;
 using KissU.CPlatform.Transport;
 
-namespace KissU.Grpc
+namespace KissU.GrpcTransport
 {
     /// <summary>
     /// GrpcServiceHost.

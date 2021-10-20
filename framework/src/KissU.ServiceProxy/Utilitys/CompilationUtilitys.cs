@@ -279,7 +279,7 @@ namespace KissU.ServiceProxy.Utilitys
                 MetadataReference.CreateFromFile(typeof(IRemoteInvokeService).GetTypeInfo().Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(IServiceProxyGenerater).GetTypeInfo().Assembly.Location)
             }.Concat(references);
-            return Compile(AssemblyInfo.Create("KissUs.ClientProxys"), trees, references, logger);
+            return Compile(AssemblyInfo.Create("KissU.ClientProxys"), trees, references, logger);
         }
 
         /// <summary>

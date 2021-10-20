@@ -4,6 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <Description>Grpc服务层：实现基于Grpc服务的信息的发送和接收</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <RootNamespace>KissU.GrpcTransport</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

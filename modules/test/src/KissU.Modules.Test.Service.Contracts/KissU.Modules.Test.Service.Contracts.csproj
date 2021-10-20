@@ -5,19 +5,9 @@
     <Description>测试模块</Description>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>..\..\..\output\KissU.Modules.Common.Service.Contracts.xml</DocumentationFile>
-    <OutputPath>..\..\..\output\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\output\</OutputPath>
-    <DocumentationFile>..\..\..\output\KissU.Modules.Common.Service.Contracts.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
-    <!--<PackageReference Include="ApacheThrift" Version="0.13.0.1" />
-    <PackageReference Include="MessagePack" Version="1.7.3.4" />-->
+    <PackageReference Include="MessagePack" Version="1.7.3.4" />
+    <PackageReference Include="ApacheThrift" Version="0.13.0.1" />
     <PackageReference Include="Google.Protobuf" Version="3.10.1" />
     <PackageReference Include="Grpc.Core" Version="2.24.0" />
     <PackageReference Include="Grpc.Tools" Version="2.24.0">
