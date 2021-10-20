@@ -29,4 +29,8 @@
   <ItemGroup>
     <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Thrifts\gen-netstd\" />
+  </ItemGroup>
 </Project>

@@ -36,7 +36,8 @@
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;SkywalkingModule;GrpcModule;ApolloModule;AspNetCoreKestrelModule;"
+         // "Using": "${UseEngineParts}|ServiceProxyModule;ThriftModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;AspNetCoreKestrelModule;ApiGeteWayModule;SkywalkingModule;GrpcModule;ApolloModule;",
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;AspNetCoreKestrelModule;ApiGateWayModule;SkywalkingModule;GrpcModule;ApolloModule;"
       }
     ]
   },

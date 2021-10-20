@@ -24,6 +24,7 @@
     <ProjectReference Include="..\..\framework\src\KissU.Grpc\KissU.Grpc.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.ApiGateWay\KissU.ApiGateWay.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.Thrift\KissU.Thrift.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty\KissU.DotNetty.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty.DNS\KissU.DotNetty.DNS.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty.WebSocket\KissU.DotNetty.WebSocket.csproj" />
