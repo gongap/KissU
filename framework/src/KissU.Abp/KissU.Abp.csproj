@@ -2,7 +2,7 @@
   <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Description>ABP框架模块：ABP框架提供了基础设施使基于领域驱动设计的开发更易实现,它提供了一个完整的基础设施来构建你自己的程序模块,这些模块包含实体,服务,数据库集成,API等. 通过提供通用基础架构,集成和抽象会使你的日常开发更加容易.</Description>
+    <Description>ABP模块：ABP框架提供了基础设施使基于领域驱动设计的开发更易实现,它提供了一个完整的基础设施来构建你自己的程序模块,这些模块包含实体,服务,数据库集成,API等. 通过提供通用基础架构,集成和抽象会使你的日常开发更加容易.</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

@@ -2,7 +2,7 @@
   <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Description>WebSocket服务层：实现基于WebSocket服务的信息的发送和接收</Description>
+    <Description>WebSocket模块：实现基于WebSocket服务的信息的发送和接收</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
