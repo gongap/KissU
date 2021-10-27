@@ -79,9 +79,9 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
             var entry = _serviceEntryLocate.Locate(remoteInvokeMessage);
             if (entry == null)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
+                if (_logger.IsEnabled(LogLevel.Warning))
                 {
-                    _logger.LogError($"根据服务Id：{remoteInvokeMessage.ServiceId}，找不到服务条目。");
+                    _logger.LogWarning($"根据服务Id：{remoteInvokeMessage.ServiceId}，找不到服务条目。");
                 }
 
                 return;
@@ -95,9 +95,9 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
                 }
             }
 
-            if (_logger.IsEnabled(LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Trace))
             {
-                _logger.LogDebug("准备执行本地逻辑。");
+                _logger.LogTrace("准备执行本地逻辑。");
             }
 
             SetCurrentCulture();
@@ -171,16 +171,23 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
                     resultMessage.Message = errorInfo.Message;
                     resultMessage.Details = errorInfo.Details;
                     resultMessage.ValidationErrors = errorInfo.ValidationErrors;
+                    if (_logger.IsEnabled(LogLevel.Warning))
+                    {
+                        _logger.LogWarning(exception, $"执行本地调用逻辑时候发生了错误：RoutePath：{entry.RoutePath}，Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                    }
                 }
                 else
                 {
                     resultMessage.Message = exception.Message;
+                    if (_logger.IsEnabled(LogLevel.Error))
+                    {
+                        _logger.LogError(exception, $"执行本地调用逻辑时候发生了错误：RoutePath：{entry.RoutePath}，Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                    }
                 }
-
-                if (_logger.IsEnabled(LogLevel.Error))
-                {
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.Message}");
-                }
+            }
+            finally
+            {
+                RpcContext.RemoveContext();
             }
         }
 
@@ -189,15 +196,15 @@ namespace KissU.CPlatform.Runtime.Server.Implementation
         {
             try
             {
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogDebug("准备发送响应消息。");
+                    _logger.LogTrace("准备发送响应消息。");
                 }
 
                 await sender.SendAndFlushAsync(TransportMessage.CreateInvokeResultMessage(messageId, resultMessage));
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogDebug("响应消息发送成功。");
+                    _logger.LogTrace("响应消息发送成功。");
                 }
             }
             catch (Exception exception)

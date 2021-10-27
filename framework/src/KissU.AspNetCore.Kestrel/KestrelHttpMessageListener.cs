@@ -125,11 +125,14 @@ namespace KissU.AspNetCore.Kestrel
                     });
 
                 _host = hostBuilder.Build();
-                _lifetime.ServiceEngineStarted.Register(async () => { await _host.RunAsync(); });
+                _lifetime.ServiceEngineStarted.Register(async () =>
+                {
+                    await _host.RunAsync();
+                });
             }
             catch
             {
-                _logger.LogError($"http host failed, listening on: {address}:{port}。 ");
+                _logger.LogError($"Kestrel服务主机启动失败, 监听端口: {address}:{port}。 ");
             }
 
             return Task.CompletedTask;

@@ -91,13 +91,15 @@ namespace KissU.Caching.Configurations.Implementation
         /// <summary>
         /// Processes this instance.
         /// </summary>
-        public override async Task Process()
+        public override Task Process()
         {
             if (queue.Count > 0 && queue.Dequeue())
             {
-                var jsonString = JsonConvert.SerializeObject(_cachingProvider);
-                await File.WriteAllTextAsync(AppConfig.Path, jsonString);
+                //var jsonString = JsonConvert.SerializeObject(_cachingProvider);
+                //await File.WriteAllTextAsync(AppConfig.Path, jsonString);
             }
+
+            return Task.CompletedTask;
         }
 
         #region Field  

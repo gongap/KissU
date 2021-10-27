@@ -74,10 +74,7 @@ namespace KissU.ServiceProxy.Interceptors.Implementation
         public static ServiceDescriptor Key(this ServiceDescriptor descriptor, string key, string metadataId)
         {
             var metadata = GetInterceptMetadata(descriptor, metadataId);
-            if (string.IsNullOrEmpty(metadata.Item1))
-                metadata.Item1 = key;
-            else
-                metadata.Item1 += $"|{key}";
+            metadata.Item1 = key;
             metadata.Item2[metadataId] = metadata.Item1;
             descriptor.Metadatas["Intercept"] = metadata.Item2;
             return descriptor;
@@ -95,10 +92,7 @@ namespace KissU.ServiceProxy.Interceptors.Implementation
         public static ServiceDescriptor L2Key(this ServiceDescriptor descriptor, string L2Key, string metadataId)
         {
             var metadata = GetInterceptMetadata(descriptor, metadataId);
-            if (string.IsNullOrEmpty(metadata.Item1))
-                metadata.Item1 = L2Key;
-            else
-                metadata.Item1 += $"|{L2Key}";
+            metadata.Item1 += $"|{L2Key}";
             metadata.Item2[metadataId] = metadata.Item1;
             descriptor.Metadatas["Intercept"] = metadata.Item2;
             return descriptor;

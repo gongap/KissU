@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-
 using KissU.Dependency;
 using KissU.Caching;
 using KissU.CPlatform.Cache;
 using KissU.CPlatform.Routing;
+using KissU.Serialization;
 using KissU.ServiceProxy;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace KissU.ApiGateWay.OAuth.Implementation
 {
@@ -20,8 +22,10 @@ namespace KissU.ApiGateWay.OAuth.Implementation
     {
         private readonly ICacheProvider _cacheProvider;
         private readonly CPlatformContainer _serviceProvider;
+        private readonly ISerializer<string> _jsonSerializer;
         private readonly IServiceProxyProvider _serviceProxyProvider;
         private readonly IServiceRouteProvider _serviceRouteProvider;
+        private readonly ConcurrentDictionary<string, string> _tokens;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorizationServerProvider" /> class.
@@ -37,6 +41,8 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             _serviceProxyProvider = serviceProxyProvider;
             _serviceRouteProvider = serviceRouteProvider;
             _cacheProvider = CacheContainer.GetService<ICacheProvider>(AppConfig.CacheMode);
+            _jsonSerializer = serviceProvider.GetInstances<ISerializer<string>>();
+            _tokens = new ConcurrentDictionary<string, string>();
         }
 
         /// <summary>
@@ -47,18 +53,35 @@ namespace KissU.ApiGateWay.OAuth.Implementation
         public async Task<string> GenerateTokenCredential(Dictionary<string, object> parameters)
         {
             string result = null;
-            var payload = await _serviceProxyProvider.Invoke<object>(parameters, AppConfig.AuthorizationRoutePath,
-                AppConfig.AuthorizationServiceKey);
+            var cacheKey = string.Empty;
+            var payload = await _serviceProxyProvider.Invoke<object>(parameters, AppConfig.AuthorizationRoutePath,AppConfig.AuthorizationServiceKey);
             if (payload != null && !payload.Equals("null"))
             {
-                var jwtHeader = JsonConvert.SerializeObject(new JWTSecureDataHeader
-                    {TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")});
+                foreach (var parameter in parameters)
+                {
+                    if (parameter.Value is JObject  jsonModel)
+                    {
+                        if (jsonModel.TryGetValue(AppConfig.CacheKey, out var jtoken))
+                        {
+                            cacheKey = jtoken.ToString();
+                        }
+                    }
+                }
+
+                var jwtHeader = new JWTSecureDataHeader
+                {
+                    CacheKey = cacheKey,
+                    TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                };
+                var jwtHeaderStr = _jsonSerializer.Serialize(jwtHeader);
                 var base64Payload = ConverBase64String(JsonConvert.SerializeObject(payload));
-                var encodedString = $"{ConverBase64String(jwtHeader)}.{base64Payload}";
+                var encodedString = $"{ConverBase64String(jwtHeaderStr)}.{base64Payload}";
                 var route = await _serviceRouteProvider.GetRouteByPath(AppConfig.AuthorizationRoutePath);
                 var signature = HMACSHA256(encodedString, route.ServiceDescriptor.Token);
                 result = $"{encodedString}.{signature}";
-                _cacheProvider.Add(base64Payload, result, AppConfig.AccessTokenExpireTimeSpan);
+
+                cacheKey = string.IsNullOrWhiteSpace(jwtHeader.CacheKey) ? base64Payload : jwtHeader.CacheKey;
+                SaveToken(cacheKey, result);
             }
 
             return result;
@@ -88,11 +111,24 @@ namespace KissU.ApiGateWay.OAuth.Implementation
         /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> ValidateClientAuthentication(string token)
         {
+            if (token == null)
+            {
+                return false;
+            }
+
+            var tokenArray = token.Split(' ');
+            if (tokenArray.Length == 2)
+            {
+                token = tokenArray[1];
+            }
+
             var isSuccess = false;
             var jwtToken = token.Split('.');
             if (jwtToken.Length == 3)
             {
-                isSuccess = await _cacheProvider.GetAsync<string>(jwtToken[1]) == token;
+                var cacheKey = GeCacheKey(jwtToken[0]);
+                cacheKey = string.IsNullOrWhiteSpace(cacheKey) ? jwtToken[1] : cacheKey;
+                isSuccess = await GetToken(cacheKey) == token;
             }
 
             return isSuccess;
@@ -109,10 +145,12 @@ namespace KissU.ApiGateWay.OAuth.Implementation
             var jwtToken = token.Split('.');
             if (jwtToken.Length == 3)
             {
-                var value = await _cacheProvider.GetAsync<string>(jwtToken[1]);
+                var cacheKey = GeCacheKey(jwtToken[0]);
+                cacheKey = string.IsNullOrWhiteSpace(cacheKey) ? jwtToken[1] : cacheKey;
+                var value = await GetToken(cacheKey);
                 if (!string.IsNullOrEmpty(value))
                 {
-                    _cacheProvider.Add(jwtToken[1], value, AppConfig.AccessTokenExpireTimeSpan);
+                    SaveToken(cacheKey, value);
                     isSuccess = true;
                 }
             }
@@ -136,5 +174,43 @@ namespace KissU.ApiGateWay.OAuth.Implementation
                 return Convert.ToBase64String(hashmessage);
             }
         }
+
+        private string GeCacheKey(string jwtHeaderString)
+        {
+            var cacheKey = string.Empty;
+            try
+            {
+                var jwtHeader = _jsonSerializer.Deserialize<string, JWTSecureDataHeader> (Encoding.UTF8.GetString(Convert.FromBase64String(jwtHeaderString)));
+                cacheKey = jwtHeader.CacheKey;
+            }
+            catch
+            {
+                // ignored
+            }
+
+            return cacheKey;
+        }
+
+       private Task SaveToken(string cacheKey, string value)
+        {
+            _cacheProvider.Remove(cacheKey);
+            _cacheProvider.Add(cacheKey, value, AppConfig.AccessTokenExpireTimeSpan);
+            _tokens.AddOrUpdate(cacheKey, value, (o, n) => value);
+            return Task.CompletedTask;
+        }
+
+       private async Task<string> GetToken(string cacheKey)
+       {
+           if (!_tokens.TryGetValue(cacheKey, out var token))
+           {
+               token = await _cacheProvider.GetAsync<string>(cacheKey);
+               if (!string.IsNullOrWhiteSpace(token))
+               {
+                   _tokens.AddOrUpdate(cacheKey, token, (o, n) => token);
+               }
+           }
+
+           return token;
+       }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.CPlatform.Support.Attributes;
 using KissU.Dependency;
+using KissU.ServiceProxy.Interceptors.Implementation.Metadatas;
 using Volo.Abp.Users;
 
 namespace KissU.Modules.Identity.Service.Contracts
@@ -19,6 +21,8 @@ namespace KissU.Modules.Identity.Service.Contracts
         /// <returns>Task&lt;UserData&gt;.</returns>
         [HttpGet(true)]
         [ServiceRoute("{id}")]
+        //[Command(RequestCacheEnabled = true)]
+        //[ServiceCacheIntercept(CachingMethod.Get, Key = "FindById_{0}", CacheSectionType = "userCache", Mode = CacheTargetType.Redis, Time = 480)]
         Task<UserData> FindById(string id);
 
         /// <summary>
@@ -28,6 +32,9 @@ namespace KissU.Modules.Identity.Service.Contracts
         /// <returns>Task&lt;UserData&gt;.</returns>
         [HttpGet(true)]
         [ServiceRoute("{userName}")]
+
+        //[Command(RequestCacheEnabled = true)]
+        //[ServiceCacheIntercept(CachingMethod.Get, Key = "FindByUserName_{0}", CacheSectionType = "userCache", Mode = CacheTargetType.Redis, Time = 480)]
         Task<UserData> FindByUserName(string userName);
     }
 }

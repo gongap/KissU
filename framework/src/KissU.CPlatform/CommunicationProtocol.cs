@@ -38,6 +38,11 @@
         /// <summary>
         /// UDP
         /// </summary>
-        Udp
+        Udp,
+
+        /// <summary>
+        /// GRPC
+        /// </summary>
+        GRPC
     }
 }

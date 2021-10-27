@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KissU.ServiceProxy.Interceptors.Implementation.Metadatas;
+using System;
 
 namespace KissU.Caching
 {

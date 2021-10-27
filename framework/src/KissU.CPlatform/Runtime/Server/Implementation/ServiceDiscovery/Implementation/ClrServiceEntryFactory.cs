@@ -116,8 +116,7 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Impleme
 
             if (authorization != null)
             {
-                serviceDescriptor.AuthType((authorization as AuthorizationAttribute)?.AuthType ??
-                                           AuthorizationType.AppSecret);
+                serviceDescriptor.AuthType((authorization as AuthorizationAttribute)?.AuthType ?? AuthorizationType.AppSecret);
             }
 
             var fastInvoker = GetHandler(serviceId, method);
@@ -147,10 +146,12 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Impleme
 
                     var list = new List<object>();
 
-                    foreach (var parameterInfo in method.GetParameters())
+                    var methodParameters = method.GetParameters();
+                    foreach (var parameterInfo in methodParameters)
                     {
+                        var parameterInfoName = parameterInfo.Name.ToLower();
                         //加入是否有默认值的判断，有默认值，并且用户没传，取默认值
-                        if (parameterInfo.HasDefaultValue && !parameters.ContainsKey(parameterInfo.Name))
+                        if (parameterInfo.HasDefaultValue && parameters.Keys.All(x=>x.ToLower() != parameterInfoName))
                         {
                             list.Add(parameterInfo.DefaultValue);
                             continue;
@@ -161,19 +162,29 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Impleme
                             continue;
                         }
 
-                        var value = parameters[parameterInfo.Name];
-
-                        if (methodValidateAttribute != null)
+                        var parameterName = parameters.Keys.FirstOrDefault(x=>x.ToLower() == parameterInfoName);
+                        if (parameterName != null && parameters.ContainsKey(parameterName))
                         {
-                            _validationProcessor.Validate(parameterInfo, value);
-                        }
+                            var value = parameters[parameterName];
 
-                        var parameterType = parameterInfo.ParameterType;
-                        var parameter = _typeConvertibleService.Convert(value, parameterType);
-                        list.Add(parameter);
+                            if (methodValidateAttribute != null)
+                            {
+                                _validationProcessor.Validate(parameterInfo, value);
+                            }
+
+                            var parameterType = parameterInfo.ParameterType;
+                            var parameter = _typeConvertibleService.Convert(value, parameterType);
+                            list.Add(parameter);
+                        }
+                        else
+                        {
+                            throw new ArgumentException($"参数名不匹配：{parameterInfoName}");
+                        }
                     }
 
-                    var result = fastInvoker(instance, list.ToArray());
+                    var invokerParameters = new object[methodParameters.Length];
+                    Array.Copy(list.ToArray(), invokerParameters, list.Count);
+                    var result = fastInvoker(instance, invokerParameters);
                     return Task.FromResult(result);
                 }
             };

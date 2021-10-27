@@ -438,8 +438,8 @@ namespace KissU.ServiceDiscovery.Consul
             //触发路由被创建事件。
             OnCreated(newRoutes.Select(route => new MqttServiceRouteEventArgs(route)).ToArray());
 
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("mqtt路由数据更新成功。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug("mqtt路由数据更新成功。");
         }
 
         #endregion

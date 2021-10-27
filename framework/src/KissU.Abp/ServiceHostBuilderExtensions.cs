@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Autofac;
 using KissU.CPlatform;
+using KissU.CPlatform.Engines.Implementation;
 using KissU.Extensions;
 using KissU.Helpers;
 using KissU.Modularity;
@@ -30,7 +32,9 @@ namespace KissU.Abp
                     services.AddApplication<AbpStartupModule>(options =>
                     {
                         optionsAction?.Invoke(options);
-                        var assemblies = ModuleHelper.GetAssemblies();
+                        var modulePaths = DefaultServiceEngineBuilder.GetPaths(DefaultServiceEngineBuilder.ModuleServiceLocationFormat) ?? new string[] { };
+                        var paths = new[] { AppContext.BaseDirectory }.Concat(modulePaths).ToArray();
+                        var assemblies = ModuleHelper.GetAssemblies(paths);
                         var moduleTypes = ReflectionHelper.FindTypes<IBusinessModule>(assemblies.ToArray());
                         options.PlugInSources.AddTypes(moduleTypes.ToArray());
                     });

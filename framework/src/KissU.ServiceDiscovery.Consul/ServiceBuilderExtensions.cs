@@ -246,6 +246,7 @@ namespace KissU.ServiceDiscovery.Consul
                 config = new ConfigInfo(
                     option.ConnectionString,
                     TimeSpan.FromSeconds(sessionTimeout),
+                    option.WatchInterval ?? config.WatchInterval,
                     option.LockDelay ?? config.LockDelay,
                     option.RoutePath ?? config.RoutePath,
                     option.SubscriberPath ?? config.SubscriberPath,

@@ -8,7 +8,7 @@ using KissU.ServiceProxy;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Services.Client
+namespace KissU.Services
 {
     internal class Program
     {

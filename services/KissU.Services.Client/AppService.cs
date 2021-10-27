@@ -13,7 +13,7 @@ using Microsoft.Extensions.Options;
 using Volo.Abp.Http.Client;
 using Volo.Abp.Identity;
 
-namespace KissU.Services.Client
+namespace KissU.Services
 {
     public class AppService : Volo.Abp.DependencyInjection.ITransientDependency
     {

@@ -69,10 +69,20 @@ namespace KissU.Thrift
 
         public Task StartAsync(EndPoint endPoint)
         {
+            var ipEndPoint = endPoint as IPEndPoint;
+            if (ipEndPoint.Port == 0)
+            {
+                return Task.CompletedTask;
+            }
+
+            if (_logger.IsEnabled(LogLevel.Debug))
+            {
+                _logger.LogDebug($"准备启动Thrift服务主机, 监听端口: {endPoint}");
+            }
+
             try
             {
                 CancellationToken cancellationToken = new CancellationToken();
-                var ipEndPoint = endPoint as IPEndPoint;
                 TMultiplexedServiceProcessor processor = new TMultiplexedServiceProcessor(_logger, _transportMessageDecoder, _transportMessageEncoder, new ServerHandler(async (contenxt, message) =>
                   {
                       var sender = new ThriftServerMessageSender(_transportMessageEncoder, contenxt);
@@ -98,11 +108,11 @@ namespace KissU.Thrift
                 server.ServeAsync(cancellationToken);
 
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"Thrift host started, listening on:{endPoint}");
+                    _logger.LogInformation($"Thrift服务主机已启动, 监听端口:{endPoint}");
             }
             catch
             {
-                _logger.LogError($"Thrift host failed, listening on: {endPoint} ");
+                _logger.LogError($"Thrift服务主机启动失败, 监听端口: {endPoint} ");
             }
             return Task.CompletedTask;
         }

@@ -476,12 +476,11 @@ namespace KissU.AspNetCore.Swagger.SwaggerGen.Generator
             var reg = @"(?<={)[^{}]*(?=})";
             var nonBodyParam = new NonBodyParameter
             {
-                Name = parameterInfo.Name,
+                Name = parameterInfo.Name.ToLower(),
                 In = "query",
                 Required = true
             };
-            if (Regex.IsMatch(serviceEntry.RoutePath, reg) &&
-                GetParameters(serviceEntry.RoutePath).Contains(parameterInfo.Name))
+            if (Regex.IsMatch(serviceEntry.RoutePath, reg) && GetParameters(serviceEntry.RoutePath).Contains(parameterInfo.Name.ToLower()))
             {
                 nonBodyParam.In = "path";
             }

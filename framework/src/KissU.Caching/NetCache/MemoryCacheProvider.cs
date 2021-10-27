@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KissU.Caching.RedisCache;
 using KissU.CPlatform.Cache;
+using KissU.ServiceProxy.Interceptors.Implementation.Metadatas;
 
 namespace KissU.Caching.NetCache
 {

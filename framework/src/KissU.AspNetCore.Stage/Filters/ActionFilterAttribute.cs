@@ -52,8 +52,7 @@ namespace KissU.AspNetCore.Stage.Filters
             var gatewayAppConfig = AppConfig.Options.ApiGetWay;
             if (filterContext.Message.RoutePath == gatewayAppConfig.AuthorizationRoutePath)
             {
-                var token = await _authorizationServerProvider.GenerateTokenCredential(
-                    new Dictionary<string, object>(filterContext.Message.Parameters));
+                var token = await _authorizationServerProvider.GenerateTokenCredential(new Dictionary<string, object>(filterContext.Message.Parameters));
                 if (token != null)
                 {
                     filterContext.Result = HttpResultMessage<object>.Create(true, token);
@@ -63,84 +62,58 @@ namespace KissU.AspNetCore.Stage.Filters
                 {
                     filterContext.Result = new HttpResultMessage<object>
                     {
-                        IsSucceed = false, StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
-                        Message = "Invalid authentication credentials"
+                        IsSucceed = false, StatusCode = (int) ServiceStatusCode.RequestError,
+                        Message = "Generates the token credential failed!"
                     };
                 }
             }
-            else if (filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.AppSecret.ToString())
+            else if (filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.AppSecret.ToString() || filterContext.Route.ServiceDescriptor.AuthType() == AuthorizationType.JwtSecret.ToString())
             {
-                if (!ValidateAppSecretAuthentication(filterContext, out var result))
+                if (!string.IsNullOrWhiteSpace(filterContext.Route.ServiceDescriptor.Token))
                 {
-                    filterContext.Result = result;
+                    if (!ValidateAppSecretAuthentication(filterContext, out var result))
+                    {
+                        filterContext.Result = result;
+                    }
                 }
             }
         }
 
-        private bool ValidateAppSecretAuthentication(ActionExecutingContext filterContext,
-            out HttpResultMessage<object> result)
+        private bool ValidateAppSecretAuthentication(ActionExecutingContext filterContext, out HttpResultMessage<object> result)
         {
-            var isSuccess = true;
+            var tokenExpireTime = KissU.CPlatform.AppConfig.ServerOptions.TokenExpireTime;
             DateTime time;
             result = HttpResultMessage<object>.Create(true, null);
-            var author = filterContext.Context.Request.Headers["Authorization"];
-            var model = filterContext.Message.Parameters;
+            var appSecretValues = filterContext.Context.Request.Headers["AppSecret"];
+            var timestampValues = filterContext.Context.Request.Headers["Timestamp"];
             var route = filterContext.Route;
-            if (model.ContainsKey("timeStamp") && author.Count > 0)
+            if (appSecretValues.Count > 0 && timestampValues.Count > 0)
             {
-                if (long.TryParse(model["timeStamp"].ToString(), out var timeStamp))
+                if (long.TryParse(timestampValues.ToString(), out var timestamp))
                 {
-                    time = TimeHelper.UnixTimestampToDateTime(timeStamp);
-                    var seconds = (DateTime.Now - time).TotalSeconds;
-                    if (seconds <= 3560 && seconds >= 0)
+                    time = TimeHelper.UnixTimestampToDateTime(timestamp, DateTime.UtcNow);
+                    var seconds = Math.Abs((DateTime.UtcNow - time).TotalSeconds);
+                    if (seconds <= tokenExpireTime && seconds >= 0)
                     {
-                        if (GetMD5($"{route.ServiceDescriptor.Token}{time.ToString("yyyy-MM-dd HH:mm:ss")}") !=
-                            author.ToString())
+                        if (GetMD5($"{route.ServiceDescriptor.Token}{time.ToString("yyyy-MM-dd HH:mm:ss")}") == appSecretValues.ToString())
                         {
-                            result = new HttpResultMessage<object>
-                            {
-                                IsSucceed = false, StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
-                                Message = "Invalid authentication credentials"
-                            };
-                            isSuccess = false;
+                            return true;
                         }
                     }
-                    else
-                    {
-                        result = new HttpResultMessage<object>
-                        {
-                            IsSucceed = false, StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
-                            Message = "Invalid authentication credentials"
-                        };
-                        isSuccess = false;
-                    }
                 }
-                else
-                {
-                    result = new HttpResultMessage<object>
-                    {
-                        IsSucceed = false, StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
-                        Message = "Invalid authentication credentials"
-                    };
-                    isSuccess = false;
-                }
-            }
-            else
-            {
-                result = new HttpResultMessage<object>
-                    {IsSucceed = false, StatusCode = (int) ServiceStatusCode.RequestError, Message = "Request error"};
-                isSuccess = false;
             }
 
-            return isSuccess;
+            result = new HttpResultMessage<object>
+            {
+                IsSucceed = false,
+                StatusCode = (int)ServiceStatusCode.AuthorizationFailed,
+                Message = "身份验证凭据无效"
+            };
+
+            return false;
         }
 
-        /// <summary>
-        /// Gets the m d5.
-        /// </summary>
-        /// <param name="encypStr">The encyp string.</param>
-        /// <returns>System.String.</returns>
-        public string GetMD5(string encypStr)
+        private string GetMD5(string encypStr)
         {
             try
             {

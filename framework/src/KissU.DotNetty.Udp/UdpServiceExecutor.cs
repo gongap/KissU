@@ -92,7 +92,9 @@ namespace KissU.DotNetty.Udp
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.StackTrace}");
+                {
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                }
             }
         }
 
@@ -100,12 +102,12 @@ namespace KissU.DotNetty.Udp
         {
             try
             {
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug("准备发送响应消息。");
+                if (_logger.IsEnabled(LogLevel.Trace))
+                    _logger.LogTrace("准备发送响应消息。");
 
                 await sender.SendAndFlushAsync(new TransportMessage(resultMessage));
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug("响应消息发送成功。");
+                if (_logger.IsEnabled(LogLevel.Trace))
+                    _logger.LogTrace("响应消息发送成功。");
             }
             catch (Exception exception)
             {

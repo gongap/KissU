@@ -13,7 +13,7 @@ namespace KissU.Services
     {
         static async Task Main(string[] args)
         {
-            await CreateHostBuilder(args).RunConsoleAsync();
+                  await CreateHostBuilder(args).RunConsoleAsync();
         }
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>

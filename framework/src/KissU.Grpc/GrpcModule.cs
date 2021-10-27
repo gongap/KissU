@@ -3,12 +3,12 @@ using KissU.CPlatform;
 using KissU.CPlatform.Runtime.Server;
 using KissU.CPlatform.Runtime.Server.Implementation;
 using KissU.Dependency;
-using KissU.Grpc.Runtime;
-using KissU.Grpc.Runtime.Implementation;
+using KissU.GrpcTransport.Runtime;
+using KissU.GrpcTransport.Runtime.Implementation;
 using KissU.Modularity;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Grpc
+namespace KissU.GrpcTransport
 {
     /// <summary>
     /// GrpcModule.
@@ -31,7 +31,7 @@ namespace KissU.Grpc
                     provider.Resolve<CPlatformContainer>()
                 );
             }).As(typeof(IGrpcServiceEntryProvider)).SingleInstance();
-            if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.WS)
+            if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.GRPC)
             {
                 RegisterDefaultProtocol(builder);
             }

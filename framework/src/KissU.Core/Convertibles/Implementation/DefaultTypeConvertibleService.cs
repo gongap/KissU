@@ -32,7 +32,7 @@ namespace KissU.Convertibles.Implementation
         {
             _logger = logger;
             providers = providers.ToArray();
-            if (_logger.IsEnabled(LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug)&& providers.Any())
             {
                 _logger.LogDebug($"发现了{providers.Count()}个类型转换提供程序：");
                 foreach (var provider in providers)
@@ -71,9 +71,9 @@ namespace KissU.Convertibles.Implementation
                 return instance;
             }
 
-            if (_logger.IsEnabled(LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Trace))
             {
-                _logger.LogDebug($"准备将 {instance.GetType()} 转换为：{conversionType}。");
+                _logger.LogTrace($"准备将 {instance.GetType()} 转换为：{conversionType}。");
             }
 
             object result = null;

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
+using MessagePack;
 using StackExchange.Redis;
 
 namespace KissU.Caching.RedisCache
@@ -186,10 +187,10 @@ namespace KissU.Caching.RedisCache
                 return null;
             }
 
-            var binaryFormatter = new BinaryFormatter();
+            //var binaryFormatter = new BinaryFormatter();
             using (var memoryStream = new MemoryStream())
             {
-                binaryFormatter.Serialize(memoryStream, o);
+                MessagePackSerializer.Serialize(memoryStream, o);
                 var objectDataAsStream = memoryStream.ToArray();
                 return objectDataAsStream;
             }
@@ -202,10 +203,10 @@ namespace KissU.Caching.RedisCache
                 return default;
             }
 
-            var binaryFormatter = new BinaryFormatter();
+            //var binaryFormatter = new BinaryFormatter();
             using (var memoryStream = new MemoryStream(stream))
             {
-                var result = (T) binaryFormatter.Deserialize(memoryStream);
+                var result = MessagePackSerializer.Deserialize<T>(memoryStream);
                 return result;
             }
         }

@@ -1,5 +1,4 @@
 ﻿using System;
-using KissU.Dependency;
 
 namespace KissU.Thrift.Runtime
 {
@@ -7,6 +6,6 @@ namespace KissU.Thrift.Runtime
     {
         public Type Type { get; set; }
 
-        public IServiceBehavior Behavior { get; set; }
+        public IThriftBehavior Behavior { get; set; }
     }
 }

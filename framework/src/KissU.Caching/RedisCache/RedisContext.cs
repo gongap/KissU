@@ -4,16 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using KissU.Caching.HashAlgorithms;
+using KissU.ServiceProxy.Interceptors.Implementation.Metadatas;
 
 namespace KissU.Caching.RedisCache
 {
     /// <summary>
     /// redis数据上下文
     /// </summary>
-    /// <remarks>
-    ///     <para>创建：范亮</para>
-    ///     <para>日期：2016/4/2</para>
-    /// </remarks>
     public class RedisContext
     {
         private readonly IHashAlgorithm _hashAlgorithm;
@@ -70,10 +67,6 @@ namespace KissU.Caching.RedisCache
         /// </summary>
         /// <param name="rule">规则</param>
         /// <param name="args">参数</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public RedisContext(string rule, params object[] args)
         {
             if (CacheContainer.IsRegistered<IHashAlgorithm>())
@@ -131,10 +124,6 @@ namespace KissU.Caching.RedisCache
         /// <summary>
         /// 初始化设置哈希节点容器
         /// </summary>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         private void InitSettingHashStorage()
         {
             foreach (var dataContext in DataContextPool)
@@ -193,10 +182,6 @@ namespace KissU.Caching.RedisCache
         /// <summary>
         /// 缓存对象集合容器池
         /// </summary>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public Dictionary<string, List<string>> DataContextPool => _cachingContextPool.Value;
 
         #endregion

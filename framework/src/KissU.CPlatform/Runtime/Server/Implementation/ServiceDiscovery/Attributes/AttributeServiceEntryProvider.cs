@@ -43,7 +43,7 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attribu
         {
             var services = GetTypes().Distinct().ToArray();
 
-            if (_logger.IsEnabled(LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug) && services.Any())
             {
                 _logger.LogDebug($"发现了{services.Count()}个本地服务：");
                 foreach (var service in services)
@@ -72,7 +72,7 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attribu
                 var typeInfo = i.GetTypeInfo();
                 return typeInfo.IsInterface && typeInfo.GetCustomAttribute<ServiceBundleAttribute>() != null;
             }).Distinct().ToArray();
-            if (_logger.IsEnabled(LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug) && services.Any())
             {
                 _logger.LogDebug($"发现了{services.Count()}个服务：");
                 foreach (var service in services)

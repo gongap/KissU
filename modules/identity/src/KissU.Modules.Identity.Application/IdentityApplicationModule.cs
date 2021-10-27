@@ -1,12 +1,13 @@
 ﻿using KissU.Modules.Identity.Application.Contracts;
+using Volo.Abp.Account;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
 
 namespace KissU.Modules.Identity.Application
 {
-    [DependsOn(typeof(IdentityApplicationContractsModule), typeof(AbpIdentityApplicationModule)
+    [DependsOn(typeof(IdentityApplicationContractsModule), typeof(AbpIdentityApplicationModule), typeof(AbpAccountApplicationModule)
     )]
-    public class IdentityServiceModule : AbpModule
+    public class IdentityApplicationModule : AbpModule
     {
     }
 }

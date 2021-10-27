@@ -87,6 +87,10 @@ namespace KissU.ServiceProxy.Implementation
                         MetadataReference.CreateFromFile(typeof(Task).GetTypeInfo().Assembly.Location)
                     }),
                 _logger);
+            if (stream == null)
+            {
+                return new Type[]{};
+            }
 
             using (stream)
             {
@@ -122,9 +126,7 @@ namespace KissU.ServiceProxy.Implementation
                     SyntaxFactory.SingletonList<MemberDeclarationSyntax>(
                         SyntaxFactory.NamespaceDeclaration(
                                 SyntaxFactory.QualifiedName(
-                                    SyntaxFactory.QualifiedName(
-                                        SyntaxFactory.IdentifierName("KissU"),
-                                        SyntaxFactory.IdentifierName("Cores")),
+                                    SyntaxFactory.IdentifierName("KissU"),
                                     SyntaxFactory.IdentifierName("ClientProxys")))
                             .WithMembers(
                                 SyntaxFactory.SingletonList<MemberDeclarationSyntax>(
@@ -176,7 +178,7 @@ namespace KissU.ServiceProxy.Implementation
         private static SyntaxList<UsingDirectiveSyntax> GetUsings(IEnumerable<string> namespaces)
         {
             var directives = new List<UsingDirectiveSyntax>();
-            foreach (var name in namespaces)
+            foreach (var name in  namespaces.Distinct())
             {
                 directives.Add(SyntaxFactory.UsingDirective(GetQualifiedNameSyntax(name)));
             }

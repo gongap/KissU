@@ -84,8 +84,8 @@ namespace KissU.DotNetty.Http
                 return;
             }
 
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug("准备执行本地逻辑。");
+            if (_logger.IsEnabled(LogLevel.Trace))
+                _logger.LogTrace("准备执行本地逻辑。");
             var httpResultMessage = new HttpResultMessage<object>();
 
             if (_serviceProvider.IsRegisteredWithKey(httpMessage.ServiceKey, entry.Type))
@@ -168,18 +168,16 @@ namespace KissU.DotNetty.Http
             }
             catch (RemoteServiceValidateException validateException)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(validateException, $"执行远程调用逻辑时候发生了错误。{validateException.StackTrace}");
-
                 resultMessage.Message = validateException.Message;
                 resultMessage.StatusCode = validateException.HResult;
             }
             catch (Exception exception)
             {
+                resultMessage = new HttpResultMessage<object> { Result = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.StackTrace}");
-                resultMessage = new HttpResultMessage<object>
-                    {Result = null, Message = "执行发生了错误。", StatusCode = (int) StatusCode.RequestError};
+                {
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：RoutePath：{entry.RoutePath}， Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                }
             }
 
             return resultMessage;
@@ -212,18 +210,17 @@ namespace KissU.DotNetty.Http
             }
             catch (RemoteServiceValidateException validateException)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(validateException, $"执行本地逻辑时候发生了错误：{validateException.StackTrace}");
-
                 resultMessage.Message = validateException.Message;
                 resultMessage.StatusCode = validateException.HResult;
             }
             catch (Exception exception)
             {
-                if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.StackTrace}");
                 resultMessage.Message = "执行发生了错误。";
                 resultMessage.StatusCode = exception.HResult;
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：RoutePath：{entry.RoutePath}，Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                }
             }
 
             return resultMessage;
@@ -233,12 +230,12 @@ namespace KissU.DotNetty.Http
         {
             try
             {
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug("准备发送响应消息。");
+                if (_logger.IsEnabled(LogLevel.Trace))
+                    _logger.LogTrace("准备发送响应消息。");
 
                 await sender.SendAndFlushAsync(new TransportMessage(resultMessage));
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug("响应消息发送成功。");
+                if (_logger.IsEnabled(LogLevel.Trace))
+                    _logger.LogTrace("响应消息发送成功。");
             }
             catch (Exception exception)
             {

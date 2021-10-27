@@ -5,7 +5,7 @@ using KissU.CPlatform.Runtime.Server;
 using KissU.Dependency;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Grpc.Runtime.Implementation
+namespace KissU.GrpcTransport.Runtime.Implementation
 {
     /// <summary>
     /// DefaultGrpcServiceEntryProvider.
@@ -63,7 +63,7 @@ namespace KissU.Grpc.Runtime.Implementation
                     }
                 }
 
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Debug) && _grpcServiceEntries.Any())
                 {
                     _logger.LogDebug($"发现了{_grpcServiceEntries.Count()}个grpc服务：");
                     foreach (var service in _grpcServiceEntries)
@@ -85,7 +85,7 @@ namespace KissU.Grpc.Runtime.Implementation
         {
             GrpcServiceEntry result = null;
             var objInstance = _serviceProvider.GetInstances(service);
-            var behavior = objInstance as IServiceBehavior;
+            var behavior = objInstance as IGrpcBehavior;
             if (behavior != null)
                 result = new GrpcServiceEntry
                 {

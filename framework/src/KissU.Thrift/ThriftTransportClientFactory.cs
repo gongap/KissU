@@ -49,8 +49,8 @@ namespace KissU.Thrift
         public async Task<ITransportClient> CreateClientAsync(EndPoint endPoint)
         {
             var key = endPoint;
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"准备为服务端地址：{key}创建客户端。");
+            if (_logger.IsEnabled(LogLevel.Trace))
+                _logger.LogTrace($"准备为服务端地址：{key}创建客户端。");
             try
             {
                 return await _clients.GetOrAdd(key

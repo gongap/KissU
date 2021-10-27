@@ -1,6 +1,6 @@
 # Paths
-$packFolder = (Get-Item -Path "./" -Verbose).FullName
-$rootFolder = Join-Path $packFolder "../"
+$packFolder = (Get-Item -Path "./packages" -Verbose).FullName
+$rootFolder = Join-Path $packFolder "../../"
 
 # List of solutions
 $solutions = (

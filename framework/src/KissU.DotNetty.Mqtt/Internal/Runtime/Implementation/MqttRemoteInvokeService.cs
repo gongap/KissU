@@ -72,8 +72,8 @@ namespace KissU.DotNetty.Mqtt.Internal.Runtime.Implementation
                     try
                     {
                         var endPoint = address.CreateEndPoint();
-                        if (_logger.IsEnabled(LogLevel.Debug))
-                            _logger.LogDebug($"使用地址：'{endPoint}'进行调用。");
+                        if (_logger.IsEnabled(LogLevel.Trace))
+                            _logger.LogTrace($"使用地址：'{endPoint}'进行调用。");
                         var client = await _transportClientFactory.CreateClientAsync(endPoint);
                         await client.SendAsync(invokeMessage, cancellationToken).WithCancellation(cancellationToken);
                     }
@@ -83,7 +83,8 @@ namespace KissU.DotNetty.Mqtt.Internal.Runtime.Implementation
                     }
                     catch (Exception exception)
                     {
-                        _logger.LogError(exception, $"服务Id：{invokeMessage.ServiceId}，发起请求中发生了错误：{exception.StackTrace}");
+                        _logger.LogError(exception, $"远程调用发生了错误，服务Id：{invokeMessage.ServiceId}。错误信息：{exception.Message}");
+                        throw;
                     }
                 }
             }
@@ -110,8 +111,8 @@ namespace KissU.DotNetty.Mqtt.Internal.Runtime.Implementation
                         try
                         {
                             var endPoint = address.CreateEndPoint();
-                            if (_logger.IsEnabled(LogLevel.Debug))
-                                _logger.LogDebug($"使用地址：'{endPoint}'进行调用。");
+                            if (_logger.IsEnabled(LogLevel.Trace))
+                                _logger.LogTrace($"使用地址：'{endPoint}'进行调用。");
                             var client = await _transportClientFactory.CreateClientAsync(endPoint);
                             using (var cts = new CancellationTokenSource())
                             {

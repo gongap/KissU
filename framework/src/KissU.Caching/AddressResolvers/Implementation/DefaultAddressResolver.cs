@@ -78,9 +78,8 @@ namespace KissU.Caching.AddressResolvers.Implementation
                 return null;
             }
 
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug(
-                    $"根据缓存id：{cacheId}，找到以下可用地址：{string.Join(",", address.Select(i => i.ToString()))}。");
+            if (_logger.IsEnabled(LogLevel.Trace))
+                _logger.LogTrace($"根据缓存id：{cacheId}，找到以下可用地址：{string.Join(",", address.Select(i => i.ToString()))}。");
             var redisContext = CacheContainer.GetService<RedisContext>(descriptor.CacheDescriptor.Prefix);
             ConsistentHash<ConsistentHashNode> hash;
             redisContext.dicHash.TryGetValue(descriptor.CacheDescriptor.Type, out hash);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -194,13 +195,9 @@ namespace KissU.CPlatform
         /// <param name="builder">服务构建器.</param>
         /// <param name="engine">引擎类型</param>
         /// <returns>IServiceBuilder.</returns>
-        public static IServiceBuilder AddServiceEngine(this IServiceBuilder builder, Type engine = null)
+        public static IServiceBuilder AddServiceEngine(this IServiceBuilder serviceBuilder, Type engine = null)
         {
-            var containerBuilder = builder.ContainerBuilder;
-            engine ??= typeof(DefaultVirtualPathProviderServiceEngine);
-            containerBuilder.RegisterType(engine).As(typeof(IServiceEngine)).SingleInstance();
-            builder.ContainerBuilder.RegisterType(typeof(DefaultServiceEngineBuilder)).As(typeof(IServiceEngineBuilder)).SingleInstance();
-            return builder;
+            return new DefaultServiceEngineBuilder(serviceBuilder).BuildServiceEngine();
         }
 
         /// <summary>
@@ -335,7 +332,7 @@ namespace KissU.CPlatform
                 {
                     builder = null;
                 }
-            }).As<IServiceEntryProvider>();
+            }).As<IServiceEntryProvider>().SingleInstance();
             builder.ContainerBuilder.RegisterType(typeof(DefaultServiceEntryManager)).As(typeof(IServiceEntryManager))
                 .SingleInstance();
             return builder;

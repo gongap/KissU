@@ -51,6 +51,11 @@
         public string EnableChildrenMonitor { get; set; }
 
         /// <summary>
+        /// Gets or sets the watch interval.
+        /// </summary>
+        public int? WatchInterval { get; set; } 
+
+        /// <summary>
         /// Gets or sets the lock delay.
         /// </summary>
         public int? LockDelay { get; set; }

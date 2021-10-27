@@ -8,10 +8,6 @@ namespace KissU.Caching.HashAlgorithms
     /// 针对<see cref="T" />哈希算法实现
     /// </summary>
     /// <typeparam name="T">类型</typeparam>
-    /// <remarks>
-    ///     <para>创建：范亮</para>
-    ///     <para>日期：2016/4/2</para>
-    /// </remarks>
     public class ConsistentHash<T>
     {
         /// <summary>
@@ -39,10 +35,6 @@ namespace KissU.Caching.HashAlgorithms
         /// <summary>
         /// 复制哈希节点数
         /// </summary>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public int VirtualNodeReplicationFactor { get; } = 1000;
 
         #endregion
@@ -53,10 +45,6 @@ namespace KissU.Caching.HashAlgorithms
         /// </summary>
         /// <param name="node">节点</param>
         /// <param name="value">The value.</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public void Add(T node, string value)
         {
             AddNode(node, value);
@@ -76,10 +64,6 @@ namespace KissU.Caching.HashAlgorithms
         /// 删除节点
         /// </summary>
         /// <param name="node">节点</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public void Remove(string node)
         {
             RemoveNode(node);
@@ -91,10 +75,6 @@ namespace KissU.Caching.HashAlgorithms
         /// </summary>
         /// <param name="item">值</param>
         /// <returns>返回节点</returns>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public T GetItemNode(string item)
         {
             var hashOfItem = _hashAlgorithm.Hash(item);
@@ -106,10 +86,6 @@ namespace KissU.Caching.HashAlgorithms
         /// 添加节点
         /// </summary>
         /// <param name="node">节点</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         private void AddNode(T node, string value)
         {
             for (var i = 0; i < VirtualNodeReplicationFactor; i++)
@@ -123,10 +99,6 @@ namespace KissU.Caching.HashAlgorithms
         /// 删除节点
         /// </summary>
         /// <param name="node">节点</param>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         private void RemoveNode(string value)
         {
             for (var i = 0; i < VirtualNodeReplicationFactor; i++)
@@ -143,10 +115,6 @@ namespace KissU.Caching.HashAlgorithms
         /// <param name="keys">键集合数</param>
         /// <param name="hashOfItem">哈希值</param>
         /// <returns>返回哈希的位置</returns>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         private int GetClockwiseNearestNode(int[] keys, int hashOfItem)
         {
             var begin = 0;

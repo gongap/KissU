@@ -74,15 +74,20 @@ namespace KissU.WebSocket
         /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
-            if (_logger.IsEnabled(LogLevel.Debug))
+            var ipEndPoint = endPoint as IPEndPoint;
+            if (ipEndPoint.Port == 0)
             {
-                _logger.LogDebug($"Prepare to start WS host, listening on: {endPoint}");
+                return;
             }
 
-            var ipEndPoint = endPoint as IPEndPoint;
-            Server = new WebSocketServer(ipEndPoint.Address, ipEndPoint.Port);
+            if (_logger.IsEnabled(LogLevel.Debug))
+            {
+                _logger.LogDebug($"准备启动WS服务主机, 监听端口: {endPoint}");
+            }
+
             try
             {
+                Server = new WebSocketServer(ipEndPoint.Address, ipEndPoint.Port);
                 foreach (var entry in _entries)
                     Server.AddWebSocketService(entry.Path, entry.FuncBehavior);
                 Server.KeepClean = _options.KeepClean;
@@ -91,11 +96,11 @@ namespace KissU.WebSocket
                 Server.AllowForwardedRequest = true;
                 Server.Start();
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"WS host started, listening on: {endPoint}");
+                    _logger.LogInformation($"WS服务主机已启动, 监听端口: {endPoint}");
             }
             catch
             {
-                _logger.LogError($"WS host failed, listening on: {endPoint}");
+                _logger.LogError($"WS服务主机启动失败, 监听端口: {endPoint}");
             }
         }
     }

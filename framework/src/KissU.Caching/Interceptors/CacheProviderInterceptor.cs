@@ -80,8 +80,12 @@ namespace KissU.Caching.Interceptors
                 default:
                     {
                         await invocation.Proceed();
-                        var keys = attribute.CorrespondingKeys.Select(correspondingKey => string.Format(correspondingKey,keyVaules)).ToList();
-                        keys.ForEach(cacheProvider.RemoveAsync);
+                        if (keyVaules?.Count() > 0)
+                        {
+                            var keys = attribute.CorrespondingKeys.Select(correspondingKey => string.Format(correspondingKey, keyVaules)).ToList();
+                            keys.ForEach(cacheProvider.RemoveAsync);
+                        }
+
                         break;
                     }
             }
@@ -90,7 +94,6 @@ namespace KissU.Caching.Interceptors
 
         private async Task Invoke(ICacheProvider cacheProvider, ICacheProvider l2cacheProvider,string l2Key, ServiceCacheIntercept attribute, string key, string[] keyVaules, IInvocation invocation)
         {
-
             switch (attribute.Method)
             {
                 case ServiceProxy.Interceptors.Implementation.Metadatas.CachingMethod.Get:
@@ -106,8 +109,12 @@ namespace KissU.Caching.Interceptors
                 default:
                     {
                         await invocation.Proceed();
-                        var keys = attribute.CorrespondingKeys.Select(correspondingKey => string.Format(correspondingKey, keyVaules)).ToList();
-                        keys.ForEach(cacheProvider.RemoveAsync);
+                        if (keyVaules?.Count() > 0)
+                        {
+                            var keys = attribute.CorrespondingKeys.Select(correspondingKey => string.Format(correspondingKey, keyVaules)).ToList();
+                            keys.ForEach(cacheProvider.RemoveAsync);
+                        }
+
                         break;
                     }
             }

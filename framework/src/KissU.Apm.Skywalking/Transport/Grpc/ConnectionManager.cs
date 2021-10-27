@@ -73,12 +73,12 @@ namespace KissU.Apm.Skywalking.Transport.Grpc
                 catch (TaskCanceledException ex)
                 {
                     _state = ConnectionState.Failure;
-                    _logger.LogError($"Skywalking connect server timeout.", ex);
+                    _logger.LogWarning($"Skywalking connect server timeout.", ex);
                 }
                 catch (Exception ex)
                 {
                     _state = ConnectionState.Failure;
-                    _logger.LogError($"Skywalking connect server fail.", ex);
+                    _logger.LogWarning($"Skywalking connect server fail.", ex);
                 }
             }
         }
@@ -88,11 +88,11 @@ namespace KissU.Apm.Skywalking.Transport.Grpc
             try
             {
                 await _channel?.ShutdownAsync();
-                _logger.LogInformation($"Skywalking shutdown connection[{_channel.Target}].");
+                _logger.LogWarning($"Skywalking shutdown connection[{_channel.Target}].");
             }
             catch (Exception e)
             {
-                _logger.LogError($"Skywalking Shutdown connection fail.", e);
+                _logger.LogWarning($"Skywalking Shutdown connection fail.", e);
             }
             finally
             {
@@ -115,7 +115,7 @@ namespace KissU.Apm.Skywalking.Transport.Grpc
         public Channel GetConnection()
         {
             if (Ready) return _channel;
-            _logger.LogDebug("Skywalking not found available gRPC connection.");
+            _logger.LogWarning("Skywalking not found available gRPC connection.");
             return null;
         }
 

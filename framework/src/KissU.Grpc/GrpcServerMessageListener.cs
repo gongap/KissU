@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Grpc.Core;
 using KissU.CPlatform.Messages;
 using KissU.CPlatform.Transport;
-using KissU.Grpc.Runtime;
+using KissU.GrpcTransport.Runtime;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Grpc
+namespace KissU.GrpcTransport
 {
     /// <summary>
     /// GrpcServerMessageListener.
@@ -70,17 +70,20 @@ namespace KissU.Grpc
         /// <returns>Task.</returns>
         public Task StartAsync(EndPoint endPoint)
         {
-            if (_logger.IsEnabled(LogLevel.Debug))
+            var ipEndPoint = endPoint as IPEndPoint;
+            if (ipEndPoint.Port == 0)
             {
-                _logger.LogDebug($"Prepare to start Grpc host, listening on: {endPoint}");
+                return Task.CompletedTask;
             }
 
-            var ipEndPoint = endPoint as IPEndPoint;
-            Server = new Server
-                {Ports = {new ServerPort(ipEndPoint.Address.ToString(), ipEndPoint.Port, ServerCredentials.Insecure)}};
+            if (_logger.IsEnabled(LogLevel.Debug))
+            {
+                _logger.LogDebug($"准备启动Grpc服务主机, 监听端口: {endPoint}");
+            }
 
             try
             {
+                Server = new Server { Ports = { new ServerPort(ipEndPoint.Address.ToString(), ipEndPoint.Port, ServerCredentials.Insecure) } };
                 var entries = _grpcServiceEntryProvider.GetEntries();
 
                 var serverServiceDefinitions = new List<ServerServiceDefinition>();
@@ -103,11 +106,11 @@ namespace KissU.Grpc
 
                 Server.Start();
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation($"Grpc host started, listening on:{endPoint}");
+                    _logger.LogInformation($"Grpc服务主机已启动, 监听端口:{endPoint}");
             }
             catch
             {
-                _logger.LogError($"Grpc host failed, listening on: {endPoint} ");
+                _logger.LogError($"Grpc服务主机启动失败, 监听端口: {endPoint} ");
             }
 
             return Task.CompletedTask;

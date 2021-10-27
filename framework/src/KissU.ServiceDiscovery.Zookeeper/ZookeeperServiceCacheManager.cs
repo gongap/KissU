@@ -68,8 +68,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
         /// <returns>Task.</returns>
         public override async Task ClearAsync()
         {
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("准备清空所有缓存配置。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug("准备清空所有缓存配置。");
             var zooKeepers = await _zookeeperClientProvider.GetZooKeepers();
             foreach (var zooKeeper in zooKeepers)
             {
@@ -104,8 +104,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
                     childrens = childrens.Take(childrens.Length - index).ToArray();
                 }
 
-                if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("服务缓存配置清空完成。");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug("服务缓存配置清空完成。");
             }
         }
 
@@ -143,7 +143,15 @@ namespace KissU.ServiceDiscovery.Zookeeper
             {
                 foreach (var cache in caches)
                 {
-                    cache.CacheEndpoint = cache.CacheEndpoint.Except(endpoints);
+                    foreach (var endpoint in cache.CacheEndpoint)
+                    {
+                        if (endpoints.Any(x => x == endpoint))
+                        {
+                            endpoint.Health = false;
+                        }
+                    }
+
+                    //cache.CacheEndpoint = cache.CacheEndpoint.Except(endpoints);
                 }
             }
             catch (Exception ex)
@@ -160,8 +168,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
         /// <param name="cacheDescriptors">The cache descriptors.</param>
         public override async Task SetCachesAsync(IEnumerable<ServiceCacheDescriptor> cacheDescriptors)
         {
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("Ready to add service command.");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug("Ready to add service command.");
             var path = _configInfo.CachePath;
             var zooKeepers = await _zookeeperClientProvider.GetZooKeepers();
             foreach (var zooKeeper in zooKeepers)
@@ -195,8 +203,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
                     }
                 }
 
-                if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("服务缓存添加成功。");
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug("服务缓存添加成功。");
             }
         }
 
@@ -229,8 +237,8 @@ namespace KissU.ServiceDiscovery.Zookeeper
             if (await zooKeeper.Item2.existsAsync(path) != null)
                 return;
 
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation($"节点{path}不存在，将进行创建。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug($"节点{path}不存在，将进行创建。");
 
             var childrens = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
             var nodePath = "/";
@@ -398,46 +406,57 @@ namespace KissU.ServiceDiscovery.Zookeeper
 
         private async Task ChildrenChange(string[] oldChildrens, string[] newChildrens)
         {
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"最新的节点信息：{string.Join(",", newChildrens)}");
-
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"旧的节点信息：{string.Join(",", oldChildrens)}");
-
-            //计算出已被删除的节点。
-            var deletedChildrens = oldChildrens.Except(newChildrens).ToArray();
-            //计算出新增的节点。
-            var createdChildrens = newChildrens.Except(oldChildrens).ToArray();
-
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"需要被删除的服务缓存节点：{string.Join(",", deletedChildrens)}");
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"需要被添加的服务缓存节点：{string.Join(",", createdChildrens)}");
-
-            //获取新增的缓存信息。
-            var newCaches = (await GetCaches(createdChildrens)).ToArray();
-
-            var caches = _serviceCaches.ToArray();
-            lock (_serviceCaches)
+            try
             {
-                _serviceCaches = _serviceCaches
-                    //删除无效的缓存节点。
-                    .Where(i => !deletedChildrens.Contains(i.CacheDescriptor.Id))
-                    //连接上新的缓存。
-                    .Concat(newCaches)
-                    .ToArray();
+                //计算出已被删除的节点。
+                var deletedChildrens = oldChildrens.Except(newChildrens).ToArray();
+
+                //计算出新增的节点。
+                var createdChildrens = newChildrens.Except(oldChildrens).ToArray();
+
+                if (deletedChildrens.Length > 0 ||
+                    createdChildrens.Length > 0 && _logger.IsEnabled(LogLevel.Debug))
+                {
+                    _logger.LogDebug($"最新的节点信息：{string.Join(",", newChildrens)}");
+                    _logger.LogDebug($"旧的节点信息：{string.Join(",", oldChildrens)}");
+                    if (deletedChildrens.Length > 0)
+                        _logger.LogDebug($"需要被删除的服务缓存节点：{string.Join(",", deletedChildrens)}");
+                    if (createdChildrens.Length > 0)
+                        _logger.LogDebug($"需要被添加的服务缓存节点：{string.Join(",", createdChildrens)}");
+                }
+
+                //获取新增的缓存信息。
+                var newCaches = (await GetCaches(createdChildrens)).ToArray();
+
+                var caches = _serviceCaches.ToArray();
+                lock (_serviceCaches)
+                {
+                    _serviceCaches = _serviceCaches
+                        //删除无效的缓存节点。
+                        .Where(i => !deletedChildrens.Contains(i.CacheDescriptor.Id))
+                        //连接上新的缓存。
+                        .Concat(newCaches)
+                        .ToArray();
+                }
+
+                //需要删除的缓存集合。
+                var deletedCaches = caches.Where(i => deletedChildrens.Contains(i.CacheDescriptor.Id)).ToArray();
+
+                //触发删除事件。
+                if (deletedCaches.Count() > 0)
+                    OnRemoved(deletedCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
+
+                //触发缓存被创建事件。
+                if (newCaches.Count() > 0)
+                    OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
+
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug("服务缓存数据更新成功。");
             }
-
-            //需要删除的缓存集合。
-            var deletedCaches = caches.Where(i => deletedChildrens.Contains(i.CacheDescriptor.Id)).ToArray();
-            //触发删除事件。
-            OnRemoved(deletedCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
-
-            //触发缓存被创建事件。
-            OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
-
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("Zookeeper cache data updated successfully");
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
         }
 
         private async ValueTask<(ManualResetEvent, ZooKeeper)> GetZooKeeper()

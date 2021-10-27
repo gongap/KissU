@@ -5,10 +5,6 @@ namespace KissU.Caching.HashAlgorithms
     /// <summary>
     /// 一致性哈希算法
     /// </summary>
-    /// <remarks>
-    ///     <para>创建：范亮</para>
-    ///     <para>日期：2016/4/2</para>
-    /// </remarks>
     public class HashAlgorithm : IHashAlgorithm
     {
         #region 构造函数
@@ -18,10 +14,6 @@ namespace KissU.Caching.HashAlgorithms
         /// </summary>
         /// <param name="item">字符串</param>
         /// <returns>返回哈希值</returns>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public int Hash(string item)
         {
             var hash = Hash(Encoding.ASCII.GetBytes(item));

@@ -17,7 +17,6 @@ using KissU.CPlatform.Transport.Implementation;
 using KissU.Dependency;
 using KissU.Exceptions;
 using KissU.Exceptions.Handling;
-using KissU.Extensions;
 using KissU.Helpers;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.Logging;
@@ -160,15 +159,18 @@ namespace KissU.AspNetCore.Kestrel
                     resultMessage.Message = errorInfo.Message;
                     resultMessage.Details = errorInfo.Details;
                     resultMessage.ValidationErrors = errorInfo.ValidationErrors;
+                    if (_logger.IsEnabled(LogLevel.Warning))
+                    {
+                        _logger.LogWarning(exception, $"执行远程调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                    }
                 }
                 else
                 {
                     resultMessage.Message = "执行发生了错误";
-                }
-
-                if (_logger.IsEnabled(LogLevel.Error))
-                {
-                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.StackTrace}");
+                    if (_logger.IsEnabled(LogLevel.Error))
+                    {
+                        _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                    }
                 }
             }
 
@@ -204,10 +206,6 @@ namespace KissU.AspNetCore.Kestrel
             {
                 resultMessage.Message = validateException.Message;
                 resultMessage.StatusCode = validateException.HResult;
-                if (_logger.IsEnabled(LogLevel.Error))
-                {
-                    _logger.LogError(validateException, $"执行本地逻辑时候发生了错误：{validateException.StackTrace}");
-                }
             }
             catch (Exception exception)
             {
@@ -219,15 +217,18 @@ namespace KissU.AspNetCore.Kestrel
                     resultMessage.Message = errorInfo.Message;
                     resultMessage.Details = errorInfo.Details;
                     resultMessage.ValidationErrors = errorInfo.ValidationErrors;
+                    if (_logger.IsEnabled(LogLevel.Warning))
+                    {
+                        _logger.LogWarning(exception, $"执行本地调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                    }
                 }
                 else
                 {
                     resultMessage.Message = "执行发生了错误";
-                }
-
-                if (_logger.IsEnabled(LogLevel.Error))
-                {
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.StackTrace}");
+                    if (_logger.IsEnabled(LogLevel.Error))
+                    {
+                        _logger.LogError(exception, $"执行本地调用逻辑时候发生了错误：Message：{exception.Message}，StackTrace：{exception.StackTrace}");
+                    }
                 }
             }
 
@@ -238,15 +239,15 @@ namespace KissU.AspNetCore.Kestrel
         {
             try
             {
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogDebug("准备发送响应消息。");
+                    _logger.LogTrace("准备发送响应消息。");
                 }
 
                 await sender.SendAndFlushAsync(new TransportMessage(messageId, resultMessage));
-                if (_logger.IsEnabled(LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Trace))
                 {
-                    _logger.LogDebug("响应消息发送成功。");
+                    _logger.LogTrace("响应消息发送成功。");
                 }
             }
             catch (Exception exception)
@@ -255,6 +256,10 @@ namespace KissU.AspNetCore.Kestrel
                 {
                     _logger.LogError(exception, $"发送响应消息时候发生了异常。{exception.StackTrace}");
                 }
+            }
+            finally
+            {
+                RpcContext.RemoveContext();
             }
         }
 

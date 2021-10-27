@@ -79,6 +79,7 @@ namespace KissU.CPlatform.Configurations
             Check.NotNull(builder, "builder");
             Check.CheckCondition(() => string.IsNullOrEmpty(path), "path");
             path = EnvironmentHelper.GetEnvironmentVariable(path);
+
             if (File.Exists(path))
             {
                 if (provider == null && Path.IsPathRooted(path))

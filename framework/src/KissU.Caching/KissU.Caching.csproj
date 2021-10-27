@@ -2,13 +2,14 @@
    <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Descrition>KissU.Caching</Descrition>
+    <Descrition>KissU.Caching 缓存中间件</Descrition>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="StackExchange.Redis" Version="2.0.588" />
-  </ItemGroup>
+     <PackageReference Include="MessagePack" Version="1.7.3.4" />
+   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />

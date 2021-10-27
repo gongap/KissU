@@ -6,7 +6,7 @@
     <RootNamespace>KissU.Services</RootNamespace>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
-    <Description>KissU.Services.Host</Description>
+    <Description>KissU.Services</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,6 +24,7 @@
     <ProjectReference Include="..\..\framework\src\KissU.Grpc\KissU.Grpc.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.ApiGateWay\KissU.ApiGateWay.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.Thrift\KissU.Thrift.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty\KissU.DotNetty.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty.DNS\KissU.DotNetty.DNS.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty.WebSocket\KissU.DotNetty.WebSocket.csproj" />
@@ -46,8 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\modules\account\src\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
-    <ProjectReference Include="..\..\modules\common\src\KissU.Modules.Common.Service\KissU.Modules.Common.Service.csproj" />
+    <ProjectReference Include="..\..\modules\test\src\KissU.Modules.Test.Service\KissU.Modules.Test.Service.csproj" />
     <ProjectReference Include="..\..\modules\identity\src\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
   </ItemGroup>
 
@@ -73,9 +73,5 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 </Project>

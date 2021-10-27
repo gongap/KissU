@@ -7,5 +7,6 @@
     {
         JWT,
         AppSecret,
+        JwtSecret,
     }
 }

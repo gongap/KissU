@@ -35,8 +35,7 @@ namespace KissU.Apm.Skywalking.Core.Diagnostics
         {
             _logger = loggerFactory.CreateLogger(typeof(TracingDiagnosticProcessorObserver));
             _loggerFactory = loggerFactory;
-            _tracingDiagnosticProcessors = tracingDiagnosticProcessors ??
-                                           throw new ArgumentNullException(nameof(tracingDiagnosticProcessors));
+            _tracingDiagnosticProcessors = tracingDiagnosticProcessors ?? throw new ArgumentNullException(nameof(tracingDiagnosticProcessors));
         }
 
         public void OnCompleted()
@@ -54,8 +53,7 @@ namespace KissU.Apm.Skywalking.Core.Diagnostics
                 if (listener.Name == diagnosticProcessor.ListenerName)
                 {
                     Subscribe(listener, diagnosticProcessor);
-                    _logger.LogInformation(
-                        $"Loaded diagnostic listener [{diagnosticProcessor.ListenerName}].");
+                    // _logger.LogInformation($"Loaded diagnostic listener [{diagnosticProcessor.ListenerName}].");
                 }
             }
         }

@@ -15,6 +15,8 @@
         /// </summary>
         public int Port { get; set; }
 
+       public bool Health { get; set; }
+
         /// <summary>
         /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>

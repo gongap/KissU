@@ -1,44 +1,50 @@
 {
   "ServerEngine": {
     "Ip": "${Server_IP}|127.0.0.1",
-    "WatchInterval": 10,
-    "Port": "${Server_Port}|91",
+    "Port": "${Server_Port}|8091",
     "MappingIp": "${Mapping_ip}",
     "MappingPort": "${Mapping_Port}",
-    "Token": "123456789",
     "WanIp": "${WanIp}",
+    "WatchInterval": 20,
+    "Token": "123456789",
+    "TokenExpireTime": 3560,
     "DockerDeployMode": "${DockerDeployMode}|Standard",
     "Libuv": true,
     "SoBacklog": 100,
-    "MaxConcurrentRequests": 20,
-    "DisconnTimeInterval": 30,
-    "ExecutionTimeoutInMilliseconds": 30000,
-    "BreakerForceClosed": true,
-    "Protocol": "${Protocol}|None",
+    "Weight": 20,
+    "MaxConcurrentRequests": 1000,
+    "ExecutionTimeoutInMilliseconds": 5000,
+    "BreakerForceClosed": false,
+    "BreakerRequestVolumeThreshold": 20,
+    "BreakeErrorThresholdPercentage": 50,
+    "BreakeSleepWindowInMilliseconds": 60000,
+    "Protocol": "${Protocol}",
     "RootPath": "${RootPath}",
     "WebRootPath": "${WebRootPath}",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
+    "RequestCacheEnabled": true,
+    "IncludeSensitiveDetails": true,
     "Ports": {
-      "HttpPort": "${HttpPort}|9101",
-      "WSPort": "${WSPort}|9102",
-      "MQTTPort": "${MQTTPort}|9103",
-      "GrpcPort": "${GrpcPort}|9104",
-      "UdpPort": "${UdpPort}|9105"
+      "HttpPort": "${HttpPort}",
+      "WSPort": "${WSPort}",
+      "MQTTPort": "${MQTTPort}",
+      "GrpcPort": "${GrpcPort}",
+      "UdpPort": "${UdpPort}"
     },
-    "RequestCacheEnabled": false,
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;EventBusRabbitMQModule;CachingModule;ApolloModule;AspNetCoreKestrelModule;ApiGateWayModule;"
+        // "Using": "${UseEngineParts}|ServiceProxyModule;ThriftModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;AspNetCoreKestrelModule;ApiGeteWayModule;SkywalkingModule;GrpcModule;ApolloModule;",
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;AspNetCoreKestrelModule;ApiGateWayModule;SkywalkingModule;GrpcModule;ApolloModule;"
       }
     ]
   },
   "Stage": {
-    "EnableHttps": false,
-    "CertificateFileName": "${CertificateFileName}|",
-    "CertificateLocation": "${CertificateLocation}|pfxs",
-    "CertificatePassword": "${CertificatePassword}|",
+    "EnableHttps": true,
+    "CertificateFileName": "${CertificateFileName}|server.pfx",
+    "CertificateLocation": "${CertificateLocation}",
+    "CertificatePassword": "${CertificatePassword}|KissU@20210427",
     "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
     "Protocols": "Http1AndHttp2",
     "AuthServer": {
@@ -51,7 +57,8 @@
       "AuthorizationRoutePath": "api/auth/token",
       "AuthorizationServiceKey": "Auth",
       "TokenEndpointPath": "api/connect/token",
-      "CacheMode": "MemoryCache"
+      "CacheMode": "ddlCache.Redis",
+      "CacheKey": "userName"
     },
     "AccessPolicy": {
       "Origins": [ "http://localhost:4200" ],
@@ -70,15 +77,15 @@
         "Enable": true
       }
     ],
-    "HttpPorts": "${StageHttpPorts}|9106,9107,9108,9109",
-    "HttpsPort": "${StageHttpsPorts}"
+    "HttpPorts": "${StageHttpPorts}|9080",
+    "HttpsPort": "${StageHttpsPorts}|9443"
   },
   "Consul": {
     "ConnectionString": "${Register_Conn}|127.0.0.1:8500",
     "SessionTimeout": "${Register_SessionTimeout}|50",
     "RoutePath": "${Register_RoutePath}",
     "ReloadOnChange": true,
-    "EnableChildrenMonitor": false,
+    "EnableChildrenMonitor": true,
     "MqttRoutePath": "${MqttRoutePath}"
   },
   "Zookeeper": {

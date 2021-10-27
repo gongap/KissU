@@ -1,14 +1,11 @@
 ﻿using KissU.CPlatform.Cache;
+using KissU.ServiceProxy.Interceptors.Implementation.Metadatas;
 
 namespace KissU.Caching.HashAlgorithms
 {
     /// <summary>
     /// 哈希节点对象
     /// </summary>
-    /// <remarks>
-    ///     <para>创建：范亮</para>
-    ///     <para>日期：2016/4/2</para>
-    /// </remarks>
     public class ConsistentHashNode : CacheEndpoint
     {
         private string _maxSize = "50";
@@ -18,28 +15,16 @@ namespace KissU.Caching.HashAlgorithms
         /// <summary>
         /// 缓存目标类型
         /// </summary>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public CacheTargetType Type { get; set; }
 
         /// <summary>
         /// 主机
         /// </summary>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public new string Host { get; set; }
 
         /// <summary>
         /// 端口
         /// </summary>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public new string Port { get; set; }
 
         /// <summary>
@@ -50,19 +35,11 @@ namespace KissU.Caching.HashAlgorithms
         /// <summary>
         /// 密码
         /// </summary>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public string Password { get; set; }
 
         /// <summary>
         /// 数据库
         /// </summary>
-        /// <remarks>
-        ///     <para>创建：范亮</para>
-        ///     <para>日期：2016/4/2</para>
-        /// </remarks>
         public string Db { get; set; }
 
         /// <summary>

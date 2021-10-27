@@ -11,6 +11,11 @@
         public string CacheMode { get; set; }
 
         /// <summary>
+        /// Gets or sets the cache mode.
+        /// </summary>
+        public string CacheKey { get; set; }
+
+        /// <summary>
         /// Gets or sets the authorization service key.
         /// </summary>
         public string AuthorizationServiceKey { get; set; }
