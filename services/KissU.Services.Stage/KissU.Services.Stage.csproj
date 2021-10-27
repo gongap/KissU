@@ -24,6 +24,7 @@
     <ProjectReference Include="..\..\framework\src\KissU.Grpc\KissU.Grpc.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.ApiGateWay\KissU.ApiGateWay.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.Thrift\KissU.Thrift.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty\KissU.DotNetty.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty.DNS\KissU.DotNetty.DNS.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.DotNetty.WebSocket\KissU.DotNetty.WebSocket.csproj" />
@@ -42,8 +43,8 @@
     <ProjectReference Include="..\..\framework\src\KissU.Logging.Log4net\KissU.Logging.Log4net.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.Logging.Serilog\KissU.Logging.Serilog.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Kestrel\KissU.AspNetCore.Kestrel.csproj" />
-    <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Stage\KissU.AspNetCore.Stage.csproj" />
     <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Swagger\KissU.AspNetCore.Swagger.csproj" />
+    <ProjectReference Include="..\..\framework\src\KissU.AspNetCore.Stage\KissU.AspNetCore.Stage.csproj" />
   </ItemGroup>
 
   <ItemGroup>

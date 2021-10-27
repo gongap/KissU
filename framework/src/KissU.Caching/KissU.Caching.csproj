@@ -2,7 +2,7 @@
    <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Descrition>KissU.Caching 缓存中间件</Descrition>
+    <Descrition>Caching模块</Descrition>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

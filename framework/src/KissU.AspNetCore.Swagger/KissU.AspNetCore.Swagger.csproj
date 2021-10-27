@@ -2,7 +2,7 @@
    <Import Project="..\..\..\common.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Description>KissU.AspNetCore.Swagger</Description>
+    <Description>AspNetCoreSwagger模块</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
