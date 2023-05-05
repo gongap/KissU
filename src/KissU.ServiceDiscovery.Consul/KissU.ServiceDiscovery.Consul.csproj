@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+   <Import Project="..\..\common.props" />
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Description>KissU.ServiceDiscovery.Consul</Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Consul" Version="0.7.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.CPlatform\KissU.CPlatform.csproj" />
+  </ItemGroup>
+</Project>

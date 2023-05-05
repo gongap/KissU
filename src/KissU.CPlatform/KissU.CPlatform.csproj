@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props" />
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Description>KissU.CPlatform</Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="6.0.0" />
+      <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.0.1" />
+	  <PackageReference Include="AspectCore.Extensions.Reflection" Version="2.0.0" />
+	  <PackageReference Include="SkyAPM.Core" Version="2.0.0" />
+	  <PackageReference Include="Portable.BouncyCastle" Version="1.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Core\KissU.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\CPlatformResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CPlatformResource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\CPlatformResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CPlatformResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

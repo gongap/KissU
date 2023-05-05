@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\..\common.props" />
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\sample\KissU.Sample.Service.Contracts\KissU.Sample.Service.Contracts.csproj" />
+		<ProjectReference Include="..\..\src\KissU.Abp\KissU.Abp.csproj" />
+		<ProjectReference Include="..\..\src\KissU.Codec.MessagePack\KissU.Codec.MessagePack.csproj" />
+		<ProjectReference Include="..\..\src\KissU.ServiceDiscovery.Consul\KissU.ServiceDiscovery.Consul.csproj" />
+		<ProjectReference Include="..\..\src\KissU.DotNetty\KissU.DotNetty.csproj" />
+		<ProjectReference Include="..\..\src\KissU.Logging.Serilog\KissU.Logging.Serilog.csproj" />
+		<ProjectReference Include="..\..\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
+		<ProjectReference Include="..\..\src\KissU.WebSocket\KissU.WebSocket.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.Http.Client" Version="$(ABPPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="$(ABPPackageVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.Development.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="NLog.config">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="serilog.Development.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="serilog.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="servicesettings.Development.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="servicesettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+</Project>

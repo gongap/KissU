@@ -1,0 +1,19 @@
+<hc:GlowWindow x:Class="KissU.Workbench.MainWindow"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:hc="https://handyorg.github.io/handycontrol"
+                mc:Ignorable="d"
+                Title="KissU.Workbench"
+                ShowTitle="False"
+                Style="{StaticResource WindowGlow}"
+                Background="{DynamicResource SecondaryRegionBrush}"
+                ActiveGlowColor="{DynamicResource PrimaryColor}"
+                ResizeMode="CanResizeWithGrip"
+                WindowStartupLocation="CenterScreen"
+                MaxWidth="1000" 
+                MaxHeight="800"
+                Icon="/KissU.Workbench;component/Resources/Img/favicon.ico">
+    <ContentControl Name="ControlMain"/>
+</hc:GlowWindow>

@@ -1,0 +1,89 @@
+{
+    "ServerEngine": {
+        "Name": "${Server_Name}|KissU.SampleHost",
+        "Ip": "${Server_Ip}|*",
+        "Port": "${Server_Port}|50001",
+        "MappingIp": "${Mapping_Ip}",
+        "MappingPort": "${Mapping_Port}",
+        "WanIp": "${Wan_Ip}",
+        "Token": "False",
+        "TokenExpireTime": 3560,
+        "DockerDeployMode": "${DockerDeployMode}|Standard",
+        "Libuv": false,
+        "EnableRouteWatch": true,
+        "WatchInterval": 20,
+        "SoBacklog": 100,
+        "Weight": 20,
+        "MaxConcurrentRequests": 20,
+        "BreakerForceClosed": true,
+        "BreakerRequestVolumeThreshold": 20,
+        "BreakeErrorThresholdPercentage": 50,
+        "BreakeSleepWindowInMilliseconds": 5000,
+        "ExecutionTimeoutInMilliseconds": 8000,
+        "Protocols": "${Protocols}|None", //None, Rpc, Tcp, Http, WS, Mqtt, Dns, Udp, GRPC
+        "RootPath": "${RootPath}|D:\\MicroService",
+        "WebRootPath": "${WebRootPath}|wwwroot",
+        "IsModulePerLifetimeScope": false,
+        "ReloadOnChange": true,
+        "RequestCacheEnabled": true,
+        "IncludeSensitiveDetails": true,
+        "AlwaysAllowAuthorization": false,
+        "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
+        "Ports": {
+            "HttpPort": "${HttpPort}|51001",
+            "WSPort": "${WSPort}|52001",
+            "MQTTPort": "${MQTTPort}|53001",
+            "GrpcPort": "${GrpcPort}|54001",
+            "UdpPort": "${UdpPort}|55001"
+        },
+        "Packages": [
+            {
+                "TypeName": "EnginePartModule",
+                "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;MessagePackModule;ConsulModule;BackgroundModule;AspNetCoreKestrelModule;ApiGateWayModule;WSProtocolModule;SkywalkingModule;"
+            },
+            {
+                "TypeName": "AspNetCoreModule",
+                "Using": "${UseAspNetCore}|AspNetCoreSwaggerModule;"
+            }
+        ]
+    },
+    "Consul": {
+        "ConnectionString": "${Register_Conn}|192.168.0.170:8500",
+        "SessionTimeout": "${Register_SessionTimeout}|50",
+        "RoutePath": "${Register_RoutePath}",
+        "ReloadOnChange": true,
+        "EnableChildrenMonitor": true,
+        "MqttRoutePath": "${MqttRoutePath}"
+    },
+  "Zookeeper": {
+    "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181",
+    "SessionTimeout": 50,
+    "ReloadOnChange": true
+  },
+  "Dns": {
+    "RootDnsAddress": "{RootDnsAddress}|192.168.1.1",
+    "QueryTimeout": 1000
+  },
+  "WebSocket": {
+    "AuthenticationSchemes": "Bearer",
+    "UserInfoEndpoint": "${UserInfoEndpoint}|http://api.kissu.com:51000/connect/userinfo",
+    "WaitTime": 2,
+    "KeepClean": true,
+    "Behavior": {
+      "IgnoreExtensions": true,
+      "EmitOnPing": false
+    }
+  },
+  "Swagger": {
+    "Info": {
+      "Version": "${SwaggerVersion}|V1",
+      "Title": "${SwaggerTitle}|KissU MicroService",
+      "Description": "${SwaggerDes}|KissU MicroService"
+    },
+    "Options": {
+      "IgnoreFullyQualified": false,
+      "IncludeControllerXmlComments": true,
+      "TagService": "${SwaggerTagService}|ManageService,InternalService"
+    }
+  }
+}

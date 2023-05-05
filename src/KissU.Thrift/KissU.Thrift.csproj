@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props" />
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Description>KissU.Thrift</Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ApacheThrift" Version="0.13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.CPlatform\KissU.CPlatform.csproj" />
+  </ItemGroup>
+
+</Project>

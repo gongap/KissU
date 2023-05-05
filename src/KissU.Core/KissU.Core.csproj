@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\..\common.props" />
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Descrition>KissU.Core</Descrition>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<RootNamespace>KissU</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="6.0.0" />
+		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
+		<PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.0" />
+		<PackageReference Include="KissUtil" Version="1.0.0" />
+		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+		<PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+		<PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
+		<PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
+		<PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+		<PackageReference Include="SkyApm.Abstractions" Version="2.0.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\LibraryResource.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>LibraryResource.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\LibraryResource.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>LibraryResource.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+</Project>

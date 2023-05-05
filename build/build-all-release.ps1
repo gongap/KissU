@@ -1,16 +1,13 @@
-. ".\common.ps1" -f
+$rootFolder = (Get-Item -Path "../" -Verbose).FullName
 
-# Build all solutions
-
-foreach ($solutionPath in $solutionPaths) {    
-    $solutionAbsPath = (Join-Path $rootFolder $solutionPath)
-    Set-Location $solutionAbsPath
-    dotnet build --configuration Release
-    if (-Not $?) {
-        Write-Host ("Build failed for the solution: " + $solutionPath)
-        Set-Location $rootFolder
-        exit $LASTEXITCODE
-    }
+$solutionPath = $rootFolder
+Set-Location $solutionPath
+dotnet build  --configuration Release
+if (-Not $?) {
+    Write-Host ("Build failed for the solution: " + $solutionPath)
+    Set-Location $rootFolder
+    exit $LASTEXITCODE
 }
 
 Set-Location $rootFolder
+

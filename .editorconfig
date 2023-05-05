@@ -1,0 +1,71 @@
+﻿# EditorConfig
+# 1. EditorConfig (https://EditorConfig.org)
+# 2. EditorConfig Specification (https://editorconfig-specification.readthedocs.io/)
+# 3. Example file (https://editorconfig.org/#example-file)
+# 4. Code style rule options (https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/code-style-rule-options)
+# 5. EditorConfig Reference for C# Developers (https://kent-boogaart.com/blog/editorconfig-reference-for-c-developers)
+
+# Severity : error, warning, suggestion, silent, none, default (https://docs.microsoft.com/en-us/visualstudio/code-quality/use-roslyn-analyzers)
+
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = unset
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.cs]
+
+# Default severity for all analyzer diagnostics
+dotnet_analyzer_diagnostic.severity = warning
+
+# IDE0051: 删除未使用的私有成员
+dotnet_diagnostic.IDE0051.severity = silent
+
+# IDE0059: 不需要赋值
+csharp_style_unused_value_assignment_preference = discard_variable:suggestion
+
+# SA1124: Do not use regions
+dotnet_diagnostic.SA1124.severity = none
+
+# SA1309: Field names should not begin with underscore
+dotnet_diagnostic.SA1309.severity = none
+
+# SA1402: File may only contain a single type
+dotnet_diagnostic.SA1402.severity = none
+
+# IDE0052: 删除未读的私有成员
+dotnet_diagnostic.IDE0052.severity = suggestion
+
+# SA1202: Elements should be ordered by access
+dotnet_diagnostic.SA1202.severity = none
+
+# SA1201: Elements should appear in the correct order
+dotnet_diagnostic.SA1201.severity = none
+
+# CA2207: Initialize value type static fields inline
+dotnet_diagnostic.CA2207.severity = none
+
+# SA1123: Do not place regions within elements
+dotnet_diagnostic.SA1123.severity = none
+
+# CA1031: Do not catch general exception types
+dotnet_diagnostic.CA1031.severity = silent
+
+# SA1204: Static elements should appear before instance elements
+dotnet_diagnostic.SA1204.severity = none
+
+# SA1625: Element documentation should not be copied and pasted
+dotnet_diagnostic.SA1625.severity = none
+
+# SA1200: Using directives should be placed correctly
+dotnet_diagnostic.SA1200.severity = none
+
+# SA0001: XML comment analysis is disabled due to project configuration
+dotnet_diagnostic.SA0001.severity = none
+
+# SA1633	The file header is missing or not located at the top of the file
+dotnet_diagnostic.SA1633.severity = none

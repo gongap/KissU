@@ -1,0 +1,6 @@
+FROM package.kissu.com/docker/mse/kissu-mseserver:1.8.5.2
+RUN rm -rf /app
+WORKDIR /app
+COPY ./ /app
+ENTRYPOINT ["dotnet", "KissU.MseServer.dll"]
+

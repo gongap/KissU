@@ -1,0 +1,30 @@
+<Border xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        BorderThickness="0,1,0,0" 
+        BorderBrush="{DynamicResource BorderBrush}" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="https://handyorg.github.io/handycontrol"
+        x:Class="KissU.Workbench.UserControl.ServiceAddressView"
+        DataContext="{Binding ServiceAddress,Source={StaticResource Locator}}">
+    <controls:ScrollViewer controls:ScrollViewerAttach.AutoHide="True">
+        <DataGrid Name="DataGrid" HeadersVisibility="All" RowHeaderWidth="60" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single"  ItemsSource="{Binding Services}" 
+                  MouseDoubleClick="DataGrid_OnMouseDoubleClick" controls:DataGridAttach.ShowRowNumber="True">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="60" CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding ImgPath}" Width="32" Height="32" Stretch="Uniform"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Width="100" CanUserResize="False" Binding="{Binding IsHealth}" Header="IsHealth"/>
+                <DataGridTextColumn Binding="{Binding Address.Name}" Header="Name"/>
+                <DataGridTextColumn Binding="{Binding Address.Ip}" Header="IP"/>
+                <DataGridTextColumn Binding="{Binding Address.Port}" Header="Port"/>
+                <DataGridTextColumn Binding="{Binding Address.WanIp}" Header="WanIp"/>
+                <DataGridTextColumn Binding="{Binding Address.WsPort}" Header="WsPort"/>
+                <DataGridTextColumn Binding="{Binding Address.MqttPort}" Header="MqttPort"/>
+                <DataGridTextColumn Binding="{Binding Address.HttpPort}" Header="HttpPort"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </controls:ScrollViewer>
+</Border>

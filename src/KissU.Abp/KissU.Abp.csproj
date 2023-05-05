@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props" />
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Description>KissU.Abp</Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="EventHandlers\FeatureValueChangedEventHandler.cs" />
+    <Compile Remove="EventHandlers\PermissionGrantChangedEventHandler.cs" />
+    <Compile Remove="EventHandlers\SettingValueChangedEventHandler.cs" />
+    <Compile Remove="EventHandlers\TenantUpdatedEventHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Volo.Abp.Core" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.Autofac" Version="$(ABPPackageVersion)" />
+      <PackageReference Include="Volo.Abp.Auditing" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.EventBus.RabbitMQ" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.Features" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.MultiTenancy" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.Settings" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.Validation" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.Security" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.Timing" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.Authorization" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.ExceptionHandling" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.DDD.Application" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.GlobalFeatures" Version="$(ABPPackageVersion)" />
+	  <PackageReference Include="Volo.Abp.Localization" Version="$(ABPPackageVersion)" />
+      <PackageReference Include="Volo.Abp.AspNetCore" Version="$(ABPPackageVersion)" />
+      <PackageReference Include="Volo.Abp.AspNetCore.Mvc.Contracts" Version="$(ABPPackageVersion)" />
+      <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="$(ABPPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.AspNetCore\KissU.AspNetCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="EventHandlers\" />
+  </ItemGroup>
+</Project>

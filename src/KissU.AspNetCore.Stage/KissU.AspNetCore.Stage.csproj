@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\..\common.props" />
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Description>KissU.AspNetCore.Stage</Description>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="IPNetwork2" Version="2.4.0.124" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\KissU.AspNetCore\KissU.AspNetCore.csproj" />
+	</ItemGroup>
+</Project>

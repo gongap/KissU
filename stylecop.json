@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "orderingRules": {
+      "systemUsingDirectivesFirst": false,
+      "usingDirectivesPlacement": "outsideNamespace",
+      "blankLinesBetweenUsingGroups": "omit"
+    },
+    "namingRules": {
+      "allowCommonHungarianPrefixes": false,
+      "allowedNamespaceComponents": [
+        "iOS"
+      ],
+      "includeInferredTupleElementNames": true
+    },
+    "maintainabilityRules": {
+      "topLevelTypes": [
+        "class",
+        "interface",
+        "struct"
+      ]
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "require"
+    },
+    "documentationRules": {
+      "companyName": "kissuchina.com",
+      "copyrightText": "Copyright (c) {companyName}. All rights reserved."
+    }
+  }
+}

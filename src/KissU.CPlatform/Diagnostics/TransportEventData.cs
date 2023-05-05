@@ -1,0 +1,48 @@
+﻿using System;
+
+namespace KissU.CPlatform.Diagnostics
+{
+    /// <summary>
+    /// TransportEventData.
+    /// Implements the <see cref="EventData" />
+    /// </summary>
+    /// <seealso cref="EventData" />
+    public class TransportEventData : EventData
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransportEventData" /> class.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="method">The method.</param>
+        /// <param name="tracingHeaders">The trace identifier.</param>
+        /// <param name="address">The address.</param>
+        public TransportEventData(DiagnosticMessage message, string method, TracingHeaders tracingHeaders, string address)
+            : base(Guid.Parse(message.Id))
+        {
+            Message = message;
+            RemoteAddress = address;
+            Method = method;
+            Headers = tracingHeaders;
+        }
+
+        /// <summary>
+        /// Gets or sets the method.
+        /// </summary>
+        public string Method { get; set; }
+
+        /// <summary>
+        /// Gets or sets the remote address.
+        /// </summary>
+        public string RemoteAddress { get; set; }
+
+        /// <summary>
+        /// Gets or sets the headers.
+        /// </summary>
+        public TracingHeaders Headers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        public DiagnosticMessage Message { get; set; }
+    }
+}

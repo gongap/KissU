@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\..\common.props" />
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="Implements\TcpService.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.Reactive" Version="5.0.0" />
+		<PackageReference Include="Volo.Abp.Caching" Version="$(ABPPackageVersion)" />
+		<PackageReference Include="Volo.Abp.Auditing" Version="$(ABPPackageVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
+		<ProjectReference Include="..\..\src\KissU.Grpc\KissU.Grpc.csproj" />
+		<ProjectReference Include="..\..\src\KissU.Thrift\KissU.Thrift.csproj" />
+        <ProjectReference Include="..\..\src\KissU.DotNetty.Tcp\KissU.DotNetty.Tcp.csproj" />
+		<ProjectReference Include="..\..\src\KissU.DotNetty.Udp\KissU.DotNetty.Udp.csproj" />
+		<ProjectReference Include="..\..\src\KissU.DotNetty.DNS\KissU.DotNetty.DNS.csproj" />
+		<ProjectReference Include="..\..\src\KissU.DotNetty.Mqtt\KissU.DotNetty.Mqtt.csproj" />
+		<ProjectReference Include="..\..\src\KissU.BackgroundServer\KissU.BackgroundServer.csproj" />
+		<ProjectReference Include="..\KissU.Sample.Service.Contracts\KissU.Sample.Service.Contracts.csproj" />
+	</ItemGroup>
+
+</Project>

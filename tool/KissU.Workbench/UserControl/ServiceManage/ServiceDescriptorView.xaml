@@ -1,0 +1,17 @@
+<Border xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        BorderThickness="0,1,0,0" 
+        BorderBrush="{DynamicResource BorderBrush}" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="https://handyorg.github.io/handycontrol"
+        x:Class="KissU.Workbench.UserControl.ServiceDescriptorView">
+    <controls:ScrollViewer controls:ScrollViewerAttach.AutoHide="True">
+        <DataGrid HeadersVisibility="All" RowHeaderWidth="60" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding ServiceDescriptors}" controls:DataGridAttach.ShowRowNumber="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ServiceDescriptor.Id}" Header="服务标识符"/>
+                <DataGridTextColumn Binding="{Binding ServiceDescriptor.RoutePath}" Header="路由地址"/>
+                <DataGridTextColumn Binding="{Binding StrategyType}" Header="容错策略"/>
+                <DataGridTextColumn Binding="{Binding CommandDescriptor.ExecutionTimeoutInMilliseconds}" Header="执行超时时间"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </controls:ScrollViewer>
+</Border>

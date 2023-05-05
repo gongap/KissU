@@ -1,0 +1,39 @@
+<Border xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        BorderThickness="0,1,0,0" 
+        BorderBrush="{DynamicResource BorderBrush}" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:data="clr-namespace:KissU.Workbench.Data" 
+        xmlns:controls="https://handyorg.github.io/handycontrol"
+        x:Class="KissU.Workbench.UserControl.Main.MainWindowContent">
+     <controls:SimplePanel>
+         <Border Name="BorderRoot" Margin="0" Style="{StaticResource BorderClip}">
+             <Grid Name="GridMain">
+                 <Grid.RowDefinitions>
+                     <RowDefinition Height="Auto" />
+                     <RowDefinition />
+                 </Grid.RowDefinitions>
+                 <Border Name="BorderTitle" Grid.Row="0" Height="32"  Background="{DynamicResource TitleBrush}"  CornerRadius="0,0,0,0" Style="{StaticResource BorderClip}">
+                    <controls:SimplePanel>
+                        <controls:Watermark FontSize="20" FontWeight="Bold" Mark="{Binding ContentTitle}" MarkBrush="#0F000000" MarkMargin="3,0" />
+                        <TextBlock Foreground="White" Style="{StaticResource TextBlockDefault}" Text="{Binding ContentTitle}" />
+                    </controls:SimplePanel>
+                 </Border>
+                 <Border Grid.Row="1" ClipToBounds="True">
+                     <ContentPresenter Name="PresenterMain" Margin="0,0,0,10" Content="{Binding SubContent}" />
+                 </Border>
+             </Grid>
+         </Border>
+         <controls:NotifyIcon Token="{x:Static data:MessageToken.NotifyIconDemo}" Text="HandyControl" IsBlink="{Binding ContextMenuIsBlink}" Visibility="{Binding ContextMenuIsShow,Converter={StaticResource Boolean2VisibilityConverter}}">
+             <controls:NotifyIcon.ContextMenu>
+                 <ContextMenu>
+                     <MenuItem Command="{Binding ShutdownApp}" Header="退出"/>
+                 </ContextMenu>
+             </controls:NotifyIcon.ContextMenu>
+             <controls:Interaction.Triggers>
+                 <controls:EventTrigger EventName="Click">
+                     <controls:EventToCommand Command="controls:ControlCommands.PushMainWindow2Top"/>
+                 </controls:EventTrigger>
+             </controls:Interaction.Triggers>
+         </controls:NotifyIcon>
+    </controls:SimplePanel>
+</Border>

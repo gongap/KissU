@@ -1,0 +1,143 @@
+{
+    "ServerEngine": {
+        "Name": "${Server_Name}|KissU.MseServer",
+        "Ip": "${Server_Ip}|127.0.0.1",
+        "Port": "${Server_Port}|50000",
+        "MappingIp": "${Mapping_Ip}",
+        "MappingPort": "${Mapping_Port}",
+        "WanIp": "${Wan_Ip}",
+        "Token": "False",
+        "TokenExpireTime": "${TokenExpireTime}|3560",
+        "DockerDeployMode": "${DockerDeployMode}|Standard",
+        "Libuv": "${Libuv}|false",
+        "EnableRouteWatch": "${EnableRouteWatch}|true",
+        "WatchInterval": "${WatchInterval}|20",
+        "SoBacklog": "${SoBacklog}|100",
+        "Weight": "${Weight}|20",
+        "MaxConcurrentRequests": "${MaxConcurrentRequests}|20",
+        "BreakerForceClosed": "${BreakerForceClosed}|true",
+        "BreakerRequestVolumeThreshold": "${BreakerRequestVolumeThreshold}|20",
+        "BreakeErrorThresholdPercentage": "${BreakeErrorThresholdPercentage}|50",
+        "BreakeSleepWindowInMilliseconds": "${BreakeSleepWindowInMilliseconds}|5000",
+        "ExecutionTimeoutInMilliseconds": "${ExecutionTimeoutInMilliseconds}|3000",
+        "Protocols": "${Protocols}|None", //None, Rpc, Tcp, Http, WS, Mqtt, Dns, Udp, GRPC
+        "RootPath": "${RootPath}|/app/services",
+        "WebRootPath": "${WebRootPath}|wwwroot",
+        "IsModulePerLifetimeScope": "${IsModulePerLifetimeScope}|false",
+        "ReloadOnChange": "${ReloadOnChange}|true",
+        "RequestCacheEnabled": "${RequestCacheEnabled}|true",
+        "IncludeSensitiveDetails": "${IncludeSensitiveDetails}|true",
+        "AlwaysAllowAuthorization": "${AlwaysAllowAuthorization}|false",
+        "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
+        "Ports": {
+            "HttpPort": "${HttpPort}|51000",
+            "WSPort": "${WSPort}|52000",
+            "MQTTPort": "${MQTTPort}|53000",
+            "GrpcPort": "${GrpcPort}|54000",
+            "UdpPort": "${UdpPort}|55000"
+        },
+        "Packages": [
+            {
+                "TypeName": "EnginePartModule",
+                "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;MessagePackModule;ConsulModule;BackgroundModule;ApiGateWayModule;" //SkywalkingModule;AspNetCoreKestrelModule;WSProtocolModule;
+            },
+            {
+                "TypeName": "AspNetCoreModule",
+                "Using": "${UseAspNetCore}" //AspNetCoreStageModule;AspNetCoreSwaggerModule;
+            }
+        ]
+    },
+    "Stage": {
+        "EnableHttps": "${EnableHttps}|false",
+        "CertificateFileName": "${CertificateFileName}|server.pfx",
+        "CertificateLocation": "${CertificateLocation}",
+        "CertificatePassword": "${CertificatePassword}|KissU@08120708",
+        "Protocols": "Http1AndHttp2",
+        "AddIdentityServerAuthentication": "${AddIdentityServerAuthentication}|false",
+        "AuthServer": {
+            "Authority": "${Authority}|http://127.0.0.1:9080",
+            "ApiName": "${ApiName}|MicroService",
+            "ApiSecret": "${ApiSecret}|kissuP@$$123e*",
+            "RequireHttpsMetadata": "${RequireHttpsMetadata}|false",
+            "EnableCaching": "${EnableCaching}|true",
+            "CacheDuration": "${CacheDuration}|10"
+        },
+        "ApiGetWay": {
+            "AccessTokenExpireTimeSpan": "86400",
+            "AuthorizationRoutePath": "${AuthorizationRoutePath}|api/account/login",
+            "RevocationRoutePath": "${RevocationRoutePath}|api/account/logout",
+            "AuthorizationServiceKey": "${AuthorizationServiceKey}",
+            "TokenEndpointPath": "${TokenEndpointPath}|api/connect/token",
+            "RevocationEndpointPath": "${RevocationEndpointPath}|api/connect/revocation",
+            "CacheKey": "${ApiGetWayCacheKey}|mobile"
+        },
+        "AccessPolicy": {
+            "Origins": "${AccessPolicyOrigins}|http://127.0.0.1:4200,http://192.168.0.170:3001",
+            "AllowAnyHeader": true,
+            "AllowAnyMethod": true
+        },
+        "AccessSetting": [
+            {
+                "BlackList": "${blacklist}|127.0.0.1",
+                "Enable": false
+            },
+            {
+                "WhiteList": "${whitelist}|192.168.10.50,192.168.43.0/24,127.0.0.1",
+                "BlackList": "${blacklist}|192.168.2.50,192.168.1.0/16",
+                "RoutePath": "api/user/exists",
+                "Enable": true
+            }
+        ],
+        "HttpPorts": "${StageHttpPorts}|51000",
+        "HttpsPort": "${StageHttpsPorts}|51100"
+    },
+    "Consul": {
+        "ConnectionString": "${Register_Conn}|127.0.0.1:8500",
+        "SessionTimeout": "${Register_SessionTimeout}|50",
+        "RoutePath": "${Register_RoutePath}",
+        "ReloadOnChange": true,
+        "EnableChildrenMonitor": true,
+        "MqttRoutePath": "${MqttRoutePath}"
+    },
+    "Zookeeper": {
+        "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181",
+        "SessionTimeout": 50,
+        "ReloadOnChange": true
+    },
+    "Dns": {
+        "RootDnsAddress": "{RootDnsAddress}|192.168.1.1",
+        "QueryTimeout": 1000
+    },
+    "WebSocket": {
+        "AuthenticationSchemes": "Bearer",
+        "UserInfoEndpoint": "${UserInfoEndpoint}|http://127.0.0.1:51000/connect/userinfo",
+        "WaitTime": 2,
+        "KeepClean": true,
+        "Behavior": {
+            "IgnoreExtensions": true,
+            "EmitOnPing": false
+        }
+    },
+    "Swagger": {
+        "Info": {
+            "Version": "${SwaggerVersion}|V1",
+            "Title": "${SwaggerTitle}|KissU MicroService",
+            "Description": "${SwaggerDes}|KissU MicroService"
+        },
+        "Options": {
+            "IgnoreFullyQualified": false,
+            "IncludeControllerXmlComments": true,
+            "TagTitle": "${SwaggerTagTitle}|KissU.AdminConsole",
+            "TagService": "${SwaggerTagService}|ManageService,InternalService"
+        }
+    },
+    "Abp": {
+        "IsEnabledRemoteAuditingStore": "${IsEnabledRemoteAuditingStore}|true",
+        "IsEnabledRemoteTenantStore": "${IsEnabledRemoteTenantStore}|true",
+        "IsEnabledRemoteSettingProvider": "${IsEnabledRemoteSettingProvider}|true",
+        "IsEnabledRemoteFeatureChecker": "${IsEnabledRemoteFeatureChecker}|true",
+        "IsEnabledRemotePermissionChecker": "${IsEnabledRemotePermissionChecker}|true",
+        "CurrentTenantRoutePath": "${CurrentTenantRoutePath}|api/configuration/getcurrenttenant",
+        "CurrentUserRoutePath": "${CurrentUserRoutePath}|api/configuration/getcurrentuser"
+    }
+}

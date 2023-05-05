@@ -1,0 +1,31 @@
+{
+  "ServerEngine": {
+    "Ip": "${Server_IP}|127.0.0.1",
+    "WatchInterval": 30,
+    "Port": 98,
+    "MappingIp": "${Mapping_ip}",
+    "MappingPort": "${Mapping_Port}",
+    "Token": "False",
+    "Libuv": false,
+    "RequestCacheEnabled": false,
+    "Packages": [
+      {
+        "TypeName": "EnginePartModule",
+        "Using": "${UseEngineParts}|DotNettyModule;SerilogModule;MessagePackModule;ConsulModule;HttpProtocolModule;ServiceProxyModule;"
+      }
+    ]
+  },
+  "Consul": {
+    "ConnectionString": "${Register_Conn}|127.0.0.1:8500",
+    "SessionTimeout": "${Register_SessionTimeout}|50",
+    "RoutePath": "${Register_RoutePath}",
+    "ReloadOnChange": true,
+    "EnableChildrenMonitor": false,
+    "MqttRoutePath": "${MqttRoutePath}"
+  },
+  "Zookeeper": {
+    "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181",
+    "SessionTimeout": 50,
+    "ReloadOnChange": true
+  }
+}

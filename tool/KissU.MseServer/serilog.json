@@ -1,0 +1,30 @@
+﻿{
+  "Serilog": {
+    "Enrich:": "FromLogContext",
+    "Properties": {
+      "Application": "Host"
+    },
+    "MinimumLevel": {
+      "Default": "Debug"
+    },
+    "WriteTo": [
+      {
+        "Name": "Console"
+      },
+      {
+        "Name": "RollingFile",
+        "Args": {
+          "pathFormat": "Logs\\log-{Date}.log",
+          "rollingInterval": "Day"
+        }
+      },
+      {
+        "Name": "Exceptionless",
+        "Args": {
+          "apiKey": "FUo7r4GcvXiHp8xK6ZK98OmG7X3C1hF4IphRl6O2",
+          "serverUrl": "http://localhost:8001"
+        }
+      }
+    ]
+  }
+}

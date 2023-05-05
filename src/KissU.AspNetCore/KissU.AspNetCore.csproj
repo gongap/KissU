@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\..\common.props" />
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Description>KissU.AspNetCore</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.0" />
+		<PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+		<PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="5.6.0" />
+		<PackageReference Include="IdentityModel" Version="4.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
+		<ProjectReference Include="..\KissU.ApiGateWay\KissU.ApiGateWay.csproj" />
+	</ItemGroup>
+</Project>

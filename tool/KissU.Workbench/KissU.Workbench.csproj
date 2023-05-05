@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <UseWPF>true</UseWPF>
+    <OutputType>WinExe</OutputType>
+    <Nullable>disable</Nullable>
+    <ApplicationIcon>Resources\Img\favicon.ico</ApplicationIcon>
+    <NoWarn>0108;MSB3026;MSB3061</NoWarn>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <TargetFramework>net6.0-windows</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HandyControls" Version="3.4.5" />
+    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+  </ItemGroup>
+
+	<ItemGroup>
+        <ProjectReference Include="..\..\src\KissU.Abp\KissU.Abp.csproj" />
+        <ProjectReference Include="..\..\src\KissU.CPlatform\KissU.CPlatform.csproj" />
+        <ProjectReference Include="..\..\src\KissU.WebSocket\KissU.WebSocket.csproj" />
+        <ProjectReference Include="..\..\src\KissU.Grpc\KissU.Grpc.csproj" />
+        <ProjectReference Include="..\..\src\KissU.ApiGateWay\KissU.ApiGateWay.csproj" />
+        <ProjectReference Include="..\..\src\KissU.Thrift\KissU.Thrift.csproj" />
+        <ProjectReference Include="..\..\src\KissU.DotNetty\KissU.DotNetty.csproj" />
+        <ProjectReference Include="..\..\src\KissU.DotNetty.DNS\KissU.DotNetty.DNS.csproj" />
+        <ProjectReference Include="..\..\src\KissU.DotNetty.WebSocket\KissU.DotNetty.WebSocket.csproj" />
+        <ProjectReference Include="..\..\src\KissU.DotNetty.Http\KissU.DotNetty.Http.csproj" />
+        <ProjectReference Include="..\..\src\KissU.DotNetty.Mqtt\KissU.DotNetty.Mqtt.csproj" />
+        <ProjectReference Include="..\..\src\KissU.DotNetty.Udp\KissU.DotNetty.Udp.csproj" />
+        <ProjectReference Include="..\..\src\KissU.Codec.MessagePack\KissU.Codec.MessagePack.csproj" />
+        <ProjectReference Include="..\..\src\KissU.Codec.ProtoBuffer\KissU.Codec.ProtoBuffer.csproj" />
+        <ProjectReference Include="..\..\src\KissU.ServiceDiscovery.Consul\KissU.ServiceDiscovery.Consul.csproj" />
+        <ProjectReference Include="..\..\src\KissU.ServiceDiscovery.Zookeeper\KissU.ServiceDiscovery.Zookeeper.csproj" />
+        <ProjectReference Include="..\..\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
+        <ProjectReference Include="..\..\src\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
+        <ProjectReference Include="..\..\src\KissU.BackgroundServer\KissU.BackgroundServer.csproj" />
+        <ProjectReference Include="..\..\src\KissU.Logging.NLog\KissU.Logging.NLog.csproj" />
+        <ProjectReference Include="..\..\src\KissU.Logging.Serilog\KissU.Logging.Serilog.csproj" />
+        <ProjectReference Include="..\..\src\KissU.AspNetCore.Kestrel\KissU.AspNetCore.Kestrel.csproj" />
+        <ProjectReference Include="..\..\src\KissU.AspNetCore.Stage\KissU.AspNetCore.Stage.csproj" />
+        <ProjectReference Include="..\..\src\KissU.AspNetCore.Swagger\KissU.AspNetCore.Swagger.csproj" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="favicon.ico" />
+    <Resource Include="Resources\fabric-icons.ttf" />
+    <Resource Include="Resources\Img\favicon.ico" />
+    <EmbeddedResource Include="Resources\Themes\SkinDark.xaml" />
+    <EmbeddedResource Include="Resources\Themes\SkinDefault.xaml" />
+    <EmbeddedResource Include="Resources\Themes\Theme.xaml" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Content Include="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="appsettings.Development.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="servicesettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="servicesettings.Development.json">
+		  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+   <Import Project="..\..\common.props" />
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Descrition>KissU.Caching 缓存中间件</Descrition>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="2.0.588" />
+     <PackageReference Include="MessagePack" Version="1.7.3.4" />
+   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="CachingResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CachingResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="CachingResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CachingResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

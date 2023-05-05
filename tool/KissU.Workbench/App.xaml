@@ -1,0 +1,27 @@
+<Application x:Class="KissU.Workbench.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModel="clr-namespace:KissU.Workbench.ViewModel"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d1P1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d1P1:Ignorable="d">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/Resources/Themes/SkinDefault.xaml"/>
+                        <ResourceDictionary Source="Resources/Themes/SkinDefault.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+                        <ResourceDictionary Source="Resources/Themes/Theme.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <viewModel:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

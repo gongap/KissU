@@ -1,22 +1,17 @@
 <Project>
-  <PropertyGroup>
-    <Company>KissU</Company>
-    <Product>KissU</Product>
-    <Copyright>Copyright © Gongap. All rights reserved.</Copyright>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <RepositoryUrl>https://github.com/gongap/KissU.git</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIconUrl></PackageIconUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags>kissu;microservice;applicationframework;dotnetcore;aspnetcore;</PackageTags>
-    <Version>1.5.8</Version>
-    <VersionMajor>1</VersionMajor>
-    <VersionMinor>5</VersionMinor>
-    <VersionPatch>8</VersionPatch>
-		<VersionQuality></VersionQuality>
-		<VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
-		<VersionSuffix>preview-$(VersionQuality)</VersionSuffix>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
+    <PropertyGroup>
+        <Company>KissU</Company>
+        <Copyright>Copyright © KissU. All rights reserved.</Copyright>
+        <NoWarn>$(NoWarn);CS1591</NoWarn>
+        <VersionMajor>3</VersionMajor>
+        <VersionMinor>0</VersionMinor>
+        <VersionPatch>0</VersionPatch>
+        <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
+        <VersionSuffix>-preview-20230505.1</VersionSuffix>
+        <Version>$(VersionPrefix)$(VersionSuffix)</Version>
+        <LangVersion>latest</LangVersion>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <!-- Include symbol files (*.pdb) in the built .nupkg -->
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    </PropertyGroup>
 </Project>

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+   <Import Project="..\..\common.props" />
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Descrition>KissU.Configuration.Apollo</Descrition>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.Ctrip.Framework.Apollo.Configuration" Version="2.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.CPlatform\KissU.CPlatform.csproj" />
+  </ItemGroup>
+</Project>

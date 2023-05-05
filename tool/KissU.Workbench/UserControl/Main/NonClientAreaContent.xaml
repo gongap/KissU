@@ -1,0 +1,28 @@
+<Grid  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      Height="29"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:data="clr-namespace:KissU.Workbench.Data"
+      x:Class="KissU.Workbench.UserControl.Main.NonClientAreaContent"
+      DataContext="{Binding NoUser,Source={StaticResource Locator}}">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">
+        <Menu Margin="10,0,0,0" Background="Transparent">
+            <MenuItem Height="29" Header="服务管理"  Command="{Binding OpenViewCmd}"   CommandParameter="{x:Static data:MessageToken.ServiceAddressView}" />
+        </Menu>
+        <Menu Margin="10,0,0,0" Background="Transparent">
+            <MenuItem Height="29" Header="配置文件" />
+        </Menu>
+        <Menu Margin="10,0,0,0" Background="Transparent">
+            <MenuItem Height="29" Header="工具" />
+        </Menu>
+        <Menu Margin="10,0,0,0" Background="Transparent">
+            <MenuItem Height="29" Header="关于软件" Click="MenuAbout_OnClick" />
+        </Menu>
+        <Border Margin="10,0,0,0" VerticalAlignment="Center" CornerRadius="2" Padding="10,4" Background="{DynamicResource SecondaryRegionBrush}">
+            <TextBlock FontWeight="Bold" Text="{Binding VersionInfo}" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryTextBrush}"/>
+        </Border>
+    </StackPanel>
+</Grid>

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\..\common.props" />
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Description>KissU.AspNetCore.Kestrel</Description>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\KissU.AspNetCore\KissU.AspNetCore.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,66 @@
+<Project>
+  <!-- C# compiler options (https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/) -->
+  <PropertyGroup>
+	  <!-- Nullable (https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/language#nullable) -->
+	  <Nullable>disable</Nullable>
+	  <Deterministic>true</Deterministic>
+	  <!-- report errors and warnings (https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/errors-warnings) -->
+	  <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
+
+  <!-- Generated file properties (https://docs.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#generated-file-properties) -->
+  <PropertyGroup>
+	  <!--<ImplicitUsings>enable</ImplicitUsings>-->
+  </PropertyGroup>
+
+  <!-- Code analysis properties (https://docs.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#code-analysis-properties) -->
+  <PropertyGroup>
+	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
+	  <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+	  <AnalysisMode>All</AnalysisMode>
+	  <AnalysisLevel>latest</AnalysisLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <AdditionalFiles Include="$([MSBuild]::GetPathOfFileAbove('stylecop.json'))" Visible="false" />
+  </ItemGroup>
+
+  <!-- Dependencies -->
+  <ItemGroup Condition="$(MSBuildProjectExtension) == '.csproj'" >
+	  <PackageReference Include="SonarAnalyzer.CSharp" Version="8.32.0.39516" PrivateAssets="all" />
+	  <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all" />
+	  <PackageReference Include="Roslynator.Analyzers" Version="3.3.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug'">
+	  <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
+	  <Optimize>false</Optimize>
+	  <NullableReferenceTypes>true</NullableReferenceTypes>
+	  <!-- report errors and warnings (https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/errors-warnings) -->
+	  <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+	  <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+	  <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+	  <Optimize>true</Optimize>
+	  <!-- report errors and warnings (https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/errors-warnings) -->
+	  <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+	  <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <!-- Import reference package -->
+  <Import Project="package.reference.props" />
+
+	<!-- Test Project coverlet collector -->
+  <PropertyGroup>
+    <IsTestProject Condition="$(MSBuildProjectFullPath.Contains('test')) and ($(MSBuildProjectName.EndsWith('.Tests')) or $(MSBuildProjectName.EndsWith('.TestBase')))">true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Condition="'$(IsTestProject)' == 'true'" Include="coverlet.collector" Version="3.1.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>
